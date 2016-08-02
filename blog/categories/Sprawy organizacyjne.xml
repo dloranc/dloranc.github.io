@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc - blog]]></title>
     <link href="/blog\categories/Sprawy organizacyjne.xml" rel="self"/>
     <link href="/"/>
-    <updated>2016-08-02T22:37:05+02:00</updated>
+    <updated>2016-08-02T23:05:22+02:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
@@ -11,7 +11,7 @@
             <link href="/blog/2016/08/02/hello-world"/>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>/blog/2016/08/02/hello-world</id>
-            <content type="html"><![CDATA[<p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
+            <content type="html"><![CDATA[<p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale <strong>#blogreview</strong> w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
 ]]></content>
         </entry>
     </feed>
