@@ -1,7 +1,15 @@
 header .title {
     display: block;
     font-size: 50px;
-    line-height: 140px;
+    margin-top: 50px;
+    line-height: 1;
+}
+
+header small {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 40px;
+    font-style: italic;
 }
 
 h4 small
@@ -11,16 +19,22 @@ h4 small
     color: #888;
 }
 
+body {
+    font-size: 17px;
+}
+
+p {
+    line-height: 1.5;
+    margin: 0 0 1em;
+}
+
 header,
-.mainContent,
-footer.container {
+.mainContent {
     max-width: 900px;
 }
 
-footer.container {
-    margin-top: 30px;
-    padding: 30px 0;
-    border-top: 1px dashed #aaa;
+.navbar .container-fluid {
+    padding: 0;
 }
 
 @media (max-width: 767px) {
@@ -28,8 +42,27 @@ footer.container {
         padding-top: 30px;
     }
 }
+
 @media (min-width: 980px) {
     body {
         padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    header .title {
+        font-size: 45px;
+    }
+
+    header .title,
+    header small {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
     }
 }
