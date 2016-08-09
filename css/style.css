@@ -1,26 +1,71 @@
-header .title {
-    display: block;
-    font-size: 50px;
-    margin-top: 50px;
-    line-height: 1;
+body {
+    font-family: Lato;
+    font-size: 19px;
 }
 
-header small {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    color: #08c;
+}
+
+h1,
+h2 {
+    margin-bottom: 0;
+    font-size: 50px;
+}
+
+h1[id] {
+    margin-bottom: .4em;
+}
+
+header .title {
+    display: block;
+    font-size: 80px;
+    margin-top: 50px;
+    line-height: 1;
+    font-weight: 300;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+header .title:hover {
+    text-decoration: none;
+}
+
+header .subtitle {
     display: block;
     font-size: 16px;
     margin-bottom: 40px;
     font-style: italic;
+    padding-left: 5px;
+    text-align: center;
 }
 
-h4 small
-{
+h4 small {
     display: block;
     font-size: 60%;
     color: #888;
 }
 
-body {
-    font-size: 17px;
+article header h1 {
+    margin-bottom: .2em;
+}
+
+article header h1 a:hover {
+    text-decoration: none;
+}
+
+article header .date {
+    font-weight: 300;
+    color: #9a9a9a;
+    margin-bottom: 1em;
+    margin-top: 0;
+    font-size: 22px;
 }
 
 p {
@@ -37,6 +82,25 @@ header,
     padding: 0;
 }
 
+.categories,
+.tags {
+    margin-top: 1em;
+}
+
+.archive-date {
+    font-size: 35px;
+    color: #444;
+    font-weight: 400;
+    margin-top: .7em;
+    padding-bottom: .3em;
+    margin-bottom: .6em;
+    border-bottom: 1px solid #ddd;
+}
+
+img[alt~=avatar] {
+    border-bottom: 1px solid #ededed;
+}
+
 @media (max-width: 767px) {
     .sidebar {
         padding-top: 30px;
@@ -49,14 +113,9 @@ header,
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 510px) {
     header .title {
         font-size: 45px;
-    }
-
-    header .title,
-    header small {
-        text-align: center;
     }
 
     img {
