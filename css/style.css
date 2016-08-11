@@ -136,6 +136,7 @@ header,
     transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
 }
 
+.navbar .nav > li > a.current,
 .navbar .nav > li > a:hover {
     color: #08d;
     border-bottom: 5px solid #08d;
@@ -165,6 +166,12 @@ img[alt~=avatar] {
     .navbar .nav {
         display: block;
         text-align: center;
+    }
+
+    .navbar .nav > li > a.focus,
+    .navbar .nav > li > a:active,
+    .navbar .nav > li > a.current {
+        border-bottom: 0;
     }
 }
 
