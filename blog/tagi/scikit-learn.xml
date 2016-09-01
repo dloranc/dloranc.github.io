@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="/blog\tagi/scikit-learn.xml" rel="self"/>
-    <link href="/"/>
-    <updated>2016-09-02T01:09:39+02:00</updated>
-    <id>/</id>
+    <link href="http://dloranc.github.io/blog\tagi/scikit-learn.xml" rel="self"/>
+    <link href="http://dloranc.github.io/"/>
+    <updated>2016-09-02T01:40:50+02:00</updated>
+    <id>http://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
-            <link href="/blog/2016/09/01/kfold-i-stratifiedkfold"/>
+            <link href="http://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
             <updated>2016-09-01T00:00:00+02:00</updated>
-            <id>/blog/2016/09/01/kfold-i-stratifiedkfold</id>
+            <id>http://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
             <content type="html"><![CDATA[<p>Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?</p>
 
 <p>Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę <strong>scikit-learn</strong> takich jak <code>KFold</code> i <code>StratifiedKFold</code>.</p>
