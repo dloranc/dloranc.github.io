@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="http://dloranc.github.io/blog\kategorie/Sprawy organizacyjne.xml" rel="self"/>
-    <link href="http://dloranc.github.io/"/>
-    <updated>2016-09-02T01:40:50+02:00</updated>
-    <id>http://dloranc.github.io/</id>
+    <link href="https://dloranc.github.io/blog\kategorie/Sprawy organizacyjne.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2016-09-02T01:42:48+02:00</updated>
+    <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
-            <link href="http://dloranc.github.io/blog/2016/08/02/hello-world"/>
+            <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
             <updated>2016-08-02T00:00:00+02:00</updated>
-            <id>http://dloranc.github.io/blog/2016/08/02/hello-world</id>
+            <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
             <content type="html"><![CDATA[<p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale <strong>#blogreview</strong> w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
 
 <p>Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.</p>

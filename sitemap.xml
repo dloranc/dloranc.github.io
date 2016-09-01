@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://dloranc.github.io</loc>
+    <loc>https://dloranc.github.io</loc>
     <lastmod>2016-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>http://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</loc>
+    <loc>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</loc>
     <lastmod>2016-09-01T00:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>http://dloranc.github.io/blog/2016/08/02/hello-world</loc>
+    <loc>https://dloranc.github.io/blog/2016/08/02/hello-world</loc>
     <lastmod>2016-08-02T00:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>

@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /blog/tagi/
 Disallow: /blog/kategorie/
 
-Sitemap: http://dloranc.github.io/sitemap.xml
+Sitemap: https://dloranc.github.io/sitemap.xml
