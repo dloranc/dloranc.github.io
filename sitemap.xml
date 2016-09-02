@@ -18,4 +18,10 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  </urlset>
+    <url>
+    <loc>https://dloranc.github.io/o-mnie</loc>
+    <lastmod>2016-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
