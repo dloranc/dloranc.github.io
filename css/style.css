@@ -188,6 +188,9 @@ pre {
 .categories {
   margin-top: 1em; }
 
+.categories__item {
+  display: block; }
+
 .archive-date {
   font-size: 35px;
   color: #444;
