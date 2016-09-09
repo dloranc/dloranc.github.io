@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog\tagi/scikit-learn.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2016-09-03T14:46:33+02:00</updated>
+    <updated>2016-09-09T02:36:39+02:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
@@ -17,7 +17,7 @@
 
 <h2 id="przyk%E5%82ad-z-__kfold__%3A">Przykład z <strong>KFold</strong>:</h2>
 
-<pre><code>#!/usr/bin/python2.7
+<pre><code class="python">#!/usr/bin/python2.7
 
 from __future__ import print_function
 
@@ -40,7 +40,7 @@ print("TEST y:", y_test)
 
 <p>Na wyjściu otrzymamy:</p>
 
-<pre><code>TRAIN X: [[1 2]
+<pre><code class="python">TRAIN X: [[1 2]
  [1 2]]
 TEST X: [[3 4]
  [3 4]]
@@ -50,7 +50,7 @@ TEST y: [0 1]
 
 <p>Albo na przykład:</p>
 
-<pre><code>TRAIN X: [[1 2]
+<pre><code class="python">TRAIN X: [[1 2]
  [3 4]]
 TEST X: [[1 2]
  [3 4]]
@@ -62,7 +62,7 @@ TEST y: [1 1]
 
 <h2 id="przyk%E5%82ad-z-__stratifiedkfold__%3A">Przykład z <strong>StratifiedKFold</strong>:</h2>
 
-<pre><code>#!/usr/bin/python2.7
+<pre><code class="python">#!/usr/bin/python2.7
 
 from __future__ import print_function
 
