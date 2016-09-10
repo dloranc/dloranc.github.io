@@ -185,13 +185,7 @@ pre {
 .tags {
   margin-top: 1em; }
 
-.categories {
-  margin-top: 1em; }
-
-.categories__item {
-  display: block; }
-
-.archive-date {
+.tags__archive-date {
   font-size: 35px;
   color: #444;
   font-weight: 400;
@@ -200,6 +194,30 @@ pre {
   margin-bottom: .6em;
   border-bottom: 1px solid #ddd;
   line-height: 1; }
+
+.tags__link {
+  display: block;
+  padding: .5em 0; }
+
+.categories {
+  margin-top: 1em; }
+
+.categories__item {
+  display: block; }
+
+.categories__archive-date {
+  font-size: 35px;
+  color: #444;
+  font-weight: 400;
+  margin-top: .7em;
+  padding-bottom: .3em;
+  margin-bottom: .6em;
+  border-bottom: 1px solid #ddd;
+  line-height: 1; }
+
+.categories__link {
+  display: block;
+  padding: .5em 0; }
 
 img[alt~=avatar] {
   border-bottom: 1px solid #ededed; }
