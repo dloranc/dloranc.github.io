@@ -3,9 +3,38 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog\kategorie/Przepisy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2016-09-09T02:45:42+02:00</updated>
+    <updated>2016-09-11T00:23:08+02:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[LabelEncoder]]></title>
+            <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
+            <updated>2016-09-10T00:00:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
+            <content type="html"><![CDATA[<p>Czasami, przetwarzając dane, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś klasy. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu możliwości ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code>[0 1 2 3 0 4]
+</code></pre>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
