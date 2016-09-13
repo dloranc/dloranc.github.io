@@ -221,3 +221,14 @@ pre {
 
 img[alt~=avatar] {
   border-bottom: 1px solid #ededed; }
+
+.not-found__title {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 400; }
+  @media (max-width: 450px) {
+    .not-found__title {
+      font-size: 2em; } }
+
+.not-found__text {
+  text-align: center; }
