@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2016-09-13T15:55:05+02:00</updated>
+    <updated>2016-09-27T10:14:14+02:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
@@ -11,7 +11,7 @@
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
             <updated>2016-09-10T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
-            <content type="html"><![CDATA[<p>Czasami, przetwarzając dane, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś klasy. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu możliwości ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
+            <content type="html"><![CDATA[<p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś klasy. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu możliwości ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
 
 <pre><code class="python">#!/usr/bin/python2.7
 
