@@ -5,8 +5,8 @@
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Blog o machine learningu, data science, statystyce i sztucznej inteligencji.">
-        <meta name="twitter:card" content="summary" />
+                <meta name="description" content="Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.">
+                <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
         <meta property="twitter:title" content="KFold i StratifiedKFold &mdash; Dawid Loranc" />
@@ -232,7 +232,13 @@ print("TEST y:", y_test)
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="https://dloranc.github.io/components/jquery/jquery.min.js"><\/script>')</script>
         <script src="https://dloranc.github.io/components/bootstrap/js/bootstrap.min.js"></script>
-                
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
                 <script type="text/javascript">
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
