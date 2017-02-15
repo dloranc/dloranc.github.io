@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Dawid Loranc]]></title>
+    <link href="https://dloranc.github.io/blog\kategorie/Daj Się Poznać 2017.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2017-02-15T14:42:22+01:00</updated>
+    <id>https://dloranc.github.io/</id>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
+            <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
+            <updated>2017-02-15T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
+            <content type="html"><![CDATA[<p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
+]]></content>
+        </entry>
+    </feed>

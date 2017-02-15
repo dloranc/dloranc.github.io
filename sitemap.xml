@@ -7,6 +7,12 @@
     <priority>0.8</priority>
   </url>
     <url>
+    <loc>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</loc>
+    <lastmod>2017-02-15T00:00:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
     <loc>https://dloranc.github.io/blog/2016/09/10/label-encoder</loc>
     <lastmod>2016-09-10T00:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
