@@ -3,9 +3,16 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog\tagi/scikit-learn.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-02-15T15:06:45+01:00</updated>
+    <updated>2017-02-17T21:47:44+01:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[OneHotEncoder]]></title>
+            <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
+            <updated>2017-02-17T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
+            <content type="html"><![CDATA[Bo grunt to gorące jedynki :)]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>

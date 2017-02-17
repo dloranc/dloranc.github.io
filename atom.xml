@@ -3,9 +3,171 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-02-15T15:06:45+01:00</updated>
+    <updated>2017-02-17T21:47:44+01:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[OneHotEncoder]]></title>
+            <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
+            <updated>2017-02-17T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
+            <content type="html"><![CDATA[<p>Ten wpis jest kontynuacją poprzedniego wpisu o <a href="/blog/2016/09/10/label-encoder">LabelEncoder</a>. Tym razem będzie o technice zwanej <strong>one hot encoding</strong> albo <a href="https://pl.wikipedia.org/wiki/Kod_1_z_n">kod 1 z n</a>. Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).</p>
+
+<p>Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>czerwony</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>niebieski</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>czerwony</td>
+</tr>
+</tbody>
+</table>
+
+<p>Po zakodowaniu etykiet czerwony będzie zamieniony na zero, zielony na dwójkę, a niebieski na jedynkę (biblioteka <strong>scikit-learn</strong> wewnętrznie sobie jakoś sortuje te dane i dopiero tym posortowanym danym przypisuje odpowiedni numer).</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Przetwarzamy te dane za pomocą techniki one hot encoding:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Czerwony</th>
+  <th>Zielony</th>
+  <th>Niebieski</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="python">#!/usr/bin/python2.7
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+np.set_printoptions(threshold=np.inf)
+
+
+X = np.array(['czerwony', 'zielony', 'niebieski', 'zielony', 'czerwony'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+
+# tutaj zmieniamy jednowymiarową tablicę na dwuwymiarową, bo skrypt rzuca błędem
+X_cat = X_cat.reshape(-1, 1)
+
+encoder = OneHotEncoder()
+encoder.fit(X_cat)
+X_cat = encoder.transform(X_cat)
+X_cat = X_cat.toarray()
+
+print()
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code class="python">[0 2 1 2 0]
+
+[[ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]
+ [ 1.  0.  0.]]
+</code></pre>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
@@ -21,7 +183,7 @@
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
             <updated>2016-09-10T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
-            <content type="html"><![CDATA[<p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś klasy. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu możliwości ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
+            <content type="html"><![CDATA[<p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
 
 <pre><code class="python">#!/usr/bin/python2.7
 

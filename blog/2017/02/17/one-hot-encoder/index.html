@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; Daj Się Poznać 2017</title>
+                <title>Dawid Loranc &mdash; OneHotEncoder</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.">
+                <meta name="description" content="Bo grunt to gorące jedynki :)">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="Daj Się Poznać 2017 &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" />
-                        <meta property="twitter:description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;." />
-                <meta property="og:title" content="Daj Się Poznać 2017 &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac" />
+        <meta property="twitter:title" content="OneHotEncoder &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg" />
+                        <meta property="twitter:description" content="Bo grunt to gorące jedynki :)" />
+                <meta property="og:title" content="OneHotEncoder &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" />
-                        <meta property="og:description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg" />
+                        <meta property="og:description" content="Bo grunt to gorące jedynki :)" />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="https://dloranc.github.io/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
@@ -101,24 +101,178 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-            <h1 class="post-header__title">Daj Się Poznać 2017</h1>
-            <h4 class="post-header__date">15.02.2017</h4>
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" alt="Daj Się Poznać 2017" class="post-header__thumbnail"/>
+            <h1 class="post-header__title">OneHotEncoder</h1>
+            <h4 class="post-header__date">17.02.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg" alt="OneHotEncoder" class="post-header__thumbnail"/>
                     </header>
         <div class="post-content">
-            <p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
+            <p>Ten wpis jest kontynuacją poprzedniego wpisu o <a href="/blog/2016/09/10/label-encoder">LabelEncoder</a>. Tym razem będzie o technice zwanej <strong>one hot encoding</strong> albo <a href="https://pl.wikipedia.org/wiki/Kod_1_z_n">kod 1 z n</a>. Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).</p>
 
-<p>Wszystkie moje posty konkursowe będzie można znaleźć w kategorii <a href="/blog/kategorie/Daj%20Sie%20Poznac%202017">"Daj Sie Poznac 2017"</a>.</p>
+<p>Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>czerwony</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>niebieski</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>czerwony</td>
+</tr>
+</tbody>
+</table>
+
+<p>Po zakodowaniu etykiet czerwony będzie zamieniony na zero, zielony na dwójkę, a niebieski na jedynkę (biblioteka <strong>scikit-learn</strong> wewnętrznie sobie jakoś sortuje te dane i dopiero tym posortowanym danym przypisuje odpowiedni numer).</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Przetwarzamy te dane za pomocą techniki one hot encoding:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Czerwony</th>
+  <th>Zielony</th>
+  <th>Niebieski</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="python">#!/usr/bin/python2.7
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+np.set_printoptions(threshold=np.inf)
+
+
+X = np.array(['czerwony', 'zielony', 'niebieski', 'zielony', 'czerwony'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+
+# tutaj zmieniamy jednowymiarową tablicę na dwuwymiarową, bo skrypt rzuca błędem
+X_cat = X_cat.reshape(-1, 1)
+
+encoder = OneHotEncoder()
+encoder.fit(X_cat)
+X_cat = encoder.transform(X_cat)
+X_cat = X_cat.toarray()
+
+print()
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code class="python">[0 2 1 2 0]
+
+[[ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]
+ [ 1.  0.  0.]]
+</code></pre>
 
         </div>
                     <p class="post-categories">
             Kategorie:
-                        <a href="https://dloranc.github.io/blog/kategorie/Daj%20Sie%20Poznac%202017" class="post-categories__item">Daj Sie Poznac 2017</a>,                         <a href="https://dloranc.github.io/blog/kategorie/Sprawy%20organizacyjne" class="post-categories__item">Sprawy organizacyjne</a>                        </p>
-                
+                        <a href="https://dloranc.github.io/blog/kategorie/Przepisy" class="post-categories__item">Przepisy</a>                        </p>
+                            <p class="post-tags">
+            Tagi:
+                        <a href="https://dloranc.github.io/blog/tagi/scikit-learn" class="post-tags__item">scikit-learn</a>                        </p>
+        
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder" title="OneHotEncoder"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2016/09/10/label-encoder" title="LabelEncoder"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac" title="Daj Się Poznać 2017"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>
