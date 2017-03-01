@@ -3,305 +3,49 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-02-20T19:10:53+01:00</updated>
+    <updated>2017-03-01T20:42:40+01:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/02/troche-informacji-o-starcrafcie"/>
+            <updated>2017-03-02T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/02/troche-informacji-o-starcrafcie</id>
+            <content type="html"><![CDATA[Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
             <updated>2017-02-17T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
-            <content type="html"><![CDATA[<p>Ten wpis jest kontynuacją poprzedniego wpisu o <a href="/blog/2016/09/10/label-encoder">LabelEncoder</a>. Tym razem będzie o technice zwanej <strong>one hot encoding</strong> albo <a href="https://pl.wikipedia.org/wiki/Kod_1_z_n">kod 1 z n</a>. Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).</p>
-
-<p>Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.</p>
-
-<table>
-<thead>
-<tr>
-  <th>Zmienna</th>
-  <th>Kolor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>1</td>
-  <td>czerwony</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>zielony</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td>niebieski</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td>zielony</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td>czerwony</td>
-</tr>
-</tbody>
-</table>
-
-<p>Po zakodowaniu etykiet czerwony będzie zamieniony na zero, zielony na dwójkę, a niebieski na jedynkę (biblioteka <strong>scikit-learn</strong> wewnętrznie sobie jakoś sortuje te dane i dopiero tym posortowanym danym przypisuje odpowiedni numer).</p>
-
-<table>
-<thead>
-<tr>
-  <th>Zmienna</th>
-  <th>Kolor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>1</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>2</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td>1</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td>2</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td>0</td>
-</tr>
-</tbody>
-</table>
-
-<p>Przetwarzamy te dane za pomocą techniki one hot encoding:</p>
-
-<table>
-<thead>
-<tr>
-  <th>Zmienna</th>
-  <th>Czerwony</th>
-  <th>Zielony</th>
-  <th>Niebieski</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>1</td>
-  <td>1</td>
-  <td>0</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>0</td>
-  <td>0</td>
-  <td>1</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td>0</td>
-  <td>1</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td>0</td>
-  <td>0</td>
-  <td>1</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td>1</td>
-  <td>0</td>
-  <td>0</td>
-</tr>
-</tbody>
-</table>
-
-<pre><code class="python">#!/usr/bin/python2.7
-# -*- coding: utf-8 -*-
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import OneHotEncoder
-
-np.set_printoptions(threshold=np.inf)
-
-
-X = np.array(['czerwony', 'zielony', 'niebieski', 'zielony', 'czerwony'])
-
-lbl_enc = LabelEncoder()
-lbl_enc.fit(X)
-X_cat = lbl_enc.transform(X)
-
-print(X_cat)
-
-# tutaj zmieniamy jednowymiarową tablicę na dwuwymiarową, bo skrypt rzuca błędem
-X_cat = X_cat.reshape(-1, 1)
-
-encoder = OneHotEncoder()
-encoder.fit(X_cat)
-X_cat = encoder.transform(X_cat)
-X_cat = X_cat.toarray()
-
-print()
-print(X_cat)
-</code></pre>
-
-<p>Na wyjściu otrzymujemy:</p>
-
-<pre><code class="python">[0 2 1 2 0]
-
-[[ 1.  0.  0.]
- [ 0.  0.  1.]
- [ 0.  1.  0.]
- [ 0.  0.  1.]
- [ 1.  0.  0.]]
-</code></pre>
-]]></content>
+            <content type="html"><![CDATA[Bo grunt to gorące jedynki :)]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
-            <content type="html"><![CDATA[<p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
-
-<p>Wszystkie moje posty konkursowe będzie można znaleźć w kategorii <a href="/blog/kategorie/Daj%20Sie%20Poznac%202017">"Daj Sie Poznac 2017"</a>.</p>
-]]></content>
+            <content type="html"><![CDATA[Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
             <updated>2016-09-10T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
-            <content type="html"><![CDATA[<p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
-
-<pre><code class="python">#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-
-X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
-
-lbl_enc = LabelEncoder()
-lbl_enc.fit(X)
-X_cat = lbl_enc.transform(X)
-
-print(X_cat)
-</code></pre>
-
-<p>Na wyjściu otrzymujemy:</p>
-
-<pre><code>[0 1 2 3 0 4]
-</code></pre>
-]]></content>
+            <content type="html"><![CDATA[Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
             <updated>2016-09-01T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
-            <content type="html"><![CDATA[<p>Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?</p>
-
-<p>Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę <strong>scikit-learn</strong> takich jak <code>KFold</code> i <code>StratifiedKFold</code>.</p>
-
-<h2 id="przyk%E5%82ad-z-__kfold__%3A">Przykład z <strong>KFold</strong>:</h2>
-
-<pre><code class="python">#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import KFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-kf = KFold(len(X), n_folds=2, shuffle=True)
-
-train_index, test_index = next(iter(kf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</code></pre>
-
-<p>Na wyjściu otrzymamy:</p>
-
-<pre><code class="python">TRAIN X: [[1 2]
- [1 2]]
-TEST X: [[3 4]
- [3 4]]
-TRAIN y: [0 1]
-TEST y: [0 1]
-</code></pre>
-
-<p>Albo na przykład:</p>
-
-<pre><code class="python">TRAIN X: [[1 2]
- [3 4]]
-TEST X: [[1 2]
- [3 4]]
-TRAIN y: [0 0]
-TEST y: [1 1]
-</code></pre>
-
-<p>Na powyższym przykładzie widać, że po przeprowadzeniu podziału na dwa zbiory może dojść do takiej sytuacji, że w zbiorze treningowym albo testowym będą dane należące do tylko jednej klasy. KFold nie zapewnia równomiernego rozkładu klas. Aby temu zapobiec można skorzystać z StratifiedKFold, który zapewnia równomierny rozkład klas w każdym zbiorze.</p>
-
-<h2 id="przyk%E5%82ad-z-__stratifiedkfold__%3A">Przykład z <strong>StratifiedKFold</strong>:</h2>
-
-<pre><code class="python">#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import StratifiedKFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-skf = StratifiedKFold(y, n_folds=1)
-
-train_index, test_index = next(iter(skf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</code></pre>
-
-<p>Więcej o <code>KFold</code> i <code>StratifiedKFold</code> można poczytać w dokumentacji <strong>scikit-learn</strong>:</p>
-
-<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.KFold.html">KFold</a></p>
-
-<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedKFold.html">StratifiedKFold</a></p>
-]]></content>
+            <content type="html"><![CDATA[Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
             <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
-            <content type="html"><![CDATA[<p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale <strong>#blogreview</strong> w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
-
-<p>Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.</p>
-
-<p>Miłego czytania :)</p>
-]]></content>
+            <content type="html"><![CDATA[]]></content>
         </entry>
     </feed>
