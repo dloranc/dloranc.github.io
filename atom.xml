@@ -3,22 +3,22 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-01T22:10:58+01:00</updated>
+    <updated>2017-03-01T23:36:56+01:00</updated>
     <id>https://dloranc.github.io/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
+            <updated>2017-03-01T23:36:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
+            <content type="html"><![CDATA[Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
             <updated>2017-02-17T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
             <content type="html"><![CDATA[Bo grunt to gorące jedynki :)]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
-            <link href="https://dloranc.github.io/blog/2017/02/15/troche-informacji-o-starcrafcie"/>
-            <updated>2017-02-15T22:08:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/02/15/troche-informacji-o-starcrafcie</id>
-            <content type="html"><![CDATA[Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
