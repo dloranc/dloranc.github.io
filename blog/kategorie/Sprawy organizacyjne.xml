@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="https%3A%2F%2Fdloranc.github.io%2Fblog%5Ckategorie%2FSprawy%20organizacyjne.xml" rel="self"/>
-    <link href="https%3A%2F%2Fdloranc.github.io/"/>
-    <updated>2017-03-01T23:50:25+01:00</updated>
+    <link href="https://dloranc.github.io/blog\kategorie/Sprawy organizacyjne.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2017-03-02T00:00:27+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
-            <link href="https%3A%2F%2Fdloranc.github.io%2Fblog%2F2017%2F02%2F15%2Fdaj-sie-poznac"/>
+            <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
             <content type="html"><![CDATA[Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
-            <link href="https%3A%2F%2Fdloranc.github.io%2Fblog%2F2016%2F08%2F02%2Fhello-world"/>
+            <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
             <content type="html"><![CDATA[]]></content>
