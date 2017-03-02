@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="https://dloranc.github.io/blog/kategorie/Sprawy organizacyjne.xml" rel="self"/>
+    <link href="https://dloranc.github.io/blog/kategorie/Sprawy%20organizacyjne.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-02T10:01:02+01:00</updated>
+    <updated>2017-03-02T10:04:35+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
