@@ -3,11 +3,18 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-02T10:16:43+01:00</updated>
+    <updated>2017-03-05T21:52:32+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Wiedza, wiedza, wiedza]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza"/>
+            <updated>2017-03-05T22:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
+            <content type="html"><![CDATA[Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
