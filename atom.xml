@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-05T21:52:32+01:00</updated>
+    <updated>2017-03-05T22:51:56+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,6 +11,7 @@
             <entry>
             <title type="html"><![CDATA[Wiedza, wiedza, wiedza]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza"/>
+            <published>2017-03-05T22:00:00+01:00</published>
             <updated>2017-03-05T22:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
             <content type="html"><![CDATA[Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.]]></content>
@@ -18,6 +19,7 @@
             <entry>
             <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
+            <published>2017-03-01T23:36:00+01:00</published>
             <updated>2017-03-01T23:36:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
             <content type="html"><![CDATA[Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
@@ -25,6 +27,7 @@
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
+            <published>2017-02-17T00:00:00+01:00</published>
             <updated>2017-02-17T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
             <content type="html"><![CDATA[Bo grunt to gorące jedynki :)]]></content>
@@ -32,6 +35,7 @@
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
+            <published>2017-02-15T00:00:00+01:00</published>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
             <content type="html"><![CDATA[Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
@@ -39,6 +43,7 @@
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
+            <published>2016-09-10T00:00:00+02:00</published>
             <updated>2016-09-10T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
             <content type="html"><![CDATA[Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
@@ -46,6 +51,7 @@
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
+            <published>2016-09-01T00:00:00+02:00</published>
             <updated>2016-09-01T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
             <content type="html"><![CDATA[Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.]]></content>
@@ -53,6 +59,7 @@
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
             <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
+            <published>2016-08-02T00:00:00+02:00</published>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
             <content type="html"><![CDATA[]]></content>

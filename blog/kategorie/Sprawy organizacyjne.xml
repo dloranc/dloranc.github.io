@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Sprawy%20organizacyjne.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-05T21:52:32+01:00</updated>
+    <updated>2017-03-05T22:51:56+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,6 +11,7 @@
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
+            <published>2017-02-15T00:00:00+01:00</published>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
             <content type="html"><![CDATA[Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".]]></content>
@@ -18,6 +19,7 @@
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
             <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
+            <published>2016-08-02T00:00:00+02:00</published>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
             <content type="html"><![CDATA[]]></content>

@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Przepisy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-05T21:52:32+01:00</updated>
+    <updated>2017-03-05T22:51:56+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,6 +11,7 @@
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
+            <published>2017-02-17T00:00:00+01:00</published>
             <updated>2017-02-17T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
             <content type="html"><![CDATA[Bo grunt to gorące jedynki :)]]></content>
@@ -18,6 +19,7 @@
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
+            <published>2016-09-10T00:00:00+02:00</published>
             <updated>2016-09-10T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
             <content type="html"><![CDATA[Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
@@ -25,6 +27,7 @@
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
+            <published>2016-09-01T00:00:00+02:00</published>
             <updated>2016-09-01T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
             <content type="html"><![CDATA[Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki <strong>scikit-learn</strong> do dzielenia zbioru danych.]]></content>
