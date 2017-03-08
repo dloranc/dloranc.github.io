@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-06T12:18:04+01:00</updated>
+    <updated>2017-03-08T15:01:42+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -14,7 +14,8 @@
             <published>2017-03-05T22:00:00+01:00</published>
             <updated>2017-03-05T22:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.]]></content>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.]]></content>
+            <summary>Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.</summary>
         </entry>
             <entry>
             <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
@@ -22,7 +23,8 @@
             <published>2017-03-01T23:36:00+01:00</published>
             <updated>2017-03-01T23:36:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
+            <summary>Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".</summary>
         </entry>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
@@ -30,6 +32,7 @@
             <published>2017-02-15T00:00:00+01:00</published>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>            Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
+            <summary>Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".</summary>
         </entry>
     </feed>
