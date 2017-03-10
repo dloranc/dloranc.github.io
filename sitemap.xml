@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dloranc.github.io</loc>
-    <lastmod>2017-03-08</lastmod>
+    <lastmod>2017-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</loc>
+    <lastmod>2017-03-10T22:40:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</loc>
@@ -50,13 +56,13 @@
   </url>
     <url>
     <loc>https://dloranc.github.io/o-mnie</loc>
-    <lastmod>2017-03-08</lastmod>
+    <lastmod>2017-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dloranc.github.io/polityka-prywatnosci</loc>
-    <lastmod>2017-03-08</lastmod>
+    <lastmod>2017-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
