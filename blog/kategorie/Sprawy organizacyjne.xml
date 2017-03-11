@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Sprawy%20organizacyjne.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-10T23:36:59+01:00</updated>
+    <updated>2017-03-11T13:16:35+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -14,8 +14,8 @@
             <published>2017-02-15T00:00:00+01:00</published>
             <updated>2017-02-15T00:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>            Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
             <summary>Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>            Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Hello World!]]></title>
@@ -23,7 +23,7 @@
             <published>2016-08-02T00:00:00+02:00</published>
             <updated>2016-08-02T00:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
-            <content type="html"><![CDATA[            Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś...]]></content>
             <summary>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś...</summary>
+            <content type="html"><![CDATA[            Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś...]]></content>
         </entry>
     </feed>
