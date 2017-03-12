@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; Zależności w Pythonie</title>
+                <title>Dawid Loranc &mdash; We need more data - Scrapy</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.">
+                <meta name="description" content="Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="Zależności w Pythonie &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg" />
-                        <meta property="twitter:description" content="Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam." />
-                <meta property="og:title" content="Zależności w Pythonie &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie" />
+        <meta property="twitter:title" content="We need more data - Scrapy &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg" />
+                        <meta property="twitter:description" content="Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu." />
+                <meta property="og:title" content="We need more data - Scrapy &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg" />
-                        <meta property="og:description" content="Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg" />
+                        <meta property="og:description" content="Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="https://dloranc.github.io/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
@@ -101,132 +101,111 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg" alt="Zależności w Pythonie" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">Zależności w Pythonie</h1>
-            <h4 class="post-header__date">10.03.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg" alt="We need more data - Scrapy" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">We need more data - Scrapy</h1>
+            <h4 class="post-header__date">12.03.2017</h4>
         </header>
         <div class="post-content">
-            <p>Na co dzień w pracy używam JavaScriptu i PHP. W tych językach występują menedżery pakietów <code>npm</code> (i nie tylko) i <code>composer</code>, które umożliwiają łatwe zarządzanie zależnościami dla każdego projektu. Do tej pory w Pythonie pisałem dość proste skrypty i nie potrzebowałem żadnego menedżera pakietów. W ramach nadchodzących projektów postanowiłem sprawdzić jak wygląda sprawa z zarządzaniem zależnościami w Pythonie.</p>
+            <p>Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak <code>spawningtool.com</code> albo <code>ggtracker.com</code>, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.</p>
 
-<h2 id="pip-pip-installs-packages">pip (Pip Installs Packages)</h2>
+<p>Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z <a href="http://lotv.spawningtool.com/replays/">spawningtool.com</a>.</p>
 
-<p>Pip jest standardowym menedżerem pakietów w Pythonie. Poniżej przedstawiam listę podstawowych komend.</p>
+<h2 id="kod">Kod</h2>
 
-<pre><code class="bash">pip install &lt;package&gt;           # instalacja pakietu
-pip install &lt;package&gt; --upgrade # aktualizacja pakietu
-pip uninstall                   # odinstalowuje pakiety
-pip list                        # wyświetla listę zainstalowanych pakietów
-pip list --outdated             # wyświetla listę nieaktualnych pakietów
-pip show                        # wyświetla szczegóły na temat pakietu
-pip freeze                      # wyświetla listę zainstalowanych pakietów w formacie plików requirements.txt
-pip install -r requirements.txt # instaluje zależności z pliku requirements.txt
+<p>Najpierw, oczywiście, zainstalowałem <code>Scrapy</code> (później się okazało, że będzie potrzebna także biblioteka <code>requests</code>):</p>
+
+<pre><code class="sh">pip install scrapy
 </code></pre>
 
-<p>Tworząc projekt warto podać w pliku requirements.txt listę zależności, które są wymagane by uruchomić projekt. Przykładowy plik requirements.txt wygląda następująco:</p>
+<p>Aby zacząć korzystać ze <code>Scrapy</code> można napisać od razu jakiś prosty skrypt i odpalić go używając komendy <code>scrapy runspider &lt;skrypt&gt;</code> albo utworzyć projekt. Ja wybrałem tę drugą opcję i w katalogu głównym projektu wykonałem poniższą komendę:</p>
 
-<pre><code class="bash">matplotlib==1.3.1
-numpy==1.12.0
-scikit-learn==0.18.1
+<pre><code class="sh">scrapy startproject replays
 </code></pre>
 
-<p>Widzimy, że lista zawiera nazwy pakietów i ich wersje oddzielone znakami <code>==</code>.</p>
+<p>Następnie w pliku <code>settings.py</code> ustawiłem <code>pipeline</code>, które umożliwia ściąganie plików, a także ustawiłem ścieżkę do której mają się ściągać pliki:</p>
 
-<h2 id="pipreqs">pipreqs</h2>
+<pre><code class="python">ITEM_PIPELINES = {
+   'scrapy.contrib.pipeline.images.FilesPipeline': 1,
+}
 
-<p>Co jeśli jednak mamy już jakiś projekt i potrzebujemy utworzyć listę zależności? Czy musimy się bawić w ich wyciąganie z listy otrzymanej za pomocą polecenia <code>pip freeze</code>? Z pomocą przychodzi biblioteka <code>pipreqs</code>.</p>
-
-<p>Instalujemy ją:</p>
-
-<pre><code class="bash">pip install pipreqs
+FILES_STORE = "./files"
 </code></pre>
 
-<p>A potem wywołujemy, jako parametr podając katalog z projektem, w którym chcemy dostać listę zależności:</p>
+<p>Następnie w pliku <code>items.py</code> stworzyłem prosty model tylko i wyłącznie z polami, które są wymagane, aby <code>Scrapy</code> pobierał pliki:</p>
 
-<pre><code class="bash">pipreqs project_directory/
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# http://doc.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+class ReplaysItem(scrapy.Item):
+    file_urls = scrapy.Field()
+    files = scrapy.Field()
 </code></pre>
 
-<h2 id="virtualenv">virtualenv</h2>
+<p>W katalogu <code>spiders</code> utworzyłem plik <code>spawning-tool-spider.py</code> o następującej treści:</p>
 
-<p>Wszystko fajnie, ale goły <code>pip</code> ma jedną poważną wadę - instaluje wszystkie pakiety w przestrzeni globalnej (to tak jakbyśmy użyli <code>npm install -g &lt;package&gt;</code>. W przypadku, gdy mamy kilka projektów i te potrzebują do działania różnych wersji tej samej biblioteki mamy problem. Rozwiązaniem jest użycie biblioteki <code>virtualenv</code>. Pozwala ona na tworzenie odizolowanych środowisk z Pythonem i zależnościami. Zobaczmy jak to działa.</p>
+<pre><code class="python">import scrapy
+import requests
+from replays.items import ReplayItem
 
-<p>Aby zainstalować <code>virtualenv</code> wpisujemy w konsoli:</p>
 
-<pre><code class="bash">pip install virtualenv
+class SpawningToolSpider(scrapy.Spider):
+    name = 'spawning-tool-spider'
+    # pierwsza strona z replayami, scrapy od czegoś musi zacząć
+    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+
+    # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
+    def parse(self, response):
+        for row in response.css('table tr'):
+            # pomijamy pierwszy wiersz tabeli
+            if row.css('td:last-child ::attr(href)').extract_first() is None:
+                continue
+            else:
+                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+
+                # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
+                # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
+                # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
+                # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
+                response = requests.head(url)
+
+                if response.status_code == 302:
+                    url = response.headers["Location"]
+
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                url = url.split('?')
+
+                # ok, mamy ścieżkę do pliku
+                yield ReplayItem(file_urls=[url[0]])
+
+        # przechodzimy do następnej strony
+        next_page = response.css('a.pull-right ::attr(href)').extract_first()
+        if next_page:
+            yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
 </code></pre>
 
-<p>Instalacja virtualenv w katalogu projektu:</p>
+<p>Następnie wystarczyło odpalić w konsoli komendę:</p>
 
-<pre><code class="bash">virtualenv env            # env to nazwa katalogu, w którym będzie środowisko
-virtualenv -p python3 env # jak chcemy Pythona 3
+<pre><code class="sh">scrapy crawl spawning-tool-spider
 </code></pre>
 
-<p>Powstanie katalog env. Wylistujmy go:</p>
+<h2 id="co-dalej%3F">Co dalej?</h2>
 
-<pre><code class="bash">$ ls env/
-bin include lib local pip-selfcheck.json
-</code></pre>
-
-<p>Katalog <code>env/bin/</code> zawiera to co nas najbardziej interesuje, czyli lokalną wersję Pythona i pip.</p>
-
-<p>Ok, przetestujmy <code>virtualenv</code>. Instalacja biblioteki w <code>virtualenv</code> wygląda następująco:</p>
-
-<pre><code class="bash">env/bin/pip install requests
-</code></pre>
-
-<p>Sprawdźmy, czy rzeczywiście to środowisko jest odizolowane od głównego:</p>
-
-<pre><code class="bash">$ env/bin/pip list
-appdirs (1.4.3)
-packaging (16.8)
-pip (9.0.1)
-pyparsing (2.2.0)
-requests (2.13.0)
-setuptools (34.3.1)
-six (1.10.0)
-wheel (0.29.0)
-</code></pre>
-
-<h2 id="u%E5%82atwienie-pracy-z-virtualenv">Ułatwienie pracy z virtualenv</h2>
-
-<p>Co jeśli nie chcemy ciągle pisać <code>env/bin/pip</code> i tym podobnych komend odnoszących się do naszego środowiska?</p>
-
-<p>Najpierw dla celów testowych użyjemy komendy <code>which</code> która wyświetla katalog, w którym jest przechowywany uruchamiany program:</p>
-
-<pre><code class="bash">which python
-</code></pre>
-
-<p>Wynikiem wywołania tego polecenia będzie najprawdopodobniej poniższa ścieżka (lub podobna):</p>
-
-<pre><code class="bash">/usr/bin/python
-</code></pre>
-
-<p>Ok, zmieniamy pythona i resztę na tę z naszego utworzonego środowiska:</p>
-
-<pre><code class="bash">source env/bin/activate
-</code></pre>
-
-<p>Powyższa komenda uruchami w bieżącej instancji powłoki skrypt, który podmieni zmienne środowiskowe na te ze środowiska wirtualnego.</p>
-
-<p>Wpisujemy w konsoli jeszcze raz <code>which python</code> i otrzymujemy coś w rodzaju:</p>
-
-<pre><code class="bash">/home/Dawid/python_projects/virtualenv_test/env/bin/python
-</code></pre>
-
-<p>Teraz jak wpiszemy w konsoli <code>python</code> to uruchomi się Python z naszego odizolowanego środowiska wirtualnego, a nie ten globalny.</p>
-
-<p>Aby wyłączyć środowisko projektu wystarczy wpisać w konsoli <code>deactivate</code>.</p>
-
-<h2 id="podsumowanie">Podsumowanie</h2>
-
-<p>To tyle, nauczyliśmy się podstawowej obsługi <code>pip</code> i <code>virtualenv</code>. O tworzenieniu paczek i wysyłaniu ich do PyPI będzie może kiedy indziej. Przyznam się także, że bardzo się zdziwiłem tym, że <code>pip</code> nie umożliwia separacji bibliotek dla każdego projektu i potrzebna jest do tego instalacja specjalnej paczki. Dziwne, mam inne doświadczenia jeśli chodzi o PHP i JS. Obstawiam, że to przez jakieś zaszłości historyczne.</p>
+<p>Na razie jednak dam sobie spokój z próbami przewidzenia co będzie zawierało środowisko od Blizzarda i DeepMind. Replayów nawet nie pobierałem, bo nie wiem czy jest sens. Myślę, że w tym tygodniu spróbuję odtworzyć scenariusze prostego micro z Starcrafta na przeglądarki internetowe i pod to będę pisał przykłady z użyciem sieci neuronowych i reinforcement learningu.</p>
 
         </div>
                     <p class="post-categories">
             Kategorie:
-                        <a href="https://dloranc.github.io/blog/kategorie/Przepisy" class="post-categories__item">Przepisy</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
                             <p class="post-tags">
             Tagi:
-                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/python" class="post-tags__item">python</a>,                         <a href="https://dloranc.github.io/blog/tagi/pip" class="post-tags__item">pip</a>,                         <a href="https://dloranc.github.io/blog/tagi/virtualenv" class="post-tags__item">virtualenv</a>,                         <a href="https://dloranc.github.io/blog/tagi/pipreqs" class="post-tags__item">pipreqs</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/scrapy" class="post-tags__item">scrapy</a>                        </p>
         
         <h2>Udostępnij:</h2>
         <!-- AddToAny BEGIN -->
@@ -245,8 +224,7 @@ wheel (0.29.0)
 
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy" title="We need more data - Scrapy"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza" title="Wiedza, wiedza, wiedza"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie" title="Zależności w Pythonie"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="https://dloranc.github.io/blog/kategorie/Projekty.xml" rel="self"/>
+    <link href="https://dloranc.github.io/blog/tagi/scrapy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-12T23:24:18+01:00</updated>
+    <updated>2017-03-12T23:24:19+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -16,14 +16,5 @@
             <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
             <summary>Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
-            <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
-            <published>2017-03-01T23:36:00+01:00</published>
-            <updated>2017-03-01T23:36:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
-            <summary>Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".</summary>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
         </entry>
     </feed>

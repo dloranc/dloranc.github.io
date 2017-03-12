@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-11T13:16:35+01:00</updated>
+    <updated>2017-03-12T23:24:18+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[We need more data - Scrapy]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>
+            <published>2017-03-12T22:40:00+01:00</published>
+            <updated>2017-03-12T22:40:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.]]></content>
+            <summary>Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>
