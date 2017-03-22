@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Dawid Loranc]]></title>
+    <link href="https://dloranc.github.io/atom.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2017-03-22T16:37:29+01:00</updated>
+    <id>https://dloranc.github.io/</id>
+            <author>
+            <name><![CDATA[Dawid Loranc]]></name>                    </author>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Zapis modeli i wag w Kerasie]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie"/>
+            <published>2017-03-22T22:40:00+01:00</published>
+            <updated>2017-03-22T22:40:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/keras.jpg"/>            <p>1865,1864,1863,1862</p>
+]]></content>
+            <summary><p>1865,1864,1863,1862</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[We need more data - Scrapy]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>
+            <published>2017-03-12T22:40:00+01:00</published>
+            <updated>2017-03-12T22:40:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            <p>Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak <code>spawningtool.com</code> albo <code>ggtracker.com</code>, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.</p>
+
+<p>Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z <a href="http://lotv.spawningtool.com/replays/">spawningtool.com</a>.</p>
+
+<h2 id="kod">Kod</h2>
+
+<p>Najpierw, oczywiście, zainstalowałem <code>Scrapy</code> (później się okazało, że będzie potrzebna także biblioteka <code>requests</code>):</p>
+
+<pre><code class="sh">pip install scrapy
+</code></pre>
+
+<p>Aby zacząć korzystać ze <code>Scrapy</code> można napisać od razu jakiś prosty skrypt i odpalić go używając komendy <code>scrapy runspider &lt;skrypt&gt;</code> albo utworzyć projekt. Ja wybrałem tę drugą opcję i w katalogu głównym projektu wykonałem poniższą komendę:</p>
+
+<pre><code class="sh">scrapy startproject replays
+</code></pre>
+
+<p>Następnie w pliku <code>settings.py</code> ustawiłem <code>pipeline</code>, które umożliwia ściąganie plików, a także ustawiłem ścieżkę do której mają się ściągać pliki:</p>
+
+<pre><code class="python">ITEM_PIPELINES = {
+   'scrapy.contrib.pipeline.images.FilesPipeline': 1,
+}
+
+FILES_STORE = "./files"
+</code></pre>
+
+<p>Następnie w pliku <code>items.py</code> stworzyłem prosty model tylko i wyłącznie z polami, które są wymagane, aby <code>Scrapy</code> pobierał pliki:</p>
+
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# http://doc.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+class ReplaysItem(scrapy.Item):
+    file_urls = scrapy.Field()
+    files = scrapy.Field()
+</code></pre>
+
+<p>W katalogu <code>spiders</code> utworzyłem plik <code>spawning-tool-spider.py</code> o następującej treści:</p>
+
+<pre><code class="python">import scrapy
+import requests
+from replays.items import ReplayItem
+
+
+class SpawningToolSpider(scrapy.Spider):
+    name = 'spawning-tool-spider'
+    # pierwsza strona z replayami, scrapy od czegoś musi zacząć
+    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+
+    # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
+    def parse(self, response):
+        for row in response.css('table tr'):
+            # pomijamy pierwszy wiersz tabeli
+            if row.css('td:last-child ::attr(href)').extract_first() is None:
+                continue
+            else:
+                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+
+                # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
+                # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
+                # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
+                # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
+                response = requests.head(url)
+
+                if response.status_code == 302:
+                    url = response.headers["Location"]
+
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                url = url.split('?')
+
+                # ok, mamy ścieżkę do pliku
+                yield ReplayItem(file_urls=[url[0]])
+
+        # przechodzimy do następnej strony
+        next_page = response.css('a.pull-right ::attr(href)').extract_first()
+        if next_page:
+            yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
+</code></pre>
+
+<p>Następnie wystarczyło odpalić w konsoli komendę:</p>
+
+<pre><code class="sh">scrapy crawl spawning-tool-spider
+</code></pre>
+
+<h2 id="co-dalej%3F">Co dalej?</h2>
+
+<p>Na razie jednak dam sobie spokój z próbami przewidzenia co będzie zawierało środowisko od Blizzarda i DeepMind. Replayów nawet nie pobierałem, bo nie wiem czy jest sens. Myślę, że w tym tygodniu spróbuję odtworzyć scenariusze prostego micro z Starcrafta na przeglądarki internetowe i pod to będę pisał przykłady z użyciem sieci neuronowych i reinforcement learningu.</p>
+]]></content>
+            <summary><p>Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak <code>spawningtool.com</code> albo <code>ggtracker.com</code>, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.</p>
+
+<p>Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z <a href="http://lotv.spawningtool.com/replays/">spawningtool.com</a>.</p>
+
+<h2 id="kod">Kod</h2>
+
+<p>Najpierw, oczywiście, zainstalowałem <code>Scrapy</code> (później się okazało, że będzie potrzebna także biblioteka <code>requests</code>):</p>
+
+<pre><code class="sh">pip install scrapy
+</code></pre>
+
+<p>Aby zacząć korzystać ze <code>Scrapy</code> można napisać od razu jakiś prosty skrypt i odpalić go używając komendy <code>scrapy runspider &lt;skrypt&gt;</code> albo utworzyć projekt. Ja wybrałem tę drugą opcję i w katalogu głównym projektu wykonałem poniższą komendę:</p>
+
+<pre><code class="sh">scrapy startproject replays
+</code></pre>
+
+<p>Następnie w pliku <code>settings.py</code> ustawiłem <code>pipeline</code>, które umożliwia ściąganie plików, a także ustawiłem ścieżkę do której mają się ściągać pliki:</p>
+
+<pre><code class="python">ITEM_PIPELINES = {
+   'scrapy.contrib.pipeline.images.FilesPipeline': 1,
+}
+
+FILES_STORE = "./files"
+</code></pre>
+
+<p>Następnie w pliku <code>items.py</code> stworzyłem prosty model tylko i wyłącznie z polami, które są wymagane, aby <code>Scrapy</code> pobierał pliki:</p>
+
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# http://doc.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+class ReplaysItem(scrapy.Item):
+    file_urls = scrapy.Field()
+    files = scrapy.Field()
+</code></pre>
+
+<p>W katalogu <code>spiders</code> utworzyłem plik <code>spawning-tool-spider.py</code> o następującej treści:</p>
+
+<pre><code class="python">import scrapy
+import requests
+from replays.items import ReplayItem
+
+
+class SpawningToolSpider(scrapy.Spider):
+    name = 'spawning-tool-spider'
+    # pierwsza strona z replayami, scrapy od czegoś musi zacząć
+    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+
+    # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
+    def parse(self, response):
+        for row in response.css('table tr'):
+            # pomijamy pierwszy wiersz tabeli
+            if row.css('td:last-child ::attr(href)').extract_first() is None:
+                continue
+            else:
+                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+
+                # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
+                # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
+                # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
+                # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
+                response = requests.head(url)
+
+                if response.status_code == 302:
+                    url = response.headers["Location"]
+
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                url = url.split('?')
+
+                # ok, mamy ścieżkę do pliku
+                yield ReplayItem(file_urls=[url[0]])
+
+        # przechodzimy do następnej strony
+        next_page = response.css('a.pull-right ::attr(href)').extract_first()
+        if next_page:
+            yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
+</code></pre>
+
+<p>Następnie wystarczyło odpalić w konsoli komendę:</p>
+
+<pre><code class="sh">scrapy crawl spawning-tool-spider
+</code></pre>
+
+<h2 id="co-dalej%3F">Co dalej?</h2>
+
+<p>Na razie jednak dam sobie spokój z próbami przewidzenia co będzie zawierało środowisko od Blizzarda i DeepMind. Replayów nawet nie pobierałem, bo nie wiem czy jest sens. Myślę, że w tym tygodniu spróbuję odtworzyć scenariusze prostego micro z Starcrafta na przeglądarki internetowe i pod to będę pisał przykłady z użyciem sieci neuronowych i reinforcement learningu.</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Projekt]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/12/projekt-stub"/>
+            <published>2017-03-12T22:40:00+01:00</published>
+            <updated>2017-03-12T22:40:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/12/projekt-stub</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/phaser.jpg"/>            <p>Phaser + Webpack:</p>
+
+<p>https://github.com/lean/phaser-es6-webpack</p>
+
+<p>phaser collide</p>
+
+<p>game.physics.arcade.collide(this.red, this.blue);</p>
+
+<p>Lepiej dać:</p>
+
+<p>game.physics.arcade.overlap(this.red, this.blue);</p>
+]]></content>
+            <summary><p>Phaser + Webpack:</p>
+
+<p>https://github.com/lean/phaser-es6-webpack</p>
+
+<p>phaser collide</p>
+
+<p>game.physics.arcade.collide(this.red, this.blue);</p>
+
+<p>Lepiej dać:</p>
+
+<p>game.physics.arcade.overlap(this.red, this.blue);</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Zależności w Pythonie]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>
+            <published>2017-03-10T22:40:00+01:00</published>
+            <updated>2017-03-10T22:40:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg"/>            <p>Na co dzień w pracy używam JavaScriptu i PHP. W tych językach występują menedżery pakietów <code>npm</code> (i nie tylko) i <code>composer</code>, które umożliwiają łatwe zarządzanie zależnościami dla każdego projektu. Do tej pory w Pythonie pisałem dość proste skrypty i nie potrzebowałem żadnego menedżera pakietów. W ramach nadchodzących projektów postanowiłem sprawdzić jak wygląda sprawa z zarządzaniem zależnościami w Pythonie.</p>
+
+<h2 id="pip-pip-installs-packages">pip (Pip Installs Packages)</h2>
+
+<p>Pip jest standardowym menedżerem pakietów w Pythonie. Poniżej przedstawiam listę podstawowych komend.</p>
+
+<pre><code class="bash">pip install &lt;package&gt;           # instalacja pakietu
+pip install &lt;package&gt; --upgrade # aktualizacja pakietu
+pip uninstall                   # odinstalowuje pakiety
+pip list                        # wyświetla listę zainstalowanych pakietów
+pip list --outdated             # wyświetla listę nieaktualnych pakietów
+pip show                        # wyświetla szczegóły na temat pakietu
+pip freeze                      # wyświetla listę zainstalowanych pakietów w formacie plików requirements.txt
+pip install -r requirements.txt # instaluje zależności z pliku requirements.txt
+</code></pre>
+
+<p>Tworząc projekt warto podać w pliku requirements.txt listę zależności, które są wymagane by uruchomić projekt. Przykładowy plik requirements.txt wygląda następująco:</p>
+
+<pre><code class="bash">matplotlib==1.3.1
+numpy==1.12.0
+scikit-learn==0.18.1
+</code></pre>
+
+<p>Widzimy, że lista zawiera nazwy pakietów i ich wersje oddzielone znakami <code>==</code>.</p>
+
+<h2 id="pipreqs">pipreqs</h2>
+
+<p>Co jeśli jednak mamy już jakiś projekt i potrzebujemy utworzyć listę zależności? Czy musimy się bawić w ich wyciąganie z listy otrzymanej za pomocą polecenia <code>pip freeze</code>? Z pomocą przychodzi biblioteka <code>pipreqs</code>.</p>
+
+<p>Instalujemy ją:</p>
+
+<pre><code class="bash">pip install pipreqs
+</code></pre>
+
+<p>A potem wywołujemy, jako parametr podając katalog z projektem, w którym chcemy dostać listę zależności:</p>
+
+<pre><code class="bash">pipreqs project_directory/
+</code></pre>
+
+<h2 id="virtualenv">virtualenv</h2>
+
+<p>Wszystko fajnie, ale goły <code>pip</code> ma jedną poważną wadę - instaluje wszystkie pakiety w przestrzeni globalnej (to tak jakbyśmy użyli <code>npm install -g &lt;package&gt;</code>. W przypadku, gdy mamy kilka projektów i te potrzebują do działania różnych wersji tej samej biblioteki mamy problem. Rozwiązaniem jest użycie biblioteki <code>virtualenv</code>. Pozwala ona na tworzenie odizolowanych środowisk z Pythonem i zależnościami. Zobaczmy jak to działa.</p>
+
+<p>Aby zainstalować <code>virtualenv</code> wpisujemy w konsoli:</p>
+
+<pre><code class="bash">pip install virtualenv
+</code></pre>
+
+<p>Instalacja virtualenv w katalogu projektu:</p>
+
+<pre><code class="bash">virtualenv env            # env to nazwa katalogu, w którym będzie środowisko
+virtualenv -p python3 env # jak chcemy Pythona 3
+</code></pre>
+
+<p>Powstanie katalog env. Wylistujmy go:</p>
+
+<pre><code class="bash">$ ls env/
+bin include lib local pip-selfcheck.json
+</code></pre>
+
+<p>Katalog <code>env/bin/</code> zawiera to co nas najbardziej interesuje, czyli lokalną wersję Pythona i pip.</p>
+
+<p>Ok, przetestujmy <code>virtualenv</code>. Instalacja biblioteki w <code>virtualenv</code> wygląda następująco:</p>
+
+<pre><code class="bash">env/bin/pip install requests
+</code></pre>
+
+<p>Sprawdźmy, czy rzeczywiście to środowisko jest odizolowane od głównego:</p>
+
+<pre><code class="bash">$ env/bin/pip list
+appdirs (1.4.3)
+packaging (16.8)
+pip (9.0.1)
+pyparsing (2.2.0)
+requests (2.13.0)
+setuptools (34.3.1)
+six (1.10.0)
+wheel (0.29.0)
+</code></pre>
+
+<h2 id="u%E5%82atwienie-pracy-z-virtualenv">Ułatwienie pracy z virtualenv</h2>
+
+<p>Co jeśli nie chcemy ciągle pisać <code>env/bin/pip</code> i tym podobnych komend odnoszących się do naszego środowiska?</p>
+
+<p>Najpierw dla celów testowych użyjemy komendy <code>which</code> która wyświetla katalog, w którym jest przechowywany uruchamiany program:</p>
+
+<pre><code class="bash">which python
+</code></pre>
+
+<p>Wynikiem wywołania tego polecenia będzie najprawdopodobniej poniższa ścieżka (lub podobna):</p>
+
+<pre><code class="bash">/usr/bin/python
+</code></pre>
+
+<p>Ok, zmieniamy pythona i resztę na tę z naszego utworzonego środowiska:</p>
+
+<pre><code class="bash">source env/bin/activate
+</code></pre>
+
+<p>Powyższa komenda uruchami w bieżącej instancji powłoki skrypt, który podmieni zmienne środowiskowe na te ze środowiska wirtualnego.</p>
+
+<p>Wpisujemy w konsoli jeszcze raz <code>which python</code> i otrzymujemy coś w rodzaju:</p>
+
+<pre><code class="bash">/home/Dawid/python_projects/virtualenv_test/env/bin/python
+</code></pre>
+
+<p>Teraz jak wpiszemy w konsoli <code>python</code> to uruchomi się Python z naszego odizolowanego środowiska wirtualnego, a nie ten globalny.</p>
+
+<p>Aby wyłączyć środowisko projektu wystarczy wpisać w konsoli <code>deactivate</code>.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>To tyle, nauczyliśmy się podstawowej obsługi <code>pip</code> i <code>virtualenv</code>. O tworzenieniu paczek i wysyłaniu ich do PyPI będzie może kiedy indziej. Przyznam się także, że bardzo się zdziwiłem tym, że <code>pip</code> nie umożliwia separacji bibliotek dla każdego projektu i potrzebna jest do tego instalacja specjalnej paczki. Dziwne, mam inne doświadczenia jeśli chodzi o PHP i JS. Obstawiam, że to przez jakieś zaszłości historyczne.</p>
+]]></content>
+            <summary><p>Na co dzień w pracy używam JavaScriptu i PHP. W tych językach występują menedżery pakietów <code>npm</code> (i nie tylko) i <code>composer</code>, które umożliwiają łatwe zarządzanie zależnościami dla każdego projektu. Do tej pory w Pythonie pisałem dość proste skrypty i nie potrzebowałem żadnego menedżera pakietów. W ramach nadchodzących projektów postanowiłem sprawdzić jak wygląda sprawa z zarządzaniem zależnościami w Pythonie.</p>
+
+<h2 id="pip-pip-installs-packages">pip (Pip Installs Packages)</h2>
+
+<p>Pip jest standardowym menedżerem pakietów w Pythonie. Poniżej przedstawiam listę podstawowych komend.</p>
+
+<pre><code class="bash">pip install &lt;package&gt;           # instalacja pakietu
+pip install &lt;package&gt; --upgrade # aktualizacja pakietu
+pip uninstall                   # odinstalowuje pakiety
+pip list                        # wyświetla listę zainstalowanych pakietów
+pip list --outdated             # wyświetla listę nieaktualnych pakietów
+pip show                        # wyświetla szczegóły na temat pakietu
+pip freeze                      # wyświetla listę zainstalowanych pakietów w formacie plików requirements.txt
+pip install -r requirements.txt # instaluje zależności z pliku requirements.txt
+</code></pre>
+
+<p>Tworząc projekt warto podać w pliku requirements.txt listę zależności, które są wymagane by uruchomić projekt. Przykładowy plik requirements.txt wygląda następująco:</p>
+
+<pre><code class="bash">matplotlib==1.3.1
+numpy==1.12.0
+scikit-learn==0.18.1
+</code></pre>
+
+<p>Widzimy, że lista zawiera nazwy pakietów i ich wersje oddzielone znakami <code>==</code>.</p>
+
+<h2 id="pipreqs">pipreqs</h2>
+
+<p>Co jeśli jednak mamy już jakiś projekt i potrzebujemy utworzyć listę zależności? Czy musimy się bawić w ich wyciąganie z listy otrzymanej za pomocą polecenia <code>pip freeze</code>? Z pomocą przychodzi biblioteka <code>pipreqs</code>.</p>
+
+<p>Instalujemy ją:</p>
+
+<pre><code class="bash">pip install pipreqs
+</code></pre>
+
+<p>A potem wywołujemy, jako parametr podając katalog z projektem, w którym chcemy dostać listę zależności:</p>
+
+<pre><code class="bash">pipreqs project_directory/
+</code></pre>
+
+<h2 id="virtualenv">virtualenv</h2>
+
+<p>Wszystko fajnie, ale goły <code>pip</code> ma jedną poważną wadę - instaluje wszystkie pakiety w przestrzeni globalnej (to tak jakbyśmy użyli <code>npm install -g &lt;package&gt;</code>. W przypadku, gdy mamy kilka projektów i te potrzebują do działania różnych wersji tej samej biblioteki mamy problem. Rozwiązaniem jest użycie biblioteki <code>virtualenv</code>. Pozwala ona na tworzenie odizolowanych środowisk z Pythonem i zależnościami. Zobaczmy jak to działa.</p>
+
+<p>Aby zainstalować <code>virtualenv</code> wpisujemy w konsoli:</p>
+
+<pre><code class="bash">pip install virtualenv
+</code></pre>
+
+<p>Instalacja virtualenv w katalogu projektu:</p>
+
+<pre><code class="bash">virtualenv env            # env to nazwa katalogu, w którym będzie środowisko
+virtualenv -p python3 env # jak chcemy Pythona 3
+</code></pre>
+
+<p>Powstanie katalog env. Wylistujmy go:</p>
+
+<pre><code class="bash">$ ls env/
+bin include lib local pip-selfcheck.json
+</code></pre>
+
+<p>Katalog <code>env/bin/</code> zawiera to co nas najbardziej interesuje, czyli lokalną wersję Pythona i pip.</p>
+
+<p>Ok, przetestujmy <code>virtualenv</code>. Instalacja biblioteki w <code>virtualenv</code> wygląda następująco:</p>
+
+<pre><code class="bash">env/bin/pip install requests
+</code></pre>
+
+<p>Sprawdźmy, czy rzeczywiście to środowisko jest odizolowane od głównego:</p>
+
+<pre><code class="bash">$ env/bin/pip list
+appdirs (1.4.3)
+packaging (16.8)
+pip (9.0.1)
+pyparsing (2.2.0)
+requests (2.13.0)
+setuptools (34.3.1)
+six (1.10.0)
+wheel (0.29.0)
+</code></pre>
+
+<h2 id="u%E5%82atwienie-pracy-z-virtualenv">Ułatwienie pracy z virtualenv</h2>
+
+<p>Co jeśli nie chcemy ciągle pisać <code>env/bin/pip</code> i tym podobnych komend odnoszących się do naszego środowiska?</p>
+
+<p>Najpierw dla celów testowych użyjemy komendy <code>which</code> która wyświetla katalog, w którym jest przechowywany uruchamiany program:</p>
+
+<pre><code class="bash">which python
+</code></pre>
+
+<p>Wynikiem wywołania tego polecenia będzie najprawdopodobniej poniższa ścieżka (lub podobna):</p>
+
+<pre><code class="bash">/usr/bin/python
+</code></pre>
+
+<p>Ok, zmieniamy pythona i resztę na tę z naszego utworzonego środowiska:</p>
+
+<pre><code class="bash">source env/bin/activate
+</code></pre>
+
+<p>Powyższa komenda uruchami w bieżącej instancji powłoki skrypt, który podmieni zmienne środowiskowe na te ze środowiska wirtualnego.</p>
+
+<p>Wpisujemy w konsoli jeszcze raz <code>which python</code> i otrzymujemy coś w rodzaju:</p>
+
+<pre><code class="bash">/home/Dawid/python_projects/virtualenv_test/env/bin/python
+</code></pre>
+
+<p>Teraz jak wpiszemy w konsoli <code>python</code> to uruchomi się Python z naszego odizolowanego środowiska wirtualnego, a nie ten globalny.</p>
+
+<p>Aby wyłączyć środowisko projektu wystarczy wpisać w konsoli <code>deactivate</code>.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>To tyle, nauczyliśmy się podstawowej obsługi <code>pip</code> i <code>virtualenv</code>. O tworzenieniu paczek i wysyłaniu ich do PyPI będzie może kiedy indziej. Przyznam się także, że bardzo się zdziwiłem tym, że <code>pip</code> nie umożliwia separacji bibliotek dla każdego projektu i potrzebna jest do tego instalacja specjalnej paczki. Dziwne, mam inne doświadczenia jeśli chodzi o PHP i JS. Obstawiam, że to przez jakieś zaszłości historyczne.</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Wiedza, wiedza, wiedza]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza"/>
+            <published>2017-03-05T22:00:00+01:00</published>
+            <updated>2017-03-05T22:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            <p>Następne tygodnie miną mi pod znakiem blogowania i tworzenia <a href="https://github.com/dloranc/starcraft-ai">projektu</a> na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)</p>
+
+<h2 id="ksi%E4%85%E5%BEki-i-kursy">Książki i kursy</h2>
+
+<p>Na pewno będę musiał się w końcu nauczyć reinforcement learningu, zaczynając od tych podstawowych i standardowych metod, a kończąc na aktualnym "state of art".</p>
+
+<ol>
+<li><p><a href="http://webdocs.cs.ualberta.ca/~sutton/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a> - na początek będę starał się uczyć z tej ponoć klasycznej pozycji w temacie reinforcement learningu autorstwa Richarda S. Suttona i Andrewa G. Barto.</p></li>
+<li><p><a href="https://www.udacity.com/course/reinforcement-learning--ud600">Kurs Reinforcement Learning na Udacity</a> - trzeba to będzie jeszcze raz od początku zacząć i skończyć.</p></li>
+<li><p><a href="http://ai.berkeley.edu/home.html">UC Berkeley CS188 Intro to AI</a> - ktoś ze Slacka mi to polecił, nie miałem czasu całości przejrzeć, ale wygląda nawet ciekawie.</p></li>
+</ol>
+
+<p>Chyba tyle podstaw. Dalej będzie ciekawiej, pozbierałem trochę linków z <a href="reddit.com/r/MachineLearning/">r/machinelearning</a>, ich ilość w zakładkach przytłacza, więc wybrałem te moim zdaniem najbardziej istotne:</p>
+
+<h2 id="arxiv">Arxiv</h2>
+
+<ol>
+<li><p><a href="https://arxiv.org/abs/1312.5602">Playing Atari with Deep Reinforcement Learning</a> - chyba już klasyczna praca o uczeniu sieci neuronowej na podstawie pikseli. Zamierzam jeden z pierwszych modeli mojego bota stworzyć na jej podstawie.</p></li>
+<li><p><a href="https://arxiv.org/abs/1507.06527">Deep Recurrent Q-Learning for Partially Observable MDPs</a> - Starcraft jest POMDP, więc ten artykuł się w jakimś stopniu powinien przydać.</p></li>
+<li><p><a href="https://openreview.net/pdf?id=Hk3mPK5gg">Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning</a> - coś co może mi się przydać, na pewno będę potrzebować jakiejś formy curriculum learningu.</p></li>
+<li><p><a href="https://arxiv.org/abs/1602.01783">Asynchronous Methods for Deep Reinforcement Learning</a> - że zacytuję abstrakt: "The best performing method, an asynchronous variant of actor-critic, surpasses the current state-of-the-art on the Atari domain while training for half the time on a single multi-core CPU instead of a GPU". To się na pewno mi przyda, bo nie mam GPU.</p></li>
+<li><p><a href="https://arxiv.org/abs/1701.08734">PathNet: Evolution Channels Gradient Descent in Super Neural Networks</a> - świeża praca, trenowanie wielu sieci neuronowych z tranferem wiedzy i ich selekcją za pomocą algorytmu genetycznego.</p></li>
+</ol>
+
+<p>Do tego oczywiście lista <a href="https://github.com/williamd4112/awesome-deep-reinforcement-learning">awesome-deep-reinforcement-learning</a>.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą <a href="https://github.com/GraylinKim/sc2reader">sc2readera</a> i <a href="https://github.com/Blizzard/s2protocol">s2protocol</a>.</p>
+]]></content>
+            <summary><p>Następne tygodnie miną mi pod znakiem blogowania i tworzenia <a href="https://github.com/dloranc/starcraft-ai">projektu</a> na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)</p>
+
+<h2 id="ksi%E4%85%E5%BEki-i-kursy">Książki i kursy</h2>
+
+<p>Na pewno będę musiał się w końcu nauczyć reinforcement learningu, zaczynając od tych podstawowych i standardowych metod, a kończąc na aktualnym "state of art".</p>
+
+<ol>
+<li><p><a href="http://webdocs.cs.ualberta.ca/~sutton/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a> - na początek będę starał się uczyć z tej ponoć klasycznej pozycji w temacie reinforcement learningu autorstwa Richarda S. Suttona i Andrewa G. Barto.</p></li>
+<li><p><a href="https://www.udacity.com/course/reinforcement-learning--ud600">Kurs Reinforcement Learning na Udacity</a> - trzeba to będzie jeszcze raz od początku zacząć i skończyć.</p></li>
+<li><p><a href="http://ai.berkeley.edu/home.html">UC Berkeley CS188 Intro to AI</a> - ktoś ze Slacka mi to polecił, nie miałem czasu całości przejrzeć, ale wygląda nawet ciekawie.</p></li>
+</ol>
+
+<p>Chyba tyle podstaw. Dalej będzie ciekawiej, pozbierałem trochę linków z <a href="reddit.com/r/MachineLearning/">r/machinelearning</a>, ich ilość w zakładkach przytłacza, więc wybrałem te moim zdaniem najbardziej istotne:</p>
+
+<h2 id="arxiv">Arxiv</h2>
+
+<ol>
+<li><p><a href="https://arxiv.org/abs/1312.5602">Playing Atari with Deep Reinforcement Learning</a> - chyba już klasyczna praca o uczeniu sieci neuronowej na podstawie pikseli. Zamierzam jeden z pierwszych modeli mojego bota stworzyć na jej podstawie.</p></li>
+<li><p><a href="https://arxiv.org/abs/1507.06527">Deep Recurrent Q-Learning for Partially Observable MDPs</a> - Starcraft jest POMDP, więc ten artykuł się w jakimś stopniu powinien przydać.</p></li>
+<li><p><a href="https://openreview.net/pdf?id=Hk3mPK5gg">Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning</a> - coś co może mi się przydać, na pewno będę potrzebować jakiejś formy curriculum learningu.</p></li>
+<li><p><a href="https://arxiv.org/abs/1602.01783">Asynchronous Methods for Deep Reinforcement Learning</a> - że zacytuję abstrakt: "The best performing method, an asynchronous variant of actor-critic, surpasses the current state-of-the-art on the Atari domain while training for half the time on a single multi-core CPU instead of a GPU". To się na pewno mi przyda, bo nie mam GPU.</p></li>
+<li><p><a href="https://arxiv.org/abs/1701.08734">PathNet: Evolution Channels Gradient Descent in Super Neural Networks</a> - świeża praca, trenowanie wielu sieci neuronowych z tranferem wiedzy i ich selekcją za pomocą algorytmu genetycznego.</p></li>
+</ol>
+
+<p>Do tego oczywiście lista <a href="https://github.com/williamd4112/awesome-deep-reinforcement-learning">awesome-deep-reinforcement-learning</a>.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą <a href="https://github.com/GraylinKim/sc2reader">sc2readera</a> i <a href="https://github.com/Blizzard/s2protocol">s2protocol</a>.</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
+            <published>2017-03-01T23:36:00+01:00</published>
+            <updated>2017-03-01T23:36:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            <p>Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.</p>
+
+<h2 id="dlaczego-starcraft%3F">Dlaczego Starcraft?</h2>
+
+<p>Kilka miesięcy temu firma <a href="https://deepmind.com/blog/deepmind-and-blizzard-release-starcraft-ii-ai-research-environment">DeepMind ogłosiła na BlizzConie</a>, że we współpracy z Blizzardem podjęła pracę nad napisaniem środowiska umożliwiającego pisanie botów do Starcrafta 2. Wcześniej ludzie z DeepMind stworzyli bota grającego w popularną w Azji grę planszową Go, w której człowiek przez długi czas był nie do pokonania przez komputer. Oczywiście, DeepMind nie tworzy tego środowiska do Starcrafta, bo uwielbiają tworzyć boty tylko dlatego, że badania nad botami pomogą rozwinąć algorytytmy uczenia maszynowego, a szczególnie reinforcement learningu, transfer learningu, unsupervised learningu, curriculum learningu i innych dziedzin uczenia maszynowego. Starcraft jest kolejnym krokiem, którego pokonanie przybliży albo i nawet umozliwi nam stworzenie AGI (Artificial General Intelligence), czyli sztucznej inteligencji, która będzie tak wszechstronna jak człowiek, w przeciwieństwie do ANI (Artificial Narrow Intelligence), która jest dobra tylko w jednej wąskiej dziedzinie.</p>
+
+<p>Dołączam do tego wyścigu, ale prawdę mówiąc nie mam wielkich szans :) Gdzie mi, biednemu programiście, do potęgi obliczeniowej Google'a i ich zespołów badaczy? Z czym do ludu. Nawet karty graficznej z CUDA nie mam. Wychodzę jednak z założenia, że liczy się dobra zabawa i nauka. I tego zamierzam się trzymać.</p>
+
+<h2 id="czym-jest-starcraft%3F">Czym jest Starcraft?</h2>
+
+<p>Starcraft 2 jest obecnie zdecydowanie najpopularniejszą e-sportową strategią czasu rzeczywistego. Możemy w niej grać trzema zróżnicowanymi rasami: Zergami, Protossami i Terranami. Zergowie to insektoidalna rasa, która potrafi się mutować. Srają gdzie popadnie. Terranie to natomiast ludzie. Mają czołgi i inne takie wesołe rzeczy. Protossi to humanoidalna rasa połączona więzami telepatycznymi. Cali na złoto, teleportacja to ich drugie imię, ciągle gadają o umieraniu za Aiur.</p>
+
+<p>Celem każdej rozgrywki jest zniszczenie wszystkich budynków przeciwnika. Nie trzeba niszczyć całej armii przeciwnika, wystarczy zrównać z ziemią każdy budynek. W grze może dojść także do remisu. Dokładnie nie pamiętam jak, ale przez chyba trzy minuty żadna ze stron nie może zbierać surowców, zniszczyć niczego ani wybudować. Rzadko się to zresztą zdarza (raz mi się udało).</p>
+
+<p>Aby wygrać musimy zbierać surowce (są dwa: minerały i gaz), budować budynki, tworzyć armię i wynajdywać ulepszenia, czyli robić to co w zasadzie w każdym innym RTS-ie. Istnieje limit jednostek i wynosi on 200.</p>
+
+<p>Gra jest bardzo wymagająca, wszystko toczy się szybko i trzeba naprawdę ogarniać, żeby przeżyć :) Aby być dobrym trzeba mieć dobre micro i macro. Micro jest to po prostu zarządzanie jednostkami, a szczególnie wojskiem w trakcie potyczek. Macro natomiast jest to natomiast ogarnianie ekonomii. Trzeba budować odpowiednio dużo workerów, mieć saturację baz (optymalnie 16 workerów na minerały i 3 workery na każdy gaz w każdej bazie), ogarniać cykliczne rzeczy specyficzne dla każdej rasy jak larva injecty, chrono boosty, dropy mułów. Z doświadczenia muszę napisać, że najważniejsze jest makro. Co ci po dobrym micro jak nie masz czym mikrować?</p>
+
+<p>Przykład naprawdę trudnego micro:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/SUXUPLVfT-g" frameborder="0" allowfullscreen></iframe></div>
+
+<p>W typowej rozgrywce można się spotkać z następującymi rzeczami: możemy zagrać grę macro, all-ina, albo timing attack. Typowa gra macro jest zazwyczaj dość długa, gracze rozwijają się spokojnie nie robiąc ryzykownych rzeczy. Czasami takie gry kończą się base trade'ami, czyli sytuacją, gdy gracze zamiast walczyć armiami ze sobą nawzajem próbują zniszczyć wrogie bazy. All-iny to natomiast sytuacje, gdy poświęcamy ekonomię, robimy armię i próbujemy zmiażdżyć przeciwnika przewagą wojska. Jeśli all-in nie wejdzie to przeważnie przegrywamy grę, bo straty ekonomiczne są zbyt duże. Natomiast timing attack to jest sytuacja, gdy próbujemy wykorzystać pewne słabości buildu przeciwnika atakując w specyficznym momencie, w którym przeciwnik jest w jakiś sposób słabszy. Jeśli timing attack wejdzie to wygrywamy.</p>
+
+<p>Długa gra macro:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/jIygo3bIVmo" frameborder="0" allowfullscreen></iframe></div>
+
+<p>All-in:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/s81IA2y_TVc" frameborder="0" allowfullscreen></iframe></div>
+
+<p>Timingi:</p>
+
+<div class="video-container"><iframe width="560" height="600" src="https://www.youtube.com/embed/A8LWvf6Sxl0" frameborder="0" allowfullscreen></iframe></div>
+
+<p>Basetrade:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/9albay77mV4" frameborder="0" allowfullscreen></iframe></div>
+
+<h2 id="dlaczego-ta-gra-jest-tak-trudna-dla-ai%3F">Dlaczego ta gra jest tak trudna dla AI?</h2>
+
+<p>Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jakiegoś workera, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji danego workera i kliknięcie na teren, by rozpocząć budowę.</p>
+
+<p>Środowisko do botów będzie miało interfejs skryptowy taki jak poprzednia część Starcrafta (czyli coś jak BWAPI), a także generowany prosty interfejs graficzny, by boty mogły uczyć się na podstawie pikseli. Do tego jeszcze opublikowane mają zostać scenariusze do trenowania (do curriculum learning).</p>
+
+<div class="video-container"><iframe width="1075" height="600" src="https://www.youtube.com/embed/5iZlrBqDYPM" frameborder="0" allowfullscreen></iframe></div>
+
+<h2 id="plany">Plany</h2>
+
+<p>Na pewno chciałbym wytrenować bota, który chociaż potrafi walczyć praktycznie każdą możliwą kompozycją jednostek dla danej rasy. Do tego chciałbym zrealizować scenariusz uproszczonej rozgrywki, w której bot może budować tylko podstawową jednostkę walczącą (Zerglinga, Zealota, Marine'a).</p>
+
+<p>Na razie nie udostępniono środowiska (ponoć ma być w pierwszym kwartale 2017, czyli w tym miesiącu), więc na razie będę bawił się z replayami, co i tak potem będzie konieczne by trenować sieci neuronowe. Jeśli jednak skończą mi się pomysły co robić z replayami to prawdopodobnie spróbuję napisać uproszczoną wersję Starcrafta w JS na canvasie i zrobić jakieś proste scenariusze do tego.</p>
+
+<p>Wszelki kod będzie na moim githubie w repozytorium <a href="https://github.com/dloranc/starcraft-ai">starcraft-ai</a>.</p>
+]]></content>
+            <summary><p>Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.</p>
+
+<h2 id="dlaczego-starcraft%3F">Dlaczego Starcraft?</h2>
+
+<p>Kilka miesięcy temu firma <a href="https://deepmind.com/blog/deepmind-and-blizzard-release-starcraft-ii-ai-research-environment">DeepMind ogłosiła na BlizzConie</a>, że we współpracy z Blizzardem podjęła pracę nad napisaniem środowiska umożliwiającego pisanie botów do Starcrafta 2. Wcześniej ludzie z DeepMind stworzyli bota grającego w popularną w Azji grę planszową Go, w której człowiek przez długi czas był nie do pokonania przez komputer. Oczywiście, DeepMind nie tworzy tego środowiska do Starcrafta, bo uwielbiają tworzyć boty tylko dlatego, że badania nad botami pomogą rozwinąć algorytytmy uczenia maszynowego, a szczególnie reinforcement learningu, transfer learningu, unsupervised learningu, curriculum learningu i innych dziedzin uczenia maszynowego. Starcraft jest kolejnym krokiem, którego pokonanie przybliży albo i nawet umozliwi nam stworzenie AGI (Artificial General Intelligence), czyli sztucznej inteligencji, która będzie tak wszechstronna jak człowiek, w przeciwieństwie do ANI (Artificial Narrow Intelligence), która jest dobra tylko w jednej wąskiej dziedzinie.</p>
+
+<p>Dołączam do tego wyścigu, ale prawdę mówiąc nie mam wielkich szans :) Gdzie mi, biednemu programiście, do potęgi obliczeniowej Google'a i ich zespołów badaczy? Z czym do ludu. Nawet karty graficznej z CUDA nie mam. Wychodzę jednak z założenia, że liczy się dobra zabawa i nauka. I tego zamierzam się trzymać.</p>
+
+<h2 id="czym-jest-starcraft%3F">Czym jest Starcraft?</h2>
+
+<p>Starcraft 2 jest obecnie zdecydowanie najpopularniejszą e-sportową strategią czasu rzeczywistego. Możemy w niej grać trzema zróżnicowanymi rasami: Zergami, Protossami i Terranami. Zergowie to insektoidalna rasa, która potrafi się mutować. Srają gdzie popadnie. Terranie to natomiast ludzie. Mają czołgi i inne takie wesołe rzeczy. Protossi to humanoidalna rasa połączona więzami telepatycznymi. Cali na złoto, teleportacja to ich drugie imię, ciągle gadają o umieraniu za Aiur.</p>
+
+<p>Celem każdej rozgrywki jest zniszczenie wszystkich budynków przeciwnika. Nie trzeba niszczyć całej armii przeciwnika, wystarczy zrównać z ziemią każdy budynek. W grze może dojść także do remisu. Dokładnie nie pamiętam jak, ale przez chyba trzy minuty żadna ze stron nie może zbierać surowców, zniszczyć niczego ani wybudować. Rzadko się to zresztą zdarza (raz mi się udało).</p>
+
+<p>Aby wygrać musimy zbierać surowce (są dwa: minerały i gaz), budować budynki, tworzyć armię i wynajdywać ulepszenia, czyli robić to co w zasadzie w każdym innym RTS-ie. Istnieje limit jednostek i wynosi on 200.</p>
+
+<p>Gra jest bardzo wymagająca, wszystko toczy się szybko i trzeba naprawdę ogarniać, żeby przeżyć :) Aby być dobrym trzeba mieć dobre micro i macro. Micro jest to po prostu zarządzanie jednostkami, a szczególnie wojskiem w trakcie potyczek. Macro natomiast jest to natomiast ogarnianie ekonomii. Trzeba budować odpowiednio dużo workerów, mieć saturację baz (optymalnie 16 workerów na minerały i 3 workery na każdy gaz w każdej bazie), ogarniać cykliczne rzeczy specyficzne dla każdej rasy jak larva injecty, chrono boosty, dropy mułów. Z doświadczenia muszę napisać, że najważniejsze jest makro. Co ci po dobrym micro jak nie masz czym mikrować?</p>
+
+<p>Przykład naprawdę trudnego micro:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/SUXUPLVfT-g" frameborder="0" allowfullscreen></iframe></div>
+
+<p>W typowej rozgrywce można się spotkać z następującymi rzeczami: możemy zagrać grę macro, all-ina, albo timing attack. Typowa gra macro jest zazwyczaj dość długa, gracze rozwijają się spokojnie nie robiąc ryzykownych rzeczy. Czasami takie gry kończą się base trade'ami, czyli sytuacją, gdy gracze zamiast walczyć armiami ze sobą nawzajem próbują zniszczyć wrogie bazy. All-iny to natomiast sytuacje, gdy poświęcamy ekonomię, robimy armię i próbujemy zmiażdżyć przeciwnika przewagą wojska. Jeśli all-in nie wejdzie to przeważnie przegrywamy grę, bo straty ekonomiczne są zbyt duże. Natomiast timing attack to jest sytuacja, gdy próbujemy wykorzystać pewne słabości buildu przeciwnika atakując w specyficznym momencie, w którym przeciwnik jest w jakiś sposób słabszy. Jeśli timing attack wejdzie to wygrywamy.</p>
+
+<p>Długa gra macro:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/jIygo3bIVmo" frameborder="0" allowfullscreen></iframe></div>
+
+<p>All-in:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/s81IA2y_TVc" frameborder="0" allowfullscreen></iframe></div>
+
+<p>Timingi:</p>
+
+<div class="video-container"><iframe width="560" height="600" src="https://www.youtube.com/embed/A8LWvf6Sxl0" frameborder="0" allowfullscreen></iframe></div>
+
+<p>Basetrade:</p>
+
+<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/9albay77mV4" frameborder="0" allowfullscreen></iframe></div>
+
+<h2 id="dlaczego-ta-gra-jest-tak-trudna-dla-ai%3F">Dlaczego ta gra jest tak trudna dla AI?</h2>
+
+<p>Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jakiegoś workera, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji danego workera i kliknięcie na teren, by rozpocząć budowę.</p>
+
+<p>Środowisko do botów będzie miało interfejs skryptowy taki jak poprzednia część Starcrafta (czyli coś jak BWAPI), a także generowany prosty interfejs graficzny, by boty mogły uczyć się na podstawie pikseli. Do tego jeszcze opublikowane mają zostać scenariusze do trenowania (do curriculum learning).</p>
+
+<div class="video-container"><iframe width="1075" height="600" src="https://www.youtube.com/embed/5iZlrBqDYPM" frameborder="0" allowfullscreen></iframe></div>
+
+<h2 id="plany">Plany</h2>
+
+<p>Na pewno chciałbym wytrenować bota, który chociaż potrafi walczyć praktycznie każdą możliwą kompozycją jednostek dla danej rasy. Do tego chciałbym zrealizować scenariusz uproszczonej rozgrywki, w której bot może budować tylko podstawową jednostkę walczącą (Zerglinga, Zealota, Marine'a).</p>
+
+<p>Na razie nie udostępniono środowiska (ponoć ma być w pierwszym kwartale 2017, czyli w tym miesiącu), więc na razie będę bawił się z replayami, co i tak potem będzie konieczne by trenować sieci neuronowe. Jeśli jednak skończą mi się pomysły co robić z replayami to prawdopodobnie spróbuję napisać uproszczoną wersję Starcrafta w JS na canvasie i zrobić jakieś proste scenariusze do tego.</p>
+
+<p>Wszelki kod będzie na moim githubie w repozytorium <a href="https://github.com/dloranc/starcraft-ai">starcraft-ai</a>.</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[OneHotEncoder]]></title>
+            <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
+            <published>2017-02-17T00:00:00+01:00</published>
+            <updated>2017-02-17T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg"/>            <p>Ten wpis jest kontynuacją poprzedniego wpisu o <a href="/blog/2016/09/10/label-encoder">LabelEncoder</a>. Tym razem będzie o technice zwanej <strong>one hot encoding</strong> albo <a href="https://pl.wikipedia.org/wiki/Kod_1_z_n">kod 1 z n</a>. Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).</p>
+
+<p>Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>czerwony</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>niebieski</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>czerwony</td>
+</tr>
+</tbody>
+</table>
+
+<p>Po zakodowaniu etykiet czerwony będzie zamieniony na zero, zielony na dwójkę, a niebieski na jedynkę (biblioteka <strong>scikit-learn</strong> wewnętrznie sobie jakoś sortuje te dane i dopiero tym posortowanym danym przypisuje odpowiedni numer).</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Przetwarzamy te dane za pomocą techniki one hot encoding:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Czerwony</th>
+  <th>Zielony</th>
+  <th>Niebieski</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="python">#!/usr/bin/python2.7
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+np.set_printoptions(threshold=np.inf)
+
+
+X = np.array(['czerwony', 'zielony', 'niebieski', 'zielony', 'czerwony'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+
+# tutaj zmieniamy jednowymiarową tablicę na dwuwymiarową, bo skrypt rzuca błędem
+X_cat = X_cat.reshape(-1, 1)
+
+encoder = OneHotEncoder()
+encoder.fit(X_cat)
+X_cat = encoder.transform(X_cat)
+X_cat = X_cat.toarray()
+
+print()
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code class="python">[0 2 1 2 0]
+
+[[ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]
+ [ 1.  0.  0.]]
+</code></pre>
+]]></content>
+            <summary><p>Ten wpis jest kontynuacją poprzedniego wpisu o <a href="/blog/2016/09/10/label-encoder">LabelEncoder</a>. Tym razem będzie o technice zwanej <strong>one hot encoding</strong> albo <a href="https://pl.wikipedia.org/wiki/Kod_1_z_n">kod 1 z n</a>. Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).</p>
+
+<p>Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>czerwony</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>niebieski</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>zielony</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>czerwony</td>
+</tr>
+</tbody>
+</table>
+
+<p>Po zakodowaniu etykiet czerwony będzie zamieniony na zero, zielony na dwójkę, a niebieski na jedynkę (biblioteka <strong>scikit-learn</strong> wewnętrznie sobie jakoś sortuje te dane i dopiero tym posortowanym danym przypisuje odpowiedni numer).</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Kolor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Przetwarzamy te dane za pomocą techniki one hot encoding:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Zmienna</th>
+  <th>Czerwony</th>
+  <th>Zielony</th>
+  <th>Niebieski</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="python">#!/usr/bin/python2.7
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+np.set_printoptions(threshold=np.inf)
+
+
+X = np.array(['czerwony', 'zielony', 'niebieski', 'zielony', 'czerwony'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+
+# tutaj zmieniamy jednowymiarową tablicę na dwuwymiarową, bo skrypt rzuca błędem
+X_cat = X_cat.reshape(-1, 1)
+
+encoder = OneHotEncoder()
+encoder.fit(X_cat)
+X_cat = encoder.transform(X_cat)
+X_cat = X_cat.toarray()
+
+print()
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code class="python">[0 2 1 2 0]
+
+[[ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]
+ [ 1.  0.  0.]]
+</code></pre>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Daj Się Poznać 2017]]></title>
+            <link href="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac"/>
+            <published>2017-02-15T00:00:00+01:00</published>
+            <updated>2017-02-15T00:00:00+01:00</updated>
+            <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>            <p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
+
+<p>Wszystkie moje posty konkursowe będzie można znaleźć w kategorii <a href="/blog/kategorie/Daj%20Sie%20Poznac%202017">"Daj Sie Poznac 2017"</a>.</p>
+]]></content>
+            <summary><p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
+
+<p>Wszystkie moje posty konkursowe będzie można znaleźć w kategorii <a href="/blog/kategorie/Daj%20Sie%20Poznac%202017">"Daj Sie Poznac 2017"</a>.</p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[LabelEncoder]]></title>
+            <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
+            <published>2016-09-10T00:00:00+02:00</published>
+            <updated>2016-09-10T00:00:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            <p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code>[0 1 2 3 0 4]
+</code></pre>
+]]></content>
+            <summary><p>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy <code>LabelEncoder</code> z biblioteki <strong>scikit-learn</strong>.</p>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
+
+lbl_enc = LabelEncoder()
+lbl_enc.fit(X)
+X_cat = lbl_enc.transform(X)
+
+print(X_cat)
+</code></pre>
+
+<p>Na wyjściu otrzymujemy:</p>
+
+<pre><code>[0 1 2 3 0 4]
+</code></pre>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
+            <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
+            <published>2016-09-01T00:00:00+02:00</published>
+            <updated>2016-09-01T00:00:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/kfold_stratifiedkfold.png"/>            <p>Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?</p>
+
+<p>Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę <strong>scikit-learn</strong> takich jak <code>KFold</code> i <code>StratifiedKFold</code>.</p>
+
+<h2 id="przyk%E5%82ad-z-__kfold__%3A">Przykład z <strong>KFold</strong>:</h2>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.cross_validation import KFold
+
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([0, 0, 1, 1])
+kf = KFold(len(X), n_folds=2, shuffle=True)
+
+train_index, test_index = next(iter(kf))
+
+X_train, X_test = X[train_index], X[test_index]
+y_train, y_test = y[train_index], y[test_index]
+print("TRAIN X:", X_train)
+print("TEST X:", X_test)
+print("TRAIN y:", y_train)
+print("TEST y:", y_test)
+</code></pre>
+
+<p>Na wyjściu otrzymamy:</p>
+
+<pre><code class="python">TRAIN X: [[1 2]
+ [1 2]]
+TEST X: [[3 4]
+ [3 4]]
+TRAIN y: [0 1]
+TEST y: [0 1]
+</code></pre>
+
+<p>Albo na przykład:</p>
+
+<pre><code class="python">TRAIN X: [[1 2]
+ [3 4]]
+TEST X: [[1 2]
+ [3 4]]
+TRAIN y: [0 0]
+TEST y: [1 1]
+</code></pre>
+
+<p>Na powyższym przykładzie widać, że po przeprowadzeniu podziału na dwa zbiory może dojść do takiej sytuacji, że w zbiorze treningowym albo testowym będą dane należące do tylko jednej klasy. KFold nie zapewnia równomiernego rozkładu klas. Aby temu zapobiec można skorzystać z StratifiedKFold, który zapewnia równomierny rozkład klas w każdym zbiorze.</p>
+
+<h2 id="przyk%E5%82ad-z-__stratifiedkfold__%3A">Przykład z <strong>StratifiedKFold</strong>:</h2>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.cross_validation import StratifiedKFold
+
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([0, 0, 1, 1])
+skf = StratifiedKFold(y, n_folds=1)
+
+train_index, test_index = next(iter(skf))
+
+X_train, X_test = X[train_index], X[test_index]
+y_train, y_test = y[train_index], y[test_index]
+
+print("TRAIN X:", X_train)
+print("TEST X:", X_test)
+print("TRAIN y:", y_train)
+print("TEST y:", y_test)
+</code></pre>
+
+<p>Więcej o <code>KFold</code> i <code>StratifiedKFold</code> można poczytać w dokumentacji <strong>scikit-learn</strong>:</p>
+
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.KFold.html">KFold</a></p>
+
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedKFold.html">StratifiedKFold</a></p>
+]]></content>
+            <summary><p>Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?</p>
+
+<p>Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę <strong>scikit-learn</strong> takich jak <code>KFold</code> i <code>StratifiedKFold</code>.</p>
+
+<h2 id="przyk%E5%82ad-z-__kfold__%3A">Przykład z <strong>KFold</strong>:</h2>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.cross_validation import KFold
+
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([0, 0, 1, 1])
+kf = KFold(len(X), n_folds=2, shuffle=True)
+
+train_index, test_index = next(iter(kf))
+
+X_train, X_test = X[train_index], X[test_index]
+y_train, y_test = y[train_index], y[test_index]
+print("TRAIN X:", X_train)
+print("TEST X:", X_test)
+print("TRAIN y:", y_train)
+print("TEST y:", y_test)
+</code></pre>
+
+<p>Na wyjściu otrzymamy:</p>
+
+<pre><code class="python">TRAIN X: [[1 2]
+ [1 2]]
+TEST X: [[3 4]
+ [3 4]]
+TRAIN y: [0 1]
+TEST y: [0 1]
+</code></pre>
+
+<p>Albo na przykład:</p>
+
+<pre><code class="python">TRAIN X: [[1 2]
+ [3 4]]
+TEST X: [[1 2]
+ [3 4]]
+TRAIN y: [0 0]
+TEST y: [1 1]
+</code></pre>
+
+<p>Na powyższym przykładzie widać, że po przeprowadzeniu podziału na dwa zbiory może dojść do takiej sytuacji, że w zbiorze treningowym albo testowym będą dane należące do tylko jednej klasy. KFold nie zapewnia równomiernego rozkładu klas. Aby temu zapobiec można skorzystać z StratifiedKFold, który zapewnia równomierny rozkład klas w każdym zbiorze.</p>
+
+<h2 id="przyk%E5%82ad-z-__stratifiedkfold__%3A">Przykład z <strong>StratifiedKFold</strong>:</h2>
+
+<pre><code class="python">#!/usr/bin/python2.7
+
+from __future__ import print_function
+
+import numpy as np
+from sklearn.cross_validation import StratifiedKFold
+
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([0, 0, 1, 1])
+skf = StratifiedKFold(y, n_folds=1)
+
+train_index, test_index = next(iter(skf))
+
+X_train, X_test = X[train_index], X[test_index]
+y_train, y_test = y[train_index], y[test_index]
+
+print("TRAIN X:", X_train)
+print("TEST X:", X_test)
+print("TRAIN y:", y_train)
+print("TEST y:", y_test)
+</code></pre>
+
+<p>Więcej o <code>KFold</code> i <code>StratifiedKFold</code> można poczytać w dokumentacji <strong>scikit-learn</strong>:</p>
+
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.KFold.html">KFold</a></p>
+
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedKFold.html">StratifiedKFold</a></p>
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Hello World!]]></title>
+            <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
+            <published>2016-08-02T00:00:00+02:00</published>
+            <updated>2016-08-02T00:00:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
+            <content type="html"><![CDATA[            <p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale <strong>#blogreview</strong> w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
+
+<p>Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.</p>
+
+<p>Miłego czytania :)</p>
+]]></content>
+            <summary><p>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale <strong>#blogreview</strong> w teamie <a href="https://devspl.slack.com">Devs PL</a> na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.</p>
+
+<p>Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.</p>
+
+<p>Miłego czytania :)</p>
+</summary>
+        </entry>
+    </feed>
