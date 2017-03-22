@@ -3,20 +3,11 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-22T16:37:29+01:00</updated>
+    <updated>2017-03-22T16:39:14+01:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
-            <entry>
-            <title type="html"><![CDATA[Zapis modeli i wag w Kerasie]]></title>
-            <link href="https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie"/>
-            <published>2017-03-22T22:40:00+01:00</published>
-            <updated>2017-03-22T22:40:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie</id>
-            <summary>Keras</summary>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/keras.jpg"/>            Keras]]></content>
-        </entry>
             <entry>
             <title type="html"><![CDATA[We need more data - Scrapy]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>
@@ -25,15 +16,6 @@
             <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
             <summary>Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Projekt]]></title>
-            <link href="https://dloranc.github.io/blog/2017/03/12/projekt-stub"/>
-            <published>2017-03-12T22:40:00+01:00</published>
-            <updated>2017-03-12T22:40:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/03/12/projekt-stub</id>
-            <summary>Phaser coś tam</summary>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/phaser.jpg"/>            Phaser coś tam]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>

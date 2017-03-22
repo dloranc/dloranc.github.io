@@ -7,19 +7,7 @@
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie</loc>
-    <lastmod>2017-03-22T22:40:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-    <url>
     <loc>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</loc>
-    <lastmod>2017-03-12T22:40:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-    <url>
-    <loc>https://dloranc.github.io/blog/2017/03/12/projekt-stub</loc>
     <lastmod>2017-03-12T22:40:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
