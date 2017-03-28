@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Przepisy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-03-22T16:47:07+01:00</updated>
+    <updated>2017-03-28T23:13:43+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Zapisywanie modeli i historii w Kerasie]]></title>
+            <link href="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie"/>
+            <published>2017-03-28T23:30:00+02:00</published>
+            <updated>2017-03-28T23:30:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie</id>
+            <summary>Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/power.jpg"/>            Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; Zapis modeli i wag w Kerasie</title>
+                <title>Dawid Loranc &mdash; Zapisywanie modeli i historii w Kerasie</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Keras">
+                <meta name="description" content="Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="Zapis modeli i wag w Kerasie &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/keras.jpg" />
-                        <meta property="twitter:description" content="Keras" />
-                <meta property="og:title" content="Zapis modeli i wag w Kerasie &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/03/22/zapis-modeli-i-wag-w-kerasie" />
+        <meta property="twitter:title" content="Zapisywanie modeli i historii w Kerasie &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/power.jpg" />
+                        <meta property="twitter:description" content="Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu." />
+                <meta property="og:title" content="Zapisywanie modeli i historii w Kerasie &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/keras.jpg" />
-                        <meta property="og:description" content="Keras" />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/power.jpg" />
+                        <meta property="og:description" content="Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -98,12 +98,124 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/keras.jpg" alt="Zapis modeli i wag w Kerasie" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">Zapis modeli i wag w Kerasie</h1>
-            <h4 class="post-header__date">22.03.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/power.jpg" alt="Zapisywanie modeli i historii w Kerasie" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Zapisywanie modeli i historii w Kerasie</h1>
+            <h4 class="post-header__date">28.03.2017</h4>
         </header>
         <div class="post-content">
-            <p>1865,1864,1863,1862</p>
+            <p>Przeważnie trenowanie sieci neuronowych trwa bardzo długo. Czasem trzeba przerwać wykonywanie skryptu, gdy chcemy zrobić coś innego, a równie wymagającego zasobów albo wyłączyć komputer. Ja nie lubię zostawiać sprzętu na noc, więc przerywam uczenie sieci neuronowej i wznawiam trenowanie następnego dnia.</p>
+
+<p>Postanowiłem zatem napisać kod umożliwiający przerwanie wykonywania skryptu, a także zapisywanie historii, dzięki czemu mam ją potem dla wszystkich wykonań skryptu, a nie tylko ostatniego. Do tego jeszcze postanowiłem, że obliczenia będą trwać tyle epok ile sobie założyłem.</p>
+
+<p>Skrypt wygląda następująco i jest on przeróbką przykładu z <a href="https://github.com/fchollet/keras/blob/master/examples/mnist_mlp.py">repozytorium Kerasa</a>.</p>
+
+<p>Ok, czas na kod. Zaczynamy od importów:</p>
+
+<pre><code class="python">import os
+import keras
+import cPickle
+from keras.callbacks import Callback
+from keras.models import load_model
+# other imports
+</code></pre>
+
+<p>Następnie utworzyłem klasę MyHistory, która zapisuje na końcu każdej epoki <code>accuracy</code>, <code>validation accuracy</code>, <code>loss</code> i <code>validation loss</code>. Stworzyłem ją dlatego, że potrzebowałem wyciągnąć historię z modelu, gdy skrypt zostaje przerwany (rzucany jest wyjątek KeyboardInterrupt). Innego sposobu nie znalazłem. Możliwe, że dałoby się to jakoś prościej zrobić.</p>
+
+<pre><code class="python">class MyHistory(Callback):
+    def __init__(self):
+        super(Callback, self).__init__()
+        self.history = {'acc': [], 'loss': [], 'val_acc': [], 'val_loss': []}
+
+    def on_epoch_end(self, batch, logs={}):
+        for key in self.history.keys():
+            self.history[key].append(logs.get(key))
+</code></pre>
+
+<p>Następnie utworzyłem trzy funkcje:</p>
+
+<ul>
+<li><code>load_history</code> &mdash; funkcja, która wczytuje poprzednią zapisaną na dysku historię za pomocą biblioteki <code>cPickle</code></li>
+<li><code>save_history</code> &mdash; funkcja, która zapisuje historię (też za pomocą <code>cPickle</code>)</li>
+<li><code>merge_history</code> &mdash; funkcja, która scala poprzednią historię z tą nową</li>
+</ul>
+
+<pre><code class="python">def load_history(filename):
+    with open(filename, 'r') as file:
+        history = cPickle.load(file)
+
+    return history
+
+def save_history(history):
+    with open('history.pkl', 'wb') as file:
+        cPickle.dump(history, file)
+
+def merge_history(previous, current):
+    history = { key: previous[key] + current[key] for key in current.keys() }
+    return history
+</code></pre>
+
+<p>Następnie, jeśli istnieje model, to go wczytuję. Wczytuję także poprzednią historię, obliczam na podstawie poprzedniej historii ile epok zostało już wykonanych i uruchamiam obliczenia, gdy zostały jeszcze jakieś. Przerywanie skryptu realizuję poprzez obsłużenie wyjątku <code>KeyboardInterrupt</code>.</p>
+
+<pre><code class="python">batch_size = 128
+num_classes = 10
+epochs = 40
+
+# data loading and preprocessing here
+
+if os.path.isfile('my_model.h5'):
+    print('Loading model...')
+    model = load_model('my_model.h5')
+else:
+    # model definition and compilation here
+
+previous_history = None
+
+if os.path.isfile('history.pkl'):
+    previous_history = load_history('history.pkl')
+
+previous_epochs = 0
+
+if previous_history is not None:
+    previous_epochs = len(previous_history['acc'])
+
+epochs = epochs - previous_epochs
+
+my_history = MyHistory()
+history = None
+
+try:
+    if epochs &gt; 0:
+        history = model.fit(x_train, y_train,
+                            batch_size=batch_size, epochs=epochs,
+                            verbose=1, validation_data=(x_test, y_test),
+                            callbacks=[my_history])
+    else:
+        print('Training completed.')
+except KeyboardInterrupt:
+    print()
+    print('You pressed CTRL+C')
+    history = my_history.history
+finally:
+    model.save('my_model.h5')
+</code></pre>
+
+<p>Na samym końcu scalam i zapisuję historię:</p>
+
+<pre><code class="python">    if history != None and type(history) is not dict:
+        history = history.history
+
+    if previous_history != None and history != None:
+        history = merge_history(previous_history, history)
+
+    if history != None and len(history['acc']) &gt; 0:
+        save_history(history)
+</code></pre>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>W powyższym skrypcie udało się osiągnąć zapisywanie modelu i historii, dzięki czemu będę mógł przerywać obliczenia w dowolnym momencie. Do sprawdzenia pozostaje mi tylko to czy  przy restarcie <code>val_loss</code> jest brane z zapisanego modelu, czy zaczyna się od pierwszego w danym wykonaniu skryptu. To jest problem, bo jeśli wznowiony skrypt zaczyna od nowa, to stara wartość jest tracona i jeśli do końca obliczeń zostało niewiele, to może dojść do takiej sytuacji gdzie kończymy z modelem z gorszymi wagami niż powinniśmy.</p>
+
+<p>Przykład z działającym kodem można znaleźć <a href="https://gist.github.com/dloranc/d7b7fbeb138e192916a7ae3a793ea477">tutaj</a>.</p>
 
         </div>
                     <p class="post-categories">
