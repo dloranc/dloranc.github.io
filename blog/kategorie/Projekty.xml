@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Projekty.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-01T15:19:15+02:00</updated>
+    <updated>2017-04-02T22:33:31+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Zmiana planów]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/02/zmiana-planow"/>
+            <published>2017-04-02T23:40:00+02:00</published>
+            <updated>2017-04-02T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/02/zmiana-planow</id>
+            <summary>Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg"/>            Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[We need more data - Scrapy]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>

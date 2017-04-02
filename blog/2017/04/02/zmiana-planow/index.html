@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; Daj Się Poznać 2017</title>
+                <title>Dawid Loranc &mdash; Zmiana planów</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.">
+                <meta name="description" content="Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="Daj Się Poznać 2017 &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" />
-                        <meta property="twitter:description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;." />
-                <meta property="og:title" content="Daj Się Poznać 2017 &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac" />
+        <meta property="twitter:title" content="Zmiana planów &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg" />
+                        <meta property="twitter:description" content="Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany." />
+                <meta property="og:title" content="Zmiana planów &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/04/02/zmiana-planow" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" />
-                        <meta property="og:description" content="Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg" />
+                        <meta property="og:description" content="Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -118,22 +118,143 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg" alt="Daj Się Poznać 2017" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">Daj Się Poznać 2017</h1>
-            <h4 class="post-header__date">15.02.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg" alt="Zmiana planów" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Zmiana planów</h1>
+            <h4 class="post-header__date">02.04.2017</h4>
         </header>
         <div class="post-content">
-            <p>Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.</p>
+            <p>Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum <a href="https://us.battle.net/forums/en/sc2/topic/20753825636">Battle.netu</a>:</p>
 
-<p>Wszystkie moje posty konkursowe będzie można znaleźć w kategorii <a href="/blog/kategorie/Daj%20Sie%20Poznac%202017">"Daj Sie Poznac 2017"</a>.</p>
+<blockquote>
+  <p>We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.</p>
+  
+  <p>We appreciate everyone’s patience as we continue to work on the API – our goal is to bring you the best possible tool, with thorough documentation.</p>
+</blockquote>
+
+<p>Typowy Blizzard :) Podejrzewam, że API będzie wydane równo z premierą zremasterowanej pierwszej części Starcrafta, która też ma wyjść tego lata.</p>
+
+<p>W związku z tym postanowiłem zabrać się za pisanie bota do Starcraft: Brood War. Nie będzie to łatwe, bo jak pisałem wcześniej, jest to środowisko raczej nieprzyjazne jeśli chodzi o machine learning. Myślałem także by samemu napisać coś starkraftopodobnego, mam już nawet coś nasmarowane w Phaserze, ale skończy się to na jakichś prostych przykładach, bo zajechałbym się mając pisać własnego RTS-a od zera. Wykorzystam ten kod do wpisów przybliżających reinforcement learning.</p>
+
+<h2 id="bwapi-%2B-bwmirror">BWAPI + BWMirror</h2>
+
+<p>Żeby napisać bota do SC:BW trzeba zainstalować Starcrafta (kto by się spodziewał) w wersji 1.16.1 i <a href="https://github.com/bwapi/bwapi">BWAPI (The Brood War API)</a>, a jako, że skorzystałem z tutoriala na stronie <a href="http://sscaitournament.com/index.php?action=tutorial">Student StarCraft AI Tournament</a>, to do tego jeszcze BWMirror, który jest javowym wrapperem na BWAPI. Sprawa jest dość prosta, pominąłem tylko zalecaną instalację Eclipse i podpiąłem projekt pod IntelliJ IDEA, bo miałem już zainstalowane to IDE. Grę odpala się przez Chaoslauncher, który zajmuje się iniekcją DLL-ek (albo czymś w tym stylu, nie znam się), które zmieniają grę albo wyciągają z niej dane.</p>
+
+<p>Warto sobie także ustawić w <code>bwapi.ini</code> poniższe wartości:</p>
+
+<pre><code class="ini">auto_menu = SINGLE_PLAYER
+maps = maps\sscai\*.sc?
+</code></pre>
+
+<p>Dzięki temu zaoszczędza się naprawdę sporo czasu, bo nie trzeba się przeklikiwać co chwilę przez poszczególne okna gry.</p>
+
+<p>Przy okazji warto odznaczyć sobie w Chaoslauncherze W-MODE, który umożliwia odpalanie gry w oknie. Przydatne okaże się także skrót klawiszowy <code>CTRL+F1</code>, który pozwala na ograniczenie poruszania się myszki do całego okna gry. Przydaje się także możliwość dwukrotnego powiększenia okna gry i jego zawartości poprzez kliknięcie ikonki <code>2x</code> w prawym górnym rogu. Do tego też jest pewnie jakiś skrót klawiszowy, ale mnie się nie chciało go szukać.</p>
+
+<p>Przykładowy bot z udostępnionej paczki wygląda następująco:</p>
+
+<pre><code class="java">import bwapi.*;
+import bwta.BWTA;
+import bwta.BaseLocation;
+
+public class TestBot1 extends DefaultBWListener {
+
+    private Mirror mirror = new Mirror();
+
+    private Game game;
+
+    private Player self;
+
+    public void run() {
+        mirror.getModule().setEventListener(this);
+        mirror.startGame();
+    }
+
+    @Override
+    public void onUnitCreate(Unit unit) {
+        System.out.println("New unit discovered " + unit.getType());
+    }
+
+    @Override
+    public void onStart() {
+        game = mirror.getGame();
+        self = game.self();
+
+        //Use BWTA to analyze map
+        //This may take a few minutes if the map is processed first time!
+        System.out.println("Analyzing map...");
+        BWTA.readMap();
+        BWTA.analyze();
+        System.out.println("Map data ready");
+
+        int i = 0;
+        for (BaseLocation baseLocation : BWTA.getBaseLocations()) {
+            System.out.println("Base location #" + (++i) + ". Printing location's region polygon:");
+            for (Position position : baseLocation.getRegion().getPolygon().getPoints()) {
+                System.out.print(position + ", ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    @Override
+    public void onFrame() {
+        //game.setTextSize(10);
+        game.drawTextScreen(10, 10, "Playing as " + self.getName() + " - " + self.getRace());
+
+        StringBuilder units = new StringBuilder("My units:\n");
+
+        //iterate through my units
+        for (Unit myUnit : self.getUnits()) {
+            units.append(myUnit.getType()).append(" ").append(myUnit.getTilePosition()).append("\n");
+
+            //if there's enough minerals, train an SCV
+            if (myUnit.getType() == UnitType.Terran_Command_Center &amp;&amp; self.minerals() &gt;= 50) {
+                myUnit.train(UnitType.Terran_SCV);
+            }
+
+            //if it's a worker and it's idle, send it to the closest mineral patch
+            if (myUnit.getType().isWorker() &amp;&amp; myUnit.isIdle()) {
+                Unit closestMineral = null;
+
+                //find the closest mineral
+                for (Unit neutralUnit : game.neutral().getUnits()) {
+                    if (neutralUnit.getType().isMineralField()) {
+                        if (closestMineral == null || myUnit.getDistance(neutralUnit) &lt; myUnit.getDistance(closestMineral)) {
+                            closestMineral = neutralUnit;
+                        }
+                    }
+                }
+
+                //if a mineral patch was found, send the worker to gather it
+                if (closestMineral != null) {
+                    myUnit.gather(closestMineral, false);
+                }
+            }
+        }
+
+        //draw my units on screen
+        game.drawTextScreen(10, 25, units.toString());
+    }
+
+    public static void main(String[] args) {
+        new TestBot1().run();
+    }
+}
+</code></pre>
+
+<p>Nie robi on wiele, wypisuje tylko listę jednostek na ekranie i kieruje wszystkie obijające się jednostki do zbierania minerałów. Całość, myślę, że jest dość zrozumiała, więc nie ma na sensu opisywanie tego kodu bardziej.</p>
+
+<h2 id="co-dalej%3F">Co dalej?</h2>
+
+<p>Pobawię się jeszcze trochę z Javą. Już nawet jakiegoś bota skleciłem, tworzącego jednostki i scoutującego, ale nie wykombinowałem jeszcze jak postawić jakiś budynek. Przykładowy kod z zalinkowanego wcześniej tutoriala nie działa. A to ci dowcip :) Jak już stworzę jakiegoś prostego bota robiącego 5 poola, spróbuję z machine learningiem z użyciem <a href="https://github.com/TorchCraft/TorchCraft">TorchCrafta</a>, albo czegoś innego, o ile znajdę, bo nie uśmiecha mi się pisanie w lua.</p>
 
         </div>
                     <p class="post-categories">
             Kategorie:
-                        <a href="https://dloranc.github.io/blog/kategorie/Sprawy%20organizacyjne" class="post-categories__item">Sprawy organizacyjne</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
                             <p class="post-tags">
             Tagi:
-                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>                        </p>
         
         <h2>Udostępnij:</h2>
         <!-- AddToAny BEGIN -->
@@ -152,8 +273,7 @@
 
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder" title="OneHotEncoder"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2016/09/10/label-encoder" title="LabelEncoder"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie" title="Zapisywanie modeli i historii w Kerasie"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>

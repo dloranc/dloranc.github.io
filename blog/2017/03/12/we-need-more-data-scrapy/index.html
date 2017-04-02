@@ -94,6 +94,10 @@
                                             >Tagi</a>
                                         </li>
                                         <li>
+                                            <a href="https://dloranc.github.io/projekty"
+                                            >Projekty</a>
+                                        </li>
+                                        <li>
                                             <a href="https://dloranc.github.io/o-mnie"
                                             >O mnie</a>
                                         </li>
@@ -171,7 +175,10 @@ from replays.items import ReplayItem
 class SpawningToolSpider(scrapy.Spider):
     name = 'spawning-tool-spider'
     # pierwsza strona z replayami, scrapy od czegoś musi zacząć
-    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+    start_urls = [
+        'http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;'
+        'before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by='
+    ]
 
     # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
     def parse(self, response):
@@ -180,18 +187,20 @@ class SpawningToolSpider(scrapy.Spider):
             if row.css('td:last-child ::attr(href)').extract_first() is None:
                 continue
             else:
-                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+                url = 'http://lotv.spawningtool.com' \
+                    + row.css('td:last-child ::attr(href)').extract_first()
 
                 # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
                 # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
                 # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
                 # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
-                response = requests.head(url)
+                request_response = requests.head(url)
 
-                if response.status_code == 302:
-                    url = response.headers["Location"]
+                if request_response.status_code == 302:
+                    url = request_response.headers["Location"]
 
-                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET
+                # (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
                 url = url.split('?')
 
                 # ok, mamy ścieżkę do pliku

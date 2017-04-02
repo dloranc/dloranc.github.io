@@ -3,11 +3,268 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-01T15:19:15+02:00</updated>
+    <updated>2017-04-02T22:33:31+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Zmiana planów]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/02/zmiana-planow"/>
+            <published>2017-04-02T23:40:00+02:00</published>
+            <updated>2017-04-02T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/02/zmiana-planow</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg"/>            Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
+
+
+  We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.
+  
+  We appreciate everyone’s patience as we continue to work on the API – our goal is to bring you the best possible tool, with thorough documentation.
+
+
+Typowy Blizzard :) Podejrzewam, że API będzie wydane równo z premierą zremasterowanej pierwszej części Starcrafta, która też ma wyjść tego lata.
+
+W związku z tym postanowiłem zabrać się za pisanie bota do Starcraft: Brood War. Nie będzie to łatwe, bo jak pisałem wcześniej, jest to środowisko raczej nieprzyjazne jeśli chodzi o machine learning. Myślałem także by samemu napisać coś starkraftopodobnego, mam już nawet coś nasmarowane w Phaserze, ale skończy się to na jakichś prostych przykładach, bo zajechałbym się mając pisać własnego RTS-a od zera. Wykorzystam ten kod do wpisów przybliżających reinforcement learning.
+
+BWAPI + BWMirror
+
+Żeby napisać bota do SC:BW trzeba zainstalować Starcrafta (kto by się spodziewał) w wersji 1.16.1 i BWAPI (The Brood War API), a jako, że skorzystałem z tutoriala na stronie Student StarCraft AI Tournament, to do tego jeszcze BWMirror, który jest javowym wrapperem na BWAPI. Sprawa jest dość prosta, pominąłem tylko zalecaną instalację Eclipse i podpiąłem projekt pod IntelliJ IDEA, bo miałem już zainstalowane to IDE. Grę odpala się przez Chaoslauncher, który zajmuje się iniekcją DLL-ek (albo czymś w tym stylu, nie znam się), które zmieniają grę albo wyciągają z niej dane.
+
+Warto sobie także ustawić w bwapi.ini poniższe wartości:
+
+<pre>auto_menu = SINGLE_PLAYER
+maps = maps\sscai\*.sc?
+</pre>
+
+Dzięki temu zaoszczędza się naprawdę sporo czasu, bo nie trzeba się przeklikiwać co chwilę przez poszczególne okna gry.
+
+Przy okazji warto odznaczyć sobie w Chaoslauncherze W-MODE, który umożliwia odpalanie gry w oknie. Przydatne okaże się także skrót klawiszowy CTRL+F1, który pozwala na ograniczenie poruszania się myszki do całego okna gry. Przydaje się także możliwość dwukrotnego powiększenia okna gry i jego zawartości poprzez kliknięcie ikonki 2x w prawym górnym rogu. Do tego też jest pewnie jakiś skrót klawiszowy, ale mnie się nie chciało go szukać.
+
+Przykładowy bot z udostępnionej paczki wygląda następująco:
+
+<pre>import bwapi.*;
+import bwta.BWTA;
+import bwta.BaseLocation;
+
+public class TestBot1 extends DefaultBWListener {
+
+    private Mirror mirror = new Mirror();
+
+    private Game game;
+
+    private Player self;
+
+    public void run() {
+        mirror.getModule().setEventListener(this);
+        mirror.startGame();
+    }
+
+    @Override
+    public void onUnitCreate(Unit unit) {
+        System.out.println("New unit discovered " + unit.getType());
+    }
+
+    @Override
+    public void onStart() {
+        game = mirror.getGame();
+        self = game.self();
+
+        //Use BWTA to analyze map
+        //This may take a few minutes if the map is processed first time!
+        System.out.println("Analyzing map...");
+        BWTA.readMap();
+        BWTA.analyze();
+        System.out.println("Map data ready");
+
+        int i = 0;
+        for (BaseLocation baseLocation : BWTA.getBaseLocations()) {
+            System.out.println("Base location #" + (++i) + ". Printing location's region polygon:");
+            for (Position position : baseLocation.getRegion().getPolygon().getPoints()) {
+                System.out.print(position + ", ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    @Override
+    public void onFrame() {
+        //game.setTextSize(10);
+        game.drawTextScreen(10, 10, "Playing as " + self.getName() + " - " + self.getRace());
+
+        StringBuilder units = new StringBuilder("My units:\n");
+
+        //iterate through my units
+        for (Unit myUnit : self.getUnits()) {
+            units.append(myUnit.getType()).append(" ").append(myUnit.getTilePosition()).append("\n");
+
+            //if there's enough minerals, train an SCV
+            if (myUnit.getType() == UnitType.Terran_Command_Center &amp;&amp; self.minerals() &gt;= 50) {
+                myUnit.train(UnitType.Terran_SCV);
+            }
+
+            //if it's a worker and it's idle, send it to the closest mineral patch
+            if (myUnit.getType().isWorker() &amp;&amp; myUnit.isIdle()) {
+                Unit closestMineral = null;
+
+                //find the closest mineral
+                for (Unit neutralUnit : game.neutral().getUnits()) {
+                    if (neutralUnit.getType().isMineralField()) {
+                        if (closestMineral == null || myUnit.getDistance(neutralUnit) &lt; myUnit.getDistance(closestMineral)) {
+                            closestMineral = neutralUnit;
+                        }
+                    }
+                }
+
+                //if a mineral patch was found, send the worker to gather it
+                if (closestMineral != null) {
+                    myUnit.gather(closestMineral, false);
+                }
+            }
+        }
+
+        //draw my units on screen
+        game.drawTextScreen(10, 25, units.toString());
+    }
+
+    public static void main(String[] args) {
+        new TestBot1().run();
+    }
+}
+</pre>
+
+Nie robi on wiele, wypisuje tylko listę jednostek na ekranie i kieruje wszystkie obijające się jednostki do zbierania minerałów. Całość, myślę, że jest dość zrozumiała, więc nie ma na sensu opisywanie tego kodu bardziej.
+
+Co dalej?
+
+Pobawię się jeszcze trochę z Javą. Już nawet jakiegoś bota skleciłem, tworzącego jednostki i scoutującego, ale nie wykombinowałem jeszcze jak postawić jakiś budynek. Przykładowy kod z zalinkowanego wcześniej tutoriala nie działa. A to ci dowcip :) Jak już stworzę jakiegoś prostego bota robiącego 5 poola, spróbuję z machine learningiem z użyciem TorchCrafta, albo czegoś innego, o ile znajdę, bo nie uśmiecha mi się pisanie w lua.
+]]></content>
+            <summary>Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
+
+
+  We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.
+  
+  We appreciate everyone’s patience as we continue to work on the API – our goal is to bring you the best possible tool, with thorough documentation.
+
+
+Typowy Blizzard :) Podejrzewam, że API będzie wydane równo z premierą zremasterowanej pierwszej części Starcrafta, która też ma wyjść tego lata.
+
+W związku z tym postanowiłem zabrać się za pisanie bota do Starcraft: Brood War. Nie będzie to łatwe, bo jak pisałem wcześniej, jest to środowisko raczej nieprzyjazne jeśli chodzi o machine learning. Myślałem także by samemu napisać coś starkraftopodobnego, mam już nawet coś nasmarowane w Phaserze, ale skończy się to na jakichś prostych przykładach, bo zajechałbym się mając pisać własnego RTS-a od zera. Wykorzystam ten kod do wpisów przybliżających reinforcement learning.
+
+BWAPI + BWMirror
+
+Żeby napisać bota do SC:BW trzeba zainstalować Starcrafta (kto by się spodziewał) w wersji 1.16.1 i BWAPI (The Brood War API), a jako, że skorzystałem z tutoriala na stronie Student StarCraft AI Tournament, to do tego jeszcze BWMirror, który jest javowym wrapperem na BWAPI. Sprawa jest dość prosta, pominąłem tylko zalecaną instalację Eclipse i podpiąłem projekt pod IntelliJ IDEA, bo miałem już zainstalowane to IDE. Grę odpala się przez Chaoslauncher, który zajmuje się iniekcją DLL-ek (albo czymś w tym stylu, nie znam się), które zmieniają grę albo wyciągają z niej dane.
+
+Warto sobie także ustawić w bwapi.ini poniższe wartości:
+
+<pre>auto_menu = SINGLE_PLAYER
+maps = maps\sscai\*.sc?
+</pre>
+
+Dzięki temu zaoszczędza się naprawdę sporo czasu, bo nie trzeba się przeklikiwać co chwilę przez poszczególne okna gry.
+
+Przy okazji warto odznaczyć sobie w Chaoslauncherze W-MODE, który umożliwia odpalanie gry w oknie. Przydatne okaże się także skrót klawiszowy CTRL+F1, który pozwala na ograniczenie poruszania się myszki do całego okna gry. Przydaje się także możliwość dwukrotnego powiększenia okna gry i jego zawartości poprzez kliknięcie ikonki 2x w prawym górnym rogu. Do tego też jest pewnie jakiś skrót klawiszowy, ale mnie się nie chciało go szukać.
+
+Przykładowy bot z udostępnionej paczki wygląda następująco:
+
+<pre>import bwapi.*;
+import bwta.BWTA;
+import bwta.BaseLocation;
+
+public class TestBot1 extends DefaultBWListener {
+
+    private Mirror mirror = new Mirror();
+
+    private Game game;
+
+    private Player self;
+
+    public void run() {
+        mirror.getModule().setEventListener(this);
+        mirror.startGame();
+    }
+
+    @Override
+    public void onUnitCreate(Unit unit) {
+        System.out.println("New unit discovered " + unit.getType());
+    }
+
+    @Override
+    public void onStart() {
+        game = mirror.getGame();
+        self = game.self();
+
+        //Use BWTA to analyze map
+        //This may take a few minutes if the map is processed first time!
+        System.out.println("Analyzing map...");
+        BWTA.readMap();
+        BWTA.analyze();
+        System.out.println("Map data ready");
+
+        int i = 0;
+        for (BaseLocation baseLocation : BWTA.getBaseLocations()) {
+            System.out.println("Base location #" + (++i) + ". Printing location's region polygon:");
+            for (Position position : baseLocation.getRegion().getPolygon().getPoints()) {
+                System.out.print(position + ", ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    @Override
+    public void onFrame() {
+        //game.setTextSize(10);
+        game.drawTextScreen(10, 10, "Playing as " + self.getName() + " - " + self.getRace());
+
+        StringBuilder units = new StringBuilder("My units:\n");
+
+        //iterate through my units
+        for (Unit myUnit : self.getUnits()) {
+            units.append(myUnit.getType()).append(" ").append(myUnit.getTilePosition()).append("\n");
+
+            //if there's enough minerals, train an SCV
+            if (myUnit.getType() == UnitType.Terran_Command_Center &amp;&amp; self.minerals() &gt;= 50) {
+                myUnit.train(UnitType.Terran_SCV);
+            }
+
+            //if it's a worker and it's idle, send it to the closest mineral patch
+            if (myUnit.getType().isWorker() &amp;&amp; myUnit.isIdle()) {
+                Unit closestMineral = null;
+
+                //find the closest mineral
+                for (Unit neutralUnit : game.neutral().getUnits()) {
+                    if (neutralUnit.getType().isMineralField()) {
+                        if (closestMineral == null || myUnit.getDistance(neutralUnit) &lt; myUnit.getDistance(closestMineral)) {
+                            closestMineral = neutralUnit;
+                        }
+                    }
+                }
+
+                //if a mineral patch was found, send the worker to gather it
+                if (closestMineral != null) {
+                    myUnit.gather(closestMineral, false);
+                }
+            }
+        }
+
+        //draw my units on screen
+        game.drawTextScreen(10, 25, units.toString());
+    }
+
+    public static void main(String[] args) {
+        new TestBot1().run();
+    }
+}
+</pre>
+
+Nie robi on wiele, wypisuje tylko listę jednostek na ekranie i kieruje wszystkie obijające się jednostki do zbierania minerałów. Całość, myślę, że jest dość zrozumiała, więc nie ma na sensu opisywanie tego kodu bardziej.
+
+Co dalej?
+
+Pobawię się jeszcze trochę z Javą. Już nawet jakiegoś bota skleciłem, tworzącego jednostki i scoutującego, ale nie wykombinowałem jeszcze jak postawić jakiś budynek. Przykładowy kod z zalinkowanego wcześniej tutoriala nie działa. A to ci dowcip :) Jak już stworzę jakiegoś prostego bota robiącego 5 poola, spróbuję z machine learningiem z użyciem TorchCrafta, albo czegoś innego, o ile znajdę, bo nie uśmiecha mi się pisanie w lua.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Zapisywanie modeli i historii w Kerasie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie"/>
@@ -301,7 +558,10 @@ from replays.items import ReplayItem
 class SpawningToolSpider(scrapy.Spider):
     name = 'spawning-tool-spider'
     # pierwsza strona z replayami, scrapy od czegoś musi zacząć
-    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+    start_urls = [
+        'http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;'
+        'before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by='
+    ]
 
     # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
     def parse(self, response):
@@ -310,18 +570,20 @@ class SpawningToolSpider(scrapy.Spider):
             if row.css('td:last-child ::attr(href)').extract_first() is None:
                 continue
             else:
-                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+                url = 'http://lotv.spawningtool.com' \
+                    + row.css('td:last-child ::attr(href)').extract_first()
 
                 # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
                 # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
                 # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
                 # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
-                response = requests.head(url)
+                request_response = requests.head(url)
 
-                if response.status_code == 302:
-                    url = response.headers["Location"]
+                if request_response.status_code == 302:
+                    url = request_response.headers["Location"]
 
-                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET
+                # (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
                 url = url.split('?')
 
                 # ok, mamy ścieżkę do pliku
@@ -394,7 +656,10 @@ from replays.items import ReplayItem
 class SpawningToolSpider(scrapy.Spider):
     name = 'spawning-tool-spider'
     # pierwsza strona z replayami, scrapy od czegoś musi zacząć
-    start_urls = ['http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by=']
+    start_urls = [
+        'http://lotv.spawningtool.com/replays/?p=&amp;query=&amp;after_time=&amp;'
+        'before_time=&amp;after_played_on=&amp;before_played_on=&amp;patch=&amp;order_by='
+    ]
 
     # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
     def parse(self, response):
@@ -403,18 +668,20 @@ class SpawningToolSpider(scrapy.Spider):
             if row.css('td:last-child ::attr(href)').extract_first() is None:
                 continue
             else:
-                url = 'http://lotv.spawningtool.com' + row.css('td:last-child ::attr(href)').extract_first()
+                url = 'http://lotv.spawningtool.com' \
+                    + row.css('td:last-child ::attr(href)').extract_first()
 
                 # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/&lt;liczba&gt;/download/
                 # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
                 # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
                 # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
-                response = requests.head(url)
+                request_response = requests.head(url)
 
-                if response.status_code == 302:
-                    url = response.headers["Location"]
+                if request_response.status_code == 302:
+                    url = request_response.headers["Location"]
 
-                # split, bo scrapy próbował zapisać plik z wartościami pól GET (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                # split, bo scrapy próbował zapisać plik z wartościami pól GET
+                # (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
                 url = url.split('?')
 
                 # ok, mamy ścieżkę do pliku
