@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-09T13:05:33+02:00</updated>
+    <updated>2017-04-09T13:22:02+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -135,7 +135,7 @@ Co by tu jeszcze opisać, by post się nie rozrósł za bardzo? Może jak wyglą
 }
 </pre>
 
-Sprawa jest prosta, jeśli drona scoutująca wykryła jakieś wrogie budynki (czyli bazę przeciwnika) to zerglingi je atakują. Jeśli nie, to atakowana jest pozycja w której znajdować się powinna baza przeciwnika. Jeśli jej nie znamy, to zerglingi biegają po mapie szukając wroga i jego budynków.
+Sprawa jest prosta, jeśli drona scoutująca wykryła jakieś wrogie budynki (czyli bazę przeciwnika) to zerglingi je atakują. Jeśli nie, to atakowana jest pozycja w której znajdować się powinna baza przeciwnika. Jeśli jej nie znamy, to zerglingi biegają po mapie szukając wroga i jego budynków. Ta liczba 32 przy losowaniu pozycji to rozmiar jednego Tile'a.
 
 Podsumowanie
 
@@ -282,7 +282,7 @@ Co by tu jeszcze opisać, by post się nie rozrósł za bardzo? Może jak wyglą
 }
 </pre>
 
-Sprawa jest prosta, jeśli drona scoutująca wykryła jakieś wrogie budynki (czyli bazę przeciwnika) to zerglingi je atakują. Jeśli nie, to atakowana jest pozycja w której znajdować się powinna baza przeciwnika. Jeśli jej nie znamy, to zerglingi biegają po mapie szukając wroga i jego budynków.
+Sprawa jest prosta, jeśli drona scoutująca wykryła jakieś wrogie budynki (czyli bazę przeciwnika) to zerglingi je atakują. Jeśli nie, to atakowana jest pozycja w której znajdować się powinna baza przeciwnika. Jeśli jej nie znamy, to zerglingi biegają po mapie szukając wroga i jego budynków. Ta liczba 32 przy losowaniu pozycji to rozmiar jednego Tile'a.
 
 Podsumowanie
 
