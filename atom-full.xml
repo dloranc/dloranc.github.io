@@ -3,11 +3,174 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-09T13:22:02+02:00</updated>
+    <updated>2017-04-09T23:11:27+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Argumenty w linii komend w Pythonie]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie"/>
+            <published>2017-04-09T23:40:00+02:00</published>
+            <updated>2017-04-09T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_arguments.png"/>            Zastanawiałem się ostatnio jak zrealizować w Pythonie obsługę argumentów przekazywanych do skryptu z poziomu linii komend. Można zrobić to bardzo prosto używając sys.argv ze biblioteki standardowej:
+
+<pre>import sys
+
+if __name__ == '__main__':
+    print "\n".join(sys.argv)
+</pre>
+
+Powyższy przykład wyświetla argumenty jeden pod drugim. Wyrażenie warunkowe if __name__ == '__main__': sprawdza czy skrypt został wywołany w konsoli. Jeśli skrypt został zaimportowany w innym pliku, to wtedy kod się nie wykona.
+
+
+
+docopt - czyli zaprzęgamy docstringi do pracy
+
+Do prostych rzeczy sys.argv wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej, to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
+
+Zaczynamy od instalacji narzędzia:
+
+<pre>pip install docopt
+</pre>
+
+Napiszmy coś prostego, niech będzie to skrypt sumujący liczby. Na razie jednak nie sumujemy, zobaczymy z czym mamy do czynienia.
+
+<pre>"""Sum.
+
+Usage:
+  sum.py &lt;numbers&gt;...
+  sum.py (-h | --help)
+  sum.py --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+
+"""
+from docopt import docopt
+
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='Sum 1.0')
+    print(arguments)
+</pre>
+
+Z zawartości docstringa łatwo się domyślić co wywołać i z jakimi argumentami mamy do czynienia. Nawiasy trójkątne oznaczają argumenty, myślniki (dwa lub jeden) to opcje, a trzy kropki oznaczają to, że argumenty mogą się powtarzać. Nawiasy w połączeniu z pionową kreską natomiast oznaczają wzajemnie wykluczające się opcje.
+
+Czas na testy, wowołajmy --version i --help:
+
+
+
+
+
+Sprawdźmy co się stanie jak wywołamy z argumentami 1 2 3 4:
+
+
+
+Widzimy, że zawartością zmiennej arguments jest słownik zawierający trzy pola --help, --version i &lt;numbers&gt;.
+
+Dobra, zmodyfikujmy trochę kod, tym razem zsumujmy te liczby.
+
+<pre>if __name__ == '__main__':
+    arguments = docopt(__doc__, version='Sum 1.0')
+
+    numbers = arguments['&lt;numbers&gt;']
+
+    # trzeba zrzutować na inty bo mamy do czynienia z listą w postaci ['1', '2', '3', '4']
+    numbers = list(map(int, numbers))
+
+    print(sum(numbers))
+</pre>
+
+Wyświetli się:
+
+
+
+Jak widać, biblioteka docopt jest bardzo prosta w użyciu. Nie trzeba się bawić w grzebanie w dokumentacji jak w przypadku argparse i tym podobnych bibliotek.
+
+Więcej szczegółów na temat docopt można znaleźć na stronie http://docopt.org/.
+]]></content>
+            <summary>Zastanawiałem się ostatnio jak zrealizować w Pythonie obsługę argumentów przekazywanych do skryptu z poziomu linii komend. Można zrobić to bardzo prosto używając sys.argv ze biblioteki standardowej:
+
+<pre>import sys
+
+if __name__ == '__main__':
+    print "\n".join(sys.argv)
+</pre>
+
+Powyższy przykład wyświetla argumenty jeden pod drugim. Wyrażenie warunkowe if __name__ == '__main__': sprawdza czy skrypt został wywołany w konsoli. Jeśli skrypt został zaimportowany w innym pliku, to wtedy kod się nie wykona.
+
+
+
+docopt - czyli zaprzęgamy docstringi do pracy
+
+Do prostych rzeczy sys.argv wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej, to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
+
+Zaczynamy od instalacji narzędzia:
+
+<pre>pip install docopt
+</pre>
+
+Napiszmy coś prostego, niech będzie to skrypt sumujący liczby. Na razie jednak nie sumujemy, zobaczymy z czym mamy do czynienia.
+
+<pre>"""Sum.
+
+Usage:
+  sum.py &lt;numbers&gt;...
+  sum.py (-h | --help)
+  sum.py --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+
+"""
+from docopt import docopt
+
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='Sum 1.0')
+    print(arguments)
+</pre>
+
+Z zawartości docstringa łatwo się domyślić co wywołać i z jakimi argumentami mamy do czynienia. Nawiasy trójkątne oznaczają argumenty, myślniki (dwa lub jeden) to opcje, a trzy kropki oznaczają to, że argumenty mogą się powtarzać. Nawiasy w połączeniu z pionową kreską natomiast oznaczają wzajemnie wykluczające się opcje.
+
+Czas na testy, wowołajmy --version i --help:
+
+
+
+
+
+Sprawdźmy co się stanie jak wywołamy z argumentami 1 2 3 4:
+
+
+
+Widzimy, że zawartością zmiennej arguments jest słownik zawierający trzy pola --help, --version i &lt;numbers&gt;.
+
+Dobra, zmodyfikujmy trochę kod, tym razem zsumujmy te liczby.
+
+<pre>if __name__ == '__main__':
+    arguments = docopt(__doc__, version='Sum 1.0')
+
+    numbers = arguments['&lt;numbers&gt;']
+
+    # trzeba zrzutować na inty bo mamy do czynienia z listą w postaci ['1', '2', '3', '4']
+    numbers = list(map(int, numbers))
+
+    print(sum(numbers))
+</pre>
+
+Wyświetli się:
+
+
+
+Jak widać, biblioteka docopt jest bardzo prosta w użyciu. Nie trzeba się bawić w grzebanie w dokumentacji jak w przypadku argparse i tym podobnych bibliotek.
+
+Więcej szczegółów na temat docopt można znaleźć na stronie http://docopt.org/.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Pięć basenów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>

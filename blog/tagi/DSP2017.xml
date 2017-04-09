@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-09T13:22:02+02:00</updated>
+    <updated>2017-04-09T23:11:27+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Argumenty w linii komend w Pythonie]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie"/>
+            <published>2017-04-09T23:40:00+02:00</published>
+            <updated>2017-04-09T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</id>
+            <summary>Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_arguments.png"/>            Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Pięć basenów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>

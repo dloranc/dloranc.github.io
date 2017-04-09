@@ -7,6 +7,12 @@
     <priority>0.8</priority>
   </url>
     <url>
+    <loc>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</loc>
+    <lastmod>2017-04-09T23:40:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
     <loc>https://dloranc.github.io/blog/2017/04/09/piec-basenow</loc>
     <lastmod>2017-04-09T14:40:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
