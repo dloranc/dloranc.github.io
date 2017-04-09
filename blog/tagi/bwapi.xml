@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Dawid Loranc]]></title>
+    <link href="https://dloranc.github.io/blog/tagi/bwapi.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2017-04-09T13:05:33+02:00</updated>
+    <id>https://dloranc.github.io/</id>
+            <author>
+            <name><![CDATA[Dawid Loranc]]></name>                    </author>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Pięć basenów]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>
+            <published>2017-04-09T14:40:00+02:00</published>
+            <updated>2017-04-09T14:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/09/piec-basenow</id>
+            <summary>Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/5_pool.jpg"/>            Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.]]></content>
+        </entry>
+    </feed>
