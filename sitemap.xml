@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dloranc.github.io</loc>
-    <lastmod>2017-04-09</lastmod>
+    <lastmod>2017-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -86,13 +86,13 @@
   </url>
     <url>
     <loc>https://dloranc.github.io/o-mnie</loc>
-    <lastmod>2017-04-09</lastmod>
+    <lastmod>2017-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dloranc.github.io/polityka-prywatnosci</loc>
-    <lastmod>2017-04-09</lastmod>
+    <lastmod>2017-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
