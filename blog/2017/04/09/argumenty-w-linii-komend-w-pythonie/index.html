@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
 <h2 id="docopt---czyli-zaprz%E4%99gamy-docstringi-do-pracy">docopt - czyli zaprzęgamy docstringi do pracy</h2>
 
-<p>Do prostych rzeczy <code>sys.argv</code> wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej, to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest <code>argparse</code>. Ja skorzystałem jednak z narzędzia <code>docopt</code>, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.</p>
+<p><code>sys.argv</code> nie pozwala jednak na wiele. Trzeba samemu zadbać o poprawną obsługę argumentów, a jeśli chcemy mieć pomoc (przy wywołaniu skryptu z --help) do naszego skryptu, to musimy pamiętać o jej zgodności z resztą kodu. Do prostych rzeczy <code>sys.argv</code> jednak wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej (czyli w konsoli), to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest <code>argparse</code>. Ja skorzystałem jednak z narzędzia <code>docopt</code>, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.</p>
 
 <p>Zaczynamy od instalacji narzędzia:</p>
 
@@ -146,7 +146,7 @@ if __name__ == '__main__':
 
 <p>Napiszmy coś prostego, niech będzie to skrypt sumujący liczby. Na razie jednak nie sumujemy, zobaczymy z czym mamy do czynienia.</p>
 
-<pre><code class="python">"""Sum.
+<pre><code class="python">"""Sum integer values.
 
 Usage:
   sum.py &lt;numbers&gt;...
@@ -163,7 +163,14 @@ from docopt import docopt
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Sum 1.0')
-    print(arguments)
+
+    numbers = arguments['&lt;numbers&gt;']
+
+    try:
+        numbers = list(map(int, numbers))
+        print(sum(numbers))
+    except ValueError:
+        print('Cannot cast value(s) to integer.')
 </code></pre>
 
 <p>Z zawartości docstringa łatwo się domyślić co wywołać i z jakimi argumentami mamy do czynienia. Nawiasy trójkątne oznaczają argumenty, myślniki (dwa lub jeden) to opcje, a trzy kropki oznaczają to, że argumenty mogą się powtarzać. Nawiasy w połączeniu z pionową kreską natomiast oznaczają wzajemnie wykluczające się opcje.</p>

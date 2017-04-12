@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-10T23:53:20+02:00</updated>
+    <updated>2017-04-12T12:15:22+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -28,7 +28,7 @@ Powyższy przykład wyświetla argumenty jeden pod drugim. Wyrażenie warunkowe 
 
 docopt - czyli zaprzęgamy docstringi do pracy
 
-Do prostych rzeczy sys.argv wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej, to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
+sys.argv nie pozwala jednak na wiele. Trzeba samemu zadbać o poprawną obsługę argumentów, a jeśli chcemy mieć pomoc (przy wywołaniu skryptu z --help) do naszego skryptu, to musimy pamiętać o jej zgodności z resztą kodu. Do prostych rzeczy sys.argv jednak wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej (czyli w konsoli), to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
 
 Zaczynamy od instalacji narzędzia:
 
@@ -37,7 +37,7 @@ Zaczynamy od instalacji narzędzia:
 
 Napiszmy coś prostego, niech będzie to skrypt sumujący liczby. Na razie jednak nie sumujemy, zobaczymy z czym mamy do czynienia.
 
-<pre>"""Sum.
+<pre>"""Sum integer values.
 
 Usage:
   sum.py &lt;numbers&gt;...
@@ -54,7 +54,14 @@ from docopt import docopt
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Sum 1.0')
-    print(arguments)
+
+    numbers = arguments['&lt;numbers&gt;']
+
+    try:
+        numbers = list(map(int, numbers))
+        print(sum(numbers))
+    except ValueError:
+        print('Cannot cast value(s) to integer.')
 </pre>
 
 Z zawartości docstringa łatwo się domyślić co wywołać i z jakimi argumentami mamy do czynienia. Nawiasy trójkątne oznaczają argumenty, myślniki (dwa lub jeden) to opcje, a trzy kropki oznaczają to, że argumenty mogą się powtarzać. Nawiasy w połączeniu z pionową kreską natomiast oznaczają wzajemnie wykluczające się opcje.
@@ -106,7 +113,7 @@ Powyższy przykład wyświetla argumenty jeden pod drugim. Wyrażenie warunkowe 
 
 docopt - czyli zaprzęgamy docstringi do pracy
 
-Do prostych rzeczy sys.argv wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej, to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
+sys.argv nie pozwala jednak na wiele. Trzeba samemu zadbać o poprawną obsługę argumentów, a jeśli chcemy mieć pomoc (przy wywołaniu skryptu z --help) do naszego skryptu, to musimy pamiętać o jej zgodności z resztą kodu. Do prostych rzeczy sys.argv jednak wystarczy. Jeśli jednak chcemy zbudować narzędzie, które będzie intensywnie wykorzystywane w miejscu, które programiści lubią najbardziej (czyli w konsoli), to musimy skorzystać z czegoś innego. Dość popularnym rozwiązaniem jest argparse. Ja skorzystałem jednak z narzędzia docopt, które wydaje mi się dość interesujące, gdyż argumenty buduje się za pomocą docstringa. Fajna sprawa.
 
 Zaczynamy od instalacji narzędzia:
 
@@ -115,7 +122,7 @@ Zaczynamy od instalacji narzędzia:
 
 Napiszmy coś prostego, niech będzie to skrypt sumujący liczby. Na razie jednak nie sumujemy, zobaczymy z czym mamy do czynienia.
 
-<pre>"""Sum.
+<pre>"""Sum integer values.
 
 Usage:
   sum.py &lt;numbers&gt;...
@@ -132,7 +139,14 @@ from docopt import docopt
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Sum 1.0')
-    print(arguments)
+
+    numbers = arguments['&lt;numbers&gt;']
+
+    try:
+        numbers = list(map(int, numbers))
+        print(sum(numbers))
+    except ValueError:
+        print('Cannot cast value(s) to integer.')
 </pre>
 
 Z zawartości docstringa łatwo się domyślić co wywołać i z jakimi argumentami mamy do czynienia. Nawiasy trójkątne oznaczają argumenty, myślniki (dwa lub jeden) to opcje, a trzy kropki oznaczają to, że argumenty mogą się powtarzać. Nawiasy w połączeniu z pionową kreską natomiast oznaczają wzajemnie wykluczające się opcje.
