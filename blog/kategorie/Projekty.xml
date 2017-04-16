@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Projekty.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-12T12:15:23+02:00</updated>
+    <updated>2017-04-16T18:25:17+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Poznawanie BWAPI]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi"/>
+            <published>2017-04-16T19:40:00+02:00</published>
+            <updated>2017-04-16T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi</id>
+            <summary>Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg"/>            Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Pięć basenów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>

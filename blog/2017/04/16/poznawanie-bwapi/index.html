@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+    <head>
+                <title>Dawid Loranc &mdash; Poznawanie BWAPI</title>
+                <meta charset="utf-8">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.">
+                <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="DLoranc" />
+        <meta name="twitter:creator" content="DLoranc" />
+        <meta property="twitter:title" content="Poznawanie BWAPI &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg" />
+                        <meta property="twitter:description" content="Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy." />
+                <meta property="og:title" content="Poznawanie BWAPI &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi" />
+        <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
+        <meta property="og:locale" content="pl_PL" />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg" />
+                        <meta property="og:description" content="Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy." />
+                    <meta name="robots" content="index, follow">
+        <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-startup-image" href="https://dloranc.github.io/images/icons/2048x2048.jpg">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="shortcut icon" sizes="76x76" href="https://dloranc.github.io/images/icons/76x76.jpg">
+        <link rel="shortcut icon" sizes="120x120" href="https://dloranc.github.io/images/icons/120x120.jpg">
+        <link rel="shortcut icon" sizes="128x128" href="https://dloranc.github.io/images/icons/128x128.jpg">
+        <link rel="shortcut icon" sizes="152x152" href="https://dloranc.github.io/images/icons/152x152.jpg">
+        <link rel="shortcut icon" sizes="196x196" href="https://dloranc.github.io/images/icons/196x196.jpg">
+        <link rel="shortcut icon" sizes="512x512" href="https://dloranc.github.io/images/icons/512x512.jpg">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://dloranc.github.io/images/icons/76x76.jpg">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://dloranc.github.io/images/icons/120x120.jpg">
+        <link rel="apple-touch-icon" sizes="128x128" href="https://dloranc.github.io/images/icons/128x128.jpg">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://dloranc.github.io/images/icons/152x152.jpg">
+        <link rel="apple-touch-icon" sizes="196x196" href="https://dloranc.github.io/images/icons/196x196.jpg">
+        <link rel="apple-touch-icon" sizes="512x512" href="https://dloranc.github.io/images/icons/512x512.jpg">
+        <link rel="apple-touch-icon" sizes="1024x1024" href="https://dloranc.github.io/images/icons/1024x1024.jpg">
+        <link rel="apple-touch-icon" sizes="2048x2048" href="https://dloranc.github.io/images/icons/2048x2048.jpg">
+        <link rel="alternate" type="application/atom+xml" href="https://dloranc.github.io/atom.xml" title="Dawid Loranc - Kanał RSS" />
+        <link rel="alternate" type="application/atom+xml" href="https://dloranc.github.io/atom-full.xml" title="Dawid Loranc - Pełny Kanał RSS" />
+                        <!-- Facebook Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1903996866503328'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1903996866503328&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- DO NOT MODIFY -->
+        <!-- End Facebook Pixel Code -->
+        <script type="text/javascript">fbq('track', 'ViewContent');</script>
+    </head>
+    <body>
+        <header class="header container">
+            <a class="header__title" href="https://dloranc.github.io/">Dawid Loranc</a>
+            <small class="header__subtitle">„What I cannot create, I do not understand.” - Richard Feynman</small>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="container-fluid">
+                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                    Menu
+                                </a>
+
+                                <div class="nav-collapse collapse">
+                                    <ul class="nav">
+                                        <li>
+                                            <a href="https://dloranc.github.io/"
+                                            >Strona główna</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/archiwum-postow"
+                                            >Archiwum postów</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/blog/kategorie"
+                                            >Kategorie</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/blog/tagi"
+                                            >Tagi</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/projekty"
+                                            >Projekty</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/o-mnie"
+                                            >O mnie</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/polityka-prywatnosci"
+                                            >Polityka prywatności</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-content container">
+            <div class="row-fluid">
+                <div class="span12">
+                        <article class="post">
+        <header class="post-header">
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg" alt="Poznawanie BWAPI" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Poznawanie BWAPI</h1>
+            <h4 class="post-header__date">16.04.2017</h4>
+        </header>
+        <div class="post-content">
+            <p>Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium <a href="https://github.com/dloranc/five-pool-bot">dloranc/five-pool-bot</a>.</p>
+
+<h2 id="poprawki">Poprawki</h2>
+
+<p>W poprzednim poście napisałem listę rzeczy do zrobienia. Cześć z nich udało się wykonać (są to te skreślone poniżej):</p>
+
+<ul>
+<li>Zbieranie minerałów można zoptymalizować zgodnie z tym tematem na <a href="http://www.teamliquid.net/forum/brood-war/484849-improving-mineral-gathering-rate-in-brood-war">TeamLiquid</a>.</li>
+<li><strike>Scoutować powinna stworzona drona, a nie wylosowana spośród tych początkowych.</strike></li>
+<li><strike>Jeśli drona przeznaczona do budowania ma zamiar budować, to przed budowaniem powinna odnieść minerały jeśli jakieś zebrała. Teraz jest tak, że jeśli jakieś miała to są one tracone.</strike></li>
+<li><strike>Scout może być bardziej optymalny, drona powinna chodzić do baz które są najbliżej.</strike></li>
+<li><strike>Czasami jak drona jedzie do ostatniej bazy na dużej mapie, a wyprodukowane zostają zerglingi, to wtedy poruszają się one w losowe miejsca na mapie, bo nie wiedzą gdzie jest baza przeciwnika. Można to poprawić wysyłając je do bazy do której zmierza drona, bo wiadomo już wtedy, że jest to ta właściwa baza.</strike></li>
+<li>Zerglingi mogą lepiej walczyć, można zastosować priorytety, co atakować w pierwszej kolejności. Przydatne byłoby także wycofywanie ciężko rannych jednostek, by się zregenerowały.</li>
+<li><strike>Jeśli baza i budynki naokoło są zniszczone, a nie zostaje zakończona gra to znaczy, że gdzieś na mapie jest jakiś budynek, który został do zniszczenia. Zerglingi nawet nie szukają losowo tylko się gromadzą w jednym miejscu.</strike></li>
+<li>Ogólnie, przydałoby się napisać jakąś klasę umożliwiającą wydawanie rozkazów jednostkom i anulowanie ich, gdy zajdą jakieś okoliczności.</li>
+</ul>
+
+<p>Ciekawie miałem zwłaszcza z odnoszeniem minerałów przez dronę przed zbudowaniem <strong>Spawning Poola</strong>. Przykładowa logika powinna wyglądać mniej więcej tak:</p>
+
+<pre><code class="Java">if (buildDrone.isCarryingMinerals()) {
+    buildDrone.returnCargo();
+} else {
+    // ...
+
+    buildDrone.build(UnitType.Zerg_Spawning_Pool, buildPosition);
+}
+</code></pre>
+
+<p>Ale okazało się, że to czasami nie działa. Patrząc w <a href="https://bwapi.github.io/class_b_w_a_p_i_1_1_unitset.html#a0b24b5f25b609169c0fafbe70d2f60aa">dokumentację BWAPI</a> funkcji <code>returnCargo</code> zauważyłem taką uwagę:</p>
+
+<blockquote>
+  <p>There is a small chance for a command to fail after it has been passed to Broodwar.</p>
+</blockquote>
+
+<p>Ciekawe jest to, że w tym miejscu dokumentacji ta uwaga jest pod prawie każdą funkcją. Ciekawe z czego wynika niemożność wykonania danej akcji? I czy na pewno nie było jakiegoś problemu z moim kodem?</p>
+
+<p>Rozwiązałem ten problem inaczej, ale nie do końca optymalnie. Możliwe jest wystąpienie takiej sytuacji, że wszystkie drony będą miały minerały i algorytm budujący musi czekać na to, aż jakaś odniesie minerały do bazy. Nie wiem, czy taka mała strata czasu może być czasem kluczowa do wygrania rozgrywki. Wydaje mi się, że nie, ale lubię mieć wszystko na 100%.</p>
+
+<pre><code class="Java">Unit buildDrone = null;
+
+for (Unit myUnit : self.getUnits()) {
+    if (myUnit.getType() == UnitType.Zerg_Drone) {
+        if (!myUnit.isCarryingMinerals() &amp;&amp; myUnit.getID() != scoutDrone.getID()) {
+            buildDrone = myUnit;
+            break;
+        }
+    }
+}
+</code></pre>
+
+<h2 id="rysowanie-pomocniczych-figur">Rysowanie pomocniczych figur</h2>
+
+<p><strong>BWAPI</strong> dostarcza <a href="https://bwapi.github.io/class_b_w_a_p_i_1_1_game.html">kilkanaście fajnych metod do rysowania</a> punktów, linii, kwadratów, okręgów, elips, trójkątów, a także do wypisywania tekstu na ekranie.</p>
+
+<p>Każda metoda zaczyna się od słowa <code>draw</code> i wywoływana jest na obiekcie typu <code>Game</code>. Po słowie <code>draw</code> dajemy co chcemy narysować (<code>Text</code>, <code>Box</code>, <code>Triangle</code>, <code>Dot</code>, <code>Circle</code>, <code>Ellipse</code>, <code>Line</code>), po którym możemy dać jeszcze słówko wskazujące na to jak <strong>BWAPI</strong> ma interpretować przesłane koordynaty. Jeśli chcemy narysować na mapie kwadrat to wywołamy metodę <code>drawBoxMap</code>, jeśli chcemy narysować na ekranie to wywołujemy <code>drawBoxScreen</code>. Pozycja (0, 0) będzie wtedy oznaczała lewy górny róg. Możemy także użyć <code>drawBoxMouse</code>, wtedy pozycja (0, 0) będzie oznaczała narysowanie kwadratu tam gdzie jest kursor.</p>
+
+<pre><code class="cpp">drawBox(CoordinateType::Enum ctype, int left, int top, int right, int bottom, Color color, bool isSolid=false)
+drawBoxMap(Position leftTop, Position rightBottom, Color color, bool isSolid=false)
+drawBoxMouse(Position leftTop, Position rightBottom, Color color, bool isSolid=false)
+drawBoxScreen(Position leftTop, Position rightBottom, Color color, bool isSolid=false)
+// ...
+drawLineMap(Position a, Position b, Color color)
+drawLineMouse(Position a, Position b, Color color)
+drawLineScreen(Position a, Position b, Color color)
+</code></pre>
+
+<p>Wykorzystałem to do graficznej wizualizacji rozkazów (na czerwono na screenie poniżej), które wykonują jednostki. Zaznaczyłem na mapie chokepointy, czyli wąskie miejsca, które są ważne ze względów strategicznych (żółty kolor). Narysowałem także strefy, po których nie mogą się poruszać jednostki lądowe (na szaro). Pytanie tylko tylko dlaczego przy tym musiałem wszystkie pozycje punktów wielokątów przemnożyć przez 8? Za pomocą okręgu oznaczyłem też miejsce, w którym jest baza przeciwnika (na screenie w nagłówku). Przydało mi się to przy debugowaniu scoutowania.</p>
+
+<p><img src="/images/posts/learning_bwapi/01.jpg" alt="Linie pomocnicze" title="Linie pomocnicze" /></p>
+
+<h2 id="inne-przydatne-rzeczy">Inne przydatne rzeczy</h2>
+
+<p>Na <a href="http://www.starcraftai.com/wiki/Increasing_StarCraft_Speed">starcraftai.com</a> odkryłem dwa sposoby na przyspieszenie gry. Pierwszym sposobem jest całkowite wyłączenie silnika odpowiadającego za dźwięk, bo normalnie nawet jeśli damy głośność na zero, to będą wywoływane funkcje odtwarzające dźwięk i muzykę. Wyłączenie silnika sprawia, że te funkcje nie będą uruchamiane. Prawdę mówiąc, nie zauważyłem zbytniego przyspieszenia gry, ale dla spokoju wyłączyłem.</p>
+
+<pre><code class="ini">[starcraft]
+; Game sound engine = ON | OFF
+sound = OFF
+</code></pre>
+
+<p>Druga fajna rzecz, to możliwość wyłączenia renderowania grafiki, gdy rozpocznie się mecz. No, prawie, bo z tego co widziałem to czasem zrenderuje jakąś klatkę.</p>
+
+<pre><code class="Java">game.setGUI(false);
+</code></pre>
+
+<p>Odkryłem, że jest także możliwość uruchomienia Starcrafta w trybie <strong>headless</strong> (bez renderowania żadnej grafiki) w linii komend. Można tego dokonać za pomocą projektu <a href="https://github.com/tscmoo/bwheadless">tscmoo/bwheadless</a>. Udało mi się to skompilować, ale na razie tego nie testowałem. Na pewno się przyda. Szkoda tylko, że ten projekt nie posiada chociażby <strong>README.md</strong>.</p>
+
+<h2 id="co-dalej%3F">Co dalej?</h2>
+
+<p>Teraz się wezmę w końcu za reinforcement learning. Mam takie przypuszczenie, że da się wygrać większość gier nawet z botami, które mają dobre micro, tylko i wyłącznie za pomocą wczesnego ataku Zerglingów. Przy perfekcyjnym micro zwłaszcza Protoss może mieć spore problemy, gdyż jego podstawowa jednostka jaką jest <strong>Zealot</strong> jest bardzo wolna i nie jest w stanie nadążyć za Zergligami. Wystarczy, że mój bot skupi się na budynkach unikając przeciwnika jak się da, a gra będzie wygrana. To jest oczywiście moja hipoteza, zobaczymy jak to wyjdzie w praniu.</p>
+
+<p>Jeszcze pozostaje kwestia czego użyć. Próbowałem TorchCrafta, ale nie rozwiązałem problemów z nim związanych. TorchCraft wykorzystuje język <strong>Lua</strong>, a ja bym chciał sprawdzić mojego bota w <a href="http://sscaitournament.com">SSCAIT</a>, a tam można zgłaszać tylko boty w Javie i C++. Może spiąć to co już napisałem z <a href="https://deeplearning4j.org/">deeplearning4j</a>? Chyba tak zrobię, chcę sprawdzić ile mój bot będzie wart.</p>
+
+        </div>
+                    <p class="post-categories">
+            Kategorie:
+                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
+                            <p class="post-tags">
+            Tagi:
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>,                         <a href="https://dloranc.github.io/blog/tagi/bwapi" class="post-tags__item">bwapi</a>,                         <a href="https://dloranc.github.io/blog/tagi/Java" class="post-tags__item">Java</a>                        </p>
+        
+        <h2>Udostępnij:</h2>
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_52 a2a_default_style" style="margin-bottom: 1.5em; margin-top: 1em;">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        </div>
+        <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.locale = "pl";
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+                    <nav class="pagination">
+                <ul>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie" title="Argumenty w linii komend w Pythonie"><span class="pagination__title">Poprzedni post</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dloranc-github-io'; // required: replace example with your forum shortname
+
+
+    
+    
+    
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Włącz JavaScript by zobaczyć <a href="https://disqus.com/?ref_noscript" rel="nofollow">komentarze Disqusa.</a>
+</noscript>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="https://dloranc.github.io/components/jquery/jquery.min.js"><\/script>')</script>
+        <script src="https://dloranc.github.io/components/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+                <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-84833721-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+                <script src="https://dloranc.github.io/components/highlightjs/highlight.pack.min.js"></script>
+
+        <script>hljs.initHighlightingOnLoad();</script>
+
+                    </body>
+</html>
