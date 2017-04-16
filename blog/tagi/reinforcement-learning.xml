@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Dawid Loranc]]></title>
+    <link href="https://dloranc.github.io/blog/tagi/reinforcement-learning.xml" rel="self"/>
+    <link href="https://dloranc.github.io/"/>
+    <updated>2017-04-16T23:34:58+02:00</updated>
+    <id>https://dloranc.github.io/</id>
+            <author>
+            <name><![CDATA[Dawid Loranc]]></name>                    </author>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Reinforcement learning - co to jest?]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest"/>
+            <published>2017-04-16T23:40:00+02:00</published>
+            <updated>2017-04-16T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest</id>
+            <summary>Post w którym wyjaśniam co to jest reinforcement learning.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg"/>            Post w którym wyjaśniam co to jest reinforcement learning.]]></content>
+        </entry>
+    </feed>
