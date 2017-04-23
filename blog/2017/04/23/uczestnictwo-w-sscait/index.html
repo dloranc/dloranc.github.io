@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; Reinforcement learning - co to jest?</title>
+                <title>Dawid Loranc &mdash; Uczestnictwo w SSCAIT</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Post w którym wyjaśniam co to jest reinforcement learning.">
+                <meta name="description" content="Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="Reinforcement learning - co to jest? &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg" />
-                        <meta property="twitter:description" content="Post w którym wyjaśniam co to jest reinforcement learning." />
-                <meta property="og:title" content="Reinforcement learning - co to jest? &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest" />
+        <meta property="twitter:title" content="Uczestnictwo w SSCAIT &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg" />
+                        <meta property="twitter:description" content="Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie." />
+                <meta property="og:title" content="Uczestnictwo w SSCAIT &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg" />
-                        <meta property="og:description" content="Post w którym wyjaśniam co to jest reinforcement learning." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg" />
+                        <meta property="og:description" content="Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -118,85 +118,96 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg" alt="Reinforcement learning - co to jest?" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">Reinforcement learning - co to jest?</h1>
-            <h4 class="post-header__date">16.04.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg" alt="Uczestnictwo w SSCAIT" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Uczestnictwo w SSCAIT</h1>
+            <h4 class="post-header__date">23.04.2017</h4>
         </header>
         <div class="post-content">
-            <h2 id="og%E5%82oszenia-parafialne">Ogłoszenia parafialne</h2>
+            <p>Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą <strong>Chaoslauncher - MultiInstance</strong> i edycji <code>bwapi.ini</code>, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w <a href="http://sscaitournament.com">SSCAIT</a>.</p>
 
-<p>Od jakiegoś czasu staram się czytać powoli książkę <a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">"Reinforcement Learning: An Introduction"</a> autorstwa Richarda S. Suttona i Andrew G. Barto. Ktoś pod jednym z postów prosił o jakieś dobre materiały z RL, więc podaję i polecam tę książkę. Jest to ponoć klasyczna pozycja z tej dziedziny. Moim zdaniem zasługuje na to miano, o ile można tak stwierdzić po przeczytaniu niespełna dwóch rozdziałów tej książki.</p>
+<p>Aby zarejestrować bota w <strong>SSCAIT</strong> oprócz podania różnych danych trzeba wygenerować plik <code>.jar</code> i wsadzić go do ZIP-a razem z <code>BWAPI.dll</code>, czyli DLL-ką odpowiedzialną za połączenie ze Starcraftem. Każdy bot może korzystać z innej wersji BWAPI, więc dlatego trzeba dołączyć swoją DLL-kę. Nie namyślając się wiele wygenerowałem <code>artifact</code> w IntelliJ IDEA, ale po rejestracji okazało się, że mój bot scrashował sześć razy i został zablokowany. Coś zrobiłem źle i nie bardzo wiedziałem co. Zauważyłem, jednak, że na liście wyników są linki do ściągnięcia botów. Ściągnąłem takiego, który był napisany w Javie, zmieniłem rozszerzenie z <code>.jar</code> na <code>.zip</code> i podejrzałem strukturę plików. Powinna ona wyglądać następująco:</p>
 
-<p>Dla utrwalenia wiedzy, postanowiłem pisać kod do algorytmów występujących w tej książce. Są co prawda przykładowe kody na zalinkowanej powyżej stronie, ale nie zamierzam z nich korzystać (może jak się kompletnie zatnę na czymś). Repozytorium (na razie puste): <a href="https://github.com/dloranc/reinforcement-learning-an-introduction">dloranc/reinforcement-learning-an-introduction</a>.</p>
+<p><img src="/images/posts/sscait/artifacts.png" alt="artifacts" title="artifacts" /></p>
 
-<h2 id="reinforcement-learning---co-to-jest%3F">Reinforcement Learning - co to jest?</h2>
+<p>Konieczny jest zwłaszcza katalog <code>META-INF</code> zawierający plik <code>MANIFEST.MF</code> ze zdefiniowanym entrypointem, żeby Java wiedziała, która klasa jest tą główną z metodą <code>main</code>.</p>
 
-<p>Reinforcement Learning (uczenie ze wzmacnianiem) jest to pewien sposób rozwiązywania niektórych problemów, których nie da się w prosty sposób rozwiązać (analitycznie) albo nie mamy dobrego modelu. Coś, będziemy nazywać to <strong>agentem</strong>, wykonuje pewne <strong>akcje</strong> w pewnym nieznanym <strong>środowisku</strong>, które znajduje się w określonym <strong>stanie</strong>. Za podejmowanie akcji agent otrzymuje sygnał wzmocnienia. Może on być pozytywny (<strong>nagroda</strong>) albo negatywny (<strong>kara</strong>). Agent podejmując interakcje ze środowiskiem uczy się pewnej <strong>polityki</strong>. Celem reinforcement learningu jest wyznaczenie optymalnej <strong>polityki</strong> dla której dostaniemy jak najwięcej nagród. Znalezienie takiej polityki nie jest proste. Czasem warto na przykład poświęcić nagrody, by w dłuższej perspektywie zyskać.</p>
+<pre><code class="ini">Manifest-Version: 1.0
+Main-Class: dloranc.fivepoolbot.FivePoolBot
+</code></pre>
 
-<p><img src="/images/posts/reinforcement_learning_what_is_it/01.png" alt="Reinforcement learning - schemat" title="Reinforcement learning - schemat" /></p>
+<p>Trochę mi zeszło z tym, podaję to na przyszłość, bo w tutorialu na stronie SSCAIT nie było zbyt wiele na temat tworzenia działającej paczki.</p>
 
-<p>Jest to sposób uczenia inspirowany osiągnieciami <a href="https://pl.wikipedia.org/wiki/Wzmocnienie_(behawioryzm)">psychologii behawioralnej</a>. Uczymy się świata przecież w ten sposób. Wyobraźmy sobie na przykład małe dziecko, które uczy się chodzić. Próbując się nauczyć tego zadania wykonuje rozmaite akcje metodą prób i błędów. Dzięki zmysłom otrzymuje pewne bodźce ze świata i podejmuje w zależności od nich pewne akcje. Jeśli nie wywali się na twarz, to dobre akcje, które były udane będą przez nie wykonywane częściej i coraz lepiej (wzmocnienie pozytywne). Jeśli zaliczy podłogę, to następnym razem będzie się starało nie podejmować działań skutkującym takim rezultatem. I tak, aż nauczy się chodzić.</p>
+<p>Co do moich wyników w SSCAIT to po paru dniach mam 15 gier wygranych i 20 przegranych (odjąłem crashe). Moim zdaniem nieźle jak na takiego prostego bota, zwłaszcza, że na <a href="http://sscaitournament.com/index.php?action=scores">liście wyników</a> wyprzedziłem 15 botów.</p>
 
-<p>W tabeli poniżej przedstawiłem przykłady rozmaitych agentów, środowisk itd. itp.:</p>
+<h2 id="powa%E5%BEny-bug-w-kodzie-z-tutoriala">Poważny bug w kodzie z tutoriala</h2>
 
-<table>
-<thead>
-<tr>
-  <th>Agent</th>
-  <th>Środowisko</th>
-  <th>Stan</th>
-  <th>Akcje</th>
-  <th>Szukana polityka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>dziecko</td>
-  <td>świat</td>
-  <td>stan świata, pozycja w której znajduje się dziecko</td>
-  <td>ruchy kończynami</td>
-  <td>nauczenie się chodzić</td>
-</tr>
-<tr>
-  <td>robot</td>
-  <td>zakład</td>
-  <td>dane z czujników, pozycja manipulatorów</td>
-  <td>ruch manipulatorami</td>
-  <td>sortowanie przedmiotów</td>
-</tr>
-<tr>
-  <td>bot do gry w Go</td>
-  <td>plansza</td>
-  <td>aktualna pozycja na planszy</td>
-  <td>postawienie kamienia na planszy</td>
-  <td>wygrywająca jak najwięcej gier</td>
-</tr>
-</tbody>
-</table>
+<p>Oglądając replaye zauważyłem, że mój bot zachowuje się nieprawidłowo. Czasami, z niewyjaśnionych powodów nie był w stanie wykryć budynków przeciwnika, co skutkowało tym, że atak szedł w niewłaściwą lokację co oznaczało przegranie gry. Po dość długim kombinowaniu udało mi się dojść, że problem tkwi w niewłaściwym zapamiętywaniu lokalizacji budynków przeciwnika. Udało mi się to nawet zwizualizować. Można to zobaczyć na poniższym gifie:</p>
 
-<p>Ale kij tam tabelki, zobaczmy to na rzeczywistych projektach. Poniżej dałem playlistę z różnymi fajnymi przykładami:</p>
+<p><img src="/images/posts/sscait/invalid_rescaled.gif" alt="Niepoprawne działanie" title="Niepoprawne działanie" /></p>
 
-<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/SH3bADiB7uQ?list=PL5nBAYUyJTrM48dViibyi68urttMlUv7e" frameborder="0" allowfullscreen></iframe></div>
+<p>Bardzo ciekawe, bo skopiowałem kod tego rozwiązania z tutoriala na stronie SSCAIT i założyłem, że wszystko działa. Ale nie - niektóre budynki nie miały czerwonej kropki albo znikała ona co klatkę co objawiało się miganiem tej kropki na ekranie.</p>
 
-<p>Dla mnie szczególnie uroczy jest ten robot podrzucający naleśniki:</p>
+<p>Zagadka dla was: gdzie w poniższym kodzie jest błąd?</p>
 
-<div class="video-container"><iframe width="900" height="600" src="https://www.youtube.com/embed/W_gxLKSsSIE" frameborder="0" allowfullscreen></iframe></div>
+<pre><code class="Java">//always loop over all currently visible enemy units (even though this set is usually empty)
+for (Unit u : game.enemy().getUnits()) {
+    //if this unit is in fact a building
+    if (u.getType().isBuilding()) {
+        //check if we have it's position in memory and add it if we don't
+        if (!enemyBuildingMemory.contains(u.getPosition())) enemyBuildingMemory.add(u.getPosition());
+    }
+}
 
-<h2 id="czym-si%E4%99-r%E3%B3%E5%BEni-reinforcement-learning-od-innych-metod%3F">Czym się różni reinforcement learning od innych metod?</h2>
+//loop over all the positions that we remember
+for (Position p : enemyBuildingMemory) {
+    // compute the TilePosition corresponding to our remembered Position p
+    TilePosition tileCorrespondingToP = new TilePosition(p.getX()/32 , p.getY()/32);
 
-<p>Jaka jest na przykład różnica między supervised learningiem a reinforcement learningiem? W supervised learningu dostajemy pewne dane i są one już wstępnie sklasyfikowane. Na ich podstawie algorytm musi się nauczyć jak je odróżniać (klasyfikować) albo jak przewidzieć pewną wartość na podstawie (regresja). W reinforcement learningu nie mamy nic na dzień dobry. Musimy znaleźć rozwiązanie bazując na wykonywaniu akcji w środowisku i na nagrodach/karach. Do tego jeszcze dochodzi problem eksploracji i wykorzystywania wiedzy zdobytej przez interakcję ze środowiskiem. W innych paradygmatach machine learningu to nie występuje. W unsupervised learningu jest podobnie, dostajemy jakieś dane i musimy je jakoś sklasyfikować. Nie kierujemy się jednak nagrodami/karami lecz ich strukturą.</p>
+    //if that tile is currently visible to us...
+    if (game.isVisible(tileCorrespondingToP)) {
 
-<h2 id="podsumowanie">Podsumowanie</h2>
+        //loop over all the visible enemy buildings and find out if at least
+        //one of them is still at that remembered position
+        boolean buildingStillThere = false;
+        for (Unit u : game.enemy().getUnits()) {
+            if ((u.getType().isBuilding()) &amp;&amp; (u.getPosition() == p)) {
+                buildingStillThere = true;
+                break;
+            }
+        }
 
-<p>Na razie tyle, w następnym poście napiszę trochę o problemie zwanym jako <strong>multi-armed bandit</strong>.</p>
+        //if there is no more any building, remove that position from our memory
+        if (buildingStillThere == false) {
+            enemyBuildingMemory.remove(p);
+            break;
+        }
+    }
+}
+</code></pre>
+
+<p>Zeszło mi na tym naprawdę sporo czasu, a błąd był banalny i tkwił w poniższej linijce:</p>
+
+<pre><code class="Java">if ((u.getType().isBuilding()) &amp;&amp; (u.getPosition() == p)) {
+</code></pre>
+
+<p>Zamieniłem ją na (przy okazji pozbyłem się nadmiarowych nawiasów):</p>
+
+<pre><code class="Java">if (u.getType().isBuilding() &amp;&amp; u.getPosition().equals(p)) {
+</code></pre>
+
+<p>No tak, w Javie jeśli chcemy porównać dwa obiekty to używamy <code>equals()</code>, bo operator <code>==</code> porównuje referencje do obiektów.</p>
+
+<p>Po poprawce nic nie miga:</p>
+
+<p><img src="/images/posts/sscait/valid_rescaled.gif" alt="Poprawne działanie" title="Poprawne działanie" /></p>
 
         </div>
                     <p class="post-categories">
             Kategorie:
-                        <a href="https://dloranc.github.io/blog/kategorie/Sutton%20%26%20Barto" class="post-categories__item">Sutton &amp; Barto</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
                             <p class="post-tags">
             Tagi:
-                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/reinforcement-learning" class="post-tags__item">reinforcement-learning</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/tagi/Java" class="post-tags__item">Java</a>,                         <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>                        </p>
         
         <h2>Udostępnij:</h2>
         <!-- AddToAny BEGIN -->
@@ -215,8 +226,7 @@
 
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait" title="Uczestnictwo w SSCAIT"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi" title="Poznawanie BWAPI"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest" title="Reinforcement learning - co to jest?"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>

@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-16T23:34:58+02:00</updated>
+    <updated>2017-04-23T18:54:22+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Uczestnictwo w SSCAIT]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait"/>
+            <published>2017-04-23T20:00:00+02:00</published>
+            <updated>2017-04-23T20:00:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait</id>
+            <summary>Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg"/>            Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Reinforcement learning - co to jest?]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest"/>
