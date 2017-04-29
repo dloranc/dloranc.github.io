@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-23T18:54:22+02:00</updated>
+    <updated>2017-04-29T22:39:46+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Atak wielorękich bandytów]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow"/>
+            <published>2017-04-29T23:40:00+02:00</published>
+            <updated>2017-04-29T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow</id>
+            <summary>Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_attack.jpg"/>            Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Uczestnictwo w SSCAIT]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait"/>
