@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/starcraft.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-29T22:39:46+02:00</updated>
+    <updated>2017-04-30T23:42:36+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Instalacja TorchCrafta]]></title>
+            <link href="https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta"/>
+            <published>2017-04-30T23:50:00+02:00</published>
+            <updated>2017-04-30T23:50:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta</id>
+            <summary>Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_installing.jpg"/>            Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Uczestnictwo w SSCAIT]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait"/>
