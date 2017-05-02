@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="https://dloranc.github.io/blog/kategorie/Sutton%20&amp;%20Barto.xml" rel="self"/>
+    <link href="https://dloranc.github.io/blog/tagi/multi-armed-bandit.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
     <updated>2017-05-02T18:08:13+02:00</updated>
     <id>https://dloranc.github.io/</id>
@@ -25,14 +25,5 @@
             <id>https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow</id>
             <summary>Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_attack.jpg"/>            Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Reinforcement learning - co to jest?]]></title>
-            <link href="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest"/>
-            <published>2017-04-16T23:40:00+02:00</published>
-            <updated>2017-04-16T23:40:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest</id>
-            <summary>Post w którym wyjaśniam co to jest reinforcement learning.</summary>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg"/>            Post w którym wyjaśniam co to jest reinforcement learning.]]></content>
         </entry>
     </feed>

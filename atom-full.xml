@@ -3,11 +3,184 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-30T23:42:36+02:00</updated>
+    <updated>2017-05-02T18:08:13+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - prosta optymalizacja]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja"/>
+            <published>2017-05-02T19:40:00+02:00</published>
+            <updated>2017-05-02T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg"/>            Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+W ostatnim poście omówiłem podstawową wersję multi-armed bandit z &#92;(\epsilon&#92;)-greedy strategy. Zaprezentowany algorytm ma małą wadę, wymaga bowiem zapisywania każdej nagrody i liczenia za każdym razem średniej arytmetycznej nagród dla danej akcji, gdy następuje wybór najlepszej akcji. Nie dość, że algorytm wymaga pamięci na nagrody i to łącznie tyle ile jest kroków czasowych, to jeszcze za każdym razem, gdy potrzebny jest wybór najlepszej akcji następuje sporo tak naprawdę zbędnych i dość czasochłonnych obliczeń. Wyobraźmy sobie, że mamy liczyć średnią arytmetyczną z miliona nagród. Ile to zajmie? Da się to rozwiązać lepiej.
+
+Optymalizacja
+
+Przypomnijmy jak wygląda dotychczasowy kod:
+
+<pre>def __init__(self, arms, pulls, epsilon):
+    # ...
+    self.rewards = [[] for _ in xrange(self.arms)]
+
+def get_means(self):
+    means = np.zeros(self.arms)
+
+    for index, action_rewards in zip(range(len(means)), self.rewards):
+        if len(action_rewards) &gt; 0:
+            means[index] = sum(action_rewards) / len(action_rewards)
+
+    return means
+
+def save_reward(self, action, reward):
+    self.rewards[action].append(reward)
+</pre>
+
+Widać, że za każdym razem liczy się Można tutaj wydzielić zmienną means jako pole klasy, i do niej zapisywać nowe wartości akcji jak dojdzie nowa nagroda. Wtedy jednak zostaje sprawa liczenia samej średniej arytmetycznej, która jest kosztowna obliczeniowo i pamięciowo, gdybyśmy mieli ją liczyć dla nowej nagrody i wszystkich starych.
+
+Ok, czas na trochę matmy. Zdefiniujmy sobie wartość akcji jako &#92;(Q_n&#92;) po tym jak została wybrana &#92;(n - 1&#92;) razy:
+$$Q_n \doteq \frac{R_1 + R2 + \dots + R_{n - 1}}{n - 1}$$
+
+I przekształćmy to w lepszą wersję:
+
+$$Q_{n+1} = \frac{1}{n}\sum_{i=1}^{n}R_i$$
+$$= \frac{1}{n}\left(R_n + \sum_{i = 1}^{n - 1} R_i\right)$$
+$$= \frac{1}{n}\left(R_n + \left(n - 1\right)\frac{1}{n - 1} \sum_{i = 1}^{n - 1} R_i\right)$$
+$$= \frac{1}{n}\left(R_n + \left(n - 1\right)Q_n\right)$$
+$$= \frac{1}{n}\left(R_n + nQ_n - Q_n\right)$$
+$$= Q_n + \frac{1}{n}\left[R_n - Q_n\right]$$
+
+Jak widać, nie potrzebujemy już zapamiętywania wszystkich nagród. Wystarczy pamiętać ostatnią wartość &#92;(Q_n&#92;) i &#92;(n&#92;) dla każdej akcji.
+
+Kod
+
+W konstruktorze pozbywamy się self.rewards = [[] for _ in xrange(self.arms)] na rzecz self.rewards = np.zeros(self.arms) i dodajemy action_count (nasze &#92;(n&#92;) do zapamiętania):
+
+<pre>def __init__(self, arms, pulls, epsilon):
+    self.action_count = np.zeros(self.arms)
+    self.rewards = np.zeros(self.arms)
+</pre>
+
+Funkcja save_reward wygląda następująco:
+
+<pre>def save_reward(self, action, reward):
+    # dochodzi kolejna nagroda, więc zwiększamy n o jeden
+    self.action_count[action] += 1
+    # liczymy Q(A) = Q(A) + 1 / N(A)[R - Q(A)]
+    self.rewards[action] = self.rewards[action] + \
+        1. / self.action_count[action] * \
+        (reward - self.rewards[action])
+</pre>
+
+Podsumowanie
+
+To było bardzo proste. Cały skrypt znajduje się w repozytorium razem z tym pierwszym, niezbyt optymalnym. Po tej modyfikacji kodu warto porównać czasy wykonania obu skryptów 01_simple.py i 02_incremental.py z repozytorium. Aby to zrobić trzeba użyć komendy time. Sprawdźmy, oba skrypty zawierają dość czasochłonny eksperyment z dużą liczbą obliczeń.
+
+<pre>$ time python 01_simple.py
+
+real    2m10.297s
+user    2m3.564s
+sys     0m0.436s
+</pre>
+
+<pre>$ time python 02_incremental.py
+
+real    0m57.918s
+user    0m57.268s
+sys     0m0.304s
+</pre>
+
+Jak widać, różnica jest spora. To tyle na razie, następny post będzie o multi-armed bandit w wersji niestacjonarnej.
+]]></content>
+            <summary>Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+W ostatnim poście omówiłem podstawową wersję multi-armed bandit z &#92;(\epsilon&#92;)-greedy strategy. Zaprezentowany algorytm ma małą wadę, wymaga bowiem zapisywania każdej nagrody i liczenia za każdym razem średniej arytmetycznej nagród dla danej akcji, gdy następuje wybór najlepszej akcji. Nie dość, że algorytm wymaga pamięci na nagrody i to łącznie tyle ile jest kroków czasowych, to jeszcze za każdym razem, gdy potrzebny jest wybór najlepszej akcji następuje sporo tak naprawdę zbędnych i dość czasochłonnych obliczeń. Wyobraźmy sobie, że mamy liczyć średnią arytmetyczną z miliona nagród. Ile to zajmie? Da się to rozwiązać lepiej.
+
+Optymalizacja
+
+Przypomnijmy jak wygląda dotychczasowy kod:
+
+<pre>def __init__(self, arms, pulls, epsilon):
+    # ...
+    self.rewards = [[] for _ in xrange(self.arms)]
+
+def get_means(self):
+    means = np.zeros(self.arms)
+
+    for index, action_rewards in zip(range(len(means)), self.rewards):
+        if len(action_rewards) &gt; 0:
+            means[index] = sum(action_rewards) / len(action_rewards)
+
+    return means
+
+def save_reward(self, action, reward):
+    self.rewards[action].append(reward)
+</pre>
+
+Widać, że za każdym razem liczy się Można tutaj wydzielić zmienną means jako pole klasy, i do niej zapisywać nowe wartości akcji jak dojdzie nowa nagroda. Wtedy jednak zostaje sprawa liczenia samej średniej arytmetycznej, która jest kosztowna obliczeniowo i pamięciowo, gdybyśmy mieli ją liczyć dla nowej nagrody i wszystkich starych.
+
+Ok, czas na trochę matmy. Zdefiniujmy sobie wartość akcji jako &#92;(Q_n&#92;) po tym jak została wybrana &#92;(n - 1&#92;) razy:
+$$Q_n \doteq \frac{R_1 + R2 + \dots + R_{n - 1}}{n - 1}$$
+
+I przekształćmy to w lepszą wersję:
+
+$$Q_{n+1} = \frac{1}{n}\sum_{i=1}^{n}R_i$$
+$$= \frac{1}{n}\left(R_n + \sum_{i = 1}^{n - 1} R_i\right)$$
+$$= \frac{1}{n}\left(R_n + \left(n - 1\right)\frac{1}{n - 1} \sum_{i = 1}^{n - 1} R_i\right)$$
+$$= \frac{1}{n}\left(R_n + \left(n - 1\right)Q_n\right)$$
+$$= \frac{1}{n}\left(R_n + nQ_n - Q_n\right)$$
+$$= Q_n + \frac{1}{n}\left[R_n - Q_n\right]$$
+
+Jak widać, nie potrzebujemy już zapamiętywania wszystkich nagród. Wystarczy pamiętać ostatnią wartość &#92;(Q_n&#92;) i &#92;(n&#92;) dla każdej akcji.
+
+Kod
+
+W konstruktorze pozbywamy się self.rewards = [[] for _ in xrange(self.arms)] na rzecz self.rewards = np.zeros(self.arms) i dodajemy action_count (nasze &#92;(n&#92;) do zapamiętania):
+
+<pre>def __init__(self, arms, pulls, epsilon):
+    self.action_count = np.zeros(self.arms)
+    self.rewards = np.zeros(self.arms)
+</pre>
+
+Funkcja save_reward wygląda następująco:
+
+<pre>def save_reward(self, action, reward):
+    # dochodzi kolejna nagroda, więc zwiększamy n o jeden
+    self.action_count[action] += 1
+    # liczymy Q(A) = Q(A) + 1 / N(A)[R - Q(A)]
+    self.rewards[action] = self.rewards[action] + \
+        1. / self.action_count[action] * \
+        (reward - self.rewards[action])
+</pre>
+
+Podsumowanie
+
+To było bardzo proste. Cały skrypt znajduje się w repozytorium razem z tym pierwszym, niezbyt optymalnym. Po tej modyfikacji kodu warto porównać czasy wykonania obu skryptów 01_simple.py i 02_incremental.py z repozytorium. Aby to zrobić trzeba użyć komendy time. Sprawdźmy, oba skrypty zawierają dość czasochłonny eksperyment z dużą liczbą obliczeń.
+
+<pre>$ time python 01_simple.py
+
+real    2m10.297s
+user    2m3.564s
+sys     0m0.436s
+</pre>
+
+<pre>$ time python 02_incremental.py
+
+real    0m57.918s
+user    0m57.268s
+sys     0m0.304s
+</pre>
+
+Jak widać, różnica jest spora. To tyle na razie, następny post będzie o multi-armed bandit w wersji niestacjonarnej.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Instalacja TorchCrafta]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta"/>

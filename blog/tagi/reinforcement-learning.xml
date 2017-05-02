@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/reinforcement-learning.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-04-30T23:42:36+02:00</updated>
+    <updated>2017-05-02T18:08:13+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - prosta optymalizacja]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja"/>
+            <published>2017-05-02T19:40:00+02:00</published>
+            <updated>2017-05-02T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja</id>
+            <summary>Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg"/>            Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Atak wielorękich bandytów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow"/>
