@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Projekty.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-02T22:26:36+02:00</updated>
+    <updated>2017-05-07T21:35:51+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
+            <published>2017-05-07T23:40:00+02:00</published>
+            <updated>2017-05-07T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</id>
+            <summary>Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Instalacja TorchCrafta]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta"/>

@@ -3,11 +3,418 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-02T22:26:36+02:00</updated>
+    <updated>2017-05-07T21:35:50+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
+            <published>2017-05-07T23:40:00+02:00</published>
+            <updated>2017-05-07T23:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
+
+Lua - podstawy
+
+Ok, TorchCraft do działania wykorzystuje Torcha (kto by pomyślał?). Torch jest biblioteką do machine learningu bazującą na języku skryptowym Lua. Jako, że nie znałem wcześniej Lua, to nadszedł czas by ogarnąć chociaż podstawy. Język najlepiej zrozumieć poprzez czytanie dokumentacji i pisanie kodu sprawdzającego poszczególne części języka. Skrypty Lua mają rozszerzenie .lua i są uruchamiane przez lua &lt;nazwa_skryptu. OK, czas na przykłady:
+
+Zmienne deklaruje i inicjalizuje się tak:
+
+<pre>j = 10         -- global variable
+a = true
+b = nil
+local i = 1    -- local variable
+</pre>
+
+local pozwala na zadeklarowanie zmiennej lokalnej, czyli ograniczonej do zasięgu bloku. Więcej o tym można poczytać w dokumentacji.
+
+Wyświetlanie na ekranie
+
+<pre>a = 10
+b = nil     -- null value
+s = "hello"
+print(a, b) --&gt; 10   nil
+print(s)    --&gt; hello
+</pre>
+
+Wczytywanie danych od użytkownika
+
+<pre>line = io.read()
+</pre>
+
+Komentarze (nietypowa składnia)
+
+<pre>-- comment
+
+--[[
+block comment
+]]
+</pre>
+
+Konkatenacja stringów
+
+<pre>print("Hello " .. "World")  --&gt; Hello World
+print(0 .. 1)               --&gt; 01
+
+a = "Hello"
+print(a .. " World")   --&gt; Hello World
+print(a)               --&gt; Hello
+</pre>
+
+Widać także, że stringi są immutable.
+
+Tablice
+
+<pre>a = {1, 2, 3, 4, 5}
+print(a)
+
+--[[
+{
+  1 : 1
+  2 : 2
+  3 : 3
+  4 : 4
+  5 : 5
+}
+]]
+
+print(a[0]) --&gt; nil
+print(a[1]) --&gt; 1
+
+table.insert(a, 6)
+print(a)
+
+--[[
+{
+  1 : 1
+  2 : 2
+  3 : 3
+  4 : 4
+  5 : 5
+  6 : 6
+}
+]]
+
+-- get array length
+print(table.getn(a)) --&gt; 6
+print(#a)            --&gt; 6
+
+a = {x=1, y=1}  -- array as record
+print(a.x, a.y) --&gt; 1   1
+
+</pre>
+
+Iterację tabeli zaczynamy od 1. Więcej na temat tablic w dokumentacji.
+
+Instrukcje warunkowe
+
+<pre>a = 10
+
+if a == 9 then
+    print("9")
+elseif a == 10 then
+    print("10")
+else
+    print("nothing")
+end
+
+if a ~= 9 then
+    print("a != 9")
+end
+
+b = 0
+
+if b then
+    print("zero")
+end
+
+if not false then
+    print("!false")
+end
+
+c = {}
+
+if c then
+    print("array")
+end
+
+print(not nil)     --&gt; true
+print(not false)   --&gt; true
+print(not 0)       --&gt; false
+print(not not nil) --&gt; false
+
+</pre>
+
+Jak widać, w przeciwieństwie do większości pozostałych języków programowania zamiast operatora != jest ~=, zamiast ! jest not, a do tego if 0 then albo if {} then ma wartość true i blok się wykona.
+
+Pętle
+
+<pre>for i = 1, 10 do
+   print(i)
+end
+
+for i = 10, 1, -1 do
+    print(i)
+end
+
+days = {"Sunday", "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday"}
+
+for i, day in ipairs(days) do
+    print(day)
+end
+
+
+local i = 1
+
+while i &lt;= 10 do
+    print(i)
+    i = i + 1
+end
+
+-- repeat if line is empty (if line string is "")
+repeat
+    line = io.read()
+until line ~= ""
+print(line)
+</pre>
+
+Funkcje
+
+<pre>function add (a, b)
+    return a + b
+end
+
+print(add(1, 2)) --&gt; 3
+</pre>
+
+Klasy
+
+<pre>Account = { balance = 0,
+                withdraw = function (self, v)
+                    self.balance = self.balance - v
+                end
+          }
+
+function Account:deposit (v)
+  self.balance = self.balance + v
+end
+
+Account.deposit(Account, 200.00)
+Account:withdraw(100.00)
+
+print(Account.balance) --&gt; 100
+</pre>
+
+Klasy generalnie są dość odjechane z tego co widziałem, więc nie będę tego opisywał, bo nie miałem dość czasu by to wszystko zrozumieć.
+
+Podsumowanie
+
+Tyle z podstaw. Wszystkiego w tak krótkim czasie nie ogarnąłem, ale te postawy to już coś co pozwala coś napisać. O Torchu i o działaniu TorchCrafta napiszę następnym razem.
+]]></content>
+            <summary>Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
+
+Lua - podstawy
+
+Ok, TorchCraft do działania wykorzystuje Torcha (kto by pomyślał?). Torch jest biblioteką do machine learningu bazującą na języku skryptowym Lua. Jako, że nie znałem wcześniej Lua, to nadszedł czas by ogarnąć chociaż podstawy. Język najlepiej zrozumieć poprzez czytanie dokumentacji i pisanie kodu sprawdzającego poszczególne części języka. Skrypty Lua mają rozszerzenie .lua i są uruchamiane przez lua &lt;nazwa_skryptu. OK, czas na przykłady:
+
+Zmienne deklaruje i inicjalizuje się tak:
+
+<pre>j = 10         -- global variable
+a = true
+b = nil
+local i = 1    -- local variable
+</pre>
+
+local pozwala na zadeklarowanie zmiennej lokalnej, czyli ograniczonej do zasięgu bloku. Więcej o tym można poczytać w dokumentacji.
+
+Wyświetlanie na ekranie
+
+<pre>a = 10
+b = nil     -- null value
+s = "hello"
+print(a, b) --&gt; 10   nil
+print(s)    --&gt; hello
+</pre>
+
+Wczytywanie danych od użytkownika
+
+<pre>line = io.read()
+</pre>
+
+Komentarze (nietypowa składnia)
+
+<pre>-- comment
+
+--[[
+block comment
+]]
+</pre>
+
+Konkatenacja stringów
+
+<pre>print("Hello " .. "World")  --&gt; Hello World
+print(0 .. 1)               --&gt; 01
+
+a = "Hello"
+print(a .. " World")   --&gt; Hello World
+print(a)               --&gt; Hello
+</pre>
+
+Widać także, że stringi są immutable.
+
+Tablice
+
+<pre>a = {1, 2, 3, 4, 5}
+print(a)
+
+--[[
+{
+  1 : 1
+  2 : 2
+  3 : 3
+  4 : 4
+  5 : 5
+}
+]]
+
+print(a[0]) --&gt; nil
+print(a[1]) --&gt; 1
+
+table.insert(a, 6)
+print(a)
+
+--[[
+{
+  1 : 1
+  2 : 2
+  3 : 3
+  4 : 4
+  5 : 5
+  6 : 6
+}
+]]
+
+-- get array length
+print(table.getn(a)) --&gt; 6
+print(#a)            --&gt; 6
+
+a = {x=1, y=1}  -- array as record
+print(a.x, a.y) --&gt; 1   1
+
+</pre>
+
+Iterację tabeli zaczynamy od 1. Więcej na temat tablic w dokumentacji.
+
+Instrukcje warunkowe
+
+<pre>a = 10
+
+if a == 9 then
+    print("9")
+elseif a == 10 then
+    print("10")
+else
+    print("nothing")
+end
+
+if a ~= 9 then
+    print("a != 9")
+end
+
+b = 0
+
+if b then
+    print("zero")
+end
+
+if not false then
+    print("!false")
+end
+
+c = {}
+
+if c then
+    print("array")
+end
+
+print(not nil)     --&gt; true
+print(not false)   --&gt; true
+print(not 0)       --&gt; false
+print(not not nil) --&gt; false
+
+</pre>
+
+Jak widać, w przeciwieństwie do większości pozostałych języków programowania zamiast operatora != jest ~=, zamiast ! jest not, a do tego if 0 then albo if {} then ma wartość true i blok się wykona.
+
+Pętle
+
+<pre>for i = 1, 10 do
+   print(i)
+end
+
+for i = 10, 1, -1 do
+    print(i)
+end
+
+days = {"Sunday", "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday"}
+
+for i, day in ipairs(days) do
+    print(day)
+end
+
+
+local i = 1
+
+while i &lt;= 10 do
+    print(i)
+    i = i + 1
+end
+
+-- repeat if line is empty (if line string is "")
+repeat
+    line = io.read()
+until line ~= ""
+print(line)
+</pre>
+
+Funkcje
+
+<pre>function add (a, b)
+    return a + b
+end
+
+print(add(1, 2)) --&gt; 3
+</pre>
+
+Klasy
+
+<pre>Account = { balance = 0,
+                withdraw = function (self, v)
+                    self.balance = self.balance - v
+                end
+          }
+
+function Account:deposit (v)
+  self.balance = self.balance + v
+end
+
+Account.deposit(Account, 200.00)
+Account:withdraw(100.00)
+
+print(Account.balance) --&gt; 100
+</pre>
+
+Klasy generalnie są dość odjechane z tego co widziałem, więc nie będę tego opisywał, bo nie miałem dość czasu by to wszystko zrozumieć.
+
+Podsumowanie
+
+Tyle z podstaw. Wszystkiego w tak krótkim czasie nie ogarnąłem, ale te postawy to już coś co pozwala coś napisać. O Torchu i o działaniu TorchCrafta napiszę następnym razem.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - prosta optymalizacja]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja"/>
