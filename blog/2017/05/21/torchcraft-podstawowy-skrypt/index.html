@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; TorchCraft - podstawy Lua</title>
+                <title>Dawid Loranc &mdash; TorchCraft - podstawowy skrypt</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.">
+                <meta name="description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="TorchCraft - podstawy Lua &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png" />
-                        <meta property="twitter:description" content="Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka." />
-                <meta property="og:title" content="TorchCraft - podstawy Lua &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua" />
+        <meta property="twitter:title" content="TorchCraft - podstawowy skrypt &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" />
+                        <meta property="twitter:description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom." />
+                <meta property="og:title" content="TorchCraft - podstawowy skrypt &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png" />
-                        <meta property="og:description" content="Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" />
+                        <meta property="og:description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -118,210 +118,125 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png" alt="TorchCraft - podstawy Lua" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">TorchCraft - podstawy Lua</h1>
-            <h4 class="post-header__date">07.05.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" alt="TorchCraft - podstawowy skrypt" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">TorchCraft - podstawowy skrypt</h1>
+            <h4 class="post-header__date">21.05.2017</h4>
         </header>
         <div class="post-content wrapper">
-            <p>Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu <a href="/blog/2017/04/30/instalacja-torchcrafta">poprzedniego posta</a>, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką <em>C:\Starcraft</em>, to wystarczy ściągnąć <a href="https://technet.microsoft.com/pl-pl/sysinternals/bb896768">Junction</a>, przenieść do <em>C:\Windows\System32</em> i wykonać w konsoli: <strong>junction c:\Starcraft d:\Games\Starcraft</strong>. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.</p>
+            <p>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu <code>examples</code>.</p>
 
-<h2 id="lua---podstawy">Lua - podstawy</h2>
+<h2 id="mapy">Mapy</h2>
 
-<p>Ok, TorchCraft do działania wykorzystuje Torcha (kto by pomyślał?). Torch jest biblioteką do machine learningu bazującą na języku skryptowym Lua. Jako, że nie znałem wcześniej Lua, to nadszedł czas by ogarnąć chociaż podstawy. Język najlepiej zrozumieć poprzez czytanie dokumentacji i pisanie kodu sprawdzającego poszczególne części języka. Skrypty Lua mają rozszerzenie <code>.lua</code> i są uruchamiane przez <code>lua &lt;nazwa_skryptu</code>. OK, czas na przykłady:</p>
+<p>Zacznijmy od tego, że TorchCrafta można uruchomić w dwóch trybach: micro i w normalnym. W normalnym trybie można grać na zwykłych mapach do multi. Tutaj nie ma żadnych niespodzianek. Mapy do micro nie zawierają budynków i walczą na nich dwie grupy jednostek. Do tego trybu mapy muszą być specjalnie przygotowane. Z TorchCraftem dostarczane są cztery mapy: <code>dragoons_zealots.scm</code>, <code>m5v5_c_far.scm</code>, <code>sp_dragoons_zealots.scm</code>, <code>sp_m5v5_c_far.scm</code>. Są to tak naprawdę dwie mapy w dwóch wersjach każda. Nie mam pojęcia jaka jest różnica, te z przedrostkiem <code>sp_</code> może mają jakiś związek z single playerem?</p>
 
-<h3 id="zmienne-deklaruje-i-inicjalizuje-si%E4%99-tak%3A">Zmienne deklaruje i inicjalizuje się tak:</h3>
+<p>Mapy micro zawierają rozmieszczone równomiernie specjalne, niewidzialne jednostki odkrywające cześć mapy (tak zwane Map Revealery), a także lokacje startowe (Start Location), czyli punkty, w których pojawiają się jednostki.</p>
 
-<pre><code class="lua">j = 10         -- global variable
-a = true
-b = nil
-local i = 1    -- local variable
+<p><img src="/images/posts/torchcraft_basic_script/01_dragoons_zealots.png" alt="dragoons_zealots.scm" /></p>
+
+<p>Żeby te jednostki się pojawiły potrzebne są tak zwane triggery. Tworzy się je w edytorze map w specjalnym panelu. Triggery pozwalają na wiele różnych rzeczy np. umieszczanie jednostek na mapie, sterowanie jednostkami, wypisywanie tekstu na ekranie, ogólnie - pozwalają na sterowanie grą. Triggery zawierają dwie rzeczy: <code>conditions</code> - czyli warunki dla których trigger jest uruchamiany, a także <code>actions</code> - czyli akcje uruchamiane w ramach danego triggera. Można jeszcze ustawić osobno, dla jakiego gracza trigger jest uruchamiany.</p>
+
+<p>Zobaczmy na nasze mapy micro:</p>
+
+<p><img src="/images/posts/torchcraft_basic_script/02_dragoons_zealots.png" alt="dragoons_zealots.scm" />
+<img src="/images/posts/torchcraft_basic_script/03_m5v5_c_far.png" alt="03_m5v5_c_far.scm" />
+<img src="/images/posts/torchcraft_basic_script/04_m5v5_c_far.png" alt="03_m5v5_c_far.scm" />
+<img src="/images/posts/torchcraft_basic_script/05_m5v5_c_far.png" alt="03_m5v5_c_far.scm" /></p>
+
+<p>Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.</p>
+
+<p>Ok, tyle jeśli o mapy. Czas zająć się kodem.</p>
+
+<h2 id="kod">Kod</h2>
+
+<p>Na początek napiszmy minimalny działający przykład:</p>
+
+<pre><code class="Lua">local hostname = "192.168.56.1"
+local port = 11111
+
+local tc = require 'torchcraft'
+
+tc.micro_battles = true
+
+tc:init(hostname, port)
+local update = tc:connect(port)
+
+while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+
+tc:close()
 </code></pre>
 
-<p><code>local</code> pozwala na zadeklarowanie zmiennej lokalnej, czyli ograniczonej do zasięgu bloku. Więcej o tym można poczytać w <a href="https://www.lua.org/pil/4.2.html">dokumentacji</a>.</p>
+<p>Przenalizujmy ten przykład:</p>
 
-<h3 id="wy%E5%9Bwietlanie-na-ekranie">Wyświetlanie na ekranie</h3>
+<p>Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):</p>
 
-<pre><code class="lua">a = 10
-b = nil     -- null value
-s = "hello"
-print(a, b) --&gt; 10   nil
-print(s)    --&gt; hello
+<pre><code class="Lua">local hostname = "192.168.56.1"
+local port = 11111
 </code></pre>
 
-<h3 id="wczytywanie-danych-od-u%E5%BEytkownika">Wczytywanie danych od użytkownika</h3>
+<p>Następnie ładujemy bibliotekę TorchCraft:</p>
 
-<pre><code class="lua">line = io.read()
+<pre><code class="Lua">local tc = require 'torchcraft'
 </code></pre>
 
-<h3 id="komentarze-nietypowa-sk%E5%82adnia">Komentarze (nietypowa składnia)</h3>
+<p>Przełączamy TorchCrafta w tryb micro:</p>
 
-<pre><code class="lua">-- comment
-
---[[
-block comment
-]]
+<pre><code class="Lua">tc.micro_battles = true
 </code></pre>
 
-<h3 id="konkatenacja-string%E3%B3w">Konkatenacja stringów</h3>
+<p>Odpalamy połączenie:</p>
 
-<pre><code class="lua">print("Hello " .. "World")  --&gt; Hello World
-print(0 .. 1)               --&gt; 01
-
-a = "Hello"
-print(a .. " World")   --&gt; Hello World
-print(a)               --&gt; Hello
+<pre><code class="Lua">tc:init(hostname, port)
+local update = tc:connect(port)
 </code></pre>
 
-<p>Widać także, że stringi są <em>immutable</em>.</p>
+<p>Następnie następuje pętla, w której możemy wydawać rozkazy jednostkom. W tym przykładzie nie zdefiniowaliśmy warunków zakończenia pętli, więc rozegrane zostanie nieskończenie wiele bitew:</p>
 
-<h3 id="tablice">Tablice</h3>
+<pre><code class="Lua">while not tc.state.game_ended do
+    update = tc:receive()
 
-<pre><code class="lua">a = {1, 2, 3, 4, 5}
-print(a)
+    -- code here
+end
+</code></pre>
 
---[[
-{
-  1 : 1
-  2 : 2
-  3 : 3
-  4 : 4
-  5 : 5
+<p>Na samym końcu zamykamy połączenie:</p>
+
+<pre><code class="Lua">tc:close()
+</code></pre>
+
+<p>To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą <code>while</code>:</p>
+
+<pre><code class="Lua">local setup = {
+    tc.command(tc.set_speed, 20),
+    tc.command(tc.set_gui, 1),
+    tc.command(tc.set_cmd_optim, 1),
 }
-]]
 
-print(a[0]) --&gt; nil
-print(a[1]) --&gt; 1
+tc:send({table.concat(setup, ':')})
+</code></pre>
 
-table.insert(a, 6)
-print(a)
+<p>Są to trzy komendy. <code>set_speed</code> odpowiada za prędkość gry, jeśli damy zero to gra będzie bardzo szybka, bo czas między wykonaniem logicznych klatek (logical frames) będzie praktycznie zerowy. <code>set_gui</code> ustawione na <code>1</code> oznacza, że można zobaczyć przebieg akcji. Natomiast <code>set_cmd_optim</code> to optymalizacja komend stosowana przez BWAPI, jeśli jest ustawiona BWAPI stara się zredukować liczbę akcji poprzez grupowanie i wykonywanie podobnych rozkazów. Można ustawić wartości od 0 do 4 (<a href="https://bwapi.github.io/class_b_w_a_p_i_1_1_game.html#a2e44b952a0a55416da1628237bbc82ea">dokumentacja</a>).</p>
 
---[[
-{
-  1 : 1
-  2 : 2
-  3 : 3
-  4 : 4
-  5 : 5
-  6 : 6
+<p>Zobaczmy jeszcze co jest wysyłane do TorchCrafta:</p>
+
+<pre><code class="Lua">print({table.concat(setup, ':')})
+</code></pre>
+
+<p>Otrzymamy:</p>
+
+<pre><code class="Lua">{
+  1 : "6,20:8,1:10,1"
 }
-]]
-
--- get array length
-print(table.getn(a)) --&gt; 6
-print(#a)            --&gt; 6
-
-a = {x=1, y=1}  -- array as record
-print(a.x, a.y) --&gt; 1   1
-
 </code></pre>
 
-<p>Iterację tabeli zaczynamy od <em>1</em>. Więcej na temat tablic w <a href="https://www.lua.org/pil/3.6.html">dokumentacji</a>.</p>
-
-<h3 id="instrukcje-warunkowe">Instrukcje warunkowe</h3>
-
-<pre><code class="lua">a = 10
-
-if a == 9 then
-    print("9")
-elseif a == 10 then
-    print("10")
-else
-    print("nothing")
-end
-
-if a ~= 9 then
-    print("a != 9")
-end
-
-b = 0
-
-if b then
-    print("zero")
-end
-
-if not false then
-    print("!false")
-end
-
-c = {}
-
-if c then
-    print("array")
-end
-
-print(not nil)     --&gt; true
-print(not false)   --&gt; true
-print(not 0)       --&gt; false
-print(not not nil) --&gt; false
-
-</code></pre>
-
-<p>Jak widać, w przeciwieństwie do większości pozostałych języków programowania zamiast operatora <code>!=</code> jest <code>~=</code>, zamiast <code>!</code> jest <code>not</code>, a do tego <code>if 0 then</code> albo <code>if {} then</code> ma wartość <code>true</code> i blok się wykona.</p>
-
-<h3 id="p%E4%99tle">Pętle</h3>
-
-<pre><code class="lua">for i = 1, 10 do
-   print(i)
-end
-
-for i = 10, 1, -1 do
-    print(i)
-end
-
-days = {"Sunday", "Monday", "Tuesday", "Wednesday",
-        "Thursday", "Friday", "Saturday"}
-
-for i, day in ipairs(days) do
-    print(day)
-end
-
-
-local i = 1
-
-while i &lt;= 10 do
-    print(i)
-    i = i + 1
-end
-
--- repeat if line is empty (if line string is "")
-repeat
-    line = io.read()
-until line ~= ""
-print(line)
-</code></pre>
-
-<h3 id="funkcje">Funkcje</h3>
-
-<pre><code class="lua">function add (a, b)
-    return a + b
-end
-
-print(add(1, 2)) --&gt; 3
-</code></pre>
-
-<h3 id="klasy">Klasy</h3>
-
-<pre><code class="lua">Account = { balance = 0,
-                withdraw = function (self, v)
-                    self.balance = self.balance - v
-                end
-          }
-
-function Account:deposit (v)
-  self.balance = self.balance + v
-end
-
-Account.deposit(Account, 200.00)
-Account:withdraw(100.00)
-
-print(Account.balance) --&gt; 100
-</code></pre>
-
-<p><a href="https://www.lua.org/pil/16.1.html">Klasy</a> generalnie są dość odjechane z tego co widziałem, więc nie będę tego opisywał, bo nie miałem dość czasu by to wszystko zrozumieć.</p>
+<p>Widzimy, że komendy są oddzielone dwukropkami, a liczbowe identyfikatory komend są oddzielone od wartości przecinkami.</p>
 
 <h2 id="podsumowanie">Podsumowanie</h2>
 
-<p>Tyle z podstaw. Wszystkiego w tak krótkim czasie nie ogarnąłem, ale te postawy to już coś co pozwala coś napisać. O Torchu i o działaniu TorchCrafta napiszę następnym razem.</p>
+<p>Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)</p>
 
         </div>
                     <p class="post-categories">
@@ -329,7 +244,7 @@ print(Account.balance) --&gt; 100
                         <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
                             <p class="post-tags">
             Tagi:
-                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/lua" class="post-tags__item">lua</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/lua" class="post-tags__item">lua</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>,                         <a href="https://dloranc.github.io/blog/tagi/torch" class="post-tags__item">torch</a>                        </p>
         
         <h2>Udostępnij:</h2>
         <!-- AddToAny BEGIN -->
@@ -348,8 +263,7 @@ print(Account.balance) --&gt; 100
 
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna" title="Multi-armed bandit - wersja niestacjonarna"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja" title="Multi-armed bandit - prosta optymalizacja"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna" title="Multi-armed bandit - wersja niestacjonarna"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>

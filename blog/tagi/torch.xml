@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[Dawid Loranc]]></title>
-    <link href="https://dloranc.github.io/blog/tagi/lua.xml" rel="self"/>
+    <link href="https://dloranc.github.io/blog/tagi/torch.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
     <updated>2017-05-21T23:12:02+02:00</updated>
     <id>https://dloranc.github.io/</id>
@@ -16,14 +16,5 @@
             <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
             <summary>Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
-            <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
-            <published>2017-05-07T23:40:00+02:00</published>
-            <updated>2017-05-07T23:40:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</id>
-            <summary>Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.</summary>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.]]></content>
         </entry>
     </feed>

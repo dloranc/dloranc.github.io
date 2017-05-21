@@ -3,11 +3,359 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-07T21:35:50+02:00</updated>
+    <updated>2017-05-21T23:12:02+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>
+            <published>2017-05-21T23:55:00+02:00</published>
+            <updated>2017-05-21T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+
+Mapy
+
+Zacznijmy od tego, że TorchCrafta można uruchomić w dwóch trybach: micro i w normalnym. W normalnym trybie można grać na zwykłych mapach do multi. Tutaj nie ma żadnych niespodzianek. Mapy do micro nie zawierają budynków i walczą na nich dwie grupy jednostek. Do tego trybu mapy muszą być specjalnie przygotowane. Z TorchCraftem dostarczane są cztery mapy: dragoons_zealots.scm, m5v5_c_far.scm, sp_dragoons_zealots.scm, sp_m5v5_c_far.scm. Są to tak naprawdę dwie mapy w dwóch wersjach każda. Nie mam pojęcia jaka jest różnica, te z przedrostkiem sp_ może mają jakiś związek z single playerem?
+
+Mapy micro zawierają rozmieszczone równomiernie specjalne, niewidzialne jednostki odkrywające cześć mapy (tak zwane Map Revealery), a także lokacje startowe (Start Location), czyli punkty, w których pojawiają się jednostki.
+
+
+
+Żeby te jednostki się pojawiły potrzebne są tak zwane triggery. Tworzy się je w edytorze map w specjalnym panelu. Triggery pozwalają na wiele różnych rzeczy np. umieszczanie jednostek na mapie, sterowanie jednostkami, wypisywanie tekstu na ekranie, ogólnie - pozwalają na sterowanie grą. Triggery zawierają dwie rzeczy: conditions - czyli warunki dla których trigger jest uruchamiany, a także actions - czyli akcje uruchamiane w ramach danego triggera. Można jeszcze ustawić osobno, dla jakiego gracza trigger jest uruchamiany.
+
+Zobaczmy na nasze mapy micro:
+
+
+
+
+
+
+Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.
+
+Ok, tyle jeśli o mapy. Czas zająć się kodem.
+
+Kod
+
+Na początek napiszmy minimalny działający przykład:
+
+<pre>local hostname = "192.168.56.1"
+local port = 11111
+
+local tc = require 'torchcraft'
+
+tc.micro_battles = true
+
+tc:init(hostname, port)
+local update = tc:connect(port)
+
+while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+
+tc:close()
+</pre>
+
+Przenalizujmy ten przykład:
+
+Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):
+
+<pre>local hostname = "192.168.56.1"
+local port = 11111
+</pre>
+
+Następnie ładujemy bibliotekę TorchCraft:
+
+<pre>local tc = require 'torchcraft'
+</pre>
+
+Przełączamy TorchCrafta w tryb micro:
+
+<pre>tc.micro_battles = true
+</pre>
+
+Odpalamy połączenie:
+
+<pre>tc:init(hostname, port)
+local update = tc:connect(port)
+</pre>
+
+Następnie następuje pętla, w której możemy wydawać rozkazy jednostkom. W tym przykładzie nie zdefiniowaliśmy warunków zakończenia pętli, więc rozegrane zostanie nieskończenie wiele bitew:
+
+<pre>while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+</pre>
+
+Na samym końcu zamykamy połączenie:
+
+<pre>tc:close()
+</pre>
+
+To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
+
+<pre>local setup = {
+    tc.command(tc.set_speed, 20),
+    tc.command(tc.set_gui, 1),
+    tc.command(tc.set_cmd_optim, 1),
+}
+
+tc:send({table.concat(setup, ':')})
+</pre>
+
+Są to trzy komendy. set_speed odpowiada za prędkość gry, jeśli damy zero to gra będzie bardzo szybka, bo czas między wykonaniem logicznych klatek (logical frames) będzie praktycznie zerowy. set_gui ustawione na 1 oznacza, że można zobaczyć przebieg akcji. Natomiast set_cmd_optim to optymalizacja komend stosowana przez BWAPI, jeśli jest ustawiona BWAPI stara się zredukować liczbę akcji poprzez grupowanie i wykonywanie podobnych rozkazów. Można ustawić wartości od 0 do 4 (dokumentacja).
+
+Zobaczmy jeszcze co jest wysyłane do TorchCrafta:
+
+<pre>print({table.concat(setup, ':')})
+</pre>
+
+Otrzymamy:
+
+<pre>{
+  1 : "6,20:8,1:10,1"
+}
+</pre>
+
+Widzimy, że komendy są oddzielone dwukropkami, a liczbowe identyfikatory komend są oddzielone od wartości przecinkami.
+
+Podsumowanie
+
+Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)
+]]></content>
+            <summary>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+
+Mapy
+
+Zacznijmy od tego, że TorchCrafta można uruchomić w dwóch trybach: micro i w normalnym. W normalnym trybie można grać na zwykłych mapach do multi. Tutaj nie ma żadnych niespodzianek. Mapy do micro nie zawierają budynków i walczą na nich dwie grupy jednostek. Do tego trybu mapy muszą być specjalnie przygotowane. Z TorchCraftem dostarczane są cztery mapy: dragoons_zealots.scm, m5v5_c_far.scm, sp_dragoons_zealots.scm, sp_m5v5_c_far.scm. Są to tak naprawdę dwie mapy w dwóch wersjach każda. Nie mam pojęcia jaka jest różnica, te z przedrostkiem sp_ może mają jakiś związek z single playerem?
+
+Mapy micro zawierają rozmieszczone równomiernie specjalne, niewidzialne jednostki odkrywające cześć mapy (tak zwane Map Revealery), a także lokacje startowe (Start Location), czyli punkty, w których pojawiają się jednostki.
+
+
+
+Żeby te jednostki się pojawiły potrzebne są tak zwane triggery. Tworzy się je w edytorze map w specjalnym panelu. Triggery pozwalają na wiele różnych rzeczy np. umieszczanie jednostek na mapie, sterowanie jednostkami, wypisywanie tekstu na ekranie, ogólnie - pozwalają na sterowanie grą. Triggery zawierają dwie rzeczy: conditions - czyli warunki dla których trigger jest uruchamiany, a także actions - czyli akcje uruchamiane w ramach danego triggera. Można jeszcze ustawić osobno, dla jakiego gracza trigger jest uruchamiany.
+
+Zobaczmy na nasze mapy micro:
+
+
+
+
+
+
+Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.
+
+Ok, tyle jeśli o mapy. Czas zająć się kodem.
+
+Kod
+
+Na początek napiszmy minimalny działający przykład:
+
+<pre>local hostname = "192.168.56.1"
+local port = 11111
+
+local tc = require 'torchcraft'
+
+tc.micro_battles = true
+
+tc:init(hostname, port)
+local update = tc:connect(port)
+
+while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+
+tc:close()
+</pre>
+
+Przenalizujmy ten przykład:
+
+Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):
+
+<pre>local hostname = "192.168.56.1"
+local port = 11111
+</pre>
+
+Następnie ładujemy bibliotekę TorchCraft:
+
+<pre>local tc = require 'torchcraft'
+</pre>
+
+Przełączamy TorchCrafta w tryb micro:
+
+<pre>tc.micro_battles = true
+</pre>
+
+Odpalamy połączenie:
+
+<pre>tc:init(hostname, port)
+local update = tc:connect(port)
+</pre>
+
+Następnie następuje pętla, w której możemy wydawać rozkazy jednostkom. W tym przykładzie nie zdefiniowaliśmy warunków zakończenia pętli, więc rozegrane zostanie nieskończenie wiele bitew:
+
+<pre>while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+</pre>
+
+Na samym końcu zamykamy połączenie:
+
+<pre>tc:close()
+</pre>
+
+To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
+
+<pre>local setup = {
+    tc.command(tc.set_speed, 20),
+    tc.command(tc.set_gui, 1),
+    tc.command(tc.set_cmd_optim, 1),
+}
+
+tc:send({table.concat(setup, ':')})
+</pre>
+
+Są to trzy komendy. set_speed odpowiada za prędkość gry, jeśli damy zero to gra będzie bardzo szybka, bo czas między wykonaniem logicznych klatek (logical frames) będzie praktycznie zerowy. set_gui ustawione na 1 oznacza, że można zobaczyć przebieg akcji. Natomiast set_cmd_optim to optymalizacja komend stosowana przez BWAPI, jeśli jest ustawiona BWAPI stara się zredukować liczbę akcji poprzez grupowanie i wykonywanie podobnych rozkazów. Można ustawić wartości od 0 do 4 (dokumentacja).
+
+Zobaczmy jeszcze co jest wysyłane do TorchCrafta:
+
+<pre>print({table.concat(setup, ':')})
+</pre>
+
+Otrzymamy:
+
+<pre>{
+  1 : "6,20:8,1:10,1"
+}
+</pre>
+
+Widzimy, że komendy są oddzielone dwukropkami, a liczbowe identyfikatory komend są oddzielone od wartości przecinkami.
+
+Podsumowanie
+
+Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)
+</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna"/>
+            <published>2017-05-21T23:55:00+02:00</published>
+            <updated>2017-05-21T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png"/>            Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+Problem niestacjonarny
+
+W tym poście zajmę się tematem szczególnego rodzaju multi-armed bandit problem (MAB), który polega na tym, że dla każdego jednorękiego bandyty wartość nagród zmienia się w czasie. Jest to tak zwana niestacjonarna wersja MAB. Do tej pory wartość nagród otrzymywana była z pewnego rozkładu normalnego o pewnej średniej i wariancji (średnia dla każdego ramienia wybierana była losowo na początku w konstruktorze).
+
+Wyglądało to mniej więcej tak:
+
+
+
+Jest to tak zwany proces stacjonarny.
+
+Proces niestacjonarny wygląda tak i to nim się zajmiemy:
+
+
+
+Rozwiązanie
+
+Hmm, skoro otrzymywane nagrody zmieniają się w czasie, to będziemy potrzebowali czegoś w rodzaju średniej ważonej.
+
+Na początek jedna rzecz, przypomnijmy wzór z poprzedniego wpisu:
+$$Q_{n+1} \doteq Q_n + \frac{1}{n}\Big[R_n - Q_n\Big]$$
+
+Przekształćmy go na:
+
+$$Q_{n+1} \doteq Q_n + \alpha\Big[R_n - Q_n\Big]$$
+
+Gdzie &#92;(\alpha&#92;) będzie pewnym parametrem, mogącym mieć pewną stałą wartość albo wartość &#92;(\frac{1}{n}&#92;) jak dotychczas.
+
+Przekształcamy:
+
+$$\begin{align} Q_{n+1} &amp; \doteq Q_n + \alpha\Big[R_n - Q_n\Big] &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)Q_n &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)[\alpha R_{n - 1} + (1 - \alpha) Q{n - 1}] &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)\alpha R_{n - 1} + (1 - \alpha)^2 Q{n - 1} &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)\alpha R_{n - 1} + (1 - \alpha)^2 \alpha R_{n-2} + &#92;&#92;
+&amp; \qquad \qquad \dots + (1 - \alpha)^{n - 1} \alpha R_1 + (1 - \alpha)^n Q_1 &#92;&#92;
+&amp; = (1 - \alpha)^n + \sum_{i = 1}^n \alpha (1 - \alpha)^{n - i} R_i
+\end{align}$$
+
+Podsumowanie
+
+Sprawdźmy, czy to działa:
+
+
+
+Działa. To tyle, dużo tego nie było. Trzeba było tylko znowu przerobić jedno równanie. Dodam tylko, że Sutton i Barto doradzają, by korzystać ze stałych wartości &#92;(\alpha&#92;), gdyż sobie lepiej radzą ze względu na to, że nie spełniają pewnych warunków zbieżności szeregów i to jest akurat pożądane w niestacjonarnych problemach. Więcej szczegółów można znaleźć w książce.
+
+Kod znajduje się tutaj. W następnym wpisie zajmę się kolejną drobną optymalizacją multi-armed bandit.
+]]></content>
+            <summary>Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+Problem niestacjonarny
+
+W tym poście zajmę się tematem szczególnego rodzaju multi-armed bandit problem (MAB), który polega na tym, że dla każdego jednorękiego bandyty wartość nagród zmienia się w czasie. Jest to tak zwana niestacjonarna wersja MAB. Do tej pory wartość nagród otrzymywana była z pewnego rozkładu normalnego o pewnej średniej i wariancji (średnia dla każdego ramienia wybierana była losowo na początku w konstruktorze).
+
+Wyglądało to mniej więcej tak:
+
+
+
+Jest to tak zwany proces stacjonarny.
+
+Proces niestacjonarny wygląda tak i to nim się zajmiemy:
+
+
+
+Rozwiązanie
+
+Hmm, skoro otrzymywane nagrody zmieniają się w czasie, to będziemy potrzebowali czegoś w rodzaju średniej ważonej.
+
+Na początek jedna rzecz, przypomnijmy wzór z poprzedniego wpisu:
+$$Q_{n+1} \doteq Q_n + \frac{1}{n}\Big[R_n - Q_n\Big]$$
+
+Przekształćmy go na:
+
+$$Q_{n+1} \doteq Q_n + \alpha\Big[R_n - Q_n\Big]$$
+
+Gdzie &#92;(\alpha&#92;) będzie pewnym parametrem, mogącym mieć pewną stałą wartość albo wartość &#92;(\frac{1}{n}&#92;) jak dotychczas.
+
+Przekształcamy:
+
+$$\begin{align} Q_{n+1} &amp; \doteq Q_n + \alpha\Big[R_n - Q_n\Big] &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)Q_n &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)[\alpha R_{n - 1} + (1 - \alpha) Q{n - 1}] &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)\alpha R_{n - 1} + (1 - \alpha)^2 Q{n - 1} &#92;&#92;
+&amp; = \alpha R_n + (1 - \alpha)\alpha R_{n - 1} + (1 - \alpha)^2 \alpha R_{n-2} + &#92;&#92;
+&amp; \qquad \qquad \dots + (1 - \alpha)^{n - 1} \alpha R_1 + (1 - \alpha)^n Q_1 &#92;&#92;
+&amp; = (1 - \alpha)^n + \sum_{i = 1}^n \alpha (1 - \alpha)^{n - i} R_i
+\end{align}$$
+
+Podsumowanie
+
+Sprawdźmy, czy to działa:
+
+
+
+Działa. To tyle, dużo tego nie było. Trzeba było tylko znowu przerobić jedno równanie. Dodam tylko, że Sutton i Barto doradzają, by korzystać ze stałych wartości &#92;(\alpha&#92;), gdyż sobie lepiej radzą ze względu na to, że nie spełniają pewnych warunków zbieżności szeregów i to jest akurat pożądane w niestacjonarnych problemach. Więcej szczegółów można znaleźć w książce.
+
+Kod znajduje się tutaj. W następnym wpisie zajmę się kolejną drobną optymalizacją multi-armed bandit.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
@@ -3538,190 +3886,6 @@ Na wyjściu otrzymujemy:
 
 <pre>[0 1 2 3 0 4]
 </pre>
-</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
-            <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
-            <published>2016-09-01T00:00:00+02:00</published>
-            <updated>2016-09-01T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/kfold_stratifiedkfold.png"/>            Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?
-
-Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę scikit-learn takich jak KFold i StratifiedKFold.
-
-Przykład z KFold:
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import KFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-kf = KFold(len(X), n_folds=2, shuffle=True)
-
-train_index, test_index = next(iter(kf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</pre>
-
-Na wyjściu otrzymamy:
-
-<pre>TRAIN X: [[1 2]
- [1 2]]
-TEST X: [[3 4]
- [3 4]]
-TRAIN y: [0 1]
-TEST y: [0 1]
-</pre>
-
-Albo na przykład:
-
-<pre>TRAIN X: [[1 2]
- [3 4]]
-TEST X: [[1 2]
- [3 4]]
-TRAIN y: [0 0]
-TEST y: [1 1]
-</pre>
-
-Na powyższym przykładzie widać, że po przeprowadzeniu podziału na dwa zbiory może dojść do takiej sytuacji, że w zbiorze treningowym albo testowym będą dane należące do tylko jednej klasy. KFold nie zapewnia równomiernego rozkładu klas. Aby temu zapobiec można skorzystać z StratifiedKFold, który zapewnia równomierny rozkład klas w każdym zbiorze.
-
-Przykład z StratifiedKFold:
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import StratifiedKFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-skf = StratifiedKFold(y, n_folds=1)
-
-train_index, test_index = next(iter(skf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</pre>
-
-Więcej o KFold i StratifiedKFold można poczytać w dokumentacji scikit-learn:
-
-KFold
-
-StratifiedKFold
-]]></content>
-            <summary>Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?
-
-Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę scikit-learn takich jak KFold i StratifiedKFold.
-
-Przykład z KFold:
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import KFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-kf = KFold(len(X), n_folds=2, shuffle=True)
-
-train_index, test_index = next(iter(kf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</pre>
-
-Na wyjściu otrzymamy:
-
-<pre>TRAIN X: [[1 2]
- [1 2]]
-TEST X: [[3 4]
- [3 4]]
-TRAIN y: [0 1]
-TEST y: [0 1]
-</pre>
-
-Albo na przykład:
-
-<pre>TRAIN X: [[1 2]
- [3 4]]
-TEST X: [[1 2]
- [3 4]]
-TRAIN y: [0 0]
-TEST y: [1 1]
-</pre>
-
-Na powyższym przykładzie widać, że po przeprowadzeniu podziału na dwa zbiory może dojść do takiej sytuacji, że w zbiorze treningowym albo testowym będą dane należące do tylko jednej klasy. KFold nie zapewnia równomiernego rozkładu klas. Aby temu zapobiec można skorzystać z StratifiedKFold, który zapewnia równomierny rozkład klas w każdym zbiorze.
-
-Przykład z StratifiedKFold:
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.cross_validation import StratifiedKFold
-
-X = np.array([[1, 2], [3, 4], [1, 2], [3, 4]])
-y = np.array([0, 0, 1, 1])
-skf = StratifiedKFold(y, n_folds=1)
-
-train_index, test_index = next(iter(skf))
-
-X_train, X_test = X[train_index], X[test_index]
-y_train, y_test = y[train_index], y[test_index]
-
-print("TRAIN X:", X_train)
-print("TEST X:", X_test)
-print("TRAIN y:", y_train)
-print("TEST y:", y_test)
-</pre>
-
-Więcej o KFold i StratifiedKFold można poczytać w dokumentacji scikit-learn:
-
-KFold
-
-StratifiedKFold
-</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Hello World!]]></title>
-            <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
-            <published>2016-08-02T00:00:00+02:00</published>
-            <updated>2016-08-02T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
-            <content type="html"><![CDATA[            Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.
-
-Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.
-
-Miłego czytania :)
-]]></content>
-            <summary>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.
-
-Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.
-
-Miłego czytania :)
 </summary>
         </entry>
     </feed>

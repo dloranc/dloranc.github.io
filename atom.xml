@@ -3,11 +3,29 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-07T21:35:50+02:00</updated>
+    <updated>2017-05-21T23:12:02+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>
+            <published>2017-05-21T23:55:00+02:00</published>
+            <updated>2017-05-21T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.]]></content>
+            <summary>Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.</summary>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna"/>
+            <published>2017-05-21T23:55:00+02:00</published>
+            <updated>2017-05-21T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png"/>            Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.]]></content>
+            <summary>Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
@@ -169,23 +187,5 @@
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
             <summary>Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
-            <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
-            <published>2016-09-01T00:00:00+02:00</published>
-            <updated>2016-09-01T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/kfold_stratifiedkfold.png"/>            Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.]]></content>
-            <summary>Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki <strong>scikit-learn</strong> do dzielenia zbioru danych.</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Hello World!]]></title>
-            <link href="https://dloranc.github.io/blog/2016/08/02/hello-world"/>
-            <published>2016-08-02T00:00:00+02:00</published>
-            <updated>2016-08-02T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/08/02/hello-world</id>
-            <content type="html"><![CDATA[            Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś...]]></content>
-            <summary>Witaj świecie! Ostatnio czytając co piszą ludzie na kanale #blogreview w teamie Devs PL na Slacku naszło mnie na stworzenie czegoś...</summary>
         </entry>
     </feed>
