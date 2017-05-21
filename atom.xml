@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-21T23:17:56+02:00</updated>
+    <updated>2017-05-21T23:20:25+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -14,8 +14,8 @@
             <published>2017-05-21T23:55:00+02:00</published>
             <updated>2017-05-21T23:55:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.]]></content>
-            <summary>Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak wydawać rozkazy jednostkom.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.]]></content>
+            <summary>Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.</summary>
         </entry>
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
