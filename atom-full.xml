@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-21T23:12:02+02:00</updated>
+    <updated>2017-05-21T23:17:56+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -14,7 +14,7 @@
             <published>2017-05-21T23:55:00+02:00</published>
             <updated>2017-05-21T23:55:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
 
 Mapy
 
@@ -35,7 +35,7 @@ Zobaczmy na nasze mapy micro:
 
 Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.
 
-Ok, tyle jeśli o mapy. Czas zająć się kodem.
+Ok, tyle jeśli chodzi o mapy. Czas zająć się kodem.
 
 Kod
 
@@ -62,7 +62,7 @@ tc:close()
 
 Przenalizujmy ten przykład:
 
-Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):
+Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windows ze Starcraftem):
 
 <pre>local hostname = "192.168.56.1"
 local port = 11111
@@ -98,7 +98,7 @@ Na samym końcu zamykamy połączenie:
 <pre>tc:close()
 </pre>
 
-To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
+Jak widać, sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
 
 <pre>local setup = {
     tc.command(tc.set_speed, 20),
@@ -129,7 +129,7 @@ Podsumowanie
 
 Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)
 ]]></content>
-            <summary>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+            <summary>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
 
 Mapy
 
@@ -150,7 +150,7 @@ Zobaczmy na nasze mapy micro:
 
 Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.
 
-Ok, tyle jeśli o mapy. Czas zająć się kodem.
+Ok, tyle jeśli chodzi o mapy. Czas zająć się kodem.
 
 Kod
 
@@ -177,7 +177,7 @@ tc:close()
 
 Przenalizujmy ten przykład:
 
-Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):
+Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windows ze Starcraftem):
 
 <pre>local hostname = "192.168.56.1"
 local port = 11111
@@ -213,7 +213,7 @@ Na samym końcu zamykamy połączenie:
 <pre>tc:close()
 </pre>
 
-To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
+Jak widać, sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą while:
 
 <pre>local setup = {
     tc.command(tc.set_speed, 20),

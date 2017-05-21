@@ -123,7 +123,7 @@
             <h4 class="post-header__date">21.05.2017</h4>
         </header>
         <div class="post-content wrapper">
-            <p>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem.TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu <code>examples</code>.</p>
+            <p>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu <code>examples</code>.</p>
 
 <h2 id="mapy">Mapy</h2>
 
@@ -144,7 +144,7 @@
 
 <p>Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.</p>
 
-<p>Ok, tyle jeśli o mapy. Czas zająć się kodem.</p>
+<p>Ok, tyle jeśli chodzi o mapy. Czas zająć się kodem.</p>
 
 <h2 id="kod">Kod</h2>
 
@@ -171,7 +171,7 @@ tc:close()
 
 <p>Przenalizujmy ten przykład:</p>
 
-<p>Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windowsem ze Starcraftem):</p>
+<p>Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windows ze Starcraftem):</p>
 
 <pre><code class="Lua">local hostname = "192.168.56.1"
 local port = 11111
@@ -207,7 +207,7 @@ end
 <pre><code class="Lua">tc:close()
 </code></pre>
 
-<p>To tyle, jak widać sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą <code>while</code>:</p>
+<p>Jak widać, sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą <code>while</code>:</p>
 
 <pre><code class="Lua">local setup = {
     tc.command(tc.set_speed, 20),
