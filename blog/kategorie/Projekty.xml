@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Projekty.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-28T17:04:08+02:00</updated>
+    <updated>2017-05-28T23:33:33+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Torchcraft - analiza i zmiana stanu gry]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry"/>
+            <published>2017-05-28T23:55:00+02:00</published>
+            <updated>2017-05-28T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry</id>
+            <summary>Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg"/>            Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>

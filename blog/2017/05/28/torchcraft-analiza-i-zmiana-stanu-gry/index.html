@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+    <head>
+                <title>Dawid Loranc &mdash; Torchcraft - analiza i zmiana stanu gry</title>
+                <meta charset="utf-8">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.">
+                <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="DLoranc" />
+        <meta name="twitter:creator" content="DLoranc" />
+        <meta property="twitter:title" content="Torchcraft - analiza i zmiana stanu gry &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg" />
+                        <meta property="twitter:description" content="Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom." />
+                <meta property="og:title" content="Torchcraft - analiza i zmiana stanu gry &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry" />
+        <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
+        <meta property="og:locale" content="pl_PL" />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg" />
+                        <meta property="og:description" content="Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom." />
+                    <meta name="robots" content="index, follow">
+        <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-startup-image" href="https://dloranc.github.io/images/icons/2048x2048.jpg">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="shortcut icon" sizes="76x76" href="https://dloranc.github.io/images/icons/76x76.jpg">
+        <link rel="shortcut icon" sizes="120x120" href="https://dloranc.github.io/images/icons/120x120.jpg">
+        <link rel="shortcut icon" sizes="128x128" href="https://dloranc.github.io/images/icons/128x128.jpg">
+        <link rel="shortcut icon" sizes="152x152" href="https://dloranc.github.io/images/icons/152x152.jpg">
+        <link rel="shortcut icon" sizes="196x196" href="https://dloranc.github.io/images/icons/196x196.jpg">
+        <link rel="shortcut icon" sizes="512x512" href="https://dloranc.github.io/images/icons/512x512.jpg">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://dloranc.github.io/images/icons/76x76.jpg">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://dloranc.github.io/images/icons/120x120.jpg">
+        <link rel="apple-touch-icon" sizes="128x128" href="https://dloranc.github.io/images/icons/128x128.jpg">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://dloranc.github.io/images/icons/152x152.jpg">
+        <link rel="apple-touch-icon" sizes="196x196" href="https://dloranc.github.io/images/icons/196x196.jpg">
+        <link rel="apple-touch-icon" sizes="512x512" href="https://dloranc.github.io/images/icons/512x512.jpg">
+        <link rel="apple-touch-icon" sizes="1024x1024" href="https://dloranc.github.io/images/icons/1024x1024.jpg">
+        <link rel="apple-touch-icon" sizes="2048x2048" href="https://dloranc.github.io/images/icons/2048x2048.jpg">
+        <link rel="alternate" type="application/atom+xml" href="https://dloranc.github.io/atom.xml" title="Dawid Loranc - Kanał RSS" />
+        <link rel="alternate" type="application/atom+xml" href="https://dloranc.github.io/atom-full.xml" title="Dawid Loranc - Pełny Kanał RSS" />
+                        <!-- Facebook Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1903996866503328'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1903996866503328&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- DO NOT MODIFY -->
+        <!-- End Facebook Pixel Code -->
+        <script type="text/javascript">fbq('track', 'ViewContent');</script>
+    </head>
+    <body>
+        <header class="header container">
+            <a class="header__title" href="https://dloranc.github.io/">Dawid Loranc</a>
+            <small class="header__subtitle">„What I cannot create, I do not understand.” - Richard Feynman</small>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="container-fluid">
+                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                    Menu
+                                </a>
+
+                                <div class="nav-collapse collapse">
+                                    <ul class="nav">
+                                        <li>
+                                            <a href="https://dloranc.github.io/"
+                                            >Strona główna</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/archiwum-postow"
+                                            >Archiwum postów</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/blog/kategorie"
+                                            >Kategorie</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/blog/tagi"
+                                            >Tagi</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/projekty"
+                                            >Projekty</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/o-mnie"
+                                            >O mnie</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://dloranc.github.io/polityka-prywatnosci"
+                                            >Polityka prywatności</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-content container">
+            <div class="row-fluid">
+                <div class="span12">
+                        <article class="post">
+        <header class="post-header">
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg" alt="Torchcraft - analiza i zmiana stanu gry" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Torchcraft - analiza i zmiana stanu gry</h1>
+            <h4 class="post-header__date">28.05.2017</h4>
+        </header>
+        <div class="post-content wrapper">
+            <p>W ostatnim <a href="/blog/2017/05/21/torchcraft-podstawowy-skrypt/">poście o projekcie</a> opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.</p>
+
+<h2 id="stan-gry">Stan gry</h2>
+
+<p>OK, czas sprawdzić co mamy dostępne jeśli chodzi o stan gry. Najpierw przypomnę podstawowy skrypt z poprzedniej notki:</p>
+
+<pre><code class="Lua">local hostname = "192.168.56.1"
+local port = 11111
+
+local tc = require 'torchcraft'
+
+tc.micro_battles = true
+
+tc:init(hostname, port)
+local update = tc:connect(port)
+
+local setup = {
+    tc.command(tc.set_speed, 20),
+    tc.command(tc.set_gui, 1),
+    tc.command(tc.set_cmd_optim, 1),
+}
+
+tc:send({table.concat(setup, ':')})
+
+while not tc.state.game_ended do
+    update = tc:receive()
+
+    -- code here
+end
+tc:close()
+</code></pre>
+
+<p>W TorchCrafcie co logical frame'a następuje zmiana stanu gry. Można się do niego dobrać odwołując się do <code>tc.state</code>. Zmienna ta jest tabelą o następujących kluczach:</p>
+
+<pre><code class="Lua">--[[
+    state will get its content updated from bwapi, it will have
+    * map_data            : [torch.ByteTensor] 2D. 255 (-1) where not walkable
+    * map_name            : [string] Name on the current map
+    * img_mode            : [string] Image mode selected (can be empty, raw, compress)
+    * lag_frames          : [int] number of frames from order to execution
+    * frame_from_bwapi    : [int] game frame number as seen from BWAPI
+    * game_ended          : [boolean] did the game end? (i.e. did the map end)
+    * battle_just_ended   : [boolean] did the battle just end? (battle!=game)
+    * waiting_for_restart : [boolean] are we waiting to restart a new battle?
+    * battle_won          : [boolean] did we win the battle?
+    * units_myself        : [table] w/ {unitIDs: unitStates} as {keys: values}
+    * units_enemy         : [table] same as above, but for the enemy player
+    * bullets             : [table] table with all bullets (position and type)
+    * screen_position     : [table] Position of screen {x, y} in pixels. {0, 0} is top-left
+]]
+</code></pre>
+
+<p>I nie tylko, jest jeszcze <code>units_neutral</code> (zawiera zwierzątka, minerały i gazy) i pewnie jeszcze parę innych, ale tego musiałbym szukać w kodzie TorchCrafta. Ten powyższy komentarz wziąłem z kodu TorchCrafta.</p>
+
+<p>Jak widać, w podstawowym skrypcie wykorzystywany już jest <code>game_ended</code>.</p>
+
+<p>Interesującą strukturą jest <code>map_data</code>. Jest to <code>ByteTensor</code> z Torcha i zawiera on informacje o mapie, takie jak na przykład miejsca, do których jednostki nie mogą dojść i tym podobne. Bardzo przydatne. Dla <em>m5v5_c_far.scm</em> rozmiar mapy wynosi 256x256 i można go uzyskać poprzez:</p>
+
+<pre><code class="Lua">local map = tc.state.map_data
+print(map:size())
+</code></pre>
+
+<p>Dla nas najbardziej interesujące będą <code>units_myself</code>, <code>units_enemy</code> i <code>bullets</code>. Sprawdźmy co zawiera <code>units_myself</code>:</p>
+
+<pre><code class="Lua">print(tc.state.units_myself)
+
+{
+  21 :
+    {
+      lifted : false
+      pixel_size_x : 17
+      detected : true
+      gwcd : 0
+      idle : false
+      awrange : 16
+      order : 6
+      type : 0
+      position :
+        {
+          1 : 83
+          2 : 141
+        }
+      targetpos :
+        {
+          1 : 60
+          2 : 150
+        }
+      energy : 0
+      size : 1
+      resource : 0
+      gwdmgtype : 3
+      pixel_y : 1128
+      shieldArmor : 0
+      awattack : 6
+      playerId : 0
+      visible : 1
+      velocity :
+        {
+          1 : 0
+          2 : 0
+        }
+      hp : 40
+      awdmgtype : 3
+      orders :
+        {
+          1 :
+            {
+              first_frame : 5
+              target : -1
+              type : 6
+              targetpos :
+                {
+                  1 : 60
+                  2 : 150
+                }
+            }
+        }
+      max_hp : 40
+      target : -1
+      armor : 0
+      max_shield : 0
+      maxcd : 15
+      gwattack : 6
+      shield : 0
+      awcd : 0
+      pixel_x : 664
+      gwrange : 16
+      pixel_size_y : 20
+    }
+
+    -- ...
+}
+</code></pre>
+
+<p>Naprawdę sporo danych o jednostce.</p>
+
+<h2 id="komendy">Komendy</h2>
+
+<p>Przyszedł czas na wydawanie rozkazów jednostkom. Przeróbmy pętlę while:</p>
+
+<pre><code class="Lua">local give_orders = false
+
+while not tc.state.game_ended do
+    update = tc:receive()
+
+    local actions = {}
+
+    if give_orders == false then
+        for uid, unit in pairs(tc.state.units_myself) do
+            table.insert(actions,
+                tc.command(
+                    tc.command_unit_protected,
+                    uid,
+                    tc.cmd.Attack_Move,
+                    -1,
+                    103,
+                    141
+                )
+            )
+        end
+
+        give_orders = true
+    end
+
+    tc:send({table.concat(actions, ':')})
+
+    if tc.state.battle_just_ended or tc.state.waiting_for_restart then
+        give_orders = false
+    end
+end
+</code></pre>
+
+<p>Powyższy kod na samym początku bitwy wydaje rozkaz ataku miejsca, w którym znajdują się jednostki wroga. Aby wydać komendy w danym frame'u tworzymy tabelę <code>actions</code>:</p>
+
+<pre><code class="Lua">local actions = {}
+</code></pre>
+
+<p>Następnie iterujemy po wszystkich naszych jednostkach:</p>
+
+<pre><code class="Lua">for uid, unit in pairs(tc.state.units_myself) do
+    -- ...
+end
+</code></pre>
+
+<p>Funkcja <code>pairs</code> zwraca klucze i wartości osobno. Są one przypisywane do zmiennych <code>uid</code>, <code>unit</code>.</p>
+
+<p>Rozkazy tworzymy poprzez wywołanie <code>tc.command</code> z określonymi argumentami:</p>
+
+<pre><code class="Lua">tc.command(
+    tc.command_unit_protected,
+    uid,
+    tc.cmd.Attack_Move,
+    -1,
+    103,
+    141
+)
+</code></pre>
+
+<p>Pierwszy argument nie mam pojęcia co robi, drugi to id jednostki (każde jest unikalne), trzeci to komenda, czwarty - nie mam pojęcia, piąty i szósty to pozycja x i y. Komendy wstawiamy do tabeli <code>actions</code> poprzez użycie <code>table.insert</code>.</p>
+
+<p>Czas na wysłanie komend do Starcrafta:</p>
+
+<pre><code class="Lua">tc:send({table.concat(actions, ':')})
+</code></pre>
+
+<p>Powyższ kod scala tablicę do postaci stringa, w którym każda komenda jest oddzielona dwukropkiem i wysyła.</p>
+
+<p>W powyższym przykładzie występuje także zmienna <code>give_orders</code>. Dodałem ją, by uniknąć spamowania komendami. Spam powoduje wolne działanie Starcrafta i do tego jednostki zamiast atakować to co jest po drodze idą do danej lokacji nie zważając na nic.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>Sprawa nie jest trudna, zeszło mi jedynie trochę czasu na zrozumienie czemu mi nie działa wydawanie rozkazu przemieszczania się. Okazało się, że trzeba dodać to magiczne <code>-1</code> przed pozycjami x i y. Działanie zaprezentowanego kodu można zobaczyć na poniższym gifie.</p>
+
+<p><img src="/images/posts/torchcraft_game_state_change_and_analysis/torchcraft_battle.gif" alt="TorchCraft - simple battle" /></p>
+
+<p>W następnym poście postaram się albo opisać więcej rzeczy lub w końcu skorzystać z uczenia maszynowego (Q-learning). Zobaczmy jak będzie z czasem.</p>
+
+        </div>
+                    <p class="post-categories">
+            Kategorie:
+                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
+                            <p class="post-tags">
+            Tagi:
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/lua" class="post-tags__item">lua</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>,                         <a href="https://dloranc.github.io/blog/tagi/torch" class="post-tags__item">torch</a>                        </p>
+        
+        <h2>Udostępnij:</h2>
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_52 a2a_default_style" style="margin-bottom: 1.5em; margin-top: 1em;">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        </div>
+        <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.locale = "pl";
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+                    <nav class="pagination">
+                <ul>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe" title="Multi-armed bandit - optymistyczne wartości początkowe"><span class="pagination__title">Poprzedni post</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dloranc-github-io'; // required: replace example with your forum shortname
+
+
+    
+    
+    
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Włącz JavaScript by zobaczyć <a href="https://disqus.com/?ref_noscript" rel="nofollow">komentarze Disqusa.</a>
+</noscript>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="https://dloranc.github.io/components/jquery/jquery.min.js"><\/script>')</script>
+        <script src="https://dloranc.github.io/components/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+                <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-84833721-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+                <script src="https://dloranc.github.io/components/highlightjs/highlight.pack.min.js"></script>
+
+        <script>hljs.initHighlightingOnLoad();</script>
+
+                    </body>
+</html>
