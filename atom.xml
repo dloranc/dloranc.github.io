@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-21T23:20:25+02:00</updated>
+    <updated>2017-05-28T17:04:08+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - optymistyczne wartości początkowe]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe"/>
+            <published>2017-05-28T19:40:00+02:00</published>
+            <updated>2017-05-28T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png"/>            Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.]]></content>
+            <summary>Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>
@@ -178,14 +187,5 @@
             <id>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</id>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017.jpg"/>            Post informacyjny o udziale w konkursie &quot;Daj Się Poznać 2017&quot;.]]></content>
             <summary>Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[LabelEncoder]]></title>
-            <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
-            <published>2016-09-10T00:00:00+02:00</published>
-            <updated>2016-09-10T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
-            <summary>Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).</summary>
         </entry>
     </feed>

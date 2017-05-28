@@ -3,11 +3,166 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-21T23:20:25+02:00</updated>
+    <updated>2017-05-28T17:04:08+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - optymistyczne wartości początkowe]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe"/>
+            <published>2017-05-28T19:40:00+02:00</published>
+            <updated>2017-05-28T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png"/>            Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+Wszystkie metody, które do tej pory opisałem zależne są od początkowych oszacowań wartości &#92;(Q_1(a)&#92;). Widoczne to jest zwłaszcza, gdy liczymy MAB z &#92;(\epsilon = 0&#92;), czyli bez ekploracji cały czas wybierając najlepszą możliwą akcję (ramię). W statystyce nazywamy takie metody obciążonymi. Obciążenie znika dla metod z &#92;(\alpha&#92;) wynoszącym &#92;(\frac{1}{n}&#92;), gdy każda akcja zostanie wybrana co najmniej raz. Dla stałego &#92;(\alpha&#92;), obciążenie nie znika, zmniejsza się jedynie wraz z upływem czasu (kolejnymi iteracjami algorytmu).
+
+Aby pozbyć się obciążenia, możemy skorzystać z czegoś takiego jak optymistyczne wartości początkowe. W kodzie przykładów jakie do tej pory napisałem prawdziwe wartości każdej akcji (true value), pochodziły z rozkładu normalnego (średnia 0, wariancja 1) i ustalane były w konstruktorze:
+
+<pre>self.true_reward = [np.random.randn() for _ in range(self.arms)]
+</pre>
+
+Przy okazji przypominam, że pobieranie wartości dla danej akcji wygląda tak:
+
+<pre>def get_reward(self, action):
+    return self.true_reward[action] + np.random.randn()
+</pre>
+
+To tyle celem przypomnienia.
+
+Możemy na początku działania zachęcić algorytm do eksploracji ustalając bardzo optymistyczne wartości początkowe. Ja wybrałem liczbę 5 i wygląda to tak:
+
+<pre>self.action_count = np.ones(self.arms)
+
+self.rewards = np.ones(self.arms) * 5
+</pre>
+
+I to wszystko, więcej modyfikacji w kodzie nie trzeba. Co się dzieje jak odpalimy skrypt z takimi wartościami self.rewards? Zobaczmy to na przykładzie z epsilonem równym zero:
+
+<pre>self.rewards:
+[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]
+
+reward: 1.87411213524
+[ 3.43705607  5.          5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.504446069392
+[ 3.43705607  2.75222303  5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.374953664141
+[ 3.43705607  2.75222303  2.68747683  5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: -3.66371477543
+[ 3.43705607  2.75222303  2.68747683  0.66814261  5.          5.          5.
+  5.          5.          5.        ]
+reward: -1.59327852639
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  5.          5.
+  5.          5.          5.        ]
+reward: -2.41539982786
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  5.          5.          5.          5.        ]
+reward: -0.641184621377
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  5.          5.          5.        ]
+reward: -1.53850026836
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  1.73074987  5.          5.        ]
+</pre>
+
+Otrzymane nagrody są niższe niż pięć, a do tego uśredniane, więc nawet dla epsilona wynoszącego zero następuje eksploracja i algorytm po kolei próbuje każdej akcji. Zobaczmy to jeszcze w formie graficznej (epsilon równy zero):
+
+
+
+Dla porównania, bez naszej optymalizacji (epsilon również wynosi zero):
+
+
+
+Inne wykresy, te skoki na początku są interesujące. Jest to efekt działania naszej optymalizacji:
+
+
+
+
+Podsumowanie
+
+Jak widać, jest to prosty, ale dość skuteczny sposób, by zachęcić MAB z e-greedy strategy, nawet gdy wybiera najlepsze akcje za każdym razem. Sposób ten jednak działa tylko na początku algorytmu, przy pierwszych kilkunastu iteracjach. W następnym poście zajmę się sposobem na ulepszenie eksploracji, tak zwanym Upper-Confidence-Bound (jak to przetłumaczyć?).
+]]></content>
+            <summary>Ten post jest częścią moich zmagań z książką "Reinforcement Learning: An Introduction" autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii Sutton &amp; Barto i w repozytorium dloranc/reinforcement-learning-an-introduction.
+
+
+
+Wszystkie metody, które do tej pory opisałem zależne są od początkowych oszacowań wartości &#92;(Q_1(a)&#92;). Widoczne to jest zwłaszcza, gdy liczymy MAB z &#92;(\epsilon = 0&#92;), czyli bez ekploracji cały czas wybierając najlepszą możliwą akcję (ramię). W statystyce nazywamy takie metody obciążonymi. Obciążenie znika dla metod z &#92;(\alpha&#92;) wynoszącym &#92;(\frac{1}{n}&#92;), gdy każda akcja zostanie wybrana co najmniej raz. Dla stałego &#92;(\alpha&#92;), obciążenie nie znika, zmniejsza się jedynie wraz z upływem czasu (kolejnymi iteracjami algorytmu).
+
+Aby pozbyć się obciążenia, możemy skorzystać z czegoś takiego jak optymistyczne wartości początkowe. W kodzie przykładów jakie do tej pory napisałem prawdziwe wartości każdej akcji (true value), pochodziły z rozkładu normalnego (średnia 0, wariancja 1) i ustalane były w konstruktorze:
+
+<pre>self.true_reward = [np.random.randn() for _ in range(self.arms)]
+</pre>
+
+Przy okazji przypominam, że pobieranie wartości dla danej akcji wygląda tak:
+
+<pre>def get_reward(self, action):
+    return self.true_reward[action] + np.random.randn()
+</pre>
+
+To tyle celem przypomnienia.
+
+Możemy na początku działania zachęcić algorytm do eksploracji ustalając bardzo optymistyczne wartości początkowe. Ja wybrałem liczbę 5 i wygląda to tak:
+
+<pre>self.action_count = np.ones(self.arms)
+
+self.rewards = np.ones(self.arms) * 5
+</pre>
+
+I to wszystko, więcej modyfikacji w kodzie nie trzeba. Co się dzieje jak odpalimy skrypt z takimi wartościami self.rewards? Zobaczmy to na przykładzie z epsilonem równym zero:
+
+<pre>self.rewards:
+[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]
+
+reward: 1.87411213524
+[ 3.43705607  5.          5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.504446069392
+[ 3.43705607  2.75222303  5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.374953664141
+[ 3.43705607  2.75222303  2.68747683  5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: -3.66371477543
+[ 3.43705607  2.75222303  2.68747683  0.66814261  5.          5.          5.
+  5.          5.          5.        ]
+reward: -1.59327852639
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  5.          5.
+  5.          5.          5.        ]
+reward: -2.41539982786
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  5.          5.          5.          5.        ]
+reward: -0.641184621377
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  5.          5.          5.        ]
+reward: -1.53850026836
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  1.73074987  5.          5.        ]
+</pre>
+
+Otrzymane nagrody są niższe niż pięć, a do tego uśredniane, więc nawet dla epsilona wynoszącego zero następuje eksploracja i algorytm po kolei próbuje każdej akcji. Zobaczmy to jeszcze w formie graficznej (epsilon równy zero):
+
+
+
+Dla porównania, bez naszej optymalizacji (epsilon również wynosi zero):
+
+
+
+Inne wykresy, te skoki na początku są interesujące. Jest to efekt działania naszej optymalizacji:
+
+
+
+
+Podsumowanie
+
+Jak widać, jest to prosty, ale dość skuteczny sposób, by zachęcić MAB z e-greedy strategy, nawet gdy wybiera najlepsze akcje za każdym razem. Sposób ten jednak działa tylko na początku algorytmu, przy pierwszych kilkunastu iteracjach. W następnym poście zajmę się sposobem na ulepszenie eksploracji, tak zwanym Upper-Confidence-Bound (jak to przetłumaczyć?).
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>
@@ -3833,59 +3988,6 @@ Wszystkie moje posty konkursowe będzie można znaleźć w tagu "DSP2017".
             <summary>Dzisiaj postanowiłem wziąć udział w konkursie "Daj Się Poznać 2017" organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.
 
 Wszystkie moje posty konkursowe będzie można znaleźć w tagu "DSP2017".
-</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[LabelEncoder]]></title>
-            <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
-            <published>2016-09-10T00:00:00+02:00</published>
-            <updated>2016-09-10T00:00:00+02:00</updated>
-            <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy LabelEncoder z biblioteki scikit-learn.
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-
-X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
-
-lbl_enc = LabelEncoder()
-lbl_enc.fit(X)
-X_cat = lbl_enc.transform(X)
-
-print(X_cat)
-</pre>
-
-Na wyjściu otrzymujemy:
-
-<pre>[0 1 2 3 0 4]
-</pre>
-]]></content>
-            <summary>Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy LabelEncoder z biblioteki scikit-learn.
-
-<pre>#!/usr/bin/python2.7
-
-from __future__ import print_function
-
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-
-X = np.array(['1A', '1B', '1C', '2A', '1A', '3C'])
-
-lbl_enc = LabelEncoder()
-lbl_enc.fit(X)
-X_cat = lbl_enc.transform(X)
-
-print(X_cat)
-</pre>
-
-Na wyjściu otrzymujemy:
-
-<pre>[0 1 2 3 0 4]
-</pre>
 </summary>
         </entry>
     </feed>

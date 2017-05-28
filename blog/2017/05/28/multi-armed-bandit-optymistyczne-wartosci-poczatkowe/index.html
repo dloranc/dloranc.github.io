@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <title>Dawid Loranc &mdash; TorchCraft - podstawowy skrypt</title>
+                <title>Dawid Loranc &mdash; Multi-armed bandit - optymistyczne wartości początkowe</title>
                 <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.">
+                <meta name="description" content="Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.">
                 <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="DLoranc" />
         <meta name="twitter:creator" content="DLoranc" />
-        <meta property="twitter:title" content="TorchCraft - podstawowy skrypt &mdash; Dawid Loranc" />
-                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" />
-                        <meta property="twitter:description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności." />
-                <meta property="og:title" content="TorchCraft - podstawowy skrypt &mdash; Dawid Loranc" />
-        <meta property="og:url" content="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt" />
+        <meta property="twitter:title" content="Multi-armed bandit - optymistyczne wartości początkowe &mdash; Dawid Loranc" />
+                <meta property="twitter:image" content="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png" />
+                        <meta property="twitter:description" content="Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja." />
+                <meta property="og:title" content="Multi-armed bandit - optymistyczne wartości początkowe &mdash; Dawid Loranc" />
+        <meta property="og:url" content="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe" />
         <meta property="og:site_name" content="Dawid Loranc - blog o ML i AI"/>
         <meta property="og:locale" content="pl_PL" />
-                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" />
-                        <meta property="og:description" content="Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności." />
+                <meta property="og:image" content="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png" />
+                        <meta property="og:description" content="Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja." />
                     <meta name="robots" content="index, follow">
         <link href="https://dloranc.github.io/css/style.css?version=13f4c3678ebc4be6aa89926c18e6b346" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -118,133 +118,92 @@
                 <div class="span12">
                         <article class="post">
         <header class="post-header">
-                            <img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg" alt="TorchCraft - podstawowy skrypt" class="post-header__thumbnail"/>
-                        <h1 class="post-header__title">TorchCraft - podstawowy skrypt</h1>
-            <h4 class="post-header__date">21.05.2017</h4>
+                            <img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png" alt="Multi-armed bandit - optymistyczne wartości początkowe" class="post-header__thumbnail"/>
+                        <h1 class="post-header__title">Multi-armed bandit - optymistyczne wartości początkowe</h1>
+            <h4 class="post-header__date">28.05.2017</h4>
         </header>
         <div class="post-content wrapper">
-            <p>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu <code>examples</code>.</p>
+            <p><em>Ten post jest częścią moich zmagań z książką <a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">"Reinforcement Learning: An Introduction"</a> autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć w kategorii <a href="/blog/kategorie/Sutton%20%26%20Barto">Sutton &amp; Barto</a> i w repozytorium <a href="https://github.com/dloranc/reinforcement-learning-an-introduction">dloranc/reinforcement-learning-an-introduction</a>.</em></p>
 
-<h2 id="mapy">Mapy</h2>
+<hr />
 
-<p>Zacznijmy od tego, że TorchCrafta można uruchomić w dwóch trybach: micro i w normalnym. W normalnym trybie można grać na zwykłych mapach do multi. Tutaj nie ma żadnych niespodzianek. Mapy do micro nie zawierają budynków i walczą na nich dwie grupy jednostek. Do tego trybu mapy muszą być specjalnie przygotowane. Z TorchCraftem dostarczane są cztery mapy: <code>dragoons_zealots.scm</code>, <code>m5v5_c_far.scm</code>, <code>sp_dragoons_zealots.scm</code>, <code>sp_m5v5_c_far.scm</code>. Są to tak naprawdę dwie mapy w dwóch wersjach każda. Nie mam pojęcia jaka jest różnica, te z przedrostkiem <code>sp_</code> może mają jakiś związek z single playerem?</p>
+<p>Wszystkie metody, które do tej pory opisałem zależne są od początkowych oszacowań wartości &#92;(Q_1(a)&#92;). Widoczne to jest zwłaszcza, gdy liczymy <strong>MAB</strong> z &#92;(\epsilon = 0&#92;), czyli bez ekploracji cały czas wybierając najlepszą możliwą akcję (ramię). W statystyce nazywamy takie metody obciążonymi. Obciążenie znika dla metod z &#92;(\alpha&#92;) wynoszącym &#92;(\frac{1}{n}&#92;), gdy każda akcja zostanie wybrana co najmniej raz. Dla stałego &#92;(\alpha&#92;), obciążenie nie znika, zmniejsza się jedynie wraz z upływem czasu (kolejnymi iteracjami algorytmu).</p>
 
-<p>Mapy micro zawierają rozmieszczone równomiernie specjalne, niewidzialne jednostki odkrywające cześć mapy (tak zwane Map Revealery), a także lokacje startowe (Start Location), czyli punkty, w których pojawiają się jednostki.</p>
+<p>Aby pozbyć się obciążenia, możemy skorzystać z czegoś takiego jak optymistyczne wartości początkowe. W kodzie przykładów jakie do tej pory napisałem prawdziwe wartości każdej akcji (true value), pochodziły z rozkładu normalnego (średnia 0, wariancja 1) i ustalane były w konstruktorze:</p>
 
-<p><img src="/images/posts/torchcraft_basic_script/01_dragoons_zealots.png" alt="dragoons_zealots.scm" /></p>
-
-<p>Żeby te jednostki się pojawiły potrzebne są tak zwane triggery. Tworzy się je w edytorze map w specjalnym panelu. Triggery pozwalają na wiele różnych rzeczy np. umieszczanie jednostek na mapie, sterowanie jednostkami, wypisywanie tekstu na ekranie, ogólnie - pozwalają na sterowanie grą. Triggery zawierają dwie rzeczy: <code>conditions</code> - czyli warunki dla których trigger jest uruchamiany, a także <code>actions</code> - czyli akcje uruchamiane w ramach danego triggera. Można jeszcze ustawić osobno, dla jakiego gracza trigger jest uruchamiany.</p>
-
-<p>Zobaczmy na nasze mapy micro:</p>
-
-<p><img src="/images/posts/torchcraft_basic_script/02_dragoons_zealots.png" alt="dragoons_zealots.scm" />
-<img src="/images/posts/torchcraft_basic_script/03_m5v5_c_far.png" alt="03_m5v5_c_far.scm" />
-<img src="/images/posts/torchcraft_basic_script/04_m5v5_c_far.png" alt="03_m5v5_c_far.scm" />
-<img src="/images/posts/torchcraft_basic_script/05_m5v5_c_far.png" alt="03_m5v5_c_far.scm" /></p>
-
-<p>Widzimy, że triggery na samym początku każdej rozgrywki tworzą po kilka jednostek dla obu graczy, a także, jeśli zachodzi potrzeba następuje wysłanie jednostek do ataku.</p>
-
-<p>Ok, tyle jeśli chodzi o mapy. Czas zająć się kodem.</p>
-
-<h2 id="kod">Kod</h2>
-
-<p>Na początek napiszmy minimalny działający przykład:</p>
-
-<pre><code class="Lua">local hostname = "192.168.56.1"
-local port = 11111
-
-local tc = require 'torchcraft'
-
-tc.micro_battles = true
-
-tc:init(hostname, port)
-local update = tc:connect(port)
-
-while not tc.state.game_ended do
-    update = tc:receive()
-
-    -- code here
-end
-
-tc:close()
+<pre><code class="Python">self.true_reward = [np.random.randn() for _ in range(self.arms)]
 </code></pre>
 
-<p>Przenalizujmy ten przykład:</p>
+<p>Przy okazji przypominam, że pobieranie wartości dla danej akcji wygląda tak:</p>
 
-<p>Pierwsze dwie linijki to host i port potrzebny do połączenia z hostem (Windows ze Starcraftem):</p>
-
-<pre><code class="Lua">local hostname = "192.168.56.1"
-local port = 11111
+<pre><code class="Python">def get_reward(self, action):
+    return self.true_reward[action] + np.random.randn()
 </code></pre>
 
-<p>Następnie ładujemy bibliotekę TorchCraft:</p>
+<p>To tyle celem przypomnienia.</p>
 
-<pre><code class="Lua">local tc = require 'torchcraft'
+<p>Możemy na początku działania zachęcić algorytm do eksploracji ustalając bardzo optymistyczne wartości początkowe. Ja wybrałem liczbę 5 i wygląda to tak:</p>
+
+<pre><code class="Python">self.action_count = np.ones(self.arms)
+
+self.rewards = np.ones(self.arms) * 5
 </code></pre>
 
-<p>Przełączamy TorchCrafta w tryb micro:</p>
+<p>I to wszystko, więcej modyfikacji w kodzie nie trzeba. Co się dzieje jak odpalimy skrypt z takimi wartościami <code>self.rewards</code>? Zobaczmy to na przykładzie z epsilonem równym zero:</p>
 
-<pre><code class="Lua">tc.micro_battles = true
+<pre><code class="python">self.rewards:
+[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]
+
+reward: 1.87411213524
+[ 3.43705607  5.          5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.504446069392
+[ 3.43705607  2.75222303  5.          5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: 0.374953664141
+[ 3.43705607  2.75222303  2.68747683  5.          5.          5.          5.
+  5.          5.          5.        ]
+reward: -3.66371477543
+[ 3.43705607  2.75222303  2.68747683  0.66814261  5.          5.          5.
+  5.          5.          5.        ]
+reward: -1.59327852639
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  5.          5.
+  5.          5.          5.        ]
+reward: -2.41539982786
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  5.          5.          5.          5.        ]
+reward: -0.641184621377
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  5.          5.          5.        ]
+reward: -1.53850026836
+[ 3.43705607  2.75222303  2.68747683  0.66814261  1.70336074  1.29230009
+  2.17940769  1.73074987  5.          5.        ]
 </code></pre>
 
-<p>Odpalamy połączenie:</p>
+<p>Otrzymane nagrody są niższe niż pięć, a do tego uśredniane, więc nawet dla epsilona wynoszącego zero następuje eksploracja i algorytm po kolei próbuje każdej akcji. Zobaczmy to jeszcze w formie graficznej (epsilon równy zero):</p>
 
-<pre><code class="Lua">tc:init(hostname, port)
-local update = tc:connect(port)
-</code></pre>
+<p><img src="/images/posts/multi_armed_bandit_optimistic_initial_values/01_rewards.png" alt="optimistic initial values, epsilon = 0" /></p>
 
-<p>Następnie następuje pętla, w której możemy wydawać rozkazy jednostkom. W tym przykładzie nie zdefiniowaliśmy warunków zakończenia pętli, więc rozegrane zostanie nieskończenie wiele bitew:</p>
+<p>Dla porównania, bez naszej optymalizacji (epsilon również wynosi zero):</p>
 
-<pre><code class="Lua">while not tc.state.game_ended do
-    update = tc:receive()
+<p><img src="/images/posts/multi_armed_bandit_optimistic_initial_values/02_rewards.png" alt="bez optimistic initial values, epsilon = 0" /></p>
 
-    -- code here
-end
-</code></pre>
+<p>Inne wykresy, te skoki na początku są interesujące. Jest to efekt działania naszej optymalizacji:</p>
 
-<p>Na samym końcu zamykamy połączenie:</p>
-
-<pre><code class="Lua">tc:close()
-</code></pre>
-
-<p>Jak widać, sprawa jest bardzo prosta. Pobawmy się jednak jeszcze trochę. Dodajmy konfigurację nad pętlą <code>while</code>:</p>
-
-<pre><code class="Lua">local setup = {
-    tc.command(tc.set_speed, 20),
-    tc.command(tc.set_gui, 1),
-    tc.command(tc.set_cmd_optim, 1),
-}
-
-tc:send({table.concat(setup, ':')})
-</code></pre>
-
-<p>Są to trzy komendy. <code>set_speed</code> odpowiada za prędkość gry, jeśli damy zero to gra będzie bardzo szybka, bo czas między wykonaniem logicznych klatek (logical frames) będzie praktycznie zerowy. <code>set_gui</code> ustawione na <code>1</code> oznacza, że można zobaczyć przebieg akcji. Natomiast <code>set_cmd_optim</code> to optymalizacja komend stosowana przez BWAPI, jeśli jest ustawiona BWAPI stara się zredukować liczbę akcji poprzez grupowanie i wykonywanie podobnych rozkazów. Można ustawić wartości od 0 do 4 (<a href="https://bwapi.github.io/class_b_w_a_p_i_1_1_game.html#a2e44b952a0a55416da1628237bbc82ea">dokumentacja</a>).</p>
-
-<p>Zobaczmy jeszcze co jest wysyłane do TorchCrafta:</p>
-
-<pre><code class="Lua">print({table.concat(setup, ':')})
-</code></pre>
-
-<p>Otrzymamy:</p>
-
-<pre><code class="Lua">{
-  1 : "6,20:8,1:10,1"
-}
-</code></pre>
-
-<p>Widzimy, że komendy są oddzielone dwukropkami, a liczbowe identyfikatory komend są oddzielone od wartości przecinkami.</p>
+<p><img src="/images/posts/multi_armed_bandit_optimistic_initial_values/04_average_reward.png" alt="średnie nagrody" />
+<img src="/images/posts/multi_armed_bandit_optimistic_initial_values/04_optimal_action.png" alt="optymalne akcje" /></p>
 
 <h2 id="podsumowanie">Podsumowanie</h2>
 
-<p>Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)</p>
+<p>Jak widać, jest to prosty, ale dość skuteczny sposób, by zachęcić <strong>MAB</strong> z e-greedy strategy, nawet gdy wybiera najlepsze akcje za każdym razem. Sposób ten jednak działa tylko na początku algorytmu, przy pierwszych kilkunastu iteracjach. W następnym poście zajmę się sposobem na ulepszenie eksploracji, tak zwanym Upper-Confidence-Bound (jak to przetłumaczyć?).</p>
 
         </div>
                     <p class="post-categories">
             Kategorie:
-                        <a href="https://dloranc.github.io/blog/kategorie/Projekty" class="post-categories__item">Projekty</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/kategorie/Sutton%20%26%20Barto" class="post-categories__item">Sutton &amp; Barto</a>                        </p>
                             <p class="post-tags">
             Tagi:
-                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/lua" class="post-tags__item">lua</a>,                         <a href="https://dloranc.github.io/blog/tagi/starcraft" class="post-tags__item">starcraft</a>,                         <a href="https://dloranc.github.io/blog/tagi/torch" class="post-tags__item">torch</a>                        </p>
+                        <a href="https://dloranc.github.io/blog/tagi/DSP2017" class="post-tags__item">DSP2017</a>,                         <a href="https://dloranc.github.io/blog/tagi/python" class="post-tags__item">python</a>,                         <a href="https://dloranc.github.io/blog/tagi/multi-armed-bandit" class="post-tags__item">multi-armed-bandit</a>,                         <a href="https://dloranc.github.io/blog/tagi/reinforcement-learning" class="post-tags__item">reinforcement-learning</a>                        </p>
         
         <h2>Udostępnij:</h2>
         <!-- AddToAny BEGIN -->
@@ -263,8 +222,7 @@ tc:send({table.concat(setup, ':')})
 
                     <nav class="pagination">
                 <ul>
-                                            <li class="pagination__next"><a class="pagination__next-anchor" href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe" title="Multi-armed bandit - optymistyczne wartości początkowe"><span class="pagination__title">Następny post</span></a></li>
-                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna" title="Multi-armed bandit - wersja niestacjonarna"><span class="pagination__title">Poprzedni post</span></a></li>
+                                                                <li class="pagination__previous"><a class="pagination__previous-anchor" href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt" title="TorchCraft - podstawowy skrypt"><span class="pagination__title">Poprzedni post</span></a></li>
                                     </ul>
             </nav>
             </article>

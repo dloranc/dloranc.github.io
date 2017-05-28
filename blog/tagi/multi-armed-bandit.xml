@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/multi-armed-bandit.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-21T23:20:25+02:00</updated>
+    <updated>2017-05-28T17:04:09+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - optymistyczne wartości początkowe]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe"/>
+            <published>2017-05-28T19:40:00+02:00</published>
+            <updated>2017-05-28T19:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</id>
+            <summary>Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.</summary>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png"/>            Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna"/>
