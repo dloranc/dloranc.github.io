@@ -123,7 +123,11 @@
             <h4 class="post-header__date">07.05.2017</h4>
         </header>
         <div class="post-content wrapper">
-            <p>Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu <a href="/blog/2017/04/30/instalacja-torchcrafta">poprzedniego posta</a>, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką <em>C:\Starcraft</em>, to wystarczy ściągnąć <a href="https://technet.microsoft.com/pl-pl/sysinternals/bb896768">Junction</a>, przenieść do <em>C:\Windows\System32</em> i wykonać w konsoli: <strong>junction c:\Starcraft d:\Games\Starcraft</strong>. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.</p>
+            <p><em>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".</em></p>
+
+<hr />
+
+<p>Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu <a href="/blog/2017/04/30/instalacja-torchcrafta">poprzedniego posta</a>, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką <em>C:\Starcraft</em>, to wystarczy ściągnąć <a href="https://technet.microsoft.com/pl-pl/sysinternals/bb896768">Junction</a>, przenieść do <em>C:\Windows\System32</em> i wykonać w konsoli: <strong>junction c:\Starcraft d:\Games\Starcraft</strong>. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.</p>
 
 <h2 id="lua---podstawy">Lua - podstawy</h2>
 

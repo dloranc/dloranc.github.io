@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-31T01:29:58+02:00</updated>
+    <updated>2017-05-31T01:49:03+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -929,7 +929,11 @@ Dla jednego przebiegu MAB:
             <published>2017-05-28T23:55:00+02:00</published>
             <updated>2017-05-28T23:55:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg"/>            W ostatnim poście o projekcie opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+W ostatnim poście o projekcie opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.
 
 Stan gry
 
@@ -1146,7 +1150,11 @@ Sprawa nie jest trudna, zeszło mi jedynie trochę czasu na zrozumienie czemu mi
 
 W następnym poście postaram się albo opisać więcej rzeczy lub w końcu skorzystać z uczenia maszynowego (Q-learning). Zobaczmy jak będzie z czasem.
 ]]></content>
-            <summary>W ostatnim poście o projekcie opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+W ostatnim poście o projekcie opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.
 
 Stan gry
 
@@ -1525,7 +1533,11 @@ Jak widać, jest to prosty, ale dość skuteczny sposób, by zachęcić MAB z e-
             <published>2017-05-21T23:55:00+02:00</published>
             <updated>2017-05-21T23:55:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
 
 Mapy
 
@@ -1640,7 +1652,11 @@ Podsumowanie
 
 Dobra, to na razie tyle. Niestety, dokumentacja TorchCrafta praktycznie nie istnieje, więc wiele nie zdziałałem. Nie mogłem na razie na przykład wykombinować jak wydać jednostce rozkaz przemieszczenia się do innego miejsca bez atakowania niczego po drodze. Wiedzę trzeba będzie zdobyć poprzez czytanie kodu i ciągłe testowanie co działa, a co nie. Nie będzie lekko :)
 ]]></content>
-            <summary>Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu examples.
 
 Mapy
 
@@ -1873,7 +1889,11 @@ Kod znajduje się tutaj. W następnym wpisie zajmę się kolejną drobną optyma
             <published>2017-05-07T23:40:00+02:00</published>
             <updated>2017-05-07T23:40:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
 
 Lua - podstawy
 
@@ -2084,7 +2104,11 @@ Podsumowanie
 
 Tyle z podstaw. Wszystkiego w tak krótkim czasie nie ogarnąłem, ale te postawy to już coś co pozwala coś napisać. O Torchu i o działaniu TorchCrafta napiszę następnym razem.
 ]]></content>
-            <summary>Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Ostatnio nie starczyło mi czasu by dokończyć instalację TorchCrafta. Już po napisaniu poprzedniego posta, przypomniałem sobie, że w NTFS jest coś takiego jak "junction point", które jest czymś w rodzaju symlinków w Windowsie. Jeśli BWEnv.exe wymaga Starcrafta ze ścieżką C:\Starcraft, to wystarczy ściągnąć Junction, przenieść do C:\Windows\System32 i wykonać w konsoli: junction c:\Starcraft d:\Games\Starcraft. U mnie zadziałało. No, dobra, nie do końca zadziałało, bo gra uruchomiła się na pełnym ekranie (w configu jest, że ma być w oknie), coś tam się wykonywało, ale po drugiej próbie uruchomienia BWEnv.exe już nie chciało. Lepszą opcją okazało się użycie BWEnv.dll i odpalanie gry przez Chaoslauchera.
 
 Lua - podstawy
 
@@ -2475,7 +2499,11 @@ Jak widać, różnica jest spora. To tyle na razie, następny post będzie o mul
             <published>2017-04-30T23:50:00+02:00</published>
             <updated>2017-04-30T23:50:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_installing.jpg"/>            Przez cały ten tydzień zastanawiałem się jaką obrać drogę dla mojego projektu bota. Chciałem użyć Deeplearning4j, ale ta biblioteka gryzie się z BWMirrorem, który wymaga Javy 32-Bit. Alternatywą jest przepisanie całego projektu z BWMirrora na JNIBWAPI. Drugą alternatywą jest przepisanie projektu do C++, co mnie średnio interesuje, bo nie czuję się dobrze w tym języku. Znaczy, w Javie też nie, ale pisanie w Javie łatwiej ogarnąć. Postanowiłem jednak wziąć się w końcu za TorchCrafta. Tracę oczywiście możliwość udziału w SSCAIT, ale myślę, że lepiej będzie coś w końcu zrobić związanego z reinforcement learningiem z pomocą gotowego środowiska. Gdybym miał to samo robić w Javie zeszłoby mi z tym naprawdę dużo czasu.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_installing.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Przez cały ten tydzień zastanawiałem się jaką obrać drogę dla mojego projektu bota. Chciałem użyć Deeplearning4j, ale ta biblioteka gryzie się z BWMirrorem, który wymaga Javy 32-Bit. Alternatywą jest przepisanie całego projektu z BWMirrora na JNIBWAPI. Drugą alternatywą jest przepisanie projektu do C++, co mnie średnio interesuje, bo nie czuję się dobrze w tym języku. Znaczy, w Javie też nie, ale pisanie w Javie łatwiej ogarnąć. Postanowiłem jednak wziąć się w końcu za TorchCrafta. Tracę oczywiście możliwość udziału w SSCAIT, ale myślę, że lepiej będzie coś w końcu zrobić związanego z reinforcement learningiem z pomocą gotowego środowiska. Gdybym miał to samo robić w Javie zeszłoby mi z tym naprawdę dużo czasu.
 
 Instalacja na Linuksie
 
@@ -2539,7 +2567,11 @@ Nie udało mi się wiele zrobić w tym tygodniu. Takie życie, zawsze mnie musz�
 
 Na pocieszenie muszę powiedzieć, że mój bot mimo prostoty sobie nieźle radzi na ladderze SSCAIT. Osiągnąłem 60% winratio (39 wygranych, 42 przegranych), co jest moim zdaniem dobrym wynikiem jak na takiego prostackiego bota.
 ]]></content>
-            <summary>Przez cały ten tydzień zastanawiałem się jaką obrać drogę dla mojego projektu bota. Chciałem użyć Deeplearning4j, ale ta biblioteka gryzie się z BWMirrorem, który wymaga Javy 32-Bit. Alternatywą jest przepisanie całego projektu z BWMirrora na JNIBWAPI. Drugą alternatywą jest przepisanie projektu do C++, co mnie średnio interesuje, bo nie czuję się dobrze w tym języku. Znaczy, w Javie też nie, ale pisanie w Javie łatwiej ogarnąć. Postanowiłem jednak wziąć się w końcu za TorchCrafta. Tracę oczywiście możliwość udziału w SSCAIT, ale myślę, że lepiej będzie coś w końcu zrobić związanego z reinforcement learningiem z pomocą gotowego środowiska. Gdybym miał to samo robić w Javie zeszłoby mi z tym naprawdę dużo czasu.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Przez cały ten tydzień zastanawiałem się jaką obrać drogę dla mojego projektu bota. Chciałem użyć Deeplearning4j, ale ta biblioteka gryzie się z BWMirrorem, który wymaga Javy 32-Bit. Alternatywą jest przepisanie całego projektu z BWMirrora na JNIBWAPI. Drugą alternatywą jest przepisanie projektu do C++, co mnie średnio interesuje, bo nie czuję się dobrze w tym języku. Znaczy, w Javie też nie, ale pisanie w Javie łatwiej ogarnąć. Postanowiłem jednak wziąć się w końcu za TorchCrafta. Tracę oczywiście możliwość udziału w SSCAIT, ale myślę, że lepiej będzie coś w końcu zrobić związanego z reinforcement learningiem z pomocą gotowego środowiska. Gdybym miał to samo robić w Javie zeszłoby mi z tym naprawdę dużo czasu.
 
 Instalacja na Linuksie
 
@@ -2945,7 +2977,11 @@ Przedstawiłem najprostszą strategię rozwiązywania multi-armed bandit problem
             <published>2017-04-23T20:00:00+02:00</published>
             <updated>2017-04-23T20:00:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg"/>            Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą Chaoslauncher - MultiInstance i edycji bwapi.ini, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w SSCAIT.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą Chaoslauncher - MultiInstance i edycji bwapi.ini, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w SSCAIT.
 
 Aby zarejestrować bota w SSCAIT oprócz podania różnych danych trzeba wygenerować plik .jar i wsadzić go do ZIP-a razem z BWAPI.dll, czyli DLL-ką odpowiedzialną za połączenie ze Starcraftem. Każdy bot może korzystać z innej wersji BWAPI, więc dlatego trzeba dołączyć swoją DLL-kę. Nie namyślając się wiele wygenerowałem artifact w IntelliJ IDEA, ale po rejestracji okazało się, że mój bot scrashował sześć razy i został zablokowany. Coś zrobiłem źle i nie bardzo wiedziałem co. Zauważyłem, jednak, że na liście wyników są linki do ściągnięcia botów. Ściągnąłem takiego, który był napisany w Javie, zmieniłem rozszerzenie z .jar na .zip i podejrzałem strukturę plików. Powinna ona wyglądać następująco:
 
@@ -3023,7 +3059,11 @@ Po poprawce nic nie miga:
 
 
 ]]></content>
-            <summary>Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą Chaoslauncher - MultiInstance i edycji bwapi.ini, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w SSCAIT.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą Chaoslauncher - MultiInstance i edycji bwapi.ini, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w SSCAIT.
 
 Aby zarejestrować bota w SSCAIT oprócz podania różnych danych trzeba wygenerować plik .jar i wsadzić go do ZIP-a razem z BWAPI.dll, czyli DLL-ką odpowiedzialną za połączenie ze Starcraftem. Każdy bot może korzystać z innej wersji BWAPI, więc dlatego trzeba dołączyć swoją DLL-kę. Nie namyślając się wiele wygenerowałem artifact w IntelliJ IDEA, ale po rejestracji okazało się, że mój bot scrashował sześć razy i został zablokowany. Coś zrobiłem źle i nie bardzo wiedziałem co. Zauważyłem, jednak, że na liście wyników są linki do ściągnięcia botów. Ściągnąłem takiego, który był napisany w Javie, zmieniłem rozszerzenie z .jar na .zip i podejrzałem strukturę plików. Powinna ona wyglądać następująco:
 
@@ -3249,7 +3289,11 @@ Na razie tyle, w następnym poście napiszę trochę o problemie zwanym jako mul
             <published>2017-04-16T19:40:00+02:00</published>
             <updated>2017-04-16T19:40:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg"/>            Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium dloranc/five-pool-bot.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium dloranc/five-pool-bot.
 
 Poprawki
 
@@ -3341,7 +3385,11 @@ Teraz się wezmę w końcu za reinforcement learning. Mam takie przypuszczenie, 
 
 Jeszcze pozostaje kwestia czego użyć. Próbowałem TorchCrafta, ale nie rozwiązałem problemów z nim związanych. TorchCraft wykorzystuje język Lua, a ja bym chciał sprawdzić mojego bota w SSCAIT, a tam można zgłaszać tylko boty w Javie i C++. Może spiąć to co już napisałem z deeplearning4j? Chyba tak zrobię, chcę sprawdzić ile mój bot będzie wart.
 ]]></content>
-            <summary>Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium dloranc/five-pool-bot.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium dloranc/five-pool-bot.
 
 Poprawki
 
@@ -3617,7 +3665,11 @@ Więcej szczegółów na temat docopt można znaleźć na stronie http://docopt.
             <published>2017-04-09T14:40:00+02:00</published>
             <updated>2017-04-09T14:40:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/09/piec-basenow</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/5_pool.jpg"/>            Od ostatniego postu o projekcie, siedziałem dość sporo czasu nad botem próbując napisać coś co wykonuje jakąś prostą strategię. Po instalacji BWAPI bot uruchamia się i gra ze standardowym botem zawartym w grze. Jako że znałem już od lat defaultowego bota i jego słabości postanowiłem, że mój bot będzie wykonywał prostą strategię zwaną jako 5 pool z pewną modyfikacją.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/5_pool.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Od ostatniego postu o projekcie, siedziałem dość sporo czasu nad botem próbując napisać coś co wykonuje jakąś prostą strategię. Po instalacji BWAPI bot uruchamia się i gra ze standardowym botem zawartym w grze. Jako że znałem już od lat defaultowego bota i jego słabości postanowiłem, że mój bot będzie wykonywał prostą strategię zwaną jako 5 pool z pewną modyfikacją.
 
 Wygląda ona następująco:
 
@@ -3767,7 +3819,11 @@ Co dalej?
 
 Ogarnąłem mniej więcej jak się pisze bota i poznałem niektóre problemy z tym związane. Teraz można się w końcu wziąć za reinforcement learning. Myślę, że uczenie maszynowe można by zastosować w tym bocie by zerglingi mogły lepiej walczyć. Ale o tym w następnych postach.
 ]]></content>
-            <summary>Od ostatniego postu o projekcie, siedziałem dość sporo czasu nad botem próbując napisać coś co wykonuje jakąś prostą strategię. Po instalacji BWAPI bot uruchamia się i gra ze standardowym botem zawartym w grze. Jako że znałem już od lat defaultowego bota i jego słabości postanowiłem, że mój bot będzie wykonywał prostą strategię zwaną jako 5 pool z pewną modyfikacją.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Od ostatniego postu o projekcie, siedziałem dość sporo czasu nad botem próbując napisać coś co wykonuje jakąś prostą strategię. Po instalacji BWAPI bot uruchamia się i gra ze standardowym botem zawartym w grze. Jako że znałem już od lat defaultowego bota i jego słabości postanowiłem, że mój bot będzie wykonywał prostą strategię zwaną jako 5 pool z pewną modyfikacją.
 
 Wygląda ona następująco:
 
@@ -3924,7 +3980,11 @@ Ogarnąłem mniej więcej jak się pisze bota i poznałem niektóre problemy z t
             <published>2017-04-02T23:40:00+02:00</published>
             <updated>2017-04-02T23:40:00+02:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/02/zmiana-planow</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg"/>            Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
 
 
   We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.
@@ -4049,7 +4109,11 @@ Co dalej?
 
 Pobawię się jeszcze trochę z Javą. Już nawet jakiegoś bota skleciłem, tworzącego jednostki i scoutującego, ale nie wykombinowałem jeszcze jak postawić jakiś budynek. Przykładowy kod z zalinkowanego wcześniej tutoriala nie działa. A to ci dowcip :) Jak już stworzę jakiegoś prostego bota robiącego 5 poola, spróbuję z machine learningiem z użyciem TorchCrafta, albo czegoś innego, o ile znajdę, bo nie uśmiecha mi się pisanie w lua.
 ]]></content>
-            <summary>Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli termin release'u na lato tego roku, co ogłosili na forum Battle.netu:
 
 
   We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.
@@ -4416,7 +4480,11 @@ Przykład z działającym kodem można znaleźć tutaj.
             <published>2017-03-12T22:40:00+01:00</published>
             <updated>2017-03-12T22:40:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak spawningtool.com albo ggtracker.com, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak spawningtool.com albo ggtracker.com, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
 
 Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z spawningtool.com.
 
@@ -4514,7 +4582,11 @@ Co dalej?
 
 Na razie jednak dam sobie spokój z próbami przewidzenia co będzie zawierało środowisko od Blizzarda i DeepMind. Replayów nawet nie pobierałem, bo nie wiem czy jest sens. Myślę, że w tym tygodniu spróbuję odtworzyć scenariusze prostego micro z Starcrafta na przeglądarki internetowe i pod to będę pisał przykłady z użyciem sieci neuronowych i reinforcement learningu.
 ]]></content>
-            <summary>Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak spawningtool.com albo ggtracker.com, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak spawningtool.com albo ggtracker.com, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
 
 Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z spawningtool.com.
 
@@ -4854,7 +4926,11 @@ To tyle, nauczyliśmy się podstawowej obsługi pip i virtualenv. O tworzenieniu
             <published>2017-03-05T22:00:00+01:00</published>
             <updated>2017-03-05T22:00:00+01:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
 
 Książki i kursy
 
@@ -4884,7 +4960,11 @@ Podsumowanie
 
 To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą sc2readera i s2protocol.
 ]]></content>
-            <summary>Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
+            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
+
+
+
+Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
 
 Książki i kursy
 

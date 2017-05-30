@@ -123,7 +123,11 @@
             <h4 class="post-header__date">28.05.2017</h4>
         </header>
         <div class="post-content wrapper">
-            <p>W ostatnim <a href="/blog/2017/05/21/torchcraft-podstawowy-skrypt/">poście o projekcie</a> opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.</p>
+            <p><em>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".</em></p>
+
+<hr />
+
+<p>W ostatnim <a href="/blog/2017/05/21/torchcraft-podstawowy-skrypt/">poście o projekcie</a> opisałem jak wyglądają mapy i napisałem jak stworzyć podstawowy skrypt nawiązujący połączenie ze Starcraftem i pobierający w pętli stan gry, a właściwie to każdej kolejnej logicznej klatki gry. Nie pisałem chyba do tej pory co to jest logiczna klatka gry. Sprawa z logicznymi klatkami (logical frame) wygląda tak, że renderowanie grafiki jest niezależne od obliczeń zmieniających stan gry. Liczba klatek na sekundę nie jest stała i zależy od prędkości komputera. Stan gry natomiast jest obliczany co jakiś interwał. Jeżeli graliście w Starcrafta, to pewnie kojarzycie, że w opcjach da się ustawić prędkość gry. Zmiana prędkości skutkuje zmianą czasu pomiędzy obliczeniami klatek logicznych. To jest zasadnicza różnica, gdybyśmy mieli te stałe 30 albo 60 FPS, to zapewne sprawa zostałaby rozwiązana inaczej.</p>
 
 <h2 id="stan-gry">Stan gry</h2>
 
