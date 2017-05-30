@@ -3,11 +3,20 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-30T15:16:52+02:00</updated>
+    <updated>2017-05-31T01:29:58+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Multi-armed bandit - Upper Confidence Bound]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound"/>
+            <published>2017-05-31T02:40:00+02:00</published>
+            <updated>2017-05-31T02:40:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_upper_confidence_bound.png"/>            Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.]]></content>
+            <summary>Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Torchcraft - analiza i zmiana stanu gry]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry"/>
@@ -178,14 +187,5 @@
             <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>
             <summary>Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[OneHotEncoder]]></title>
-            <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
-            <published>2017-02-17T00:00:00+01:00</published>
-            <updated>2017-02-17T00:00:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg"/>            Bo grunt to gorące jedynki :)]]></content>
-            <summary>Bo grunt to gorące jedynki :)</summary>
         </entry>
     </feed>

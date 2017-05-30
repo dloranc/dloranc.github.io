@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dloranc.github.io</loc>
-    <lastmod>2017-05-30</lastmod>
+    <lastmod>2017-05-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound</loc>
+    <lastmod>2017-05-31T02:40:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry</loc>
@@ -152,13 +158,13 @@
   </url>
     <url>
     <loc>https://dloranc.github.io/o-mnie</loc>
-    <lastmod>2017-05-30</lastmod>
+    <lastmod>2017-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dloranc.github.io/polityka-prywatnosci</loc>
-    <lastmod>2017-05-30</lastmod>
+    <lastmod>2017-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
