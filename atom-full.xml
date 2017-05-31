@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-31T01:49:03+02:00</updated>
+    <updated>2017-05-31T03:12:59+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -82,7 +82,7 @@ Wygenerowałem tabelkę z możliwymi wartościami dla jakiejś akcji &#92;(a&#92
 
 
 
-  t
+  &#92;(t&#92;)
   &#92;(N_t&#92;)
   &#92;(\log{t}&#92;)
   &#92;(c\sqrt{\frac{\log{t}}{N_t}}, c = 2&#92;)
@@ -536,7 +536,7 @@ Wygenerowałem tabelkę z możliwymi wartościami dla jakiejś akcji &#92;(a&#92
 
 
 
-  t
+  &#92;(t&#92;)
   &#92;(N_t&#92;)
   &#92;(\log{t}&#92;)
   &#92;(c\sqrt{\frac{\log{t}}{N_t}}, c = 2&#92;)
