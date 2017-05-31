@@ -3,11 +3,82 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-31T03:12:59+02:00</updated>
+    <updated>2017-05-31T23:48:52+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Daj Się Poznać 2017 - przynudzanie, czyli podsumowanie konkursu]]></title>
+            <link href="https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu"/>
+            <published>2017-05-31T23:55:00+02:00</published>
+            <updated>2017-05-31T23:55:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017_competition_sum.jpg"/>            Ech, miałem napisać posta o projekcie, ale nie wyrobiłbym się za nic w świecie, więc postanowiłem zrobić to co reszta uczestników, czyli podsumować konkurs i mój udział w nim. Przepraszam, jednak będę przynudzał :)
+
+Projekt - historia rozwoju
+
+Może nie pamiętacie, ale w ramach konkursu postanowiłem rozwijać projekt bota do Starcrafta 2 wykorzystującego reinforcement learning. To nie był zbytnio mądry pomysł, bo nie było wtedy API do tworzenia botów, a ja naiwnie założyłem, że Blizzard wraz z DeepMindem się wyrobią na ten first quarter of 2017. Nie wyrobili się, API będzie dostępne dopiero latem. Nie wiedziałem co robić, najpierw wymyśliłem, że stworzę w Phaserze (taki framework do pisania gier w Javie w wersji Script) własnego, uproszczonego Starcrafta. Coś tam nawet napisałem, jest to w jednym repozytorium (dloranc/simple-rts-and-rl-example), ale szybko się zniechęciłem. Za dużo z tym zabawy. Musiałbym pisać takie rzeczy jak path-finding, a mi się to nie uśmiechało za bardzo. Ostatecznie porzuciłem ten projekt, ale możliwe, że jednak coś zrobię z tym w najbliższym czasie, jakiś prosty przykład z reinforcement learningiem.
+
+Ostatecznie postanowiłem wziąć się za Starcraft: Brood War, poprzednika Starcrafta 2. Skleciłem dość szybko w Javie, wykorzystując BWAPI i BWMirror prostego bota wykonującego bardzo prostą strategię znaną jako 5 pool. Bota zgłosiłem do turnieju/laddera SSCAIT. O dziwo, radzi sobie na ladderze nawet nieźle jak na jego prostotę. Jego rezultaty można obejrzeć na stronie z wynikami. Bot ten znajduje się w repozytorium dloranc/five-pool-bot.
+
+Bota w akcji można obejrzeć tutaj:
+
+
+
+Po napisaniu tego bota planowałem użyć RL, ale okazało się, że BWMirror jest tylko 32-bitowy, więc nie mogłem wykorzystać javowych bibliotek, bo są one tylko 64-bitowe. Musiałbym bota przepisać z BWMirrora na coś innego. Nie chciało mi się za bardzo, więc postanowiłem przerzucić się na TorchCrafta, bibliotekę umożliwiającą rozwijanie botów wykorzystujących uczenie maszynowe. Walczę z tym do dzisiaj i nie jest lekko, bo ta biblioteka praktycznie nie ma dokumentacji.
+
+Łącznie do projektu stworzyłem aż cztery repozytoria. Commitów było łącznie 103, czyli raczej tak sobie. Żałuję też tego, że nic mi się nie udało zrobić z uczeniem maszynowym.
+
+Wszystkie projekty będę rozwijał dalej, może poza tym z 5 poolem, bo jest ukończony i niewiele można tam dodać.
+
+Reszta bloga
+
+Z pozostałych postów jestem nawet w miarę zadowolony. W trakcie konkursu zacząłem serię postów o reinforcement learningu bazujących na czytanej przeze mnie książce Reinforcement Learning: An Introduction (Richard S. Sutton i Andrew G. Barto). Wszystkie można znaleźć w kategorii Sutton &amp; Barto, a repozytorium z przykładami to dloranc/reinforcement-learning-an-introduction. Idzie mi to nawet nieźle, ale wydaje mi się, że trochę słabo to wszystko tłumaczę. Tutaj jest sporo do poprawy. Pomysł na zaczęcie tej serii był dobry, wcześniej w trakcie konkursu miałem problemy z doborem tematów. Nie miałem pomysłów na posty, ale teraz wystarczy jechać rozdziały z tej książki i jest dobrze :)
+
+Co mi dał konkurs?
+
+Od czego by tu zacząć... Nauczyłem się w miarę szybko tworzyć posty. Nic, dziwnego, pisali, że człowiek wyrabia się pisząc i to jest prawda. Nie powiem jednak, że moje posty są dobre, bo jak wyżej pisałem, mam problem z tłumaczeniem rzeczy prosto. Za bardzo komplikuję niektóre rzeczy. Tutaj czeka mnie wiele treningu, będę musiał przejrzeć moje posty i zastanowić się co da się napisać lepiej i prościej.
+
+Druga sprawa, udało mi się pisać w miarę regularnie. Z tym zawsze miałem problem. Tutaj się przyznam, że brałem udział w pierwszej edycji "Daj Się Poznać", tej, w której nie było nawet stu uczestników. Poległem wtedy po dwóch postach. To była tragedia. Dotrwałem jednak do końca tegorocznej edycji i to uważam za sukces. Pisanie i rozwój projektu było niesamowicie czasochłonne, ale się udało i z tego jestem zadowolony.
+
+Czy dałem się poznać?
+
+Heh, nie bardzo. Co prawda, jakieś tam zainteresowanie moim botem było na początku i parę osób nawet skomentowało, ale od dłuższego czasu nic się na moim blogu nie dzieje :) Analytics też wiele nie pokazuje. Najwięcej sesji miałem 38, mniej więcej w połowie konkursu. Niby się coś tam promowałem na Twitterze i Wykopie, ale ostatni miesiąc był słaby. Prawdę mówiąc, to myślałem, że będzie gorzej.
+]]></content>
+            <summary>Ech, miałem napisać posta o projekcie, ale nie wyrobiłbym się za nic w świecie, więc postanowiłem zrobić to co reszta uczestników, czyli podsumować konkurs i mój udział w nim. Przepraszam, jednak będę przynudzał :)
+
+Projekt - historia rozwoju
+
+Może nie pamiętacie, ale w ramach konkursu postanowiłem rozwijać projekt bota do Starcrafta 2 wykorzystującego reinforcement learning. To nie był zbytnio mądry pomysł, bo nie było wtedy API do tworzenia botów, a ja naiwnie założyłem, że Blizzard wraz z DeepMindem się wyrobią na ten first quarter of 2017. Nie wyrobili się, API będzie dostępne dopiero latem. Nie wiedziałem co robić, najpierw wymyśliłem, że stworzę w Phaserze (taki framework do pisania gier w Javie w wersji Script) własnego, uproszczonego Starcrafta. Coś tam nawet napisałem, jest to w jednym repozytorium (dloranc/simple-rts-and-rl-example), ale szybko się zniechęciłem. Za dużo z tym zabawy. Musiałbym pisać takie rzeczy jak path-finding, a mi się to nie uśmiechało za bardzo. Ostatecznie porzuciłem ten projekt, ale możliwe, że jednak coś zrobię z tym w najbliższym czasie, jakiś prosty przykład z reinforcement learningiem.
+
+Ostatecznie postanowiłem wziąć się za Starcraft: Brood War, poprzednika Starcrafta 2. Skleciłem dość szybko w Javie, wykorzystując BWAPI i BWMirror prostego bota wykonującego bardzo prostą strategię znaną jako 5 pool. Bota zgłosiłem do turnieju/laddera SSCAIT. O dziwo, radzi sobie na ladderze nawet nieźle jak na jego prostotę. Jego rezultaty można obejrzeć na stronie z wynikami. Bot ten znajduje się w repozytorium dloranc/five-pool-bot.
+
+Bota w akcji można obejrzeć tutaj:
+
+
+
+Po napisaniu tego bota planowałem użyć RL, ale okazało się, że BWMirror jest tylko 32-bitowy, więc nie mogłem wykorzystać javowych bibliotek, bo są one tylko 64-bitowe. Musiałbym bota przepisać z BWMirrora na coś innego. Nie chciało mi się za bardzo, więc postanowiłem przerzucić się na TorchCrafta, bibliotekę umożliwiającą rozwijanie botów wykorzystujących uczenie maszynowe. Walczę z tym do dzisiaj i nie jest lekko, bo ta biblioteka praktycznie nie ma dokumentacji.
+
+Łącznie do projektu stworzyłem aż cztery repozytoria. Commitów było łącznie 103, czyli raczej tak sobie. Żałuję też tego, że nic mi się nie udało zrobić z uczeniem maszynowym.
+
+Wszystkie projekty będę rozwijał dalej, może poza tym z 5 poolem, bo jest ukończony i niewiele można tam dodać.
+
+Reszta bloga
+
+Z pozostałych postów jestem nawet w miarę zadowolony. W trakcie konkursu zacząłem serię postów o reinforcement learningu bazujących na czytanej przeze mnie książce Reinforcement Learning: An Introduction (Richard S. Sutton i Andrew G. Barto). Wszystkie można znaleźć w kategorii Sutton &amp; Barto, a repozytorium z przykładami to dloranc/reinforcement-learning-an-introduction. Idzie mi to nawet nieźle, ale wydaje mi się, że trochę słabo to wszystko tłumaczę. Tutaj jest sporo do poprawy. Pomysł na zaczęcie tej serii był dobry, wcześniej w trakcie konkursu miałem problemy z doborem tematów. Nie miałem pomysłów na posty, ale teraz wystarczy jechać rozdziały z tej książki i jest dobrze :)
+
+Co mi dał konkurs?
+
+Od czego by tu zacząć... Nauczyłem się w miarę szybko tworzyć posty. Nic, dziwnego, pisali, że człowiek wyrabia się pisząc i to jest prawda. Nie powiem jednak, że moje posty są dobre, bo jak wyżej pisałem, mam problem z tłumaczeniem rzeczy prosto. Za bardzo komplikuję niektóre rzeczy. Tutaj czeka mnie wiele treningu, będę musiał przejrzeć moje posty i zastanowić się co da się napisać lepiej i prościej.
+
+Druga sprawa, udało mi się pisać w miarę regularnie. Z tym zawsze miałem problem. Tutaj się przyznam, że brałem udział w pierwszej edycji "Daj Się Poznać", tej, w której nie było nawet stu uczestników. Poległem wtedy po dwóch postach. To była tragedia. Dotrwałem jednak do końca tegorocznej edycji i to uważam za sukces. Pisanie i rozwój projektu było niesamowicie czasochłonne, ale się udało i z tego jestem zadowolony.
+
+Czy dałem się poznać?
+
+Heh, nie bardzo. Co prawda, jakieś tam zainteresowanie moim botem było na początku i parę osób nawet skomentowało, ale od dłuższego czasu nic się na moim blogu nie dzieje :) Analytics też wiele nie pokazuje. Najwięcej sesji miałem 38, mniej więcej w połowie konkursu. Niby się coś tam promowałem na Twitterze i Wykopie, ale ostatni miesiąc był słaby. Prawdę mówiąc, to myślałem, że będzie gorzej.
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - Upper Confidence Bound]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound"/>
@@ -4993,125 +5064,6 @@ Do tego oczywiście lista awesome-deep-reinforcement-learning.
 Podsumowanie
 
 To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą sc2readera i s2protocol.
-</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
-            <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
-            <published>2017-03-01T23:36:00+01:00</published>
-            <updated>2017-03-01T23:36:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.
-
-Dlaczego Starcraft?
-
-Kilka miesięcy temu firma DeepMind ogłosiła na BlizzConie, że we współpracy z Blizzardem podjęła pracę nad napisaniem środowiska umożliwiającego pisanie botów do Starcrafta 2. Wcześniej ludzie z DeepMind stworzyli bota grającego w popularną w Azji grę planszową Go, w której człowiek przez długi czas był nie do pokonania przez komputer. Oczywiście, DeepMind nie tworzy tego środowiska do Starcrafta, bo uwielbiają tworzyć boty tylko dlatego, że badania nad botami pomogą rozwinąć algorytytmy uczenia maszynowego, a szczególnie reinforcement learningu, transfer learningu, unsupervised learningu, curriculum learningu i innych dziedzin uczenia maszynowego. Starcraft jest kolejnym krokiem, którego pokonanie przybliży albo i nawet umozliwi nam stworzenie AGI (Artificial General Intelligence), czyli sztucznej inteligencji, która będzie tak wszechstronna jak człowiek, w przeciwieństwie do ANI (Artificial Narrow Intelligence), która jest dobra tylko w jednej wąskiej dziedzinie.
-
-Dołączam do tego wyścigu, ale prawdę mówiąc nie mam wielkich szans :) Gdzie mi, biednemu programiście, do potęgi obliczeniowej Google'a i ich zespołów badaczy? Z czym do ludu. Nawet karty graficznej z CUDA nie mam. Wychodzę jednak z założenia, że liczy się dobra zabawa i nauka. I tego zamierzam się trzymać.
-
-Czym jest Starcraft?
-
-Starcraft 2 jest obecnie zdecydowanie najpopularniejszą e-sportową strategią czasu rzeczywistego. Możemy w niej grać trzema zróżnicowanymi rasami: Zergami, Protossami i Terranami. Zergowie to insektoidalna rasa, która potrafi się mutować. Srają gdzie popadnie. Terranie to natomiast ludzie. Mają czołgi i inne takie wesołe rzeczy. Protossi to humanoidalna rasa połączona więzami telepatycznymi. Cali na złoto, teleportacja to ich drugie imię, ciągle gadają o umieraniu za Aiur.
-
-Celem każdej rozgrywki jest zniszczenie wszystkich budynków przeciwnika. Nie trzeba niszczyć całej armii przeciwnika, wystarczy zrównać z ziemią każdy budynek. W grze może dojść także do remisu. Dokładnie nie pamiętam jak, ale przez chyba trzy minuty żadna ze stron nie może zbierać surowców, zniszczyć niczego ani wybudować. Rzadko się to zresztą zdarza (raz mi się udało).
-
-Aby wygrać musimy zbierać surowce (są dwa: minerały i gaz), budować budynki, tworzyć armię i wynajdywać ulepszenia, czyli robić to co w zasadzie w każdym innym RTS-ie. Istnieje limit jednostek i wynosi on 200.
-
-Gra jest bardzo wymagająca, wszystko toczy się szybko i trzeba naprawdę ogarniać, żeby przeżyć :) Aby być dobrym trzeba mieć dobre micro i macro. Micro jest to po prostu zarządzanie jednostkami, a szczególnie wojskiem w trakcie potyczek. Macro natomiast jest to natomiast ogarnianie ekonomii. Trzeba budować odpowiednio dużo workerów, mieć saturację baz (optymalnie 16 workerów na minerały i 3 workery na każdy gaz w każdej bazie), ogarniać cykliczne rzeczy specyficzne dla każdej rasy jak larva injecty, chrono boosty, dropy mułów. Z doświadczenia muszę napisać, że najważniejsze jest makro. Co ci po dobrym micro jak nie masz czym mikrować?
-
-Przykład naprawdę trudnego micro:
-
-
-
-W typowej rozgrywce można się spotkać z następującymi rzeczami: możemy zagrać grę macro, all-ina, albo timing attack. Typowa gra macro jest zazwyczaj dość długa, gracze rozwijają się spokojnie nie robiąc ryzykownych rzeczy. Czasami takie gry kończą się base trade'ami, czyli sytuacją, gdy gracze zamiast walczyć armiami ze sobą nawzajem próbują zniszczyć wrogie bazy. All-iny to natomiast sytuacje, gdy poświęcamy ekonomię, robimy armię i próbujemy zmiażdżyć przeciwnika przewagą wojska. Jeśli all-in nie wejdzie to przeważnie przegrywamy grę, bo straty ekonomiczne są zbyt duże. Natomiast timing attack to jest sytuacja, gdy próbujemy wykorzystać pewne słabości buildu przeciwnika atakując w specyficznym momencie, w którym przeciwnik jest w jakiś sposób słabszy. Jeśli timing attack wejdzie to wygrywamy.
-
-Długa gra macro:
-
-
-
-All-in:
-
-
-
-Timingi:
-
-
-
-Basetrade:
-
-
-
-Dlaczego ta gra jest tak trudna dla AI?
-
-Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jakiegoś workera, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji danego workera i kliknięcie na teren, by rozpocząć budowę.
-
-Środowisko do botów będzie miało interfejs skryptowy taki jak poprzednia część Starcrafta (czyli coś jak BWAPI), a także generowany prosty interfejs graficzny, by boty mogły uczyć się na podstawie pikseli. Do tego jeszcze opublikowane mają zostać scenariusze do trenowania (do curriculum learning).
-
-
-
-Plany
-
-Na pewno chciałbym wytrenować bota, który chociaż potrafi walczyć praktycznie każdą możliwą kompozycją jednostek dla danej rasy. Do tego chciałbym zrealizować scenariusz uproszczonej rozgrywki, w której bot może budować tylko podstawową jednostkę walczącą (Zerglinga, Zealota, Marine'a).
-
-Na razie nie udostępniono środowiska (ponoć ma być w pierwszym kwartale 2017, czyli w tym miesiącu), więc na razie będę bawił się z replayami, co i tak potem będzie konieczne by trenować sieci neuronowe. Jeśli jednak skończą mi się pomysły co robić z replayami to prawdopodobnie spróbuję napisać uproszczoną wersję Starcrafta w JS na canvasie i zrobić jakieś proste scenariusze do tego.
-
-Wszelki kod będzie na moim githubie w repozytorium starcraft-ai.
-]]></content>
-            <summary>Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.
-
-Dlaczego Starcraft?
-
-Kilka miesięcy temu firma DeepMind ogłosiła na BlizzConie, że we współpracy z Blizzardem podjęła pracę nad napisaniem środowiska umożliwiającego pisanie botów do Starcrafta 2. Wcześniej ludzie z DeepMind stworzyli bota grającego w popularną w Azji grę planszową Go, w której człowiek przez długi czas był nie do pokonania przez komputer. Oczywiście, DeepMind nie tworzy tego środowiska do Starcrafta, bo uwielbiają tworzyć boty tylko dlatego, że badania nad botami pomogą rozwinąć algorytytmy uczenia maszynowego, a szczególnie reinforcement learningu, transfer learningu, unsupervised learningu, curriculum learningu i innych dziedzin uczenia maszynowego. Starcraft jest kolejnym krokiem, którego pokonanie przybliży albo i nawet umozliwi nam stworzenie AGI (Artificial General Intelligence), czyli sztucznej inteligencji, która będzie tak wszechstronna jak człowiek, w przeciwieństwie do ANI (Artificial Narrow Intelligence), która jest dobra tylko w jednej wąskiej dziedzinie.
-
-Dołączam do tego wyścigu, ale prawdę mówiąc nie mam wielkich szans :) Gdzie mi, biednemu programiście, do potęgi obliczeniowej Google'a i ich zespołów badaczy? Z czym do ludu. Nawet karty graficznej z CUDA nie mam. Wychodzę jednak z założenia, że liczy się dobra zabawa i nauka. I tego zamierzam się trzymać.
-
-Czym jest Starcraft?
-
-Starcraft 2 jest obecnie zdecydowanie najpopularniejszą e-sportową strategią czasu rzeczywistego. Możemy w niej grać trzema zróżnicowanymi rasami: Zergami, Protossami i Terranami. Zergowie to insektoidalna rasa, która potrafi się mutować. Srają gdzie popadnie. Terranie to natomiast ludzie. Mają czołgi i inne takie wesołe rzeczy. Protossi to humanoidalna rasa połączona więzami telepatycznymi. Cali na złoto, teleportacja to ich drugie imię, ciągle gadają o umieraniu za Aiur.
-
-Celem każdej rozgrywki jest zniszczenie wszystkich budynków przeciwnika. Nie trzeba niszczyć całej armii przeciwnika, wystarczy zrównać z ziemią każdy budynek. W grze może dojść także do remisu. Dokładnie nie pamiętam jak, ale przez chyba trzy minuty żadna ze stron nie może zbierać surowców, zniszczyć niczego ani wybudować. Rzadko się to zresztą zdarza (raz mi się udało).
-
-Aby wygrać musimy zbierać surowce (są dwa: minerały i gaz), budować budynki, tworzyć armię i wynajdywać ulepszenia, czyli robić to co w zasadzie w każdym innym RTS-ie. Istnieje limit jednostek i wynosi on 200.
-
-Gra jest bardzo wymagająca, wszystko toczy się szybko i trzeba naprawdę ogarniać, żeby przeżyć :) Aby być dobrym trzeba mieć dobre micro i macro. Micro jest to po prostu zarządzanie jednostkami, a szczególnie wojskiem w trakcie potyczek. Macro natomiast jest to natomiast ogarnianie ekonomii. Trzeba budować odpowiednio dużo workerów, mieć saturację baz (optymalnie 16 workerów na minerały i 3 workery na każdy gaz w każdej bazie), ogarniać cykliczne rzeczy specyficzne dla każdej rasy jak larva injecty, chrono boosty, dropy mułów. Z doświadczenia muszę napisać, że najważniejsze jest makro. Co ci po dobrym micro jak nie masz czym mikrować?
-
-Przykład naprawdę trudnego micro:
-
-
-
-W typowej rozgrywce można się spotkać z następującymi rzeczami: możemy zagrać grę macro, all-ina, albo timing attack. Typowa gra macro jest zazwyczaj dość długa, gracze rozwijają się spokojnie nie robiąc ryzykownych rzeczy. Czasami takie gry kończą się base trade'ami, czyli sytuacją, gdy gracze zamiast walczyć armiami ze sobą nawzajem próbują zniszczyć wrogie bazy. All-iny to natomiast sytuacje, gdy poświęcamy ekonomię, robimy armię i próbujemy zmiażdżyć przeciwnika przewagą wojska. Jeśli all-in nie wejdzie to przeważnie przegrywamy grę, bo straty ekonomiczne są zbyt duże. Natomiast timing attack to jest sytuacja, gdy próbujemy wykorzystać pewne słabości buildu przeciwnika atakując w specyficznym momencie, w którym przeciwnik jest w jakiś sposób słabszy. Jeśli timing attack wejdzie to wygrywamy.
-
-Długa gra macro:
-
-
-
-All-in:
-
-
-
-Timingi:
-
-
-
-Basetrade:
-
-
-
-Dlaczego ta gra jest tak trudna dla AI?
-
-Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jakiegoś workera, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji danego workera i kliknięcie na teren, by rozpocząć budowę.
-
-Środowisko do botów będzie miało interfejs skryptowy taki jak poprzednia część Starcrafta (czyli coś jak BWAPI), a także generowany prosty interfejs graficzny, by boty mogły uczyć się na podstawie pikseli. Do tego jeszcze opublikowane mają zostać scenariusze do trenowania (do curriculum learning).
-
-
-
-Plany
-
-Na pewno chciałbym wytrenować bota, który chociaż potrafi walczyć praktycznie każdą możliwą kompozycją jednostek dla danej rasy. Do tego chciałbym zrealizować scenariusz uproszczonej rozgrywki, w której bot może budować tylko podstawową jednostkę walczącą (Zerglinga, Zealota, Marine'a).
-
-Na razie nie udostępniono środowiska (ponoć ma być w pierwszym kwartale 2017, czyli w tym miesiącu), więc na razie będę bawił się z replayami, co i tak potem będzie konieczne by trenować sieci neuronowe. Jeśli jednak skończą mi się pomysły co robić z replayami to prawdopodobnie spróbuję napisać uproszczoną wersję Starcrafta w JS na canvasie i zrobić jakieś proste scenariusze do tego.
-
-Wszelki kod będzie na moim githubie w repozytorium starcraft-ai.
 </summary>
         </entry>
     </feed>
