@@ -3,11 +3,120 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/atom.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-05-31T23:58:09+02:00</updated>
+    <updated>2017-08-24T16:06:44+02:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Docker na Windowsie - problemy z volumes, symlinkami i połączeniem]]></title>
+            <link href="https://dloranc.github.io/blog/2017/08/24/docker-na-windowsie-problemy-z-volumes-symlinkami-i-polaczeniem"/>
+            <published>2017-08-24T16:20:00+02:00</published>
+            <updated>2017-08-24T16:20:00+02:00</updated>
+            <id>https://dloranc.github.io/blog/2017/08/24/docker-na-windowsie-problemy-z-volumes-symlinkami-i-polaczeniem</id>
+            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/docker_on_windows_problems_with_volumes_symlinks_and_connection.png"/>            Zacząłem się parę dni temu uczyć dockera. Do tej pory do wirtualizacji korzystałem z Vagranta, ale niezbyt mi siadł. Ale ja nie o tym. Niezbyt jeszcze ogarniam dockera, ale po paru próbach i jednym projekcie stwierdziłem, że to fajna sprawa. Nie zamierzam jednak tworzyć żadnego tutoriala. Zainteresowanych tutorialem zapraszam do skorzystania z docker-curriculum.com. Jest całkiem fajny i nieźle tłumaczy podstawy.
+
+Podczas zabaw z dockerem napotkałem parę problemów i o tym będzie ten post.
+
+Volumes
+
+Podczas prób pracy z prostym projektem okazało się, że kontener nie widzi plików, mimo że ustawiłem odpowiednie volumes w docker-compose.yml. Próba odpalenia basha w kontenerze z ustawionym czymś w rodzaju -v "$PWD/":/var/www/html też się nie powiodła. Okazało się, że problemem jest Windows. Jako, że nie mogę korzystać z Hyper-V, bo nie posiadam Windows 10 Professional muszę korzystać z Docker Toolbox. Po dwóch godzinach kombinowania okazało się, że w dockerze pliki są widoczne tylko jeśli są w którymś podkatalogu c:\Users. Tak jakoś działa VirtualBox, że tak zrobili. Na zwykłym dockerze dla Windowsa w dokumentacji widziałem, że można w GUI załatwić sprawę poprzez udostępnienie każdej partycji. Czy jakoś tak, średnio mnie to obchodzi.
+
+Zastanawia mnie jedna rzecz. Skoro korzysta się z kontenerów, by mieć odizolowane środowisko, to może powinno to dotyczyć w jakiś sposób systemów plików? Bo tak to izolacja nie jest pełna.
+
+Symlinki
+
+Druga sprawa jest także związana z Windowsem. Otóż po wywołaniu w kontenerze komendy:
+
+<pre>npm install &lt;nazwa_pakietu&gt; --save-dev
+</pre>
+
+NPM rzuca coś w rodzaju:
+
+<pre>npm ERR! code EPROTO
+npm ERR! errno -71
+npm ERR! syscall symlink
+npm ERR! EPROTO: protocol error, symlink '../uglify-js/bin/uglifyjs' -&gt; 'var/www/html/node_modules/.bin/uglifyjs'
+</pre>
+
+No tak, nie da się zrobić symlinków w kontenerze, bo docker tego nie ogarnia, mimo tego że na Windowsie da się robić symlinki (tak zwane junction). Rozwiązaniem okazało się dodanie przełącznika --no-bin-links do komendy:
+
+<pre>npm install &lt;nazwa_pakietu&gt; --save-dev --no-bin-links
+</pre>
+
+Gorzej, że to najprawdopobniej nie zadziała w innych przypadkach, więc będę musiał znaleźć jakiś inny sposób.
+
+Może zainstaluję w końcu tego Linuksa? :-)
+
+Problem z połączeniem
+
+Ha, przy próbie zainstalowania gulp-uglify wyskoczyło mi także coś takiego:
+
+<pre>error request to https://registry.npmjs.org/gulp-uglify failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org:443
+</pre>
+
+Oczywiście, wcześniej wszystko działało jak trzeba. Połączenie z internetem działało. Rozwiązaniem okazało się zrestartowanie maszyny wirtualnej:
+
+<pre>docker-machine restart
+</pre>
+
+I do tego musiałem postawić kontenery za pomocą docker-compose:
+
+<pre>docker-compose start
+</pre>
+]]></content>
+            <summary>Zacząłem się parę dni temu uczyć dockera. Do tej pory do wirtualizacji korzystałem z Vagranta, ale niezbyt mi siadł. Ale ja nie o tym. Niezbyt jeszcze ogarniam dockera, ale po paru próbach i jednym projekcie stwierdziłem, że to fajna sprawa. Nie zamierzam jednak tworzyć żadnego tutoriala. Zainteresowanych tutorialem zapraszam do skorzystania z docker-curriculum.com. Jest całkiem fajny i nieźle tłumaczy podstawy.
+
+Podczas zabaw z dockerem napotkałem parę problemów i o tym będzie ten post.
+
+Volumes
+
+Podczas prób pracy z prostym projektem okazało się, że kontener nie widzi plików, mimo że ustawiłem odpowiednie volumes w docker-compose.yml. Próba odpalenia basha w kontenerze z ustawionym czymś w rodzaju -v "$PWD/":/var/www/html też się nie powiodła. Okazało się, że problemem jest Windows. Jako, że nie mogę korzystać z Hyper-V, bo nie posiadam Windows 10 Professional muszę korzystać z Docker Toolbox. Po dwóch godzinach kombinowania okazało się, że w dockerze pliki są widoczne tylko jeśli są w którymś podkatalogu c:\Users. Tak jakoś działa VirtualBox, że tak zrobili. Na zwykłym dockerze dla Windowsa w dokumentacji widziałem, że można w GUI załatwić sprawę poprzez udostępnienie każdej partycji. Czy jakoś tak, średnio mnie to obchodzi.
+
+Zastanawia mnie jedna rzecz. Skoro korzysta się z kontenerów, by mieć odizolowane środowisko, to może powinno to dotyczyć w jakiś sposób systemów plików? Bo tak to izolacja nie jest pełna.
+
+Symlinki
+
+Druga sprawa jest także związana z Windowsem. Otóż po wywołaniu w kontenerze komendy:
+
+<pre>npm install &lt;nazwa_pakietu&gt; --save-dev
+</pre>
+
+NPM rzuca coś w rodzaju:
+
+<pre>npm ERR! code EPROTO
+npm ERR! errno -71
+npm ERR! syscall symlink
+npm ERR! EPROTO: protocol error, symlink '../uglify-js/bin/uglifyjs' -&gt; 'var/www/html/node_modules/.bin/uglifyjs'
+</pre>
+
+No tak, nie da się zrobić symlinków w kontenerze, bo docker tego nie ogarnia, mimo tego że na Windowsie da się robić symlinki (tak zwane junction). Rozwiązaniem okazało się dodanie przełącznika --no-bin-links do komendy:
+
+<pre>npm install &lt;nazwa_pakietu&gt; --save-dev --no-bin-links
+</pre>
+
+Gorzej, że to najprawdopobniej nie zadziała w innych przypadkach, więc będę musiał znaleźć jakiś inny sposób.
+
+Może zainstaluję w końcu tego Linuksa? :-)
+
+Problem z połączeniem
+
+Ha, przy próbie zainstalowania gulp-uglify wyskoczyło mi także coś takiego:
+
+<pre>error request to https://registry.npmjs.org/gulp-uglify failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org:443
+</pre>
+
+Oczywiście, wcześniej wszystko działało jak trzeba. Połączenie z internetem działało. Rozwiązaniem okazało się zrestartowanie maszyny wirtualnej:
+
+<pre>docker-machine restart
+</pre>
+
+I do tego musiałem postawić kontenery za pomocą docker-compose:
+
+<pre>docker-compose start
+</pre>
+</summary>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017 - przynudzanie, czyli podsumowanie konkursu]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu"/>
@@ -4997,81 +5106,6 @@ Aby wyłączyć środowisko projektu wystarczy wpisać w konsoli deactivate.
 Podsumowanie
 
 To tyle, nauczyliśmy się podstawowej obsługi pip i virtualenv. O tworzenieniu paczek i wysyłaniu ich do PyPI będzie może kiedy indziej. Przyznam się także, że bardzo się zdziwiłem tym, że pip nie umożliwia separacji bibliotek dla każdego projektu i potrzebna jest do tego instalacja specjalnej paczki. Dziwne, mam inne doświadczenia jeśli chodzi o PHP i JS. Obstawiam, że to przez jakieś zaszłości historyczne.
-</summary>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Wiedza, wiedza, wiedza]]></title>
-            <link href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza"/>
-            <published>2017-03-05T22:00:00+01:00</published>
-            <updated>2017-03-05T22:00:00+01:00</updated>
-            <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
-            <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
-
-
-
-Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
-
-Książki i kursy
-
-Na pewno będę musiał się w końcu nauczyć reinforcement learningu, zaczynając od tych podstawowych i standardowych metod, a kończąc na aktualnym "state of art".
-
-
-Reinforcement Learning: An Introduction - na początek będę starał się uczyć z tej ponoć klasycznej pozycji w temacie reinforcement learningu autorstwa Richarda S. Suttona i Andrewa G. Barto.
-Kurs Reinforcement Learning na Udacity - trzeba to będzie jeszcze raz od początku zacząć i skończyć.
-UC Berkeley CS188 Intro to AI - ktoś ze Slacka mi to polecił, nie miałem czasu całości przejrzeć, ale wygląda nawet ciekawie.
-
-
-Chyba tyle podstaw. Dalej będzie ciekawiej, pozbierałem trochę linków z r/machinelearning, ich ilość w zakładkach przytłacza, więc wybrałem te moim zdaniem najbardziej istotne:
-
-Arxiv
-
-
-Playing Atari with Deep Reinforcement Learning - chyba już klasyczna praca o uczeniu sieci neuronowej na podstawie pikseli. Zamierzam jeden z pierwszych modeli mojego bota stworzyć na jej podstawie.
-Deep Recurrent Q-Learning for Partially Observable MDPs - Starcraft jest POMDP, więc ten artykuł się w jakimś stopniu powinien przydać.
-Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning - coś co może mi się przydać, na pewno będę potrzebować jakiejś formy curriculum learningu.
-Asynchronous Methods for Deep Reinforcement Learning - że zacytuję abstrakt: "The best performing method, an asynchronous variant of actor-critic, surpasses the current state-of-the-art on the Atari domain while training for half the time on a single multi-core CPU instead of a GPU". To się na pewno mi przyda, bo nie mam GPU.
-PathNet: Evolution Channels Gradient Descent in Super Neural Networks - świeża praca, trenowanie wielu sieci neuronowych z tranferem wiedzy i ich selekcją za pomocą algorytmu genetycznego.
-
-
-Do tego oczywiście lista awesome-deep-reinforcement-learning.
-
-Podsumowanie
-
-To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą sc2readera i s2protocol.
-]]></content>
-            <summary>Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".
-
-
-
-Następne tygodnie miną mi pod znakiem blogowania i tworzenia projektu na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
-
-Książki i kursy
-
-Na pewno będę musiał się w końcu nauczyć reinforcement learningu, zaczynając od tych podstawowych i standardowych metod, a kończąc na aktualnym "state of art".
-
-
-Reinforcement Learning: An Introduction - na początek będę starał się uczyć z tej ponoć klasycznej pozycji w temacie reinforcement learningu autorstwa Richarda S. Suttona i Andrewa G. Barto.
-Kurs Reinforcement Learning na Udacity - trzeba to będzie jeszcze raz od początku zacząć i skończyć.
-UC Berkeley CS188 Intro to AI - ktoś ze Slacka mi to polecił, nie miałem czasu całości przejrzeć, ale wygląda nawet ciekawie.
-
-
-Chyba tyle podstaw. Dalej będzie ciekawiej, pozbierałem trochę linków z r/machinelearning, ich ilość w zakładkach przytłacza, więc wybrałem te moim zdaniem najbardziej istotne:
-
-Arxiv
-
-
-Playing Atari with Deep Reinforcement Learning - chyba już klasyczna praca o uczeniu sieci neuronowej na podstawie pikseli. Zamierzam jeden z pierwszych modeli mojego bota stworzyć na jej podstawie.
-Deep Recurrent Q-Learning for Partially Observable MDPs - Starcraft jest POMDP, więc ten artykuł się w jakimś stopniu powinien przydać.
-Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning - coś co może mi się przydać, na pewno będę potrzebować jakiejś formy curriculum learningu.
-Asynchronous Methods for Deep Reinforcement Learning - że zacytuję abstrakt: "The best performing method, an asynchronous variant of actor-critic, surpasses the current state-of-the-art on the Atari domain while training for half the time on a single multi-core CPU instead of a GPU". To się na pewno mi przyda, bo nie mam GPU.
-PathNet: Evolution Channels Gradient Descent in Super Neural Networks - świeża praca, trenowanie wielu sieci neuronowych z tranferem wiedzy i ich selekcją za pomocą algorytmu genetycznego.
-
-
-Do tego oczywiście lista awesome-deep-reinforcement-learning.
-
-Podsumowanie
-
-To na razie tyle, wybrałem to co moim zdaniem najważniejsze. Ten miesiąc spędzę na poznawaniu teorii i tworzeniu prostych modeli w OpenAI Gymie. Co do projektu to w tym tygodniu będę się bawił analizą replayów za pomocą sc2readera i s2protocol.
 </summary>
         </entry>
     </feed>
