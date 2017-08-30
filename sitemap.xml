@@ -2,181 +2,181 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dloranc.github.io</loc>
-    <lastmod>2017-08-24</lastmod>
+    <lastmod>2017-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/08/24/docker-na-windowsie-problemy-z-volumes-symlinkami-i-polaczeniem</loc>
-    <lastmod>2017-08-24T16:20:00+02:00</lastmod>
+    <lastmod>2017-08-24T14:20:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu</loc>
-    <lastmod>2017-05-31T23:55:00+02:00</lastmod>
+    <lastmod>2017-05-31T21:55:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound</loc>
-    <lastmod>2017-05-31T02:40:00+02:00</lastmod>
+    <lastmod>2017-05-31T00:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry</loc>
-    <lastmod>2017-05-28T23:55:00+02:00</lastmod>
+    <lastmod>2017-05-28T21:55:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</loc>
-    <lastmod>2017-05-28T19:40:00+02:00</lastmod>
+    <lastmod>2017-05-28T17:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</loc>
-    <lastmod>2017-05-21T23:55:00+02:00</lastmod>
+    <lastmod>2017-05-21T21:55:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna</loc>
-    <lastmod>2017-05-21T23:55:00+02:00</lastmod>
+    <lastmod>2017-05-21T21:55:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</loc>
-    <lastmod>2017-05-07T23:40:00+02:00</lastmod>
+    <lastmod>2017-05-07T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja</loc>
-    <lastmod>2017-05-02T19:40:00+02:00</lastmod>
+    <lastmod>2017-05-02T17:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta</loc>
-    <lastmod>2017-04-30T23:50:00+02:00</lastmod>
+    <lastmod>2017-04-30T21:50:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow</loc>
-    <lastmod>2017-04-29T23:40:00+02:00</lastmod>
+    <lastmod>2017-04-29T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait</loc>
-    <lastmod>2017-04-23T20:00:00+02:00</lastmod>
+    <lastmod>2017-04-23T18:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest</loc>
-    <lastmod>2017-04-16T23:40:00+02:00</lastmod>
+    <lastmod>2017-04-16T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi</loc>
-    <lastmod>2017-04-16T19:40:00+02:00</lastmod>
+    <lastmod>2017-04-16T17:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</loc>
-    <lastmod>2017-04-09T23:40:00+02:00</lastmod>
+    <lastmod>2017-04-09T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/09/piec-basenow</loc>
-    <lastmod>2017-04-09T14:40:00+02:00</lastmod>
+    <lastmod>2017-04-09T12:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/04/02/zmiana-planow</loc>
-    <lastmod>2017-04-02T23:40:00+02:00</lastmod>
+    <lastmod>2017-04-02T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie</loc>
-    <lastmod>2017-03-28T23:30:00+02:00</lastmod>
+    <lastmod>2017-03-28T21:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</loc>
-    <lastmod>2017-03-12T22:40:00+01:00</lastmod>
+    <lastmod>2017-03-12T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</loc>
-    <lastmod>2017-03-10T22:40:00+01:00</lastmod>
+    <lastmod>2017-03-10T21:40:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</loc>
-    <lastmod>2017-03-05T22:00:00+01:00</lastmod>
+    <lastmod>2017-03-05T21:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</loc>
-    <lastmod>2017-03-01T23:36:00+01:00</lastmod>
+    <lastmod>2017-03-01T22:36:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</loc>
-    <lastmod>2017-02-17T00:00:00+01:00</lastmod>
+    <lastmod>2017-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2017/02/15/daj-sie-poznac</loc>
-    <lastmod>2017-02-15T00:00:00+01:00</lastmod>
+    <lastmod>2017-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2016/09/10/label-encoder</loc>
-    <lastmod>2016-09-10T00:00:00+02:00</lastmod>
+    <lastmod>2016-09-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</loc>
-    <lastmod>2016-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2016-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/blog/2016/08/02/hello-world</loc>
-    <lastmod>2016-08-02T00:00:00+02:00</lastmod>
+    <lastmod>2016-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
     <loc>https://dloranc.github.io/o-mnie</loc>
-    <lastmod>2017-08-24</lastmod>
+    <lastmod>2017-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dloranc.github.io/polityka-prywatnosci</loc>
-    <lastmod>2017-08-24</lastmod>
+    <lastmod>2017-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/scrapy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:54+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[We need more data - Scrapy]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>
-            <published>2017-03-12T22:40:00+01:00</published>
-            <updated>2017-03-12T22:40:00+01:00</updated>
+            <published>2017-03-12T21:40:00+00:00</published>
+            <updated>2017-03-12T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
             <summary>Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.]]></content>

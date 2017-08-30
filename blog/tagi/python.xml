@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/python.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:54+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - Upper Confidence Bound]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound"/>
-            <published>2017-05-31T02:40:00+02:00</published>
-            <updated>2017-05-31T02:40:00+02:00</updated>
+            <published>2017-05-31T00:40:00+00:00</published>
+            <updated>2017-05-31T00:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound</id>
             <summary>Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_upper_confidence_bound.png"/>            Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.]]></content>
@@ -20,8 +20,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - optymistyczne wartości początkowe]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe"/>
-            <published>2017-05-28T19:40:00+02:00</published>
-            <updated>2017-05-28T19:40:00+02:00</updated>
+            <published>2017-05-28T17:40:00+00:00</published>
+            <updated>2017-05-28T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</id>
             <summary>Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png"/>            Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.]]></content>
@@ -29,8 +29,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna"/>
-            <published>2017-05-21T23:55:00+02:00</published>
-            <updated>2017-05-21T23:55:00+02:00</updated>
+            <published>2017-05-21T21:55:00+00:00</published>
+            <updated>2017-05-21T21:55:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna</id>
             <summary>Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png"/>            Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.]]></content>
@@ -38,8 +38,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - prosta optymalizacja]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja"/>
-            <published>2017-05-02T19:40:00+02:00</published>
-            <updated>2017-05-02T19:40:00+02:00</updated>
+            <published>2017-05-02T17:40:00+00:00</published>
+            <updated>2017-05-02T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja</id>
             <summary>Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg"/>            Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.]]></content>
@@ -47,8 +47,8 @@
             <entry>
             <title type="html"><![CDATA[Atak wielorękich bandytów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow"/>
-            <published>2017-04-29T23:40:00+02:00</published>
-            <updated>2017-04-29T23:40:00+02:00</updated>
+            <published>2017-04-29T21:40:00+00:00</published>
+            <updated>2017-04-29T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow</id>
             <summary>Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_attack.jpg"/>            Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.]]></content>
@@ -56,8 +56,8 @@
             <entry>
             <title type="html"><![CDATA[Argumenty w linii komend w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie"/>
-            <published>2017-04-09T23:40:00+02:00</published>
-            <updated>2017-04-09T23:40:00+02:00</updated>
+            <published>2017-04-09T21:40:00+00:00</published>
+            <updated>2017-04-09T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</id>
             <summary>Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_arguments.png"/>            Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.]]></content>
@@ -65,8 +65,8 @@
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>
-            <published>2017-03-10T22:40:00+01:00</published>
-            <updated>2017-03-10T22:40:00+01:00</updated>
+            <published>2017-03-10T21:40:00+00:00</published>
+            <updated>2017-03-10T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</id>
             <summary>Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg"/>            Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.]]></content>

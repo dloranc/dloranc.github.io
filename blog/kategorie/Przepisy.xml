@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Przepisy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:53+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[Zapisywanie modeli i historii w Kerasie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie"/>
-            <published>2017-03-28T23:30:00+02:00</published>
-            <updated>2017-03-28T23:30:00+02:00</updated>
+            <published>2017-03-28T21:30:00+00:00</published>
+            <updated>2017-03-28T21:30:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie</id>
             <summary>Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/power.jpg"/>            Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.]]></content>
@@ -20,8 +20,8 @@
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>
-            <published>2017-03-10T22:40:00+01:00</published>
-            <updated>2017-03-10T22:40:00+01:00</updated>
+            <published>2017-03-10T21:40:00+00:00</published>
+            <updated>2017-03-10T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</id>
             <summary>Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg"/>            Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.]]></content>
@@ -29,8 +29,8 @@
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
-            <published>2017-02-17T00:00:00+01:00</published>
-            <updated>2017-02-17T00:00:00+01:00</updated>
+            <published>2017-02-17T00:00:00+00:00</published>
+            <updated>2017-02-17T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
             <summary>Bo grunt to gorące jedynki :)</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg"/>            Bo grunt to gorące jedynki :)]]></content>
@@ -38,8 +38,8 @@
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
-            <published>2016-09-10T00:00:00+02:00</published>
-            <updated>2016-09-10T00:00:00+02:00</updated>
+            <published>2016-09-10T00:00:00+00:00</published>
+            <updated>2016-09-10T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
             <summary>Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
@@ -47,8 +47,8 @@
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
-            <published>2016-09-01T00:00:00+02:00</published>
-            <updated>2016-09-01T00:00:00+02:00</updated>
+            <published>2016-09-01T00:00:00+00:00</published>
+            <updated>2016-09-01T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
             <summary>Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki <strong>scikit-learn</strong> do dzielenia zbioru danych.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/kfold_stratifiedkfold.png"/>            Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.]]></content>

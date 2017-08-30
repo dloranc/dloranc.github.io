@@ -133,7 +133,7 @@
 
 <p>Ok, TorchCraft do działania wykorzystuje Torcha (kto by pomyślał?). Torch jest biblioteką do machine learningu bazującą na języku skryptowym Lua. Jako, że nie znałem wcześniej Lua, to nadszedł czas by ogarnąć chociaż podstawy. Język najlepiej zrozumieć poprzez czytanie dokumentacji i pisanie kodu sprawdzającego poszczególne części języka. Skrypty Lua mają rozszerzenie <code>.lua</code> i są uruchamiane przez <code>lua &lt;nazwa_skryptu</code>. OK, czas na przykłady:</p>
 
-<h3 id="zmienne-deklaruje-i-inicjalizuje-si%E4%99-tak%3A">Zmienne deklaruje i inicjalizuje się tak:</h3>
+<h3 id="zmienne-deklaruje-i-inicjalizuje-si%C4%99-tak%3A">Zmienne deklaruje i inicjalizuje się tak:</h3>
 
 <pre><code class="lua">j = 10         -- global variable
 a = true
@@ -143,7 +143,7 @@ local i = 1    -- local variable
 
 <p><code>local</code> pozwala na zadeklarowanie zmiennej lokalnej, czyli ograniczonej do zasięgu bloku. Więcej o tym można poczytać w <a href="https://www.lua.org/pil/4.2.html">dokumentacji</a>.</p>
 
-<h3 id="wy%E5%9Bwietlanie-na-ekranie">Wyświetlanie na ekranie</h3>
+<h3 id="wy%C5%9Bwietlanie-na-ekranie">Wyświetlanie na ekranie</h3>
 
 <pre><code class="lua">a = 10
 b = nil     -- null value
@@ -152,12 +152,12 @@ print(a, b) --&gt; 10   nil
 print(s)    --&gt; hello
 </code></pre>
 
-<h3 id="wczytywanie-danych-od-u%E5%BEytkownika">Wczytywanie danych od użytkownika</h3>
+<h3 id="wczytywanie-danych-od-u%C5%BCytkownika">Wczytywanie danych od użytkownika</h3>
 
 <pre><code class="lua">line = io.read()
 </code></pre>
 
-<h3 id="komentarze-nietypowa-sk%E5%82adnia">Komentarze (nietypowa składnia)</h3>
+<h3 id="komentarze-nietypowa-sk%C5%82adnia">Komentarze (nietypowa składnia)</h3>
 
 <pre><code class="lua">-- comment
 
@@ -166,7 +166,7 @@ block comment
 ]]
 </code></pre>
 
-<h3 id="konkatenacja-string%E3%B3w">Konkatenacja stringów</h3>
+<h3 id="konkatenacja-string%C3%B3w">Konkatenacja stringów</h3>
 
 <pre><code class="lua">print("Hello " .. "World")  --&gt; Hello World
 print(0 .. 1)               --&gt; 01
@@ -273,7 +273,7 @@ print(not not nil) --&gt; false
 
 <p>Jak widać, w przeciwieństwie do większości pozostałych języków programowania zamiast operatora <code>!=</code> jest <code>~=</code>, zamiast <code>!</code> jest <code>not</code>, a do tego <code>if 0 then</code> albo <code>if {} then</code> ma wartość <code>true</code> i blok się wykona.</p>
 
-<h3 id="p%E4%99tle">Pętle</h3>
+<h3 id="p%C4%99tle">Pętle</h3>
 
 <pre><code class="lua">for i = 1, 10 do
    print(i)

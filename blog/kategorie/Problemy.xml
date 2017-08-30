@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/kategorie/Problemy.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:53+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[Docker na Windowsie - problemy z volumes, symlinkami i połączeniem]]></title>
             <link href="https://dloranc.github.io/blog/2017/08/24/docker-na-windowsie-problemy-z-volumes-symlinkami-i-polaczeniem"/>
-            <published>2017-08-24T16:20:00+02:00</published>
-            <updated>2017-08-24T16:20:00+02:00</updated>
+            <published>2017-08-24T14:20:00+00:00</published>
+            <updated>2017-08-24T14:20:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/08/24/docker-na-windowsie-problemy-z-volumes-symlinkami-i-polaczeniem</id>
             <summary>Zacząłem się niedawno uczyć Dockera (wiem, późno trochę) i napotkałem parę problemów z nim związanych. Niestety, Windows się niezbyt lubi z dockerem.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/docker_on_windows_problems_with_volumes_symlinks_and_connection.png"/>            Zacząłem się niedawno uczyć Dockera (wiem, późno trochę) i napotkałem parę problemów z nim związanych. Niestety, Windows się niezbyt lubi z dockerem.]]></content>

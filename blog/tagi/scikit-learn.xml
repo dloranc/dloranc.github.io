@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/scikit-learn.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:54+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[OneHotEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2017/02/17/one-hot-encoder"/>
-            <published>2017-02-17T00:00:00+01:00</published>
-            <updated>2017-02-17T00:00:00+01:00</updated>
+            <published>2017-02-17T00:00:00+00:00</published>
+            <updated>2017-02-17T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/02/17/one-hot-encoder</id>
             <summary>Bo grunt to gorące jedynki :)</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/one_hot_encoder.jpg"/>            Bo grunt to gorące jedynki :)]]></content>
@@ -20,8 +20,8 @@
             <entry>
             <title type="html"><![CDATA[LabelEncoder]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/10/label-encoder"/>
-            <published>2016-09-10T00:00:00+02:00</published>
-            <updated>2016-09-10T00:00:00+02:00</updated>
+            <published>2016-09-10T00:00:00+00:00</published>
+            <updated>2016-09-10T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/10/label-encoder</id>
             <summary>Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/label_encoder.png"/>            Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).]]></content>
@@ -29,8 +29,8 @@
             <entry>
             <title type="html"><![CDATA[KFold i StratifiedKFold]]></title>
             <link href="https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold"/>
-            <published>2016-09-01T00:00:00+02:00</published>
-            <updated>2016-09-01T00:00:00+02:00</updated>
+            <published>2016-09-01T00:00:00+00:00</published>
+            <updated>2016-09-01T00:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2016/09/01/kfold-i-stratifiedkfold</id>
             <summary>Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki <strong>scikit-learn</strong> do dzielenia zbioru danych.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/kfold_stratifiedkfold.png"/>            Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki &lt;strong&gt;scikit-learn&lt;/strong&gt; do dzielenia zbioru danych.]]></content>

@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/DSP2017.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:54+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[Daj Się Poznać 2017 - przynudzanie, czyli podsumowanie konkursu]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu"/>
-            <published>2017-05-31T23:55:00+02:00</published>
-            <updated>2017-05-31T23:55:00+02:00</updated>
+            <published>2017-05-31T21:55:00+00:00</published>
+            <updated>2017-05-31T21:55:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/31/daj-sie-poznac-2017-przynudzanie-czyli-podsumowanie-konkursu</id>
             <summary>Jak w tytule, czas podsumować mój udział w konkursie Daj Się Poznać 2017. Co się udało? Co nie? Co dalej?</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/daj_sie_poznac_2017_competition_sum.jpg"/>            Jak w tytule, czas podsumować mój udział w konkursie Daj Się Poznać 2017. Co się udało? Co nie? Co dalej?]]></content>
@@ -20,8 +20,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - Upper Confidence Bound]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound"/>
-            <published>2017-05-31T02:40:00+02:00</published>
-            <updated>2017-05-31T02:40:00+02:00</updated>
+            <published>2017-05-31T00:40:00+00:00</published>
+            <updated>2017-05-31T00:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/31/multi-armed-bandit-upper-confidence-bound</id>
             <summary>Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_upper_confidence_bound.png"/>            Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.]]></content>
@@ -29,8 +29,8 @@
             <entry>
             <title type="html"><![CDATA[Torchcraft - analiza i zmiana stanu gry]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry"/>
-            <published>2017-05-28T23:55:00+02:00</published>
-            <updated>2017-05-28T23:55:00+02:00</updated>
+            <published>2017-05-28T21:55:00+00:00</published>
+            <updated>2017-05-28T21:55:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/28/torchcraft-analiza-i-zmiana-stanu-gry</id>
             <summary>Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg"/>            Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.]]></content>
@@ -38,8 +38,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - optymistyczne wartości początkowe]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe"/>
-            <published>2017-05-28T19:40:00+02:00</published>
-            <updated>2017-05-28T19:40:00+02:00</updated>
+            <published>2017-05-28T17:40:00+00:00</published>
+            <updated>2017-05-28T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/28/multi-armed-bandit-optymistyczne-wartosci-poczatkowe</id>
             <summary>Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png"/>            Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.]]></content>
@@ -47,8 +47,8 @@
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawowy skrypt]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt"/>
-            <published>2017-05-21T23:55:00+02:00</published>
-            <updated>2017-05-21T23:55:00+02:00</updated>
+            <published>2017-05-21T21:55:00+00:00</published>
+            <updated>2017-05-21T21:55:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/torchcraft-podstawowy-skrypt</id>
             <summary>Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_basic_script.jpg"/>            Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.]]></content>
@@ -56,8 +56,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - wersja niestacjonarna]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna"/>
-            <published>2017-05-21T23:55:00+02:00</published>
-            <updated>2017-05-21T23:55:00+02:00</updated>
+            <published>2017-05-21T21:55:00+00:00</published>
+            <updated>2017-05-21T21:55:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/21/multi-armed-bandit-wersja-niestacjonarna</id>
             <summary>Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png"/>            Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.]]></content>
@@ -65,8 +65,8 @@
             <entry>
             <title type="html"><![CDATA[TorchCraft - podstawy Lua]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua"/>
-            <published>2017-05-07T23:40:00+02:00</published>
-            <updated>2017-05-07T23:40:00+02:00</updated>
+            <published>2017-05-07T21:40:00+00:00</published>
+            <updated>2017-05-07T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/07/torchcraft-podstawy-lua</id>
             <summary>Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_lua_basics.png"/>            Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.]]></content>
@@ -74,8 +74,8 @@
             <entry>
             <title type="html"><![CDATA[Multi-armed bandit - prosta optymalizacja]]></title>
             <link href="https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja"/>
-            <published>2017-05-02T19:40:00+02:00</published>
-            <updated>2017-05-02T19:40:00+02:00</updated>
+            <published>2017-05-02T17:40:00+00:00</published>
+            <updated>2017-05-02T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/05/02/multi-armed-bandit-prosta-optymalizacja</id>
             <summary>Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg"/>            Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.]]></content>
@@ -83,8 +83,8 @@
             <entry>
             <title type="html"><![CDATA[Instalacja TorchCrafta]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta"/>
-            <published>2017-04-30T23:50:00+02:00</published>
-            <updated>2017-04-30T23:50:00+02:00</updated>
+            <published>2017-04-30T21:50:00+00:00</published>
+            <updated>2017-04-30T21:50:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta</id>
             <summary>Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_installing.jpg"/>            Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.]]></content>
@@ -92,8 +92,8 @@
             <entry>
             <title type="html"><![CDATA[Atak wielorękich bandytów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow"/>
-            <published>2017-04-29T23:40:00+02:00</published>
-            <updated>2017-04-29T23:40:00+02:00</updated>
+            <published>2017-04-29T21:40:00+00:00</published>
+            <updated>2017-04-29T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/29/atak-wielorekich-bandytow</id>
             <summary>Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/multi_armed_bandit_attack.jpg"/>            Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.]]></content>
@@ -101,8 +101,8 @@
             <entry>
             <title type="html"><![CDATA[Uczestnictwo w SSCAIT]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait"/>
-            <published>2017-04-23T20:00:00+02:00</published>
-            <updated>2017-04-23T20:00:00+02:00</updated>
+            <published>2017-04-23T18:00:00+00:00</published>
+            <updated>2017-04-23T18:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/23/uczestnictwo-w-sscait</id>
             <summary>Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/sscait.jpg"/>            Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.]]></content>
@@ -110,8 +110,8 @@
             <entry>
             <title type="html"><![CDATA[Reinforcement learning - co to jest?]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest"/>
-            <published>2017-04-16T23:40:00+02:00</published>
-            <updated>2017-04-16T23:40:00+02:00</updated>
+            <published>2017-04-16T21:40:00+00:00</published>
+            <updated>2017-04-16T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/16/reinforcement-learning-co-to-jest</id>
             <summary>Post w którym wyjaśniam co to jest reinforcement learning.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/reinforcement_learning_what_is_it.jpg"/>            Post w którym wyjaśniam co to jest reinforcement learning.]]></content>
@@ -119,8 +119,8 @@
             <entry>
             <title type="html"><![CDATA[Poznawanie BWAPI]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi"/>
-            <published>2017-04-16T19:40:00+02:00</published>
-            <updated>2017-04-16T19:40:00+02:00</updated>
+            <published>2017-04-16T17:40:00+00:00</published>
+            <updated>2017-04-16T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi</id>
             <summary>Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg"/>            Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.]]></content>
@@ -128,8 +128,8 @@
             <entry>
             <title type="html"><![CDATA[Argumenty w linii komend w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie"/>
-            <published>2017-04-09T23:40:00+02:00</published>
-            <updated>2017-04-09T23:40:00+02:00</updated>
+            <published>2017-04-09T21:40:00+00:00</published>
+            <updated>2017-04-09T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/09/argumenty-w-linii-komend-w-pythonie</id>
             <summary>Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_arguments.png"/>            Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.]]></content>
@@ -137,8 +137,8 @@
             <entry>
             <title type="html"><![CDATA[Pięć basenów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>
-            <published>2017-04-09T14:40:00+02:00</published>
-            <updated>2017-04-09T14:40:00+02:00</updated>
+            <published>2017-04-09T12:40:00+00:00</published>
+            <updated>2017-04-09T12:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/09/piec-basenow</id>
             <summary>Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/5_pool.jpg"/>            Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.]]></content>
@@ -146,8 +146,8 @@
             <entry>
             <title type="html"><![CDATA[Zmiana planów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/02/zmiana-planow"/>
-            <published>2017-04-02T23:40:00+02:00</published>
-            <updated>2017-04-02T23:40:00+02:00</updated>
+            <published>2017-04-02T21:40:00+00:00</published>
+            <updated>2017-04-02T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/02/zmiana-planow</id>
             <summary>Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/broodwar.jpg"/>            Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany.]]></content>
@@ -155,8 +155,8 @@
             <entry>
             <title type="html"><![CDATA[Zapisywanie modeli i historii w Kerasie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie"/>
-            <published>2017-03-28T23:30:00+02:00</published>
-            <updated>2017-03-28T23:30:00+02:00</updated>
+            <published>2017-03-28T21:30:00+00:00</published>
+            <updated>2017-03-28T21:30:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/28/zapisywanie-modeli-i-historii-w-kerasie</id>
             <summary>Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/power.jpg"/>            Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.]]></content>
@@ -164,8 +164,8 @@
             <entry>
             <title type="html"><![CDATA[We need more data - Scrapy]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy"/>
-            <published>2017-03-12T22:40:00+01:00</published>
-            <updated>2017-03-12T22:40:00+01:00</updated>
+            <published>2017-03-12T21:40:00+00:00</published>
+            <updated>2017-03-12T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/12/we-need-more-data-scrapy</id>
             <summary>Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/scrapy.jpg"/>            Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.]]></content>
@@ -173,8 +173,8 @@
             <entry>
             <title type="html"><![CDATA[Zależności w Pythonie]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie"/>
-            <published>2017-03-10T22:40:00+01:00</published>
-            <updated>2017-03-10T22:40:00+01:00</updated>
+            <published>2017-03-10T21:40:00+00:00</published>
+            <updated>2017-03-10T21:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/10/zaleznosci-w-pythonie</id>
             <summary>Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/python_dependencies.jpg"/>            Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.]]></content>
@@ -182,8 +182,8 @@
             <entry>
             <title type="html"><![CDATA[Wiedza, wiedza, wiedza]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza"/>
-            <published>2017-03-05T22:00:00+01:00</published>
-            <updated>2017-03-05T22:00:00+01:00</updated>
+            <published>2017-03-05T21:00:00+00:00</published>
+            <updated>2017-03-05T21:00:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/05/wiedza-wiedza-wiedza</id>
             <summary>Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/books.jpg"/>            Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.]]></content>
@@ -191,8 +191,8 @@
             <entry>
             <title type="html"><![CDATA[Trochę informacji o Starcrafcie i moje plany]]></title>
             <link href="https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie"/>
-            <published>2017-03-01T23:36:00+01:00</published>
-            <updated>2017-03-01T23:36:00+01:00</updated>
+            <published>2017-03-01T22:36:00+00:00</published>
+            <updated>2017-03-01T22:36:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/03/01/troche-informacji-o-starcrafcie</id>
             <summary>Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/about_starcraft.jpg"/>            Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach &quot;Daj Się Poznać 2017&quot;.]]></content>

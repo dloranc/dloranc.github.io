@@ -3,7 +3,7 @@
     <title><![CDATA[Dawid Loranc]]></title>
     <link href="https://dloranc.github.io/blog/tagi/bwapi.xml" rel="self"/>
     <link href="https://dloranc.github.io/"/>
-    <updated>2017-08-24T16:06:44+02:00</updated>
+    <updated>2017-08-30T21:11:54+00:00</updated>
     <id>https://dloranc.github.io/</id>
             <author>
             <name><![CDATA[Dawid Loranc]]></name>                    </author>
@@ -11,8 +11,8 @@
             <entry>
             <title type="html"><![CDATA[Instalacja TorchCrafta]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta"/>
-            <published>2017-04-30T23:50:00+02:00</published>
-            <updated>2017-04-30T23:50:00+02:00</updated>
+            <published>2017-04-30T21:50:00+00:00</published>
+            <updated>2017-04-30T21:50:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/30/instalacja-torchcrafta</id>
             <summary>Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/torchcraft_installing.jpg"/>            Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem TorchCrafta, żeby zaczął działać.]]></content>
@@ -20,8 +20,8 @@
             <entry>
             <title type="html"><![CDATA[Poznawanie BWAPI]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi"/>
-            <published>2017-04-16T19:40:00+02:00</published>
-            <updated>2017-04-16T19:40:00+02:00</updated>
+            <published>2017-04-16T17:40:00+00:00</published>
+            <updated>2017-04-16T17:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/16/poznawanie-bwapi</id>
             <summary>Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/learning_bwapi.jpg"/>            Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.]]></content>
@@ -29,8 +29,8 @@
             <entry>
             <title type="html"><![CDATA[Pięć basenów]]></title>
             <link href="https://dloranc.github.io/blog/2017/04/09/piec-basenow"/>
-            <published>2017-04-09T14:40:00+02:00</published>
-            <updated>2017-04-09T14:40:00+02:00</updated>
+            <published>2017-04-09T12:40:00+00:00</published>
+            <updated>2017-04-09T12:40:00+00:00</updated>
             <id>https://dloranc.github.io/blog/2017/04/09/piec-basenow</id>
             <summary>Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.</summary>
             <content type="html"><![CDATA[<img src="https://dloranc.github.io/images/posts_thumbnails/5_pool.jpg"/>            Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola.]]></content>
