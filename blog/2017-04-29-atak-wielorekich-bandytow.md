@@ -15,6 +15,8 @@ description: Post o multi-armed bandit problem - ciekawym problemie reinforcemen
 
 **Multi-armed bandit problem** (albo **k-armed bandit problem**) jest to jeden z problemów reinforcement learningu, nie wiem czy akurat najprostszy, ale pozwala na w miarę szybkie wprowadzenie w tematykę i na zaznajomienie się z podstawowymi pojęciami.
 
+<!-- truncate -->
+
 Wyobraźmy sobie, że jesteśmy w kasynie i gramy na kilkunastu jednorękich bandytach. Automaty różnią się między sobą. Za pociągnięcie wajchy w niektórych możemy dostać większą nagrodę niż w innych. Nagroda jaką możemy otrzymać jest z pewnego rozkładu prawdopodobieństwa, raz większa, raz mniejsza. Na razie przyjmujemy, że rozkład nie zmienia się w czasie. Naszym celem jest znalezienie automatu, z którego skumulowana wartość nagród będzie największa. Musimy spędzić trochę czasu szukając dobrego automatu, ale chcemy możliwie jak najszybciej korzystać z tego najbardziej optymalnego.
 
 To tyle jeśli chodzi o sformułowanie problemu. Powyższy przykład z automatami jest oczywiście dość sztuczny. **Multi-armed bandit** w praktyce może być zastosowany do takich rzeczy jak:

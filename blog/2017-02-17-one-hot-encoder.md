@@ -9,6 +9,8 @@ description: Bo grunt to gorące jedynki :)
 ---
 Ten wpis jest kontynuacją poprzedniego wpisu o [LabelEncoder](/2016/09/10/label-encoder). Tym razem będzie o technice zwanej __one hot encoding__ albo [kod 1 z n](https://pl.wikipedia.org/wiki/Kod_1_z_n). Mając kategorie zamienione na odpowiadające im liczby możemy zamienić je także na kilka kolumn (ich liczba zależy od tego ile jest kategorii), które zawierają zera i jedynki oznaczające odpowiednio czy dany wiersz należy do kategorii czy nie. Metodę tę stosujemy, gdy używamy algorytmu, który może mieć problem ze zmiennymi liczbowymi (bo zakładają jakiś porządek).
 
+<!-- truncate -->
+
 Przypuśćmy, że mamy kategorię "kolor" z trzema możliwymi wartościami: czerwony, zielony, niebieski.
 
 | Zmienna | Kolor     |

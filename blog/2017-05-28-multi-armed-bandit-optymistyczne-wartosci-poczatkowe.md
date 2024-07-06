@@ -15,6 +15,8 @@ description: Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efekty
 
 Wszystkie metody, które do tej pory opisałem zależne są od początkowych oszacowań wartości $Q_1(a)$. Widoczne to jest zwłaszcza, gdy liczymy **MAB** z $\epsilon = 0$, czyli bez ekploracji cały czas wybierając najlepszą możliwą akcję (ramię). W statystyce nazywamy takie metody obciążonymi. Obciążenie znika dla metod z $\alpha$ wynoszącym $\frac{1}{n}$, gdy każda akcja zostanie wybrana co najmniej raz. Dla stałego $\alpha$, obciążenie nie znika, zmniejsza się jedynie wraz z upływem czasu (kolejnymi iteracjami algorytmu).
 
+<!-- truncate -->
+
 Aby pozbyć się obciążenia, możemy skorzystać z czegoś takiego jak optymistyczne wartości początkowe. W kodzie przykładów jakie do tej pory napisałem prawdziwe wartości każdej akcji (true value), pochodziły z rozkładu normalnego (średnia 0, wariancja 1) i ustalane były w konstruktorze:
 
 ```Python

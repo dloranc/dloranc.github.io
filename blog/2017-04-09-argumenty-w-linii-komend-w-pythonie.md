@@ -16,6 +16,8 @@ if __name__ == '__main__':
 	print "\n".join(sys.argv)
 ```
 
+<!-- truncate -->
+
 Powyższy przykład wyświetla argumenty jeden pod drugim. Wyrażenie warunkowe `if __name__ == '__main__':` sprawdza czy skrypt został wywołany w konsoli. Jeśli skrypt został zaimportowany w innym pliku, to wtedy kod się nie wykona.
 
 ![sys.argv](/images/posts/python_command_line_arguments/01.png "sys.argv")

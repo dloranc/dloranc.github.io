@@ -10,6 +10,8 @@ description: Post o zapisywaniu modeli i historii w Kerasie, a także o przerywa
 ---
 Przeważnie trenowanie sieci neuronowych trwa bardzo długo. Czasem trzeba przerwać wykonywanie skryptu, gdy chcemy zrobić coś innego, a równie wymagającego zasobów albo wyłączyć komputer. Ja nie lubię zostawiać sprzętu na noc, więc przerywam uczenie sieci neuronowej i wznawiam trenowanie następnego dnia.
 
+<!-- truncate -->
+
 Postanowiłem zatem napisać kod umożliwiający przerwanie wykonywania skryptu, a także zapisywanie historii, dzięki czemu mam ją potem dla wszystkich wykonań skryptu, a nie tylko ostatniego. Do tego jeszcze postanowiłem, że obliczenia będą trwać tyle epok ile sobie założyłem.
 
 Skrypt wygląda następująco i jest on przeróbką przykładu z [repozytorium Kerasa](https://github.com/fchollet/keras/blob/master/examples/mnist_mlp.py).

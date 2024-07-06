@@ -15,6 +15,8 @@ description: Do projektu z machine learningu potrzeba dużo danych, które trzeb
 
 Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak `spawningtool.com` albo `ggtracker.com`, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
 
+<!-- truncate -->
+
 Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z [spawningtool.com](http://lotv.spawningtool.com/replays/).
 
 ## Kod

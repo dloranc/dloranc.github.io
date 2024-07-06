@@ -11,6 +11,8 @@ Zacząłem się parę dni temu uczyć dockera. Do tej pory do wirtualizacji korz
 
 Podczas zabaw z dockerem napotkałem parę problemów i o tym będzie ten post.
 
+<!-- truncate -->
+
 ## Volumes
 
 Podczas prób pracy z prostym projektem okazało się, że kontener nie widzi plików, mimo że ustawiłem odpowiednie *volumes* w `docker-compose.yml`. Próba odpalenia *basha* w kontenerze z ustawionym czymś w rodzaju `-v "$PWD/":/var/www/html` też się nie powiodła. Okazało się, że [problemem jest Windows](https://docs.docker.com/compose/gettingstarted/#step-6-re-build-and-run-the-app-with-compose). Jako, że nie mogę korzystać z *Hyper-V*, bo nie posiadam *Windows 10 Professional* muszę korzystać z *Docker Toolbox*. Po dwóch godzinach kombinowania okazało się, że w dockerze pliki są widoczne tylko jeśli są w którymś podkatalogu `c:\Users`. Tak jakoś działa VirtualBox, że tak zrobili. Na zwykłym dockerze dla Windowsa [w dokumentacji](https://docs.docker.com/docker-for-windows/#shared-drives) widziałem, że można w GUI załatwić sprawę poprzez udostępnienie każdej partycji. Czy jakoś tak, średnio mnie to obchodzi.

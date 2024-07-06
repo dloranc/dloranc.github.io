@@ -10,6 +10,8 @@ description: Post w którym wyjaśniam co to jest reinforcement learning.
 ## Ogłoszenia parafialne
 Od jakiegoś czasu staram się czytać powoli książkę ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/sutton/book/the-book-2nd.html) autorstwa Richarda S. Suttona i Andrew G. Barto. Ktoś pod jednym z postów prosił o jakieś dobre materiały z RL, więc podaję i polecam tę książkę. Jest to ponoć klasyczna pozycja z tej dziedziny. Moim zdaniem zasługuje na to miano, o ile można tak stwierdzić po przeczytaniu niespełna dwóch rozdziałów tej książki.
 
+<!-- truncate -->
+
 Dla utrwalenia wiedzy, postanowiłem pisać kod do algorytmów występujących w tej książce. Są co prawda przykładowe kody na zalinkowanej powyżej stronie, ale nie zamierzam z nich korzystać (może jak się kompletnie zatnę na czymś). Repozytorium (na razie puste): [dloranc/reinforcement-learning-an-introduction](https://github.com/dloranc/reinforcement-learning-an-introduction).
 
 ## Reinforcement Learning - co to jest?

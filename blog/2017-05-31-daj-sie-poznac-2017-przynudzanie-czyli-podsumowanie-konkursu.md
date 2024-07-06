@@ -8,6 +8,8 @@ description: Jak w tytule, czas podsumować mój udział w konkursie Daj Się Po
 ---
 Ech, miałem napisać posta o projekcie, ale nie wyrobiłbym się za nic w świecie, więc postanowiłem zrobić to co reszta uczestników, czyli podsumować konkurs i mój udział w nim. Przepraszam, jednak będę przynudzał :)
 
+<!-- truncate -->
+
 ## Projekt - historia rozwoju
 Może nie pamiętacie, ale w ramach konkursu postanowiłem rozwijać projekt bota do Starcrafta 2 wykorzystującego reinforcement learning. To nie był zbytnio mądry pomysł, bo nie było wtedy API do tworzenia botów, a ja naiwnie założyłem, że Blizzard wraz z DeepMindem się wyrobią na ten *first quarter of 2017*. Nie wyrobili się, API będzie dostępne dopiero latem. Nie wiedziałem co robić, najpierw wymyśliłem, że stworzę w Phaserze (taki framework do pisania gier w Javie w wersji Script) własnego, uproszczonego Starcrafta. Coś tam nawet napisałem, jest to w jednym repozytorium ([dloranc/simple-rts-and-rl-example](https://github.com/dloranc/simple-rts-and-rl-example)), ale szybko się zniechęciłem. Za dużo z tym zabawy. Musiałbym pisać takie rzeczy jak path-finding, a mi się to nie uśmiechało za bardzo. Ostatecznie porzuciłem ten projekt, ale możliwe, że jednak coś zrobię z tym w najbliższym czasie, jakiś prosty przykład z reinforcement learningiem.
 

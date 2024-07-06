@@ -14,6 +14,8 @@ description: Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zuż
 ---
 W [ostatnim poście](/2017/04/29/atak-wielorekich-bandytow) omówiłem podstawową wersję multi-armed bandit z $\epsilon$-greedy strategy. Zaprezentowany algorytm ma małą wadę, wymaga bowiem zapisywania każdej nagrody i liczenia za każdym razem średniej arytmetycznej nagród dla danej akcji, gdy następuje wybór najlepszej akcji. Nie dość, że algorytm wymaga pamięci na nagrody i to łącznie tyle ile jest kroków czasowych, to jeszcze za każdym razem, gdy potrzebny jest wybór najlepszej akcji następuje sporo tak naprawdę zbędnych i dość czasochłonnych obliczeń. Wyobraźmy sobie, że mamy liczyć średnią arytmetyczną z miliona nagród. Ile to zajmie? Da się to rozwiązać lepiej.
 
+<!-- truncate -->
+
 ## Optymalizacja
 Przypomnijmy jak wygląda dotychczasowy kod:
 ```python

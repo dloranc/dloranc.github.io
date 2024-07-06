@@ -9,6 +9,7 @@ description: Prosty sposób na zamianę danych w zmiennych kategorycznych na lic
 ---
 Czasami, przetwarzając zbiór danych, mamy do czynienia ze zmiennymi, które są typu tekstowego i przyporządkowują obserwację statystyczną do jakiejś kategorii. Przykładowo, mamy do czynienia z uczniami pewnej szkoły, którzy chodzą do różnych klas (1A, 1B, 1C, 2A, 2B, 2C itd.). Chcemy takie zmienne zamienić na liczby w celu ich dalszego przetwarzania przez jakiś wybrany algorytm np. random forest. Można do tego użyć klasy `LabelEncoder` z biblioteki __scikit-learn__.
 
+<!-- truncate -->
 
 ```python
 #!/usr/bin/python2.7

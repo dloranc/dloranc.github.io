@@ -12,6 +12,8 @@ description: Dump kilkunastu linków z moich zakładek, które mi się przydadz�
 
 Następne tygodnie miną mi pod znakiem blogowania i tworzenia [projektu](https://github.com/dloranc/starcraft-ai) na "Daj Się Poznać 2017". Projekt wymaga rzeczy, których jeszcze zbytnio nie umiem. Dlatego postanowiłem, że ten wpis będzie taką próbą ogarnięcia wszystkiego na czym powinienem się skupić w najbliższym czasie. Mam naprawdę mnóóóóstwo zakładek, szczególnie artykułów z Arxiv, trzeba ogarnąć ten bajzel, zrobić selekcję i zacząć to w końcu czytać i przerabiać :)
 
+<!-- truncate -->
+
 ## Książki i kursy
 
 Na pewno będę musiał się w końcu nauczyć reinforcement learningu, zaczynając od tych podstawowych i standardowych metod, a kończąc na aktualnym "state of art".

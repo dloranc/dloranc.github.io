@@ -10,6 +10,8 @@ description: Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób,
 ---
 Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.
 
+<!-- truncate -->
+
 ## Dlaczego Starcraft?
 
 Kilka miesięcy temu firma [DeepMind ogłosiła na BlizzConie](https://deepmind.com/blog/deepmind-and-blizzard-release-starcraft-ii-ai-research-environment), że we współpracy z Blizzardem podjęła pracę nad napisaniem środowiska umożliwiającego pisanie botów do Starcrafta 2. Wcześniej ludzie z DeepMind stworzyli bota grającego w popularną w Azji grę planszową Go, w której człowiek przez długi czas był nie do pokonania przez komputer. Oczywiście, DeepMind nie tworzy tego środowiska do Starcrafta, bo uwielbiają tworzyć boty tylko dlatego, że badania nad botami pomogą rozwinąć algorytytmy uczenia maszynowego, a szczególnie reinforcement learningu, transfer learningu, unsupervised learningu, curriculum learningu i innych dziedzin uczenia maszynowego. Starcraft jest kolejnym krokiem, którego pokonanie przybliży albo i nawet umozliwi nam stworzenie AGI (Artificial General Intelligence), czyli sztucznej inteligencji, która będzie tak wszechstronna jak człowiek, w przeciwieństwie do ANI (Artificial Narrow Intelligence), która jest dobra tylko w jednej wąskiej dziedzinie.

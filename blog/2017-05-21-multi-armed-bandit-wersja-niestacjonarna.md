@@ -16,6 +16,8 @@ description: Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie ra
 ## Problem niestacjonarny
 W tym poście zajmę się tematem szczególnego rodzaju **multi-armed bandit problem** (MAB), który polega na tym, że dla każdego jednorękiego bandyty wartość nagród zmienia się w czasie. Jest to tak zwana niestacjonarna wersja **MAB**. Do tej pory wartość nagród otrzymywana była z pewnego rozkładu normalnego o pewnej średniej i wariancji (średnia dla każdego ramienia wybierana była losowo na początku w konstruktorze).
 
+<!-- truncate -->
+
 Wyglądało to mniej więcej tak:
 
 ![Proces stacjonarny](/images/posts/multi_armed_bandit_nonstationary_version/process_stationary.png)

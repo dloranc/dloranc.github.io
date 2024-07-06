@@ -15,6 +15,8 @@ description: "Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stwor
 
 Od ostatniego postu o projekcie, siedziałem dość sporo czasu nad botem próbując napisać coś co wykonuje jakąś prostą strategię. Po instalacji BWAPI bot uruchamia się i gra ze standardowym botem zawartym w grze. Jako że znałem już od lat defaultowego bota i jego słabości postanowiłem, że mój bot będzie wykonywał prostą strategię zwaną jako 5 pool z pewną modyfikacją.
 
+<!-- truncate -->
+
 Wygląda ona następująco:
 
 1. Jeśli jest 50 minerałów, to stwórz dronę.

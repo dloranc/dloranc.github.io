@@ -16,6 +16,8 @@ Niestety, Blizzard i DeepMind się nie wyrobili ze stworzeniem API i przesunęli
 
 > We wanted to give you all an update on the progress of the StarCraft II API. Blizzard and DeepMind remain hard at work together defining the API and infrastructure needed to do world class research in StarCraft II. Like many research projects we’ve been learning a lot as we’ve gone along on this new endeavor. We’re eager to get a polished set of tools and documentation into the hands of researchers and developers as soon as possible. Originally we’d hoped to have the API ready by Q1 of this year but think it’s best to shift the official release back to this summer to provide a level of quality and completeness that we know you expect from us.
 
+<!-- truncate -->
+
 > We appreciate everyone’s patience as we continue to work on the API – our goal is to bring you the best possible tool, with thorough documentation.
 
 Typowy Blizzard :) Podejrzewam, że API będzie wydane równo z premierą zremasterowanej pierwszej części Starcrafta, która też ma wyjść tego lata.

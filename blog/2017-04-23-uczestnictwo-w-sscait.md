@@ -14,6 +14,8 @@ description: Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie
 
 Do tej pory testowałem swojego bota na moim komputerze w walce z defaultowym botem stworzonym przez Blizzarda. Nadszedł czas, by sprawdzić się z twórcami innych botów. Wiem, że można zamiast standardowego bota podpiąć jakiegoś innego za pomocą **Chaoslauncher - MultiInstance** i edycji `bwapi.ini`, ale ja wolałem najpierw zobaczyć jak wygląda procedura rejestracji w [SSCAIT](http://sscaitournament.com).
 
+<!-- truncate -->
+
 Aby zarejestrować bota w **SSCAIT** oprócz podania różnych danych trzeba wygenerować plik `.jar` i wsadzić go do ZIP-a razem z `BWAPI.dll`, czyli DLL-ką odpowiedzialną za połączenie ze Starcraftem. Każdy bot może korzystać z innej wersji BWAPI, więc dlatego trzeba dołączyć swoją DLL-kę. Nie namyślając się wiele wygenerowałem `artifact` w IntelliJ IDEA, ale po rejestracji okazało się, że mój bot scrashował sześć razy i został zablokowany. Coś zrobiłem źle i nie bardzo wiedziałem co. Zauważyłem, jednak, że na liście wyników są linki do ściągnięcia botów. Ściągnąłem takiego, który był napisany w Javie, zmieniłem rozszerzenie z `.jar` na `.zip` i podejrzałem strukturę plików. Powinna ona wyglądać następująco:
 
 ![artifacts](/images/posts/sscait/artifacts.png "artifacts")

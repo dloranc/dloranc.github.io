@@ -13,6 +13,8 @@ description: Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzecz
 ---
 Na co dzień w pracy używam JavaScriptu i PHP. W tych językach występują menedżery pakietów `npm` (i nie tylko) i `composer`, które umożliwiają łatwe zarządzanie zależnościami dla każdego projektu. Do tej pory w Pythonie pisałem dość proste skrypty i nie potrzebowałem żadnego menedżera pakietów. W ramach nadchodzących projektów postanowiłem sprawdzić jak wygląda sprawa z zarządzaniem zależnościami w Pythonie.
 
+<!-- truncate -->
+
 ## pip (Pip Installs Packages)
 
 Pip jest standardowym menedżerem pakietów w Pythonie. Poniżej przedstawiam listę podstawowych komend.

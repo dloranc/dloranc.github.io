@@ -10,6 +10,8 @@ description: Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki 
 ---
 Jako, że jestem nadal dość początkującą osobą w świecie Pythona i jego bibliotek, a zwłaszcza tych związanych z uczeniem maszynowym, to wiele rzeczy jest dla mnie nieznanych. Takim przykładem jest dzielenie zbioru danych na części do treningu i do cross validation. Dotychczas robiłem to po swojemu, ale po co tak robić skoro mamy od tego inne narzędzia?
 
+<!-- truncate -->
+
 Dlatego zacząłem korzystać z narzędzi dostarczanych przez bibliotekę __scikit-learn__ takich jak `KFold` i `StratifiedKFold`.
 
 ## Przykład z __KFold__:

@@ -14,6 +14,8 @@ description: Co tam u mnie w projekcie? Słabo, męczę się z ustawianiem Torch
 
 Przez cały ten tydzień zastanawiałem się jaką obrać drogę dla mojego projektu bota. Chciałem użyć Deeplearning4j, ale ta biblioteka gryzie się z BWMirrorem, który wymaga Javy 32-Bit. Alternatywą jest przepisanie całego projektu z BWMirrora na JNIBWAPI. Drugą alternatywą jest przepisanie projektu do C++, co mnie średnio interesuje, bo nie czuję się dobrze w tym języku. Znaczy, w Javie też nie, ale pisanie w Javie łatwiej ogarnąć. Postanowiłem jednak wziąć się w końcu za TorchCrafta. Tracę oczywiście możliwość udziału w SSCAIT, ale myślę, że lepiej będzie coś w końcu zrobić związanego z reinforcement learningiem z pomocą gotowego środowiska. Gdybym miał to samo robić w Javie zeszłoby mi z tym naprawdę dużo czasu.
 
+<!-- truncate -->
+
 ## Instalacja na Linuksie
 Trochę mi zeszło z instalacją Torcha, Lua i TorchCrafta. Jak to bywa, korzystając z instrukcji na [stronie projektu](https://github.com/TorchCraft/TorchCraft/blob/master/docs/user/installation.md) coś nie działało. Po dość długim kombinowaniu co zrobić by wszystko postawić doszedłem do tego, że najlepiej zainstalować Torcha używając instrukcji z [tej strony](http://torch.ch/docs/getting-started.html#_).
 

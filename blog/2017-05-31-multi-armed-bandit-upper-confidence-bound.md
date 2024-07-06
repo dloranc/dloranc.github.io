@@ -15,6 +15,8 @@ description: Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymal
 
 W **multi-armed bandit**, aby znaleźć najlepszą akcję potrzebujemy eksploracji, gdyż wartość każdej akcji jest niepewna. Wartość akcji się zmienia, gdy co jakiś czas wykonujemy akcję i dowiadujemy się o otrzymanej nagrodzie. Im częściej dana akcja została wybrana, tym większą mamy pewność, że wartość tej akcji jest właściwa. Do tej pory jednak nie uwzględnialiśmy tego dość intuicyjnego spostrzeżenia w naszych obliczeniach. Akcje były wybierane losowo, bez uwzględniania tego czy wartości akcji są najbliżej tej najlepszej, bądź tego jak bardzo oszacowania są pewne.
 
+<!-- truncate -->
+
 Przypomnijmy jak wybieraliśmy najlepszą akcję:
 
 $$ A_t \doteq \underset{a}{\argmax}\> Q_t(a) $$

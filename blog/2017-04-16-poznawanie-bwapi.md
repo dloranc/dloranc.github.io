@@ -15,6 +15,8 @@ description: Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i
 
 Ten tydzień spędziłem dopieszczając mojego bota do Starcrafta. Nie chciało mi się jeszcze brać za reinforcement learning, bo wolałem spędzić czas na poznawaniu BWAPI. Kod jest do przeglądnięcia tutaj, w moim repozytorium [dloranc/five-pool-bot](https://github.com/dloranc/five-pool-bot).
 
+<!-- truncate -->
+
 ## Poprawki
 
 W poprzednim poście napisałem listę rzeczy do zrobienia. Cześć z nich udało się wykonać (są to te skreślone poniżej):

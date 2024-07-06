@@ -15,6 +15,8 @@ description: Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądaj�
 
 Miałem w tym tygodniu pisać o samym Torchu i o tym jak tworzyć w nim sieci neuronowe, ale zdecydowałem, że zajmę się samymi podstawami samego TorchCrafta i jego interakcji ze Starcraftem. TorchCraft, niestety, ma słabą dokumentację i poza opisem instalacji praktycznie wszystko trzeba rozkminiać na bazie przykładów z katalogu `examples`.
 
+<!-- truncate -->
+
 ## Mapy
 
 Zacznijmy od tego, że TorchCrafta można uruchomić w dwóch trybach: micro i w normalnym. W normalnym trybie można grać na zwykłych mapach do multi. Tutaj nie ma żadnych niespodzianek. Mapy do micro nie zawierają budynków i walczą na nich dwie grupy jednostek. Do tego trybu mapy muszą być specjalnie przygotowane. Z TorchCraftem dostarczane są cztery mapy: `dragoons_zealots.scm`, `m5v5_c_far.scm`, `sp_dragoons_zealots.scm`, `sp_m5v5_c_far.scm`. Są to tak naprawdę dwie mapy w dwóch wersjach każda. Nie mam pojęcia jaka jest różnica, te z przedrostkiem `sp_` może mają jakiś związek z single playerem?
