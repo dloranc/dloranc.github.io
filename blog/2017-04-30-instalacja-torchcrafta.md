@@ -1,8 +1,8 @@
 ---
 title: Instalacja TorchCrafta
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - starcraft
     - bwapi
 image: images/posts_thumbnails/torchcraft_installing.jpg

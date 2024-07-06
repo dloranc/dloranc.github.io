@@ -42,6 +42,7 @@ const config: Config = {
           blogSidebarCount: 0,
           routeBasePath: '/',
           tagsBasePath: '/tagi',
+          onInlineTags: 'throw',
           archiveBasePath: '/archiwum',
           showReadingTime: true,
           remarkPlugins: [remarkMath],

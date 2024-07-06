@@ -1,8 +1,8 @@
 ---
 title: Torchcraft - analiza i zmiana stanu gry
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - lua
     - starcraft
     - torch

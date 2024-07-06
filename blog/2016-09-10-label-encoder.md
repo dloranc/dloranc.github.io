@@ -2,8 +2,8 @@
 title: LabelEncoder
 
 tags:
-    - Przepisy
-    - scikit-learn
+    - recipes
+    - scikit_learn
 image: images/posts_thumbnails/label_encoder.png
 description: Prosty sposób na zamianę danych w zmiennych kategorycznych na liczbowe za pomocą metody kodowania etykiet (label encoding).
 ---

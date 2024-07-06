@@ -2,8 +2,8 @@
 title: We need more data - Scrapy
 
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - scrapy
     - starcraft
 image: images/posts_thumbnails/scrapy.jpg

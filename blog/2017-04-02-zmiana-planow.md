@@ -2,8 +2,8 @@
 title: Zmiana planów
 
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - starcraft
 image: images/posts_thumbnails/broodwar.jpg
 description: "Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany."

@@ -2,8 +2,8 @@
 title: Zapisywanie modeli i historii w Kerasie
 
 tags:
-    - Przepisy
-    - DSP2017
+    - recipes
+    - dsp2017
     - keras
 image: images/posts_thumbnails/power.jpg
 description: Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.

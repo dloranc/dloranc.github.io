@@ -1,8 +1,8 @@
 ---
 title: Daj Się Poznać 2017 - przynudzanie, czyli podsumowanie konkursu
 tags:
-    - Sprawy organizacyjne
-    - DSP2017
+    - organizational_matters
+    - dsp2017
 image: images/posts_thumbnails/daj_sie_poznac_2017_competition_sum.jpg
 description: Jak w tytule, czas podsumować mój udział w konkursie Daj Się Poznać 2017. Co się udało? Co nie? Co dalej?
 ---

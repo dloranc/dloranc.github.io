@@ -1,11 +1,11 @@
 ---
 title: Poznawanie BWAPI
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - starcraft
     - bwapi
-    - Java
+    - java
 image: images/posts_thumbnails/learning_bwapi.jpg
 description: Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.
 ---

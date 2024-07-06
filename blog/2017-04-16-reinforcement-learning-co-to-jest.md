@@ -1,9 +1,9 @@
 ---
 title: Reinforcement learning - co to jest?
 tags:
-    - Sutton & Barto
-    - DSP2017
-    - reinforcement-learning
+    - sutton_barto
+    - dsp2017
+    - reinforcement_learning
 image: images/posts_thumbnails/reinforcement_learning_what_is_it.jpg
 description: Post w którym wyjaśniam co to jest reinforcement learning.
 ---

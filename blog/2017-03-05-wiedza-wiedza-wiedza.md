@@ -2,7 +2,7 @@
 title: Wiedza, wiedza, wiedza
 
 tags:
-    - DSP2017
+    - dsp2017
 image: images/posts_thumbnails/books.jpg
 description: Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.
 ---

@@ -2,8 +2,8 @@
 title: Trochę informacji o Starcrafcie i moje plany
 
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - starcraft
 image: images/posts_thumbnails/about_starcraft.jpg
 description: Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".

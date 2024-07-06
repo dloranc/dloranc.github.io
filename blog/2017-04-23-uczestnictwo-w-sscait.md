@@ -1,9 +1,9 @@
 ---
 title: Uczestnictwo w SSCAIT
 tags:
-    - Projekty
-    - Java
-    - DSP2017
+    - projects
+    - java
+    - dsp2017
     - starcraft
 image: images/posts_thumbnails/sscait.jpg
 description: Post o moim uczestnictwie w SSCAIT i o kolejnych poprawkach w bocie.

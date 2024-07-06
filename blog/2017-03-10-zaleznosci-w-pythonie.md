@@ -2,12 +2,11 @@
 title: Zależności w Pythonie
 
 tags:
-    - Przepisy
-    - DSP2017
+    - recipes
+    - dsp2017
     - python
     - pip
     - virtualenv
-    - pipreqs
 image: images/posts_thumbnails/python_dependencies.jpg
 description: Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.
 ---

@@ -1,11 +1,11 @@
 ---
 title: Multi-armed bandit - optymistyczne wartości początkowe
 tags:
-    - Sutton & Barto
-    - DSP2017
+    - sutton_barto
+    - dsp2017
     - python
-    - multi-armed-bandit
-    - reinforcement-learning
+    - multi_armed_bandit
+    - reinforcement_learning
 image: images/posts_thumbnails/multi_armed_bandit_optimistic_initial_values.png
 description: Kontynuujemy temat optymalizacji multi-armed bandit. Kolejna efektywna i do tego bardzo prosta optymalizacja.
 ---

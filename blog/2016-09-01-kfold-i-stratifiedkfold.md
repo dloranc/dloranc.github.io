@@ -2,8 +2,8 @@
 title: KFold i StratifiedKFold
 
 tags:
-    - Przepisy
-    - scikit-learn
+    - recipes
+    - scikit_learn
 image: images/posts_thumbnails/kfold_stratifiedkfold.png
 description: Krótka notka o wykorzystaniu KFold i StratifiedKFold z biblioteki <strong>scikit-learn</strong> do dzielenia zbioru danych.
 

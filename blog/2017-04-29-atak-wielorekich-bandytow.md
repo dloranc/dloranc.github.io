@@ -1,11 +1,11 @@
 ---
 title: Atak wielorękich bandytów
 tags:
-    - Sutton & Barto
-    - DSP2017
+    - sutton_barto
+    - dsp2017
     - python
-    - multi-armed-bandit
-    - reinforcement-learning
+    - multi_armed_bandit
+    - reinforcement_learning
 image: images/posts_thumbnails/multi_armed_bandit_attack.jpg
 description: Post o multi-armed bandit problem - ciekawym problemie reinforcement learningu.
 ---

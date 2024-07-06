@@ -1,11 +1,11 @@
 ---
 title: Multi-armed bandit - wersja niestacjonarna
 tags:
-    - Sutton & Barto
-    - DSP2017
+    - sutton_barto
+    - dsp2017
     - python
-    - multi-armed-bandit
-    - reinforcement-learning
+    - multi_armed_bandit
+    - reinforcement_learning
 image: images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png
 description: Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.
 ---

@@ -1,11 +1,11 @@
 ---
 title: Multi-armed bandit - prosta optymalizacja
 tags:
-    - Sutton & Barto
-    - DSP2017
+    - sutton_barto
+    - dsp2017
     - python
-    - multi-armed-bandit
-    - reinforcement-learning
+    - multi_armed_bandit
+    - reinforcement_learning
 image: images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg
 description: Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.
 ---

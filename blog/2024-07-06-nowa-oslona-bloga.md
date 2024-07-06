@@ -1,7 +1,7 @@
 ---
 title: Nowa odsłona bloga
 tags:
-  - Sprawy organizacyjne
+  - organizational_matters
 description: Zmotywowałem się w końcu i postanowiłem odświeżyć tego bloga.
 ---
 

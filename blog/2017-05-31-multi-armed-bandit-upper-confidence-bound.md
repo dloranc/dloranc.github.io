@@ -1,11 +1,11 @@
 ---
 title: Multi-armed bandit - Upper Confidence Bound
 tags:
-    - Sutton & Barto
-    - DSP2017
+    - sutton_barto
     - python
-    - multi-armed-bandit
-    - reinforcement-learning
+    - multi_armed_bandit
+    - reinforcement_learning
+    - dsp2017
 image: images/posts_thumbnails/multi_armed_bandit_upper_confidence_bound.png
 description: Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.
 ---

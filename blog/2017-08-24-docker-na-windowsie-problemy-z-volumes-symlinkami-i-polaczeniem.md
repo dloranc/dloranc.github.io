@@ -1,8 +1,8 @@
 ---
 title: Docker na Windowsie - problemy z volumes, symlinkami i połączeniem
 tags:
-  - Problemy
-  - docker
+    - problems
+    - docker
 image: images/posts_thumbnails/docker_on_windows_problems_with_volumes_symlinks_and_connection.png
 description: Zacząłem się niedawno uczyć Dockera (wiem, późno trochę) i napotkałem parę problemów z nim związanych. Niestety, Windows się niezbyt lubi z dockerem.
 ---

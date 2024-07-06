@@ -2,7 +2,7 @@
 title: Daj Się Poznać 2017
 
 tags:
-    - Sprawy organizacyjne
+    - organizational_matters
 image: images/posts_thumbnails/daj_sie_poznac_2017.jpg
 description: Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".
 ---

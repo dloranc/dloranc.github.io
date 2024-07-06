@@ -1,8 +1,8 @@
 ---
 title: TorchCraft - podstawy Lua
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - lua
     - starcraft
 image: images/posts_thumbnails/torchcraft_lua_basics.png

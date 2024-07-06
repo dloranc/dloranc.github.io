@@ -2,8 +2,8 @@
 title: OneHotEncoder
 
 tags:
-    - Przepisy
-    - scikit-learn
+    - recipes
+    - scikit_learn
 image: images/posts_thumbnails/one_hot_encoder.jpg
 description: Bo grunt to gorące jedynki :)
 ---

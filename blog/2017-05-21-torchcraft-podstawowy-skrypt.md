@@ -1,8 +1,8 @@
 ---
 title: TorchCraft - podstawowy skrypt
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - lua
     - starcraft
     - torch

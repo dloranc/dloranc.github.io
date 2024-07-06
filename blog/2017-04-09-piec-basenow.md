@@ -2,8 +2,8 @@
 title: Pięć basenów
 
 tags:
-    - Projekty
-    - DSP2017
+    - projects
+    - dsp2017
     - starcraft
     - bwapi
 image: images/posts_thumbnails/5_pool.jpg
