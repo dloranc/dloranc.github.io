@@ -8,7 +8,7 @@ tags:
     - pip
     - virtualenv
     - pipreqs
-image: python_dependencies.jpg
+image: images/posts_thumbnails/python_dependencies.jpg
 description: Jako, że nie jestem szczególnie biegły w Pythonie to pewne rzeczy są dla mnie nowością. Tym razem wpis o tym jak wyglądają zależności w Pythonie w porównaniu do innych języków, które znam.
 ---
 Na co dzień w pracy używam JavaScriptu i PHP. W tych językach występują menedżery pakietów `npm` (i nie tylko) i `composer`, które umożliwiają łatwe zarządzanie zależnościami dla każdego projektu. Do tej pory w Pythonie pisałem dość proste skrypty i nie potrzebowałem żadnego menedżera pakietów. W ramach nadchodzących projektów postanowiłem sprawdzić jak wygląda sprawa z zarządzaniem zależnościami w Pythonie.

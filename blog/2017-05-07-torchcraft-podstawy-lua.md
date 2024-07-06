@@ -5,7 +5,7 @@ tags:
     - DSP2017
     - lua
     - starcraft
-image: torchcraft_lua_basics.png
+image: images/posts_thumbnails/torchcraft_lua_basics.png
 description: Ogarnąłem instalację TorchCrafta. Wziąłem się za pisanie kodu w Lua, a ten post jest dumpem moich notatek utworzonych w trakcie nauki tego języka.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

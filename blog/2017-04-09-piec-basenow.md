@@ -6,7 +6,7 @@ tags:
     - DSP2017
     - starcraft
     - bwapi
-image: 5_pool.jpg
+image: images/posts_thumbnails/5_pool.jpg
 description: "Dalszy ciąg zabaw z pisaniem bota do Starcrafta: Brood War. Stworzyłem prostego bota w Javie potrafiącego zrobić 5 poola."
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

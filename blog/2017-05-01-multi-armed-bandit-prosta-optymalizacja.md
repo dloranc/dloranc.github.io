@@ -6,7 +6,7 @@ tags:
     - python
     - multi-armed-bandit
     - reinforcement-learning
-image: multi_armed_bandit_simple_optimization.jpg
+image: images/posts_thumbnails/multi_armed_bandit_simple_optimization.jpg
 description: Post o pewnym sposobie optymalizacji pozwalającym na mniejsze zużycie pamięci i mocy procesora dla algorytmu zaprezentowanego w poprzednim poście o multi-armed bandit problem.
 ---
 *Ten post jest częścią moich zmagań z książką ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/book/the-book.html) autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć pod tagiem [Sutton & Barto](/tagi/sutton-barto) i w repozytorium [dloranc/reinforcement-learning-an-introduction](https://github.com/dloranc/reinforcement-learning-an-introduction).*

@@ -5,7 +5,7 @@ tags:
     - Projekty
     - DSP2017
     - starcraft
-image: broodwar.jpg
+image: images/posts_thumbnails/broodwar.jpg
 description: "Piszę jednak bota do Starcraft: Brood War. W dzisiejszym poście wyjaśniam powody, które skłoniły mnie do tej zmiany."
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

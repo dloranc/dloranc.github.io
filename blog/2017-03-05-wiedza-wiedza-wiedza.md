@@ -3,7 +3,7 @@ title: Wiedza, wiedza, wiedza
 
 tags:
     - DSP2017
-image: books.jpg
+image: images/posts_thumbnails/books.jpg
 description: Dump kilkunastu linków z moich zakładek, które mi się przydadzą w projekcie, a także plany na przyszłość.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

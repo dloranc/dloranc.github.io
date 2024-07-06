@@ -5,7 +5,7 @@ tags:
     - Przepisy
     - DSP2017
     - keras
-image: power.jpg
+image: images/posts_thumbnails/power.jpg
 description: Post o zapisywaniu modeli i historii w Kerasie, a także o przerywaniu wykonywania skryptu.
 ---
 Przeważnie trenowanie sieci neuronowych trwa bardzo długo. Czasem trzeba przerwać wykonywanie skryptu, gdy chcemy zrobić coś innego, a równie wymagającego zasobów albo wyłączyć komputer. Ja nie lubię zostawiać sprzętu na noc, więc przerywam uczenie sieci neuronowej i wznawiam trenowanie następnego dnia.

@@ -6,7 +6,7 @@ tags:
     - DSP2017
     - scrapy
     - starcraft
-image: scrapy.jpg
+image: images/posts_thumbnails/scrapy.jpg
 description: Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

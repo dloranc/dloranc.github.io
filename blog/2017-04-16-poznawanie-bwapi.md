@@ -6,7 +6,7 @@ tags:
     - starcraft
     - bwapi
     - Java
-image: learning_bwapi.jpg
+image: images/posts_thumbnails/learning_bwapi.jpg
 description: Dopieszczamy bota, uczymy się BWAPI, jego funkcji do debugowania i innych przydatnych rzeczy.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

@@ -4,7 +4,7 @@ tags:
     - Sutton & Barto
     - DSP2017
     - reinforcement-learning
-image: reinforcement_learning_what_is_it.jpg
+image: images/posts_thumbnails/reinforcement_learning_what_is_it.jpg
 description: Post w którym wyjaśniam co to jest reinforcement learning.
 ---
 ## Ogłoszenia parafialne

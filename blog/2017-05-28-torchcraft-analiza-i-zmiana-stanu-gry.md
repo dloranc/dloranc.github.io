@@ -6,7 +6,7 @@ tags:
     - lua
     - starcraft
     - torch
-image: torchcraft_game_state_change_and_analysis.jpg
+image: images/posts_thumbnails/torchcraft_game_state_change_and_analysis.jpg
 description: Post o tym jak zmienić stan gry, poprzez jego analizę i wydawanie rozkazów jednostkom.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*

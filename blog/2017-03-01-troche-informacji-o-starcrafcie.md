@@ -5,7 +5,7 @@ tags:
     - Projekty
     - DSP2017
     - starcraft
-image: about_starcraft.jpg
+image: images/posts_thumbnails/about_starcraft.jpg
 description: Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".
 ---
 Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.

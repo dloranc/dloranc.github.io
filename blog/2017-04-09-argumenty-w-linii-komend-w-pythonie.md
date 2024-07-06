@@ -4,7 +4,7 @@ title: Argumenty w linii komend w Pythonie
 tags:
     - DSP2017
     - python
-image: python_arguments.png
+image: images/posts_thumbnails/python_arguments.png
 description: Post o tym jak zrealizować obsługę argumentów przekazywanych do pythonowego skryptu z poziomu linii komend. Wykorzystałem do tego bardzo interesującą bibliotekę o nazwie docopt.
 ---
 Zastanawiałem się ostatnio jak zrealizować w Pythonie obsługę argumentów przekazywanych do skryptu z poziomu linii komend. Można zrobić to bardzo prosto używając `sys.argv` ze biblioteki standardowej:

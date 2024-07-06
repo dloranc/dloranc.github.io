@@ -6,7 +6,7 @@ tags:
     - python
     - multi-armed-bandit
     - reinforcement-learning
-image: multi_armed_bandit_nonstationary_version.png
+image: images/posts_thumbnails/multi_armed_bandit_nonstationary_version.png
 description: Kontynuacja tematu multi-armed bandit. Tym razem o tym jak sobie radzić z niestacjonarnymi wersjami tego problemu.
 ---
 *Ten post jest częścią moich zmagań z książką ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/sutton/book/the-book-2nd.html) autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć pod tagiem [Sutton & Barto](/tagi/sutton-barto) i w repozytorium [dloranc/reinforcement-learning-an-introduction](https://github.com/dloranc/reinforcement-learning-an-introduction).*

@@ -6,7 +6,7 @@ tags:
     - lua
     - starcraft
     - torch
-image: torchcraft_basic_script.jpg
+image: images/posts_thumbnails/torchcraft_basic_script.jpg
 description: Post o podstawach pracy z TorchCraftem. Dowiesz się jak wyglądają mapy w TorchCrafcie i jak stworzyć podstawowy skrypt zawierający minimum funkcjonalności.
 ---
 *Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*
