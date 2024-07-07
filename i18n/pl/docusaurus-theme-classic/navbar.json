@@ -1,0 +1,30 @@
+{
+  "title": {
+    "message": "Dawid Loranc",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Moje log",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Archive": {
+    "message": "Archiwum",
+    "description": "Navbar item with label Archive"
+  },
+  "item.label.Tags": {
+    "message": "Tagi",
+    "description": "Navbar item with label Tags"
+  },
+  "item.label.Projects": {
+    "message": "Projekty",
+    "description": "Navbar item with label Projects"
+  },
+  "item.label.About me": {
+    "message": "O mnie",
+    "description": "Navbar item with label About me"
+  }
+}

@@ -8,29 +8,29 @@ tags:
     - dsp2017
 image: images/posts_thumbnails/multi_armed_bandit_upper_confidence_bound.png
 
-description: Continuation of the MAB topic. This time I wrote about a way to optimize exploration.
+description: Dalszy ciąg tematu MAB. Tym razem napisałem o sposobie na optymalizację eksploracji.
 ---
-*This post is part of my struggle with the book ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/sutton/book/the-book-2nd.html) by Richard S. Sutton and Andrew G. Barto. Other posts systematizing my knowledge and presenting the code I wrote can be found under the tag [Sutton & Barto](/tags/sutton-and-barto) and in the repository [dloranc/reinforcement-learning-an-introduction](https://github. com/dloranc/reinforcement-learning-an-introduction).*
+*Ten post jest częścią moich zmagań z książką ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/sutton/book/the-book-2nd.html) autorstwa Richarda S. Suttona i Andrew G. Barto. Pozostałe posty systematyzujące moją wiedzę i prezentujące napisany przeze mnie kod można znaleźć pod tagiem [Sutton & Barto](/tags/sutton-and-barto) i w repozytorium [dloranc/reinforcement-learning-an-introduction](https://github.com/dloranc/reinforcement-learning-an-introduction).*
 
 ---
 
-In **multi-armed bandit** we need exploration to find the best action because the value of each action is uncertain. The value of the action changes when we perform the action from time to time and learn about the reward we receive. The more often a given action is selected, the more certain we are that the value of this action is correct. So far, however, we have not taken this rather intuitive observation into account in our calculations. The actions were selected randomly, without taking into account whether the action values ​​were closest to the best one or how certain the estimates were.
+W **multi-armed bandit**, aby znaleźć najlepszą akcję potrzebujemy eksploracji, gdyż wartość każdej akcji jest niepewna. Wartość akcji się zmienia, gdy co jakiś czas wykonujemy akcję i dowiadujemy się o otrzymanej nagrodzie. Im częściej dana akcja została wybrana, tym większą mamy pewność, że wartość tej akcji jest właściwa. Do tej pory jednak nie uwzględnialiśmy tego dość intuicyjnego spostrzeżenia w naszych obliczeniach. Akcje były wybierane losowo, bez uwzględniania tego czy wartości akcji są najbliżej tej najlepszej, bądź tego jak bardzo oszacowania są pewne.
 
 <!-- truncate -->
 
-Let's recall how we chose the best action:
+Przypomnijmy jak wybieraliśmy najlepszą akcję:
 
 $$ A_t \doteq \underset{a}{\argmax}\> Q_t(a) $$
 
 
-Which corresponds to these lines of code:
+Co odpowiada tym liniom kodu:
 
 ```Python
 argmax = np.argmax(self.rewards)
 return argmax
 ```
 
-From the `choose_action` method:
+Z metody `choose_action`:
 
 ```Python
 def choose_action(self):
@@ -45,15 +45,15 @@ def choose_action(self):
         return randint(0, self.arms - 1)
 ```
 
-Let's use the formula below:
+Skorzystajmy z poniższego wzoru:
 
 $$ A_t \doteq \underset{a}{\argmax}\> \Bigg[Q_t(a) + c \sqrt{\frac{\log{t}}{N_t(a)}}\,\Bigg] $$
 
-Where $\log{t}$ is the natural logarithm (i.e. to the base of the $e$ constant), and $N_t(a)$ is the number of $a$ actions performed.
+Gdzie $\log{t}$ to logarytm naturalny (czyli o podstawie $e$), a $N_t(a)$ oznacza liczbę wykonanych akcji $a$.
 
-The square root part of the above formula measures the uncertainty in the estimate of the value of the stock $a$.
+Część z pierwiastkiem w powyższym wzorze mierzy niepewność w oszacowaniu wartości akcji $a$.
 
-The code looks like this:
+Kod wygląda następująco:
 
 ```Python
 def choose_action(self):
@@ -70,7 +70,7 @@ def choose_action(self):
         return randint(0, self.arms - 1)
 ```
 
-In the constructor I added `c` and `t`:
+W konstruktorze dodałem `c` i `t`:
 
 ```Python
 def __init__(self, arms, pulls, epsilon, c=0):
@@ -78,9 +78,9 @@ def __init__(self, arms, pulls, epsilon, c=0):
     self.c = c
 ```
 
-`c` is a parameter that controls the degree of exploration.
+`c` jest parametrem, który kontroluje stopień eksploracji.
 
-I generated a table with possible values ​​for some $a$ action:
+Wygenerowałem tabelkę z możliwymi wartościami dla jakiejś akcji $a$:
 
 | $t$  | $N_t$ | $\log{t}$ | $c\sqrt{\frac{\log{t}}{N_t}}, c = 2$ |
 |----|-----|--------------|----------------|
@@ -144,24 +144,24 @@ I generated a table with possible values ​​for some $a$ action:
 | 58 | 28  | 1,7634279936 | 0,501914619    |
 | 59 | 29  | 1,7708520116 | 0,4942220654   |
 
-As can be seen from the values ​​in the table, with the passage of time $t$, the uncertainty value in the root generally decreases, but if the action was not selected, the uncertainty increases slightly.
+Jak widać po wartościach z tabelki, wraz z upływem czasu $t$ ogólnie wartość niepewności w pierwiastku maleje, ale jeśli akcja nie była wybierana, to niepewność nieco wzrasta.
 
-## Summary
+## Podsumowanie
 
-This method of selecting shares depending on uncertainty is abbreviated as UCB (upper confidence bound). This is a statistical method related to confidence intervals, or at least that's how I understand it. I barely remember anything about statistics, I was never good at it. UCB is quite a good method, but Sutton & Barto warn that it does not work well in non-stationary problems or in problems in which we are dealing with a large state space.
+Sposób takiego wybierania akcji w zależności od niepewności oznacza się skrótem UCB (upper confidence bound). Jest to metoda statystyczna związana z przedziałami ufności, a przynajmniej tak to rozumiem. Mało co już pamiętam ze statystyki, nigdy nie byłem w niej dobry. UCB jest to całkiem dobra metoda, ale Sutton & Barto ostrzegają, że słabo się sprawdza w problemach niestacjonarnych albo w problemach, w których mamy do czynienia z dużą przestrzenią stanu (large state space, dobrze to przetłumaczyłem na polski?).
 
-The code can be seen [here](https://github.com/dloranc/reinforcement-learning-an-introduction/blob/master/01_multi_arm_bandits/05_ucb.py).
+Kod można zobaczyć [tutaj](https://github.com/dloranc/reinforcement-learning-an-introduction/blob/master/01_multi_arm_bandits/05_ucb.py).
 
-Finally, some charts:
+Na sam koniec jeszcze wykresy:
 
-![average rewards](/images/posts/multi_armed_bandit_upper_confidence_bound/05_average_reward.png)
+![średnie nagrody](/images/posts/multi_armed_bandit_upper_confidence_bound/05_average_reward.png)
 
-Pretty good, on average UCB is better than the version without it in terms of average rewards. This jump and drop at the beginning of the algorithm is interesting.
+Całkiem nieźle, średnio UCB wypada lepiej od wersji bez jeśli chodzi o średnie nagrody. Interesujący jest ten skok i spadek na początku działania algorytmu.
 
-It's worse with optimal actions:
-![optimal actions](/images/posts/multi_armed_bandit_upper_confidence_bound/05_optimal_action.png)
+Z optymalnymi akcjami jest gorzej:
+![optymalne akcje](/images/posts/multi_armed_bandit_upper_confidence_bound/05_optimal_action.png)
 
-No wonder, exploration happens more often.
+Nic dziwnego, eksploracja zachodzi częściej.
 
-For one MAB run:
-![one MAB run](/images/posts/multi_armed_bandit_upper_confidence_bound/05_rewards.png)
+Dla jednego przebiegu MAB:
+![jeden przebieg MAB](/images/posts/multi_armed_bandit_upper_confidence_bound/05_rewards.png)

@@ -3,9 +3,10 @@ title: Daj Się Poznać 2017
 
 tags:
     - organizational_matters
+    - dsp2017
 image: images/posts_thumbnails/daj_sie_poznac_2017.jpg
-description: Post informacyjny o udziale w konkursie "Daj Się Poznać 2017".
+description: Information post about participation in the "Daj Się Poznać 2017" competition.
 ---
-Dzisiaj postanowiłem wziąć udział w konkursie <a href="http://devstyle.pl/daj-sie-poznac/">"Daj Się Poznać 2017"</a> organizowanym przez Macieja Aniserowicza. Konkurs polega na rozwijaniu własnego projektu Open Source na GitHubie i na prowadzeniu bloga poprzez pisanie minimum dwóch postów tygodniowo przez 10 tygodni. Projektem który będę rozwijał będzie AI grające w Starcrafta 2. Muszę tylko liczyć na to, że do czasu rozpoczęcia konkursu tj. do  pierwszego marca firma DeepMind udostępni API do pisania botów, które rozwija we współpracy z Blizzardem.
+Today I decided to take part in the ["Daj Się Poznać 2017"](http://devstyle.pl/daj-sie-poznac/) competition organized by Maciej Aniserowicz. The competition involves developing your own Open Source project on GitHub and running a blog by writing a minimum of two posts a week for 10 weeks. The project that I will be developing will be an AI playing Starcraft 2. I just have to count on the fact that by the time the competition starts, i.e. by March 1, DeepMind will provide an API for writing bots, which it is developing in cooperation with Blizzard.
 
-Wszystkie moje posty konkursowe będzie można znaleźć w tagu <a href="/tagi/dsp-2017">"DSP2017"</a>.
+All my competition posts can be found in the tag ["DSP2017"](/tags/dsp-2017).

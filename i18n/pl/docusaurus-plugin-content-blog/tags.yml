@@ -1,0 +1,99 @@
+organizational_matters:
+  label: Organizational matters
+  permalink: '/organizational-matters'
+  description: 'Posty na temat przyszłości i organizacji tego bloga.'
+
+problems:
+  label: Problems
+  permalink: '/problems'
+  description: 'Problemy jakie napotkałem w trakcie pracy i jak je rozwiązałem.'
+
+docker:
+  label: Docker
+  permalink: '/docker'
+  description: 'Posty na temat Dockera.'
+
+sutton_barto:
+  label: Sutton & Barto
+  permalink: '/sutton-and-barto'
+  description: 'Posty związane z książką Reinforcement Learning: An Introduction autorstwa Richarda S. Suttona i Andrew G. Barto.'
+
+python:
+  label: Python
+  permalink: '/python'
+  description: 'Posty na temat wężowej mowy, czyli Pythona.'
+
+multi_armed_bandit:
+  label: Multi Armed Bandit
+  permalink: '/multi-armed-bandit'
+  description: 'Posty na temat algorytmów wielorękiego bandyty (multi armed bandit).'
+
+reinforcement_learning:
+  label: Reinforcement learning
+  permalink: '/reinforcement-learning'
+  description: 'Posty na temat szeroko pojętego reinforcement learningu (RL).'
+
+dsp2017:
+  label: DSP 2017
+  permalink: '/dsp-2017'
+  description: 'Posty związane z konkursem Daj Się Poznać 2017. Był to konkurs, który polegał na prowadzeniu własnego bloga i rozwijaniu projektu.'
+
+projects:
+  label: Projects
+  permalink: '/projects'
+  description: 'Posty związane z rozwijanymi przeze mnie projektami.'
+
+lua:
+  label: Lua
+  permalink: '/lua'
+  description: 'Posty związane z językiem Lua.'
+
+starcraft:
+  label: Starcraft
+  permalink: '/starcraft'
+  description: 'Posty związane z moimi projektami na temat Starcrafta.'
+
+torch:
+  label: torch
+  permalink: '/torch'
+  description: 'Posty związane z biblioteką PyTorch.'
+
+bwapi:
+  label: bwapi
+  permalink: '/bwapi'
+  description: 'Posty związane z Brood War API. Jest to API umożliwiające pisanie botów do gry Starcraft: Brood War.'
+
+java:
+  label: Java
+  permalink: '/java'
+  description: 'Posty związane z językiem Java.'
+
+recipes:
+  label: Przepisy
+  permalink: '/recipes'
+  description: 'Posty związane z jakimiś fajnymi przepisami na rozwiązanie jakiegoś problemu albo na ułatwienie sobie życia.'
+
+keras:
+  label: Keras
+  permalink: '/keras'
+  description: 'Posty związane z biblioteką Keras.'
+
+scrapy:
+  label: Scrapy
+  permalink: '/scrapy'
+  description: 'Posty związane z biblioteką Scrapy.'
+
+pip:
+  label: pip
+  permalink: '/pip'
+  description: 'Posty związane z menedżerem pakietów pip.'
+
+virtualenv:
+  label: virtualenv
+  permalink: '/virtualenv'
+  description: 'Posty związane z menedżerem środowisk wirtualnych Pythona: virtualenv.'
+
+scikit_learn:
+  label: scikit-learn
+  permalink: '/scikit-learn'
+  description: 'Posty związane z biblioteką scikit-learn.'

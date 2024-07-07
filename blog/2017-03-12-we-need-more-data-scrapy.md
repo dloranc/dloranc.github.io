@@ -7,33 +7,34 @@ tags:
     - scrapy
     - starcraft
 image: images/posts_thumbnails/scrapy.jpg
-description: Do projektu z machine learningu potrzeba dużo danych, które trzeba jakoś zdobyć. Dzisiaj o wykorzystaniu biblioteki Scrapy do tego celu.
+
+description: A machine learning project requires a lot of data, which must be obtained somehow. Today I'm going to talk about using the Scrapy library for this purpose.
 ---
-*Ten post jest o rozwijanym przeze mnie bocie do Starcrafta wykorzystującym uczenie maszynowe. Projekt jest rozwijany w ramach konkursu "Daj Się Poznać 2017".*
+*This post is about the Starcraft bot I am developing using machine learning. The project is being developed as part of the "Daj Się Poznać 2017" competition.*
 
 ---
 
-Każdy ambitny gracz Starcrafta 2 wie, że nie wystarczy grać, aby być dobrym. Trzeba, między innymi, analizować swoje gry, a także gry innych, lepszych od nas graczy. Byłoby fajnie gdyby mój bot też coś takiego potrafił przynajmniej w ograniczonym zakresie. Potrzebne mi będą zatem replaye. Skąd je wziąć? Najczęściej bierze się je z takich serwisów jak `spawningtool.com` albo `ggtracker.com`, gdzie są publikowane przez graczy. Organizatorzy dużych turniejów także udostępniają paczki z grami profesjonalnych graczy, ale przeszukiwanie internetu, by zdobyć te paczki mnie nie interesuje.
+Every aspiring Starcraft 2 player knows that it is not enough to play to be good. You need, among other things, to analyze your games, as well as the games of other players who are better than you. It would be nice if my bot could do something like that too, at least to a limited extent. I will therefore need replays. Where to get them from? The most common way is to take them from sites like `spawningtool.com` or `ggtracker.com`, where they are published by players. Organizers of large tournaments also provide game packs from professional players, but searching the Internet to get these packs does not interest me.
 
 <!-- truncate -->
 
-Postanowiłem zatem napisać prosty scrapper przechodzący przez podstrony, wyciągający linki z tabel i pobierający gry z [spawningtool.com](http://lotv.spawningtool.com/replays/).
+So I decided to write a simple scrapper that goes through subpages, pulls links from tables and downloads games from [spawningtool.com](http://lotv.spawningtool.com/replays/).
 
-## Kod
+## The code
 
-Najpierw, oczywiście, zainstalowałem `Scrapy` (później się okazało, że będzie potrzebna także biblioteka `requests`):
+First, of course, I installed `Scrapy` (it later turned out that you would also need the `requests` library):
 
 ```sh
 pip install scrapy
 ```
 
-Aby zacząć korzystać ze `Scrapy` można napisać od razu jakiś prosty skrypt i odpalić go używając komendy `scrapy runspider <skrypt>` albo utworzyć projekt. Ja wybrałem tę drugą opcję i w katalogu głównym projektu wykonałem poniższą komendę:
+To start using `Scrapy` you can either write some simple script right away and fire it using the `scrapy runspider <script>` command, or create a project. I chose the latter option and ran the following command in the root directory of the project:
 
 ```sh
 scrapy startproject replays
 ```
 
-Następnie w pliku `settings.py` ustawiłem `pipeline`, które umożliwia ściąganie plików, a także ustawiłem ścieżkę do której mają się ściągać pliki:
+Next, in the `settings.py` file, I set the `pipeline`, which allows files to be downloaded, and also set the path to which files should be downloaded:
 
 ```python
 ITEM_PIPELINES = {
@@ -43,7 +44,7 @@ ITEM_PIPELINES = {
 FILES_STORE = "./files"
 ```
 
-Następnie w pliku `items.py` stworzyłem prosty model tylko i wyłącznie z polami, które są wymagane, aby `Scrapy` pobierał pliki:
+Then, in the `items.py` file, I created a simple model with only the fields that are required for `Scrapy` to download files:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -61,7 +62,7 @@ class ReplaysItem(scrapy.Item):
 	files = scrapy.Field()
 ```
 
-W katalogu `spiders` utworzyłem plik `spawning-tool-spider.py` o następującej treści:
+In the `spiders` directory, I created a `spawning-tool-spider.py` file with the following content:
 
 ```python
 import scrapy
@@ -71,46 +72,47 @@ from replays.items import ReplayItem
 
 class SpawningToolSpider(scrapy.Spider):
     name = 'spawning-tool-spider'
-    # pierwsza strona z replayami, scrapy od czegoś musi zacząć
+    # first page with replays, scrapy has to start somewhere
     start_urls = [
         'http://lotv.spawningtool.com/replays/?p=&query=&after_time=&'
         'before_time=&after_played_on=&before_played_on=&patch=&order_by='
     ]
 
-    # scrapy uruchomiony w konsoli odpala tę metodę i zaczyna scrapować
+    # scrapy running in the console fires this method and starts scraping
     def parse(self, response):
         for row in response.css('table tr'):
-            # pomijamy pierwszy wiersz tabeli
+            # skip the first row of the table
             if row.css('td:last-child ::attr(href)').extract_first() is None:
                 continue
             else:
                 url = 'http://lotv.spawningtool.com' \
                     + row.css('td:last-child ::attr(href)').extract_first()
 
-                # typowa ścieżka z plikiem do downloadu to http://lotv.spawningtool.com/<liczba>/download/
-                # ale przy pobieraniu następuje przekierowanie 302 do Amazona,
-                # więc trzeba było coś z tym zrobić, bo scrapy odmówił posłuszeństwa
-                # rozwiązaniem okazało się wyciągnięcie z nagłówków pola Location, czyli właściwego adresu
+                # a typical path with a download file is http://lotv.spawningtool.com/<number>/download/
+                # but when downloading there is a 302 redirect to Amazon,
+                # so something had to be done about it, because the scrapy refused to work
+                # The solution turned out to be pulling out the Location field from the headers,
+                # which is the correct address
                 request_response = requests.head(url)
 
                 if request_response.status_code == 302:
                     url = request_response.headers["Location"]
 
-                # split, bo scrapy próbował zapisać plik z wartościami pól GET
-                # (coś w stylu 322d3a25z2z.SC2Replay?key=0JIDaAJ)
+                # split, because scrapy tried to save a file with GET field values
+                # (something like 322d3a25z2z.SC2Replay?key=0JIDaAJ)
                 url = url.split('?')
 
-                # ok, mamy ścieżkę do pliku
+                # ok, we have the path to the file
                 yield ReplayItem(file_urls=[url[0]])
 
-        # przechodzimy do następnej strony
+        # go to the next page
         next_page = response.css('a.pull-right ::attr(href)').extract_first()
         if next_page:
             yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
 ```
 
 
-Następnie wystarczyło odpalić w konsoli komendę:
+Then all you had to do was fire up the command in the console:
 
 ```sh
 scrapy crawl spawning-tool-spider
@@ -118,4 +120,4 @@ scrapy crawl spawning-tool-spider
 
 ## Co dalej?
 
-Na razie jednak dam sobie spokój z próbami przewidzenia co będzie zawierało środowisko od Blizzarda i DeepMind. Replayów nawet nie pobierałem, bo nie wiem czy jest sens. Myślę, że w tym tygodniu spróbuję odtworzyć scenariusze prostego micro z Starcrafta na przeglądarki internetowe i pod to będę pisał przykłady z użyciem sieci neuronowych i reinforcement learningu.
+For now, however, I'll give myself a break from trying to predict what the environment from Blizzard and DeepMind will contain. I haven't even downloaded the replays because I don't know if there's any point. I think this week I'll try to recreate the scenarios of a simple micro from Starcraft for web browsers and under that I'll write examples using neural networks and reinforcement learning.

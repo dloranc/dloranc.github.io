@@ -29,8 +29,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'pl',
-    locales: ['pl'],
+    defaultLocale: 'en',
+    locales: ['en', 'pl'],
   },
 
   presets: [
@@ -41,9 +41,9 @@ const config: Config = {
         blog: {
           blogSidebarCount: 0,
           routeBasePath: '/',
-          tagsBasePath: '/tagi',
+          tagsBasePath: '/tags',
           onInlineTags: 'throw',
-          archiveBasePath: '/archiwum',
+          archiveBasePath: '/archive',
           showReadingTime: true,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
@@ -80,10 +80,14 @@ const config: Config = {
       },
       items: [
         { to: '/', label: 'Blog', position: 'left' },
-        { to: '/archiwum', label: 'Archiwum', position: 'left' },
-        { to: '/tagi', label: 'Tagi', position: 'left' },
-        { to: '/projekty', label: 'Projekty', position: 'left' },
-        { to: '/o-mnie', label: 'O mnie', position: 'left' },
+        { to: 'archive', label: 'Archive', position: 'left' },
+        { to: 'tags', label: 'Tags', position: 'left' },
+        { to: 'projects', label: 'Projects', position: 'left' },
+        { to: 'about-me', label: 'About me', position: 'left' },
+        {
+          type: 'localeDropdown',
+          position: 'left',
+        },
       ],
     },
     footer: {

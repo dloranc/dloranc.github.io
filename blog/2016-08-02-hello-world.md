@@ -1,11 +1,11 @@
 ---
 title: Hello World!
-
-tags: [organizational_matters]
-
+tags:
+    - organizational_matters
+description: First post on the site :)
 ---
-Witaj świecie! Ostatnio czytając co piszą ludzie na kanale **#blogreview** w teamie [Devs PL](https://devspl.slack.com) na Slacku naszło mnie na stworzenie czegoś swojego. Już kiedyś w ramach pewnego konkursu prowadziłem przez chwilę bloga, ale z powodu mojego lenistwa inicjatywa szybko upadła. Tym razem mam nadzieję, że zapału starczy mi na dłużej.
+Hello World! Recently, while reading what people write on the **#blogreview** channel in the [Devs PL](https://devspl.slack.com) Slack team, I was inspired to create something of my own. Once upon a time, as part of a competition, I ran a blog for a while, but due to my laziness, the initiative quickly failed. This time I hope that my enthusiasm will last longer.
 
-Blog ten będę prowadził głównie na temat dziedziny, która od stosunkowo niedawna przeżywa wielki rozkwit - machine learningu. Nie jestem jakoś specjalnie zaawansowany, ale postaram się nie pisać głupot.
+I will be writing this blog mainly about a field that has recently experienced great growth - machine learning. I'm not particularly advanced, but I'll try not to write nonsense.
 
-Miłego czytania :)
+Enjoy reading :)

@@ -1,99 +1,99 @@
 organizational_matters:
-  label: Sprawy organizacyjne
-  permalink: '/sprawy-organizacyjne'
-  description: 'Posty na temat przyszłości i organizacji tego bloga.'
+  label: Organizational matters
+  permalink: '/organizational-matters'
+  description: 'Posts about the future and organization of this blog.'
 
 problems:
-  label: Problemy
-  permalink: '/problemy'
-  description: 'Problemy jakie napotkałem w trakcie pracy i jak je rozwiązałem.'
+  label: Problems
+  permalink: '/problems'
+  description: 'Problems I encountered while working and how I solved them.'
 
 docker:
   label: Docker
   permalink: '/docker'
-  description: 'Posty na temat Dockera.'
+  description: 'Posts about Docker.'
 
 sutton_barto:
   label: Sutton & Barto
   permalink: '/sutton-and-barto'
-  description: 'Posty związane z książką Reinforcement Learning: An Introduction autorstwa Richarda S. Suttona i Andrew G. Barto'
+  description: 'Posts related to the book Reinforcement Learning: An Introduction by Richard S. Sutton and Andrew G. Barto.'
 
 python:
   label: Python
   permalink: '/python'
-  description: 'Posty na temat wężowej mowy, czyli Pythona.'
+  description: 'Posts about Parseltongue, i.e. Python.'
 
 multi_armed_bandit:
   label: Multi Armed Bandit
   permalink: '/multi-armed-bandit'
-  description: 'Posty na temat algorytmów wielorękiego bandyty (multi armed bandit).'
+  description: 'Posts about multi-armed bandit algorithms.'
 
 reinforcement_learning:
   label: Reinforcement learning
   permalink: '/reinforcement-learning'
-  description: 'Posty na temat szeroko pojętego reinforcement learningu (RL).'
+  description: 'Posts about broadly understood reinforcement learning (RL).'
 
 dsp2017:
   label: DSP 2017
   permalink: '/dsp-2017'
-  description: 'Posty związane z konkursem Daj Się Poznać 2017. Był to konkurs, który polegał na prowadzeniu własnego bloga i rozwijaniu projektu.'
+  description: 'Posts related to the Daj Się Poznać 2017 competition. It was a competition that involved running your own blog and developing a project.'
 
 projects:
-  label: Projekty
-  permalink: '/projekty'
-  description: 'Posty związane z rozwijanymi przeze mnie projektami.'
+  label: Projects
+  permalink: '/projects'
+  description: 'Posts related to the projects I develop.'
 
 lua:
   label: Lua
   permalink: '/lua'
-  description: 'Posty związane z językiem Lua.'
+  description: 'Lua related posts.'
 
 starcraft:
   label: Starcraft
   permalink: '/starcraft'
-  description: 'Posty związane z moimi projektami na temat Starcrafta.'
+  description: 'Posts about my Starcraft projects.'
 
 torch:
   label: torch
   permalink: '/torch'
-  description: 'Posty związane z biblioteką PyTorch.'
+  description: 'Posts related to the PyTorch library.'
 
 bwapi:
   label: bwapi
   permalink: '/bwapi'
-  description: 'Posty związane z Brood War API. Jest to API umożliwiające pisanie botów do gry Starcraft: Brood War.'
+  description: 'Posts related to Brood War API. This is an API that allows you to write bots for the game Starcraft: Brood War.'
 
 java:
   label: Java
   permalink: '/java'
-  description: 'Posty związane z językiem java.'
+  description: 'Java related posts.'
 
 recipes:
   label: Przepisy
-  permalink: '/przepisy'
-  description: 'Posty związane z jakimiś fajnymi przepisami na rozwiązanie jakiegoś problemu albo na ułatwienie sobie życia.'
+  permalink: '/recipes'
+  description: 'Posts related to some cool recipes to solve a problem or make your life easier.'
 
 keras:
   label: Keras
   permalink: '/keras'
-  description: 'Posty związane z biblioteką Keras.'
+  description: 'Posts related to the Keras library.'
 
 scrapy:
   label: Scrapy
   permalink: '/scrapy'
-  description: 'Posty związane z biblioteką Scrapy'
+  description: 'Posts related to the Scrapy library.'
 
 pip:
   label: pip
   permalink: '/pip'
-  description: 'Posty związane z menedżerem pakietów pip'
+  description: 'Posts related to pip package manager.'
 
 virtualenv:
   label: virtualenv
   permalink: '/virtualenv'
-  description: 'Posty związane z menedżerem środowisk wirtualnych Pythona: virtualenv'
+  description: "Posts related to Python's virtual environment manager: virtualenv."
 
 scikit_learn:
   label: scikit-learn
   permalink: '/scikit-learn'
-  description: 'Posty związane z biblioteką scikit-learn'
+  description: 'Posts related to the scikit-learn library.'
