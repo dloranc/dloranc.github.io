@@ -39,6 +39,7 @@ const config: Config = {
       {
         docs: false,
         blog: {
+          blogPostComponent: '@theme/BlogPostPage',
           blogSidebarCount: 0,
           routeBasePath: '/',
           tagsBasePath: '/tags',
