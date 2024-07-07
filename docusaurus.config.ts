@@ -69,6 +69,17 @@ const config: Config = {
     },
   ],
 
+  scripts: [
+    {
+      src: "https://utteranc.es/client.js",
+      repo: "dloranc/dloranc.github.io",
+      "issue-term": "pathname",
+      theme: "preferred-color-scheme",
+      crossorigin: "anonymous",
+      async: true,
+    }
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'images/avatar.jpg',
