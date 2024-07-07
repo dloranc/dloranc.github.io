@@ -115,12 +115,12 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'NP5ZTDUP1T',
+      appId: '35XYW0PY06',
 
       // Public API key: it is safe to commit it
-      apiKey: '36a1dfa06fb0be6ee1870344021f3a2c',
+      apiKey: '79575f4d8eec1ca26bd01b4f8a47993a',
 
-      indexName: 'dloranc.github.io',
+      indexName: 'dlorancio',
 
       // Optional: see doc section below
       contextualSearch: true,
