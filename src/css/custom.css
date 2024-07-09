@@ -34,3 +34,8 @@ iframe {
   height: auto;
   aspect-ratio: 16 / 9;
 }
+
+table {
+  display: table;
+  width: 100%;
+}
