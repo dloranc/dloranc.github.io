@@ -97,3 +97,8 @@ scikit_learn:
   label: scikit-learn
   permalink: '/scikit-learn'
   description: 'Posts related to the scikit-learn library.'
+
+rocq:
+  label: Rocq
+  permalink: '/rocq'
+  description: 'Posts related to the Rocq proof assistant.'
