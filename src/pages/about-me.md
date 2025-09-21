@@ -5,13 +5,25 @@ title: About me
 
 ![Dawid Loranc - avatar](/images/avatar.jpg "Dawid Loranc - avatar")
 
-Hi, my name is Dawid Loranc. I started programming when I was still in middle school and it has been my passion ever since. My main language is PHP, and I develop web applications on a daily basis. I recently became interested in machine learning, and I created this blog primarily to share my experience, thoughts, and also to systematize my knowledge of this rapidly growing field.
+Hi! My name is Dawid Loranc. I started programming back in middle school, and it has been my passion ever since. My main language is JavaScript (well, TypeScript), and I work daily on building web applications. I created this blog when I became interested in machine learning, but now it’s primarily my way of sharing experiences and various thoughts.
 
 - [My Github account](https://github.com/dloranc)
-- [My account on stackoverflow](http://stackoverflow.com/users/973469/dawid-loranc)
-- [My account on Kaggle](https://www.kaggle.com/dloranc)
 
-## Daj Się Poznać 2017
+
+## My skills
+
+- JavaScript
+- TypeScript
+- Node.js
+- React
+- Vue.js
+- Nest.js
+- Next.js
+- Tailwind CSS
+
+## My achievements
+
+### Daj Się Poznać 2017
 
 ![Daj Się Poznać 2017](/images/posts_thumbnails/daj_sie_poznac_2017.jpg "Daj Się Poznać 2017")
 
