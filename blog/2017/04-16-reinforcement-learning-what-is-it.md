@@ -1,13 +1,14 @@
 ---
 title: Reinforcement learning - what is it?
 tags:
-    - sutton_barto
-    - dsp2017
-    - reinforcement_learning
+  - sutton_barto
+  - dsp2017
+  - reinforcement_learning
 image: images/posts_thumbnails/reinforcement_learning_what_is_it.jpg
 
 description: A post in which I explain what reinforcement learning is.
 ---
+
 ## Before we start
 
 For some time now I have been trying to slowly read the book ["Reinforcement Learning: An Introduction"](http://incompleteideas.net/sutton/book/the-book-2nd.html) by Richard S. Sutton and Andrew G. Barto. Someone asked for some good RL materials in one of my posts, so I'm sharing and recommending this book. This is supposedly a classic book in this field. In my opinion, it deserves this name, if one can say so after reading less than two chapters of this book.
@@ -20,7 +21,7 @@ To consolidate my knowledge, I decided to write code for the algorithms found in
 
 Reinforcement Learning is a certain way of solving some problems that cannot be solved in a simple way (analytically) or we do not have a good model. Something, we'll call it an **agent**, performs certain **actions** in some unknown **environment** that is in a certain **state**. For taking action, the agent receives a reinforcement signal. It can be positive (**reward**) or negative (**punishment**). By interacting with the environment, an agent learns a certain **politics**. The goal of reinforcement learning is to determine the optimal **policy** for which we will receive as many rewards as possible. Finding such a policy is not easy. Sometimes, for example, it is worth sacrificing rewards to gain in the long run.
 
-![Reinforcement learning - schema](/images/posts/reinforcement_learning_what_is_it/01.png "Reinforcement learning - schema")
+![Reinforcement learning - schema](/images/posts/reinforcement_learning_what_is_it/reinforcement_learning_english.svg "Reinforcement learning - schema")
 
 It is a way of teaching inspired by the achievements of [behavioral psychology](https://en.wikipedia.org/wiki/Reinforcement). Animals learn about the world this way (humans are more complicated). For example, imagine a small dog learning to walk. Trying to learn this task, he performs various actions by trial and error. Thanks to his senses, he receives certain stimuli from the world and takes certain actions depending on them. If they don't fail, they will perform good actions that were successful more often and better (positive reinforcement). If it fails the floor, it will try not to take actions that would result in this result next time. And so on until he learns to walk.
 

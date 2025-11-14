@@ -2,15 +2,16 @@
 title: Dependencies in Python
 
 tags:
-    - recipes
-    - dsp2017
-    - python
-    - pip
-    - virtualenv
+  - recipes
+  - dsp2017
+  - python
+  - pip
+  - virtualenv
 image: images/posts_thumbnails/python_dependencies.jpg
 
 description: As I am not particularly proficient in Python some things are new to me. This time a post about how dependencies management look in Python compared to other languages I know.
 ---
+
 I use JavaScript and PHP on a daily basis at work. In these languages there are package managers `npm` (and more) and `composer` that allow easy dependency management for each project. So far, I've been writing fairly simple scripts in Python and didn't need any package manager. For upcoming projects, I decided to see what the deal is with dependency management in Python.
 
 <!-- truncate -->
@@ -136,6 +137,6 @@ The above command starts a script in the current shell instance that will replac
 
 Type `which python` again in the console and you get something like:
 
-## Podsumowanie
+## Summary
 
 That's it, we learned the basic use of `pip` and `virtualenv`. I will write about creating packages and sending them to PyPI the next time. I also must admit that I was very surprised that `pip` does not allow the separation of libraries for each project and it requires the installation of a special package. Strange, I have different experiences when it comes to PHP and JS. I bet it's because of some historical events.

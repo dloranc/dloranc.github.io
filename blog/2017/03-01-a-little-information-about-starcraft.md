@@ -2,12 +2,13 @@
 title: A little information about Starcraft and my plans
 
 tags:
-    - projects
-    - dsp2017
-    - starcraft
+  - projects
+  - dsp2017
+  - starcraft
 image: images/posts_thumbnails/about_starcraft.jpg
 description: A post explaining a bit about Starcraft 2 for people who have never played the game. On top of that, I also wrote about my plans for the project as part of "Let Yourself Be Known 2017."
 ---
+
 It's time to get started, the previous post on the "Daj Się Poznać 2017" category was basically a post needed to create the category and RSS feed necessary to participate in the contest. Sculpin, which I use, requires the creation of any post assigned to a category to generate it.
 
 <!-- truncate -->
@@ -52,7 +53,7 @@ Basetrade:
 
 ## Why is this game so difficult for AI?
 
-First of all, in Starcraft, most information is unavailable to the player. A well-played bot will have to use memory effectively, plan in the long term, modify plans significantly in response to the opponent's actions. In the game it is also possible to have really many actions to perform, the bot will also have to plan them. Such, for example, to build a building is to select some worker, click somewhere on the map (change the camera), select a building from the list of actions of a given worker and click on the area to start construction.
+First of all, in StarCraft most information is unavailable to the player because of the fog of war, which makes parts of the map invisible. A well-performing bot must use memory effectively, plan over a longer time horizon, and significantly adjust its plans in response to the opponent’s actions. The game also contains a large number of possible actions, and the bot must plan those as well. For example, constructing a building involves selecting a worker unit, clicking somewhere on the map (which moves the camera), choosing the building from that unit’s action list, and clicking on the terrain to begin construction.
 
 The bot environment will have a scripting interface like the previous part of Starcraft (i.e. something like BWAPI), and a simple GUI generated so that bots can learn from pixels. On top of that, scripts for training (for curriculum learning) are yet to be published.
 

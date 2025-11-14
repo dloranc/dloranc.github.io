@@ -2,15 +2,16 @@
 title: We need more data - Scrapy
 
 tags:
-    - projects
-    - dsp2017
-    - scrapy
-    - starcraft
+  - projects
+  - dsp2017
+  - scrapy
+  - starcraft
 image: images/posts_thumbnails/scrapy.jpg
 
 description: A machine learning project requires a lot of data, which must be obtained somehow. Today I'm going to talk about using the Scrapy library for this purpose.
 ---
-*This post is about the Starcraft bot I am developing using machine learning. The project is being developed as part of the "Daj Się Poznać 2017" competition.*
+
+_This post is about the Starcraft bot I am developing using machine learning. The project is being developed as part of the "Daj Się Poznać 2017" competition._
 
 ---
 
@@ -111,13 +112,12 @@ class SpawningToolSpider(scrapy.Spider):
             yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
 ```
 
-
 Then all you had to do was fire up the command in the console:
 
 ```sh
 scrapy crawl spawning-tool-spider
 ```
 
-## Co dalej?
+## What's next?
 
 For now, however, I'll give myself a break from trying to predict what the environment from Blizzard and DeepMind will contain. I haven't even downloaded the replays because I don't know if there's any point. I think this week I'll try to recreate the scenarios of a simple micro from Starcraft for web browsers and under that I'll write examples using neural networks and reinforcement learning.

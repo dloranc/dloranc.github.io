@@ -70,6 +70,6 @@ Connecting...
 The path to Starcraft is incorrect, it is in a completely different place. I couldn't find out whether it is possible to pass any arguments to BWEnv.exe. The code shows that there is no such thing, so I will have to change and recompile this project.
 
 ## Summary
-I didn't get much done this week. That's the life, I always have to be stopped by some stupid technical problems. I'll try to put it together in the near future. To make things more funny, something went wrong with the bot's Java project, and I didn't change anything in the code. When I try to compile the bot, I get the following error: `Exception in thread "main" java.lang.UnsatisfiedLinkError: \{path\}\bwapi_bridge2_5.dll: Can't find dependent libraries`, even though all DLLs are where they were and it worked before. How to live?
+I didn't get much done this week. That's the life, I always have to be stopped by some stupid technical problems. I'll try to put it together in the near future. To make things more funny, something went wrong with the bot's Java project, and I didn't change anything in the code. When I try to compile the bot, I get the following error: `Exception in thread "main" java.lang.UnsatisfiedLinkError: \{path\}\bwapi_bridge2_5.dll: Can't find dependent libraries`, even though all DLLs are where they were and it worked before. How it's even possible?
 
 As a consolation, I must say that my bot, despite its simplicity, is doing well on the SSCAIT ladder. I achieved a 60% winratio (39 wins, 42 losses), which in my opinion is a good result for such a simple bot.

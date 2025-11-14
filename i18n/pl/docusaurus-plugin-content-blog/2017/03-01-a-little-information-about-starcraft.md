@@ -2,13 +2,14 @@
 title: Trochę informacji o Starcrafcie i moje plany
 
 tags:
-    - projects
-    - dsp2017
-    - starcraft
+  - projects
+  - dsp2017
+  - starcraft
 image: images/posts_thumbnails/about_starcraft.jpg
 
 description: Post wyjaśniający trochę rzeczy na temat Starcrafta 2 dla osób, które w tę grę nigdy nie grały. Do tego jeszcze napisałem o moich planach związanych z projektem w ramach "Daj Się Poznać 2017".
 ---
+
 Pora zacząć, poprzedni post w kategorii "Daj się poznać 2017" był w zasadzie postem potrzebnym do utworzenia kategorii i kanału RSS koniecznego do wzięcia udziału w konkursie. Sculpin, którego używam, wymaga stworzenia jakiegokolwiek postu przypisanego do kategorii by ją wygenerować.
 
 <!-- truncate -->
@@ -53,7 +54,7 @@ Basetrade:
 
 ## Dlaczego ta gra jest tak trudna dla AI?
 
-Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jakiegoś workera, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji danego workera i kliknięcie na teren, by rozpocząć budowę.
+Przede wszystkim w Starcrafcie większość informacji jest niedostępnych dla gracza ze względu na występującą w grze mgłę wojny, czyli obszar, który jest niewidoczny dla gracza. Dobrze grający bot będzie musiał efektywnie korzystać z pamięci, planować w dłuższej perspektywie czasowej, modyfikować znacząco plany w reakcji na poczynania przeciwnika. W grze jest także możliwe naprawdę wiele akcji do wykonania, bot będzie musiał je także planować. Takie na przykład wybudowanie budynku to jest zaznaczenie jednostki budującej, kliknięcie gdzieś na mapie (zmiana kamery), wybranie budynku z listy akcji tej jednostki i kliknięcie na teren, by rozpocząć budowę.
 
 Środowisko do botów będzie miało interfejs skryptowy taki jak poprzednia część Starcrafta (czyli coś jak BWAPI), a także generowany prosty interfejs graficzny, by boty mogły uczyć się na podstawie pikseli. Do tego jeszcze opublikowane mają zostać scenariusze do trenowania (do curriculum learning).
 
