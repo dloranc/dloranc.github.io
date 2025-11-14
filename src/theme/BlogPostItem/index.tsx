@@ -18,7 +18,7 @@ export default function BlogPostItem({
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
       {isBlogPostPage && <BlogPostItemContent>{children}</BlogPostItemContent>}
-      <BlogPostItemFooter />
+      {isBlogPostPage && <BlogPostItemFooter />}
     </BlogPostItemContainer>
   );
 }
