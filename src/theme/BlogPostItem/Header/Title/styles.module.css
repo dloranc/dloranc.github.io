@@ -1,0 +1,9 @@
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.largeTitle {
+  font-size: 2rem;
+  color: var(--ifm-color-primary);
+}

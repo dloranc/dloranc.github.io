@@ -12,7 +12,7 @@ export default function BlogPostItem({
   className,
 }: Props): JSX.Element {
   const { isBlogPostPage } = useBlogPost();
-  const containerClassName = !isBlogPostPage ? "margin-bottom--xl" : undefined;
+  const containerClassName = !isBlogPostPage ? "margin-bottom--lg" : undefined;
 
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>

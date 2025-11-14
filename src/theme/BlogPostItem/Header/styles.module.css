@@ -1,0 +1,22 @@
+.listHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.listInfo :global(.margin-vert--md) {
+  margin: 0 !important;
+}
+
+.listInfo :global(.theme-blog-post-date-time) {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.postInfo :global(.margin-vert--md) {
+  margin-top: 0 !important;
+}
+
+.postInfo {
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 1rem !important;
+}
